@@ -1,0 +1,48 @@
+/* 용어해설 관리(adm_0701·0702) — 누리지음 콘솔 UI v2(nv-*) 위에 이 화면에만 필요한 보정. 색·간격은 콘솔 토큰(--cms-*)을 쓴다. */
+/* 머리: 목록은 제목·안내 한 줄(#109), 등록·수정은 편집 머리(#110) — 조각이 자기 h1 을 그리고 콘솔이 그리는 머리는 감춘다 */
+.nv-content:has(> .cms-svc-fragment .sd-term) > .nv-page-header { display: none; }
+.sd-term { display: flex; flex-direction: column; gap: var(--cms-sp-4, 1.6rem); }
+.sd-term-table .sd-term-col-no { width: 7rem; }
+.sd-term-table .sd-term-col-name { width: 22%; }
+.sd-term-table .sd-term-col-state { width: 14rem; }
+.sd-term-table .sd-term-col-actions { width: 8rem; }
+.sd-term-table .col-actions { white-space: nowrap; }
+.sd-term .nv-filter__left .nv-btn { margin-left: var(--cms-sp-2, .8rem); }
+/* 용어 구분 탭 — 콘솔 메뉴 관리 1단계 탭(cms-admin-v2.css .nv-menu-top-tabs · navigation.css)과 같은 여백 */
+.sd-term .nv-list > .nv-tabs { flex-wrap: wrap; margin: 1.2rem 1.6rem var(--cms-sp-3, 1.2rem); }
+/* 정의 첫 줄 말줄임(design_CMN §3-2 adm_0701-03) */
+.sd-term-dfn { max-width: 0; }
+.sd-term-dfn__line { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sd-term-form .nv-textarea { white-space: pre-wrap; }
+/* 등록·수정(adm_0702) 2단 — 시계열(ts.css .sd-ts-grid)·핵심데이터와 같게: 오른쪽 42rem · 간격 24 · 1280 이하 한 단 */
+.sd-term--editor .nv-editor-header__title { margin: 0; }
+.sd-term-grid { display: grid; grid-template-columns: minmax(0, 1fr) 42rem; gap: var(--cms-sp-6, 2.4rem); align-items: start; }
+.sd-term--editor > .sd-term-grid { margin-top: calc(var(--cms-sp-6, 2.4rem) - var(--cms-sp-4, 1.6rem)); }
+.sd-term-grid .nv-card { border-radius: var(--cms-radius-lg); background: var(--cms-surface); }
+.sd-term-grid .nv-field__label { font-size: var(--cms-fs-base); font-weight: var(--cms-fw-semibold); }
+.sd-term-row { display: flex; align-items: center; justify-content: space-between; gap: var(--cms-sp-3, 1.2rem); }
+.sd-term-row .nv-field__label { margin: 0; }
+@media (max-width: 1280px) {
+  .sd-term-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 768px) {
+  .sd-term-table .sd-term-col-name { width: auto; }
+  .sd-term-table .sd-term-col-actions { width: auto; }
+}
+/* 엑셀 일괄 등록 패널의 검증 결과(콘솔 nv-* 에 없는 간격만) */
+.sd-term-import-result { display: flex; flex-direction: column; gap: var(--cms-sp-3, 1.2rem); margin-top: var(--cms-sp-4, 1.6rem); }
+.sd-term-import-head { display: flex; align-items: center; justify-content: space-between; gap: var(--cms-sp-3, 1.2rem); }
+.sd-term-import-title { margin: 0; font-size: var(--cms-fs-base); font-weight: var(--cms-fw-semibold); }
+.sd-term-import-dim { margin: 0; color: var(--cms-text-muted, #6b7280); }
+.sd-term-import-file { margin: 0; }
+.sd-term-import-errlist { margin: var(--cms-sp-2, .8rem) 0 0; padding-left: 2rem; }
+/* 패널 본문은 세로 flex 라 결과가 길어지면 버튼이 눌린다 */
+#sd-term-import-panel .nv-panel__body > .nv-btn { flex: none; align-self: flex-start; }
+/* 패널 폭 안에 상태 열까지 보이게: 열 폭을 고정하고 정의만 말줄임 */
+.sd-term-import-table { width: 100%; table-layout: fixed; }
+.sd-term-import-table th:nth-child(1) { width: 5rem; }
+.sd-term-import-table th:nth-child(2) { width: 13rem; }
+.sd-term-import-table th:nth-child(4) { width: 8rem; }
+.sd-term-import-table th:nth-child(5) { width: 7rem; }
+.sd-term-import-table td { overflow-wrap: anywhere; }
+.sd-term-import-table td:nth-child(3) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

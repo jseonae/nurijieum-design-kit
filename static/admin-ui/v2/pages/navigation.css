@@ -1,0 +1,348 @@
+/* 메뉴 관리(v2) 페이지 전용 — 메뉴 깊이 표시, 인라인 편집 행, 연결 대상 입력, 메뉴 등록 폼. 토큰만 참조. */
+
+/* 메뉴명: 깊이 원형 번호 + 들여쓰기 (Figma 메뉴 리스트) */
+.nv-nav-menu { display: inline-flex; align-items: center; gap: .8rem; flex-wrap: wrap; }
+.nv-nav-menu--d2 { padding-left: 2.4rem; }
+.nv-nav-menu--d3 { padding-left: 4.8rem; }
+.nv-nav-menu--d4 { padding-left: 7.2rem; }
+.nv-nav-menu__depth {
+  display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; flex: none;
+  border-radius: 50%; background: var(--cms-primary); color: var(--cms-on-primary);
+  font-size: var(--cms-fs-xs); font-weight: var(--cms-fw-semibold);
+}
+.nv-nav-menu--d2 .nv-nav-menu__depth, .nv-nav-menu--d3 .nv-nav-menu__depth, .nv-nav-menu--d4 .nv-nav-menu__depth { background: var(--cms-primary-soft); color: var(--cms-primary-strong); }
+.nv-nav-menu__path { width: 100%; padding-left: 2.8rem; color: var(--cms-subtle); font-size: var(--cms-fs-sm); font-weight: var(--cms-fw-regular); }
+.nv-nav-table tbody td.is-title { font-weight: var(--cms-fw-medium); }
+/* KRDS common.css 가 table { table-layout: fixed } 를 전역으로 걸어 col-actions(width:1%) 가 16px 로 눌린다 → 내용 기반 배치 */
+.nv-nav-table { table-layout: auto; }
+.nv-nav-table .col-actions { width: 6.4rem; }
+.nv-nav-table .col-check { width: 3.2rem; }
+
+/* 행 아래 인라인 편집 영역 */
+.nv-nav-edit-row td { background: var(--cms-surface-soft); padding-top: 1.6rem; padding-bottom: 1.6rem; height: auto; }
+.nv-nav-edit { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 1.6rem 2.4rem; }
+.nv-nav-edit__form { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 1.2rem; flex: 1 1 48rem; }
+.nv-nav-edit__form .nv-field { flex: 1 1 16rem; gap: .4rem; }
+.nv-nav-edit__form .nv-field__label { font-size: var(--cms-fs-sm); color: var(--cms-muted); }
+.nv-nav-edit__form--inline { flex: 1 1 auto; }
+.nv-nav-edit__actions { display: flex; align-items: flex-end; }
+.nv-nav-edit__side { display: flex; align-items: center; gap: .8rem; margin-left: auto; }
+.nv-nav-edit__close { flex: none; }
+
+/* 대상 유형별 입력(하나만 표시) */
+.nv-route-target { display: flex; align-items: center; gap: .8rem; width: 100%; }
+.nv-route-target > .nv-select { flex: 1; }
+.nv-route-target.nv-stack { align-items: stretch; }
+.nv-route-target.nv-stack > .nv-select { flex: none; }
+.nv-route-target__url { display: flex; align-items: center; gap: .8rem; flex: 1; }
+.nv-route-target__url > .nv-input { flex: 1; }
+.nv-route-target [hidden] { display: none !important; }
+/* 연결 대상 「게시판」 줄(#35): 고르기 칸이 남는 폭을 채우고 [추가] [수정] [삭제] 는 오른쪽 */
+.nv-route-target > [data-board-row] { align-self: stretch; }
+.nv-route-target [data-board-row] > .nv-select { flex: 1; }
+
+/* 메뉴 등록 폼 (Figma 820:53598): 편집 헤더 + 2열(본문 카드 / 설정 컬럼) */
+.nv-nav-form { border: 1px solid var(--cms-border); border-radius: var(--cms-radius-lg); background: var(--cms-bg); overflow: hidden; scroll-margin-top: calc(var(--cms-header-h) + 1.6rem); }
+.nv-nav-form[hidden] { display: none !important; }
+.nv-nav-form__inner { display: flex; flex-direction: column; }
+.nv-nav-form__header { position: static; margin: 0; }
+.nv-nav-form__grid { display: grid; grid-template-columns: minmax(0, 1fr) 42rem; gap: var(--cms-sp-6); padding: var(--cms-sp-6); }
+.nv-nav-form__grid .nv-card { border-radius: var(--cms-radius-lg); }
+@media (max-width: 1280px) { .nv-nav-form__grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 768px) { .nv-nav-edit__side { margin-left: 0; } .nv-nav-menu--d2, .nv-nav-menu--d3, .nv-nav-menu--d4 { padding-left: 1.2rem; } }
+
+/* 편집 모드(Figma 820:53598/53660): 메뉴 등록 폼이 열리면 페이지 헤더·목록을 숨겨 편집 화면만 남긴다 */
+.nv-content:has(.nv-nav-form:not([hidden])) > .nv-page-header,
+#panel-menu:has(.nv-nav-form:not([hidden])) > .nv-list { display: none; }
+.nv-content:has(.nv-nav-form:not([hidden])) .nv-nav-form { border: 0; background: transparent; overflow: visible; }
+.nv-content:has(.nv-nav-form:not([hidden])) .nv-nav-form__header {
+  margin: calc(var(--cms-content-py) * -1) calc(var(--cms-content-px) * -1) 0; padding-left: var(--cms-content-px); padding-right: var(--cms-content-px);
+  background: var(--cms-surface); border-bottom: 1px solid var(--cms-border);
+}
+.nv-content:has(.nv-nav-form:not([hidden])) .nv-nav-form__grid { padding: var(--cms-sp-6) 0 0; }
+/* 시안: 본문 카드 흰색 · 라벨 14/600 · 입력 40 */
+.nv-nav-form__grid .nv-card { background: var(--cms-surface); }
+.nv-nav-form__grid .nv-field__label { font-size: var(--cms-fs-base); font-weight: var(--cms-fw-semibold); }
+
+/* 메뉴 등록 · 수정 링크 줄: [현재창 ▾] 은 좁게, 주소 · URL 칸이 나머지 */
+.nv-nav-link-target { flex: none; width: 10rem; }
+
+/* 메뉴 일괄 등록 패널(Figma 820:57323): 서식 링크 · 열 설명 · 결과표 */
+/* 메뉴 일괄 등록 패널: 오른쪽에 붙어 세로 가운데(오른쪽에서 밀려 나옴) · 기본 폭(476) · 높이는 내용만큼(화면을 넘으면 본문
+   스크롤). 등록 완료 결과표는 넓은 폭(516) */
+#menu-bulk-panel {
+  top: 50%; bottom: auto; max-height: calc(100vh - 4rem);
+  border-radius: var(--cms-radius-2xl) 0 0 var(--cms-radius-2xl); transform: translate(100%, -50%);
+}
+#menu-bulk-panel.is-open { transform: translate(0, -50%); }
+#menu-bulk-panel[data-bulk-mode="done"], #menu-bulk-panel[data-bulk-mode="report"] { width: var(--cms-panel-w-lg); }
+.nv-nav-bulk-tpl { display: flex; flex-direction: column; gap: .8rem; }
+.nv-nav-bulk-tpl__links { display: flex; flex-wrap: nowrap; gap: .8rem; }
+.nv-nav-bulk-tpl__links .nv-btn { white-space: nowrap; }
+.nv-nav-bulk-help { border: 1px solid var(--cms-border); border-radius: var(--cms-radius-sm); padding: .8rem 1.2rem; }
+.nv-nav-bulk-help summary { cursor: pointer; font-size: var(--cms-fs-sm); color: var(--cms-muted); }
+.nv-nav-bulk-help ul { margin: .8rem 0 0; padding-left: 1.6rem; display: flex; flex-direction: column; gap: .4rem; }
+.nv-nav-bulk-report h3 { display: flex; flex-wrap: wrap; align-items: baseline; gap: .8rem; margin: 0 0 .8rem; }
+/* 드롭존 안 파일 입력: 화면에서는 숨기고(라벨 전체가 클릭 영역) 키보드 초점은 드롭존 테두리로 보인다 — 미디어 등록과 같은 방식 */
+#menu-bulk-drop { position: relative; }
+#menu-bulk-drop input[type="file"] { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+#menu-bulk-drop:focus-within { outline: 2px solid var(--cms-primary); outline-offset: 2px; }
+.nv-nav-bulk-table { table-layout: auto; width: 100%; }
+.nv-nav-bulk-table tbody td { height: auto; vertical-align: top; padding-top: 1rem; padding-bottom: 1rem; }
+.nv-nav-bulk-table tr.is-error td { background: var(--cms-err-bg); }
+.nv-nav-bulk-cell { display: flex; flex-direction: column; gap: .2rem; min-width: 0; }
+.nv-nav-bulk-name { font-weight: var(--cms-fw-medium); overflow-wrap: anywhere; }
+.nv-nav-bulk-path { overflow-wrap: anywhere; color: var(--cms-muted); }
+.nv-nav-bulk-table .nv-text-err { color: var(--cms-err-fg); overflow-wrap: anywhere; }
+
+/* 메뉴코드: 코드 없는 메뉴 안내 줄(일괄 부여 버튼) · 새 콘텐츠 페이지 경로 미리보기 · 상위 변경 안내 */
+.nv-nav-code-missing { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.2rem; }
+.nv-nav-code-missing__text { flex: 1 1 32rem; }
+.nv-nav-page-preview { margin: 0; overflow-wrap: anywhere; }
+.nv-nav-form .nv-text-warn { color: var(--cms-warn-fg); }
+.nv-nav-form .nv-text-err { color: var(--cms-err-fg); }
+.nv-nav-code-missing__note { display: block; margin-top: .2rem; font-size: var(--cms-fs-sm); }
+/* 일괄 등록: 전부 변화 없음 안내 */
+.nv-nav-bulk-same { margin: 0 0 .8rem; padding: .8rem 1.2rem; border-radius: var(--cms-radius-sm); background: var(--cms-surface-muted); color: var(--cms-text); }
+.nv-nav-bulk-other { margin-top: .8rem; }
+/* 일괄 등록 오류 알림: 요약 아래 행별 오류(행 · 메뉴코드 · 사유) — 많으면 알림 안에서 스크롤 */
+.nv-nav-bulk-alert > div { min-width: 0; flex: 1; }
+.nv-nav-bulk-alert p { margin: 0; }
+.nv-nav-bulk-errors { margin: .8rem 0 0; padding-left: 1.6rem; max-height: 32rem; overflow-y: auto; display: flex; flex-direction: column; gap: .4rem; font-size: var(--cms-fs-sm); overflow-wrap: anywhere; }
+.nv-nav-bulk-errors code { margin: 0 .4rem; }
+
+/* 메뉴 수정 화면 */
+.ct-embedded { display: flex; flex-direction: column; gap: 2.4rem; }
+.ed-page { display: flex; flex-direction: column; gap: 1.6rem; }
+.ed-page > [data-mpanel], .ed-page > [data-mpanel] > form.nv-stack, .ed-page [data-access-root] { gap: 2.4rem; }
+/* 머리 띠: 본문 여백을 넘어 전체 폭으로 깔리고 스크롤해도 콘솔 머리 아래에 붙어 있다. 위에 저장 결과 알림이 있으면 알림을 덮지 않는다 */
+.edh.nv-editor-header { flex-direction: column; align-items: stretch; gap: 1rem; padding-top: 1.2rem; padding-bottom: 1.4rem; }
+.nv-content > :not(.ed-page) ~ .ed-page > .edh.nv-editor-header { margin-top: 0; }
+.edh__row { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.2rem; min-width: 0; }
+.edh__row--title { align-items: baseline; }
+.edh__back { flex: none; }
+.edh__crumb { flex: 1 1 auto; min-width: 0; }
+.edh__nav { display: inline-flex; flex-wrap: wrap; gap: .6rem; margin-left: auto; }
+.edh__step { max-width: 22rem; }
+.edh__step span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nv-icon.flip { transform: scaleX(-1); }
+.nv-badge.badge-link { font: inherit; font-size: var(--cms-fs-sm); cursor: pointer; }
+.badge-link:hover { text-decoration: underline; }
+.badge-link:focus-visible { box-shadow: var(--cms-focus); outline: 0; }
+.list-title { font-size: var(--cms-fs-lg); font-weight: 700; color: var(--cms-text); }
+.list-hint { display: inline-flex; align-items: center; gap: .4rem; font-size: var(--cms-fs-sm); color: var(--cms-subtle); }
+.nv-nav-table tr[hidden] { display: none; }
+.nv-nav-menu__depth[title] { cursor: help; }
+.savebar__reason .nv-field__error { width: 100%; }
+.fixlink { border: 0; background: none; padding: 0; color: inherit; font: inherit; font-weight: 600; cursor: pointer; }
+.fixlink:hover { text-decoration: underline; }
+.fixlink:focus-visible { box-shadow: var(--cms-focus); outline: 0; }
+.pbox__note .fixlink, .nv-alert .fixlink, .nv-text-subtle .fixlink { font-weight: 700; text-decoration: underline; }
+.edh__kind { font-size: var(--cms-fs-sm); font-weight: 700; color: var(--cms-primary-text); background: var(--cms-primary-soft); padding: .2rem .8rem; border-radius: var(--cms-radius-pill); }
+.edh__name { margin: 0; font-size: var(--cms-fs-h3); font-weight: var(--cms-fw-bold); letter-spacing: -.02em; color: var(--cms-text); }
+.edh__badges { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.mhead__path { color: var(--cms-subtle); font-size: var(--cms-fs-md); font-variant-numeric: tabular-nums; }
+.ed-tabs [role="tab"] { height: 4rem; font-size: var(--cms-fs-base); }
+.tabdot { color: var(--cms-warn-fg); font-size: .9em; }
+.card-title { font-size: var(--cms-fs-lg); font-weight: var(--cms-fw-bold); color: var(--cms-text-strong); }
+.field-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem 1.6rem; }
+.ro-val { min-height: 4rem; display: flex; align-items: center; padding: .6rem 1.2rem; border-radius: var(--cms-radius-sm); background: var(--cms-surface-alt); color: var(--cms-text-strong); overflow-wrap: anywhere; }
+.info-grid.nv-nav-form__grid { padding: 0; grid-template-columns: minmax(0, 1fr) 30rem; }
+.info-grid .nv-field { display: flex; flex-direction: column; gap: .6rem; }
+.info-grid .nv-field--row { flex-direction: row; align-items: center; }
+.info-grid [data-board-row] { align-self: stretch; }
+.info-grid [data-board-row] > .nv-select { flex: 1; min-width: 0; }
+.savebar { position: sticky; bottom: 0; z-index: 30; display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem; padding: 1.4rem 2rem; border: 1px solid var(--cms-border-accent); border-radius: var(--cms-radius-lg); background: var(--cms-surface); box-shadow: var(--cms-shadow-lg); }
+.savebar[data-clean="true"] { border-color: var(--cms-border); box-shadow: none; }
+.savebar__count { font-weight: 700; }
+.savebar__count b { color: var(--cms-warn-fg); }
+.savebar__who { font-size: var(--cms-fs-md); color: var(--cms-muted); }
+.savebar__reason { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .6rem; font-size: var(--cms-fs-md); font-weight: 600; flex: 1 1 26rem; min-width: 0; }
+.savebar__reason .nv-input { flex: 1 1 18rem; min-width: 0; height: 3.6rem; }
+.savebar__actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-left: auto; }
+.savebar__list { width: 100%; margin: 0; padding: 1rem 0 0 2rem; border-top: 1px solid var(--cms-border); font-size: var(--cms-fs-md); color: var(--cms-text-strong); display: flex; flex-direction: column; gap: .4rem; max-height: 18rem; overflow-y: auto; }
+.savebar [hidden] { display: none !important; }
+.picker { position: relative; }
+.inline-picker { display: flex; flex-direction: column; gap: .8rem; }
+.inline-picker:has(> .picker__results[hidden]) { padding-bottom: .8rem; }   /* 글자를 넣기 전에도 결과 칸 자리만큼 띄운다 */
+.picker__results { background: var(--cms-surface); border: 1px solid var(--cms-border-strong); border-radius: var(--cms-radius); box-shadow: var(--cms-shadow-lg); max-height: 28rem; overflow-y: auto; padding: .4rem; }
+.picker__opt { width: 100%; display: flex; align-items: center; gap: 1rem; padding: .8rem 1rem; border: 0; border-radius: var(--cms-radius-sm); background: none; text-align: left; cursor: pointer; font-size: var(--cms-fs-base); }
+.picker__opt small { color: var(--cms-subtle); font-size: var(--cms-fs-sm); margin-left: auto; }
+.picker__opt:hover, .picker__opt:focus-visible { background: var(--cms-surface-muted); outline: 0; }
+.picker__empty { padding: 1.2rem; color: var(--cms-subtle); font-size: var(--cms-fs-md); }
+.hist-table td { height: auto; padding-top: .8rem; padding-bottom: .8rem; vertical-align: top; }
+.nv-nav-menu__name { font-weight: var(--cms-fw-semibold); color: var(--cms-primary-text); }
+/* 위치 옮기기: 연한 점 세 개 손잡이 · 끄는 동안의 표시 · 저장 막대 */
+.nv-nav-menu__grip { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2.4rem; border-radius: var(--cms-radius-sm, .4rem); color: var(--cms-subtle); opacity: .6; cursor: grab; user-select: none; touch-action: manipulation; }
+.nv-nav-menu__grip[hidden] { display: none; }
+.nv-nav-menu__grip:hover, .nv-nav-menu__grip:focus-visible { opacity: 1; background: var(--cms-surface-muted); }
+.nv-nav-menu__grip[aria-disabled="true"] { opacity: .25; cursor: not-allowed; background: none; }
+.nv-nav-table tr.is-dragging > td { opacity: .45; }
+.nv-nav-table tr.is-drop-before > td { box-shadow: inset 0 2px 0 var(--cms-primary-strong); }
+.nv-nav-table tr.is-drop-after > td { box-shadow: inset 0 -2px 0 var(--cms-primary-strong); }
+.nv-nav-table tr.is-drop-into > td { background: var(--cms-primary-soft); }
+.nv-nav-table tr.is-drop-denied > td { background: var(--cms-surface-muted); cursor: not-allowed; }
+.nv-nav-table [data-code-pending] { font-size: var(--cms-fs-sm); color: var(--cms-warn-fg); }
+.savebar[hidden] { display: none; }
+.savebar .nv-savebar { flex: 1 1 30rem; margin: 0; padding: 0; border: 0; background: none; }
+@media (max-width: 768px) { .nv-nav-menu__grip { width: 3.2rem; height: 3.2rem; opacity: .8; } }
+.nv-nav-menu__name:hover { text-decoration: underline; text-underline-offset: .3rem; }
+/* 1단계 탭 · 필수 별 · 칸 오류: 공통 규칙보다 이 화면 값이 먼저다 */
+.nv-list > .nv-menu-top-tabs { margin: 1.2rem 1.6rem 0; }
+.nv-nav-form__grid label.nv-field__label { display: block; }
+.info-grid .nv-field__error, .savebar__reason .nv-field__error { font-weight: var(--cms-fw-semibold); }
+@media (max-width: 1024px) {
+  .edh.nv-editor-header { margin: calc(var(--cms-sp-5) * -1) calc(var(--cms-sp-4) * -1) 0; padding-left: var(--cms-sp-4); padding-right: var(--cms-sp-4); }
+  .nv-content > :not(.ed-page) ~ .ed-page > .edh.nv-editor-header { margin-top: 0; }
+  /* 메뉴 등록 머리: 이 폭의 본문 여백은 --cms-content-px 가 아니라 sp-4 라서 그만큼만 넘어간다 */
+  .nv-content:has(.nv-nav-form:not([hidden])) .nv-nav-form__header { margin: calc(var(--cms-sp-5) * -1) calc(var(--cms-sp-4) * -1) 0; padding-left: var(--cms-sp-4); padding-right: var(--cms-sp-4); }
+  .edh__nav { margin-left: 0; width: 100%; }
+  .info-grid.nv-nav-form__grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* 접근권한 탭 */
+.pbox { background: var(--cms-surface); border: 1px solid var(--cms-border); border-radius: var(--cms-radius-lg); }
+.pbox__sec { padding: 2rem 2.4rem; display: flex; flex-direction: column; gap: 1.2rem; }
+.pbox__sec + .pbox__sec { border-top: 1px solid var(--cms-border); }
+.pbox__title { font-size: var(--cms-fs-lg); font-weight: var(--cms-fw-bold); display: flex; align-items: center; gap: .8rem; }
+.pbox__desc { color: var(--cms-muted); font-size: var(--cms-fs-md); line-height: 1.6; margin: 0; }
+.pbox__note { display: flex; align-items: center; gap: .6rem; color: var(--cms-muted); font-size: var(--cms-fs-md); margin: 0; }
+.inherit-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.2rem; }
+.inherit-row .nv-switch { font-weight: 600; }
+.preset { display: inline-flex; flex-wrap: wrap; gap: .4rem; padding: .3rem; border-radius: var(--cms-radius); background: var(--cms-surface-alt); border: 1px solid var(--cms-border); }
+.preset button { border: 0; background: none; height: 3.4rem; padding: 0 1.4rem; border-radius: var(--cms-radius-sm); color: var(--cms-muted); font-size: var(--cms-fs-md); font-weight: 600; cursor: pointer; }
+.preset button[aria-pressed="true"] { background: var(--cms-surface); color: var(--cms-primary-text); box-shadow: var(--cms-shadow-sm); }
+.preset button:disabled { cursor: not-allowed; opacity: .55; }
+.preset button:focus-visible { box-shadow: var(--cms-focus); outline: 0; }
+.ptable-wrap { overflow-x: auto; border: 1px solid var(--cms-border); border-radius: var(--cms-radius); }
+.ptable { width: 100%; border-collapse: collapse; font-size: var(--cms-fs-base); }
+.ptable th, .ptable td { height: 5rem; padding: 0 1.2rem; border-bottom: 1px solid var(--cms-border-soft); text-align: center; white-space: nowrap; }
+.ptable thead th { height: 4.4rem; background: var(--cms-surface-alt); color: var(--cms-muted); font-size: var(--cms-fs-md); font-weight: 600; }
+.ptable th.ptable__who, .ptable td.ptable__who { text-align: left; width: 19rem; min-width: 19rem; }
+.ptable tbody tr:last-child td { border-bottom: 0; }
+.ptable tbody tr:hover { background: var(--cms-surface-muted); }
+.ptable tr.is-base td { background: var(--cms-surface-soft); }
+.who__name { font-weight: 600; }
+.who__meta { font-size: var(--cms-fs-sm); color: var(--cms-subtle); }
+.who__meta:is([title], [data-nv-tip]) { cursor: help; }
+.th-tip { border-bottom: 1px dotted currentColor; cursor: help; }
+.cellcheck { display: inline-flex; align-items: center; justify-content: center; width: 3.6rem; height: 3.6rem; border-radius: var(--cms-radius-sm); cursor: pointer; position: relative; }
+.cellcheck:hover { background: var(--cms-primary-soft); }
+.cellcheck input[type="checkbox"] { position: relative !important; clip: auto !important; clip-path: none !important; overflow: visible !important; opacity: 1 !important; appearance: none; -webkit-appearance: none; width: 2rem !important; height: 2rem !important; flex: none; margin: 0 !important; padding: 0 !important; border: 1px solid var(--cms-border-strong) !important; border-radius: .4rem; background: var(--cms-surface); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.cellcheck input[type="checkbox"]:checked { background: var(--cms-primary); border-color: var(--cms-primary) !important; }
+.cellcheck input[type="checkbox"]:checked::after { content: ""; width: .5rem; height: .9rem; border: solid var(--cms-on-primary); border-width: 0 2px 2px 0; transform: translateY(-1px) rotate(45deg); }
+.cellcheck input[type="checkbox"]:focus-visible { box-shadow: var(--cms-focus); outline: 0; }
+.cellcheck input[type="checkbox"]:disabled { cursor: not-allowed; }
+.cellcheck.is-implied input[type="checkbox"] { background: var(--cms-primary-tint); border-color: var(--cms-primary-tint) !important; }
+.cellcheck.is-implied input[type="checkbox"]::after { content: ""; width: .5rem; height: .9rem; border: solid var(--cms-primary-text); border-width: 0 2px 2px 0; transform: translateY(-1px) rotate(45deg); }
+.cellcheck.is-changed::before { content: ""; position: absolute; top: .3rem; right: .3rem; width: .7rem; height: .7rem; border-radius: 50%; background: var(--cms-warn-fg); }
+.ptable--ro .cellcheck { cursor: default; }
+.ptable--ro .cellcheck:hover { background: none; }
+.addrow { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; }
+.addrow .nv-select { width: 26rem; max-width: 100%; }
+.keyhints { display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; font-size: var(--cms-fs-sm); color: var(--cms-subtle); }
+.keyhints span { display: inline-flex; align-items: center; gap: .6rem; }
+.keyhints i { display: inline-block; width: 1.4rem; height: 1.4rem; border-radius: .3rem; }
+.keyhints .k-on { background: var(--cms-primary); }
+.keyhints .k-imp { background: var(--cms-primary-tint); }
+.keyhints .k-chg { width: .8rem; height: .8rem; border-radius: 50%; background: var(--cms-warn-fg); }
+.mgrlist { list-style: none; margin: 0; padding: 0; background: var(--cms-surface); border: 1px solid var(--cms-border); border-radius: var(--cms-radius); }
+.mgr { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 1.2rem; align-items: center; padding: 1rem 1.4rem; border-bottom: 1px solid var(--cms-border-soft); }
+.mgr:last-child { border-bottom: 0; }
+.mgr.is-fixed { background: var(--cms-surface-soft); }
+.mgr__icon { width: 3.2rem; height: 3.2rem; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--cms-surface-alt); color: var(--cms-muted); }
+.mgr__icon .nv-icon { width: 1.6rem; height: 1.6rem; }
+.mgr__who { display: flex; flex-direction: column; min-width: 0; }
+.mgr__who b { font-size: var(--cms-fs-base); }
+.mgr__who > span { font-size: var(--cms-fs-sm); color: var(--cms-subtle); overflow-wrap: anywhere; }
+@media (max-width: 768px) { .mgr { grid-template-columns: auto minmax(0, 1fr); } .mgr > :last-child { grid-column: 2; justify-self: start; } }
+.ptable tr.is-new td, .mgr.is-new { animation: rowIn 1.4s ease; }
+@keyframes rowIn { from { background: var(--cms-warn-bg); } }
+@media (prefers-reduced-motion: reduce) { .ptable tr.is-new td, .mgr.is-new { animation: none; } }
+/* 메뉴 목록 접근 표시 · 범례 */
+.mtree__lock { flex: none; display: inline-flex; align-items: center; color: var(--cms-warn-fg); }
+.mtree__lock .nv-icon { width: 1.4rem; height: 1.4rem; }
+.mtree__tag { display: inline-block; padding: .1rem .5rem; border-radius: var(--cms-radius-xs); font-size: var(--cms-fs-xs); font-weight: 600; vertical-align: middle; }
+.mtree__tag--own { background: var(--cms-info-bg); color: var(--cms-info-fg); }
+.list-legend { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; margin: 0; padding: 1.2rem 1.6rem; border-top: 1px solid var(--cms-border); font-size: var(--cms-fs-sm); color: var(--cms-subtle); }
+.list-legend > span { display: inline-flex; align-items: center; gap: .4rem; }
+.mtree__tag--held { background: var(--cms-warn-bg, #fff4e0); color: var(--cms-warn-fg, #8a5a00); }
+.mtree__tag--orphan { background: var(--cms-err-bg); color: var(--cms-err-fg); }
+.mtree__tag--dirty { background: var(--cms-warn-bg, #fff4e0); color: var(--cms-warn-fg, #8a5a00); }
+.mtree__tag[hidden] { display: none; }
+@media (max-width: 768px) {
+  .nv-nav-table .nv-nav-menu__path { display: none; }
+  .nv-content:has(#panel-menu) > .nv-page-header { flex-wrap: wrap; }
+  .nv-content:has(#panel-menu) > .nv-page-header .nv-page-header__actions { flex-wrap: wrap; max-width: 100%; }
+}
+
+/* ── 퍼블리싱 반영(2026-11) — 수정 화면(메뉴 수정 · 게시판 수정 .edx 틀). 모양은 admin-parts.css, 여기는 콘솔 마크업 보정만 ── */
+/* 이전/다음: 콘솔은 주소가 있는 링크(a) — 키트의 단추(button)와 같은 모양 */
+.edx-steps a { display: inline-flex; align-items: center; gap: .4rem; height: 3.2rem; padding: 0 1rem; color: var(--cms-muted); font-size: var(--cms-fs-sm); text-decoration: none; white-space: nowrap; }
+.edx-steps > * + * { border-left: 1px solid var(--cms-border); }
+.edx-steps a:hover { color: var(--cms-primary-text); background: var(--cms-surface-muted); }
+.edx-steps a:focus-visible { box-shadow: var(--cms-focus); outline: 0; }
+.edx-steps a .nv-icon { width: 1.2rem; height: 1.2rem; }
+.edx-steps a span { max-width: 18rem; overflow: hidden; text-overflow: ellipsis; }
+.edx-card__title .mtree__tag { align-self: center; }
+.field-2--code { grid-template-columns: minmax(0, 1fr) 17.6rem; }
+/* 바뀐 칸 이름 옆 점 + 「이전: 값」 */
+.nv-field__label > .chg[data-chg] { margin-left: .6rem; vertical-align: middle; }
+.edx .nv-field__error { color: var(--cms-err-fg); font-size: var(--cms-fs-sm); font-weight: var(--cms-fw-semibold); }
+/* 담당자 이름 칸: 이름(굵게) + 아이디 */
+.owner-name > .ro-val b { font-weight: var(--cms-fw-semibold); }
+.owner-note .nv-btn { flex: none; }
+/* 접근권한 표 · 관리자 권한 카드 */
+.acc-table .who { display: flex; align-items: center; gap: .8rem; min-width: 16rem; }
+.acc-table th.ptable__who span { display: inline-block; min-width: 16rem; }
+.acc-table .who__name .fixlink { display: inline-flex; align-items: center; gap: .4rem; font-weight: inherit; }
+.acc-table .who__name .fixlink small { color: var(--cms-subtle); font-size: var(--cms-fs-sm); font-weight: var(--cms-fw-regular); }
+.acc-table .who__name .tag-new { margin-left: .4rem; }
+.mgrcards .mgr__who b { display: inline-flex; align-items: center; gap: .4rem; }
+.mgrcards .mgr__who b .fixlink { font-weight: inherit; }
+.acc-add .pick__list { max-height: 40rem; }
+.acc-add .pick__row .nv-badge { flex: none; }
+.acc-kids { align-self: flex-start; font-size: var(--cms-fs-md); }
+.edx-hint a.fixlink { color: var(--cms-primary-text); font-weight: var(--cms-fw-semibold); }
+.sum dd a:hover { text-decoration: underline; }
+/* 수정 이력 표 · 상세 검색 모달 표 */
+.tbl-scroll { overflow-x: auto; }
+.hist2 td { vertical-align: top; padding-top: 1.2rem; padding-bottom: 1.2rem; height: auto; }
+/* 쪽 번호: 화면 안에서 바꾸는 단추 */
+.pager .pager__btn { display: inline-flex; align-items: center; justify-content: center; gap: .2rem; min-width: 2.8rem; height: 2.8rem; padding: 0 .6rem; border: 0; border-radius: var(--cms-radius-xs); background: none; color: var(--cms-muted); font: inherit; cursor: pointer; }
+.pager .pager__btn:hover:not(:disabled) { background: var(--cms-surface-muted); color: var(--cms-text-strong); }
+.pager .pager__btn[aria-current="page"] { background: var(--cms-primary-deep); color: var(--cms-on-primary); font-weight: var(--cms-fw-bold); }
+.pager .pager__btn:disabled { color: var(--cms-placeholder); cursor: default; }
+.pager .pager__btn:focus-visible { box-shadow: var(--cms-focus); outline: 0; }
+@media (max-width: 1024px) {
+  .edx-steps a span { max-width: 12rem; }
+}
+@media (max-width: 768px) {
+  /* 두 칸 줄(담당자 4칸 등)은 키트처럼 768 에서 한 칸으로(1024 에서는 두 칸) */
+  .field-2 { grid-template-columns: minmax(0, 1fr); }
+  /* 재측정(11/10 2차): 키트는 768 에서도 메뉴코드 · 단계를 한 줄(단계 칸 17.6rem), 「누리집에서 보기」 · 이전/다음은 제목 줄 뒤에 이어 붙는다 */
+  .edx-steps a span { max-width: 9rem; }
+}
+/* 검색 칸 오른쪽 돋보기와 브라우저 지우기(×)가 겹치지 않게 */
+.owner-search .nv-input-wrap:has(.nv-input-wrap__btn) input[type="search"]::-webkit-search-cancel-button { display: none; }
+.hist2 td.is-wrap { min-width: 12rem; }
+
+/* ── 퍼블리싱 반영(2026-11) — 목록 ─────────────────────────────────
+   메뉴 목록 · 내 담당 메뉴(my-menus 도 이 파일을 읽는다). 모양은 admin-parts.css(시안 new-features.css) 가 정하고 여기는 콘솔 마크업 보정만. */
+/* 1단계 탭은 링크 탭(a.nv-tab · aria-current) — admin-parts.css 의 밑줄 탭은 [role="tab"] 만 보므로 같은 모양을 잇는다 */
+.gtabs .nv-tab {
+  flex: 0 0 auto; min-width: 0; height: 4.8rem; margin-bottom: -1px; padding: 0 .2rem;
+  border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: none;
+  color: var(--cms-muted); font-size: var(--cms-fs-base); font-weight: var(--cms-fw-medium);
+}
+.gtabs .nv-tab:hover { color: var(--cms-text-strong); }
+.gtabs .nv-tab.is-active, .gtabs a.nv-tab[aria-current="page"] { background: none; border-color: var(--cms-primary); color: var(--cms-primary-text); font-weight: var(--cms-fw-bold); }
+.gtabs .nv-tab:focus-visible { outline: 0; box-shadow: inset 0 0 0 2px var(--cms-primary); border-radius: var(--cms-radius-xs); }
+@media (max-width: 1024px) { .gtabs .nv-tab { flex: 0 0 auto; padding: 0 .2rem; } }
+/* 메뉴명 링크: 시안 .menu-link(검정, 고른 줄 · 올리면 파랑). 끌어 옮기기 손잡이는 콘솔 것 */
+.nv-nav-table .nv-nav-menu__name.menu-link { font-weight: var(--cms-fw-semibold); }
+/* 내 담당 메뉴: 좁은 너비에서도 단계 번호 · 메뉴명 · 메뉴 유형을 한 줄로(「최근 수정」이 길어 표가 줄어든다 — 넘치면 표가 가로로 밀린다) */
+#my-menu-table .nv-nav-menu { flex-wrap: nowrap; white-space: nowrap; }
+#my-menu-table td:nth-child(3) { white-space: nowrap; }
+/* 재측정(11/10 2차): 메뉴 목록 메뉴명 칸은 키트처럼 한 줄 — 순서 손잡이 · 단계 번호 · 이름 · 표시(개별 · 변경)가 좁은 화면에서 줄 앞으로 떨어지지 않게(넘치면 표가 가로로 스크롤) */
+.nv-nav-table .nv-nav-menu { flex-wrap: nowrap; white-space: nowrap; }

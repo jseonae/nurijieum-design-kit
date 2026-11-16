@@ -1,0 +1,333 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "KIMM";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("../../_common/resources/font/KIMM-Bold.subset.woff2") format("woff2"),
+       url("../../_common/resources/font/KIMM-Bold.subset.woff") format("woff");
+}
+/* 로고 글자 : Figma 로고 그림의 글자 = Gmarket Sans Medium (무료 배포 글꼴, 굵기는 main.css 의 Bold 와 나눠 등록) */
+@font-face {
+  font-family: "Gmarket Sans";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("../../_common/resources/font/GmarketSansMedium.woff") format("woff");
+}
+/* ==========================================================================
+   연구원 로그인 (Figma 노드 11809:23177 「특수원-연구원 로그인화면」, 1920×1080)
+   - 헤더·푸터 없는 단독 화면. 불러오는 순서 : output.css → krds-base.css → krds-custom.css → login.css
+   - 색은 이 화면 Figma 실측값이다(KRDS 단계와 정확히 같은 값이 없음). 같은 값이 있는 것만 KRDS 토큰을 쓴다.
+   - 제목 서체 : KIMM Bold (출처 – 한국기계연구원, kimm.re.kr · 공공누리 출처표시, KS X 1001 한글 + ASCII 서브셋)
+   ponytail: 화면 표시 모드(theme·high-contrast)별 색은 아직 없음 — Figma 에 모드 시안이 오면 --cm-login-* 를 모드마다 다시 지정
+   ========================================================================== */
+.cm-login-page {
+  --cm-login-title: #141a24;          /* 실측 */
+  --cm-login-desc: #64748b;           /* 실측 */
+  --cm-login-card-border: #e6e8f0;    /* 실측 */
+  --cm-login-input-border: #c5cdd8;   /* 실측 */
+  --cm-login-placeholder: #8a94a6;    /* 실측 */
+  --cm-login-primary: #0b5cff;        /* 실측 */
+  --cm-login-foot: #5f6b7d;           /* 실측 */
+  --cm-login-back: var(--krds-color-light-gray-70); /* #464c53 */
+
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+  /* 배경 3겹 (아래부터) : 사진(bg-image 3D) → 색 번짐(mesh, 화면 밖까지 그린 2772×1553 을 Figma 위치 -440,-473 에 맞춤) */
+  background:
+    url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjI3NzIiIGhlaWdodD0iMTU1MyIgdmlld0JveD0iMCAwIDI3NzIgMTU1MyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9IkZyYW1lIDEwMDAwMDQ5OTAiPgo8ZyBpZD0ibWVzaCAvICYjMjM1OyYjMTg0OyYjMTQ4OyYjMjM1OyYjMTYzOyYjMTY4OyAoJiMyMzY7JiMxNjI7JiMxNDA7JiMyMzY7JiMxMzE7JiMxMjk7JiMyMzU7JiMxMzk7JiMxNjg7KSIgZmlsdGVyPSJ1cmwoI2ZpbHRlcjBfZl8wXzExOSkiPgo8ZWxsaXBzZSBjeD0iNjgwIiBjeT0iNjEwIiByeD0iNTAwIiByeT0iMzgwIiBmaWxsPSIjOEZBOEYyIiBmaWxsLW9wYWNpdHk9IjAuNzUiLz4KPC9nPgo8ZyBpZD0ibWVzaCAvICYjMjM2OyYjMTM4OyYjMTY0OyYjMjM2OyYjMTg1OyYjMTgwOyYjMjM2OyYjMTU3OyYjMTgwOyAoJiMyMzY7JiMxNjI7JiMxNDA7KSIgZmlsdGVyPSJ1cmwoI2ZpbHRlcjFfZl8wXzExOSkiPgo8ZWxsaXBzZSBjeD0iNzAxIiBjeT0iMTAwNSIgcng9IjM5NSIgcnk9IjE5NiIgZmlsbD0iI0I5RDBGNyIgZmlsbC1vcGFjaXR5PSIwLjcxIi8+CjwvZz4KPGcgaWQ9Im1lc2ggLyAmIzIzNTsmIzE1NzsmIzE4ODsmIzIzNTsmIzE3ODsmIzE2NDsmIzIzNTsmIzE0MTsmIzE0ODsgKCYjMjM2OyYjMTY0OyYjMTQ1OyYjMjM2OyYjMTQ5OyYjMTUzOykiIGZpbHRlcj0idXJsKCNmaWx0ZXIyX2ZfMF8xMTkpIj4KPGVsbGlwc2UgY3g9IjE0NjAiIGN5PSI1ODQiIHJ4PSI1MzYiIHJ5PSIzMzkiIGZpbGw9IiNDQkJDRjQiIGZpbGwtb3BhY2l0eT0iMC42Ii8+CjwvZz4KPGcgaWQ9Im1lc2ggLyAmIzIzNzsmIzE0ODsmIzE4ODsmIzIzNjsmIzE4NTsmIzE1MjsgKCYjMjM2OyYjMTU0OyYjMTc2OyYjMjM2OyYjMTMxOyYjMTI5OyYjMjM1OyYjMTM5OyYjMTY4OykiIGZpbHRlcj0idXJsKCNmaWx0ZXIzX2ZfMF8xMTkpIj4KPGVsbGlwc2UgY3g9IjE5NjMiIGN5PSI0MTAiIHJ4PSIzODAiIHJ5PSIyNDAiIGZpbGw9IiNGOURDQ0YiIGZpbGwtb3BhY2l0eT0iMC43NSIvPgo8L2c+CjxnIGlkPSJtZXNoIC8gJiMyMzc7JiMxNDk7JiMxNDU7JiMyMzc7JiMxMjk7JiMxNzI7ICgmIzIzNjsmIzE1NDsmIzE3NjspIiBmaWx0ZXI9InVybCgjZmlsdGVyNF9mXzBfMTE5KSI+CjxlbGxpcHNlIGN4PSIyMTQ4IiBjeT0iNzYxLjUiIHJ4PSI0MzQiIHJ5PSIzMzguNSIgZmlsbD0iI0Y1QkZEMyIgZmlsbC1vcGFjaXR5PSIwLjYyIi8+CjwvZz4KPHJlY3QgaWQ9ImZhZGUgKCYjMjM2OyYjMTQ5OyYjMTMyOyYjMjM1OyYjMTU4OyYjMTUyOyYjMjM1OyYjMTYxOyYjMTU2OyAmIzIzNTsmIzEzMzsmIzE4NTsmIzIzNjsmIzE0OTsmIzEzMjsmIzIzNTsmIzE0NzsmIzE2NjspIiB4PSI0NDAiIHk9IjQ3MyIgd2lkdGg9IjE5MjAiIGhlaWdodD0iMTA4MCIgZmlsbD0idXJsKCNwYWludDBfbGluZWFyXzBfMTE5KSIvPgo8L2c+CjxkZWZzPgo8ZmlsdGVyIGlkPSJmaWx0ZXIwX2ZfMF8xMTkiIHg9IjAiIHk9IjUwIiB3aWR0aD0iMTM2MCIgaGVpZ2h0PSIxMTIwIiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iQmFja2dyb3VuZEltYWdlRml4IiByZXN1bHQ9InNoYXBlIi8+CjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjkwIiByZXN1bHQ9ImVmZmVjdDFfZm9yZWdyb3VuZEJsdXJfMF8xMTkiLz4KPC9maWx0ZXI+CjxmaWx0ZXIgaWQ9ImZpbHRlcjFfZl8wXzExOSIgeD0iMTQ2IiB5PSI2NDkiIHdpZHRoPSIxMTEwIiBoZWlnaHQ9IjcxMiIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9InNSR0IiPgo8ZmVGbG9vZCBmbG9vZC1vcGFjaXR5PSIwIiByZXN1bHQ9IkJhY2tncm91bmRJbWFnZUZpeCIvPgo8ZmVCbGVuZCBtb2RlPSJub3JtYWwiIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJzaGFwZSIvPgo8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSI4MCIgcmVzdWx0PSJlZmZlY3QxX2ZvcmVncm91bmRCbHVyXzBfMTE5Ii8+CjwvZmlsdGVyPgo8ZmlsdGVyIGlkPSJmaWx0ZXIyX2ZfMF8xMTkiIHg9IjczNCIgeT0iNTUiIHdpZHRoPSIxNDUyIiBoZWlnaHQ9IjEwNTgiIGZpbHRlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj4KPGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0iMCIgcmVzdWx0PSJCYWNrZ3JvdW5kSW1hZ2VGaXgiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0ic2hhcGUiLz4KPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iOTUiIHJlc3VsdD0iZWZmZWN0MV9mb3JlZ3JvdW5kQmx1cl8wXzExOSIvPgo8L2ZpbHRlcj4KPGZpbHRlciBpZD0iZmlsdGVyM19mXzBfMTE5IiB4PSIxNDEzIiB5PSIwIiB3aWR0aD0iMTEwMCIgaGVpZ2h0PSI4MjAiIGZpbHRlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj4KPGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0iMCIgcmVzdWx0PSJCYWNrZ3JvdW5kSW1hZ2VGaXgiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0ic2hhcGUiLz4KPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iODUiIHJlc3VsdD0iZWZmZWN0MV9mb3JlZ3JvdW5kQmx1cl8wXzExOSIvPgo8L2ZpbHRlcj4KPGZpbHRlciBpZD0iZmlsdGVyNF9mXzBfMTE5IiB4PSIxNTI0IiB5PSIyMzMiIHdpZHRoPSIxMjQ4IiBoZWlnaHQ9IjEwNTciIGZpbHRlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj4KPGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0iMCIgcmVzdWx0PSJCYWNrZ3JvdW5kSW1hZ2VGaXgiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0ic2hhcGUiLz4KPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iOTUiIHJlc3VsdD0iZWZmZWN0MV9mb3JlZ3JvdW5kQmx1cl8wXzExOSIvPgo8L2ZpbHRlcj4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDBfbGluZWFyXzBfMTE5IiB4MT0iMTQwMCIgeTE9IjQ3MyIgeDI9IjE0MDAiIHkyPSIxNTUzIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGM0Y0RjgiIHN0b3Atb3BhY2l0eT0iMCIvPgo8c3RvcCBvZmZzZXQ9IjAuMTQ5MDM4IiBzdG9wLWNvbG9yPSIjRjNGNEY4IiBzdG9wLW9wYWNpdHk9IjAuMDUiLz4KPHN0b3Agb2Zmc2V0PSIwLjMwNjQ3NiIgc3RvcC1jb2xvcj0iI0YzRjRGOCIgc3RvcC1vcGFjaXR5PSIwLjM4Ii8+CjxzdG9wIG9mZnNldD0iMC40OTYwOCIgc3RvcC1jb2xvcj0iI0YzRjRGOCIgc3RvcC1vcGFjaXR5PSIwLjkiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRjNGNEY4Ii8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPC9zdmc+Cg==") 51.64% 100% / 144.375% 143.8% no-repeat,
+    url("../img/login/login_bg.png") center / cover no-repeat,
+    #fff;
+}
+
+/* 상단 : 로고 + 이전 페이지로 돌아가기 (Figma : left 96, top 56, 폭 1700) */
+/* Figma 위치 : 상단 줄 = 위 56 · 왼쪽 96 고정, 카드 = 화면 세로 가운데 + 9.5, 저작권 = 카드 아래 79 */
+.cm-login-top {
+  position: absolute;
+  z-index: 1;
+  top: 5.6rem;
+  left: 9.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+  width: min(170rem, 100% - 9.6rem - 2.4rem);
+}
+/* 로고 : 상징 그림 + 사이트 이름(테마 공통 규칙, CMS 화면은 사이트 설정 값). 높이는 Figma 로고(35)에 맞춤.
+   글자는 Figma 로고 그림(321×35, 글자 폭 278)과 같은 글꼴 · 크기 */
+.cm-login-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: 0;
+  text-decoration: none;
+}
+.cm-login-page .cm-login-logo .cm-logo-symbol {
+  flex: none;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+.cm-login-page .cm-login-logo .cm-logo-name {
+  overflow: hidden;
+  min-width: 0;
+  font-family: "Gmarket Sans", "Pretendard GOV", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+  -webkit-text-stroke: 0.1px currentColor; /* 시안 글자가 Medium 보다 조금 굵다 (Bold 는 너무 굵음) — 획 면적을 시안에 맞춤 */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #505050;
+}
+.cm-login-back {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--cm-login-back);
+  text-decoration: none;
+}
+.cm-login-back img {
+  display: block;
+}
+.cm-login-back:hover .txt {
+  text-decoration: underline;
+}
+
+/* 가운데 : 로그인 카드 */
+.cm-login-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  /* 위·아래 차이 1.9rem = 가운데에서 9.5px 아래. 위는 상단 줄(91) 아래, 아래는 저작권(79 + 글자) 자리 */
+  padding: 13rem 1.6rem 11.1rem;
+}
+.cm-login-box {
+  position: relative;
+  width: 51.6rem;
+  max-width: 100%;
+}
+.cm-login-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 4.8rem 4.8rem 5.8rem;
+  background: #fff;
+  border: 1px solid var(--cm-login-card-border);
+  border-radius: 2rem;
+  box-shadow: 0 2px 6px 0 rgba(15, 23, 42, 0.05), 0 24px 56px -10px rgba(75, 94, 168, 0.14); /* 실측 */
+}
+/* 카드 뒤 흰 번짐(halo) : 872×842, 카드 가운데 */
+.cm-login-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 87.2rem;
+  height: 84.2rem;
+  transform: translate(-50%, -50%);
+  background: url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9Ijg3MiIgaGVpZ2h0PSI4NDIiIHZpZXdCb3g9IjAgMCA4NzIgODQyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBpZD0iR3JvdXAgMiI+CjxnIGlkPSJoYWxvICgmIzIzNjsmIzE4NTsmIzE4MDsmIzIzNTsmIzE0NzsmIzE1NjsgJiMyMzU7JiMxNDY7JiMxNjQ7KSIgb3BhY2l0eT0iMC44MyIgZmlsdGVyPSJ1cmwoI2ZpbHRlcjBfZl8wXzE1MCkiPgo8ZWxsaXBzZSBjeD0iNDM2IiBjeT0iNDIxIiByeD0iMzE2IiByeT0iMzAxIiBmaWxsPSJ3aGl0ZSIgZmlsbC1vcGFjaXR5PSIwLjciLz4KPC9nPgo8L2c+CjxkZWZzPgo8ZmlsdGVyIGlkPSJmaWx0ZXIwX2ZfMF8xNTAiIHg9IjAiIHk9IjAiIHdpZHRoPSI4NzIiIGhlaWdodD0iODQyIiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iQmFja2dyb3VuZEltYWdlRml4IiByZXN1bHQ9InNoYXBlIi8+CjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjYwIiByZXN1bHQ9ImVmZmVjdDFfZm9yZWdyb3VuZEJsdXJfMF8xNTAiLz4KPC9maWx0ZXI+CjwvZGVmcz4KPC9zdmc+Cg==") center / 100% 100% no-repeat;
+  pointer-events: none;
+}
+
+.cm-login-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  padding-bottom: 2rem;
+  text-align: center;
+}
+.cm-login-head .tit {
+  font-family: "KIMM", "Pretendard GOV", sans-serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 2.7rem;
+  letter-spacing: -0.05rem;
+  color: var(--cm-login-title);
+}
+.cm-login-head .desc {
+  font-size: 1.6rem;
+  line-height: 1.55;
+  color: var(--cm-login-desc);
+}
+
+.cm-login-msg {
+  padding: 1.2rem 1.6rem;
+  border-radius: 1rem;
+  background-color: var(--cm-color-box-surface);
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: var(--cm-color-text-basic);
+}
+.cm-login-msg.is-error {
+  color: var(--krds-light-color-text-danger);
+  background-color: var(--krds-light-color-surface-danger-subtler, var(--cm-color-box-surface));
+}
+.cm-login-form .cm-login-msg {
+  margin-top: -1.2rem;
+}
+
+.cm-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.cm-login-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.cm-login-field {
+  position: relative;
+}
+/* KRDS 입력창 변수만 바꿔 Figma 값으로 */
+.cm-login-page .krds-input {
+  --krds-input--color-border: var(--cm-login-input-border);
+  --krds-input--color-text-placeholder: var(--cm-login-placeholder);
+  --krds-input--color-border-active: var(--cm-login-primary);
+  --krds-input--padding-x: 1.6rem;
+  width: 100%;
+  height: 5.6rem;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+}
+.cm-login-page .krds-input[aria-invalid="true"] {
+  --krds-input--color-border: var(--krds-light-color-border-danger);
+}
+.cm-login-field-pw .krds-input {
+  padding-right: 4.6rem; /* 16 + 아이콘 18 + 간격 12 */
+}
+.cm-login-pw-toggle {
+  position: absolute;
+  top: 50%;
+  right: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  padding: 0;
+  transform: translateY(-50%);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.cm-login-pw-toggle .ico {
+  display: block;
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: #33363d; /* 아이콘 실측 */
+  -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiB2aWV3Qm94PSIwIDAgMTggMTgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSJ0cmFpbGluZy1pY29uIj4KPGcgaWQ9ImNvbnRhaW5lciIgb3BhY2l0eT0iMC4xIj4KPC9nPgo8cGF0aCBpZD0iVmVjdG9yIiBkPSJNMi4yNDk4NSAyLjI1MDJDMi40ODQxNiAyLjAxNTg4IDIuODY0MTYgMi4wMTU4OCAzLjA5ODQ4IDIuMjUwMkwxNS43NTA4IDE0LjkwMTZDMTUuOTg0OSAxNS4xMzU5IDE1Ljk4NSAxNS41MTU5IDE1Ljc1MDggMTUuNzUwMkMxNS41MTY2IDE1Ljk4NDQgMTUuMTM2NSAxNS45ODQzIDE0LjkwMjIgMTUuNzUwMkwxMi4zNTE0IDEzLjE5OTRWMTMuMjAwNEwxMS4zOTA1IDEyLjIzODVMMTAuNTQzOCAxMS4zOTE4VjExLjM5MjhMOS42NjA5OCAxMC41MTA5TDkuNjYxOTYgMTAuNTFMNy40ODgxMyA4LjMzNzExVjguMzM4MDlMNi42MDYyOSA3LjQ1NTI4TDQuNTUwNjMgNS40MDA1OVY1LjM5OTYxTDIuMjQ5ODUgMy4wOTg4M0MyLjAxNTU5IDIuODY0NTcgMi4wMTU3MSAyLjQ4NDUzIDIuMjQ5ODUgMi4yNTAyWk00Ljg5MDQ3IDYuNTg5MDdDNC44Nzc2NCA2LjU5NjgxIDQuODY0MTYgNi42MDQ2OSA0Ljg1MTQxIDYuNjEyNUMzLjc2NzE0IDcuMjc3NTcgMy4wMTgxMiA4LjE1MTAzIDIuNzI3MzkgOS4wNjU2M0MzLjE0ODM1IDEwLjE4OTYgNC45NTkzOSAxMi41MjUzIDguOTk5ODUgMTIuNTI1NkM5LjYxNDIyIDEyLjUyNTYgMTAuMTc2OSAxMi40NzU4IDEwLjY5MDMgMTIuMzg4OUwxMS42OTkxIDEzLjM5NzdDMTAuOTA2MyAxMy42MDQyIDEwLjAwODMgMTMuNzI1OCA4Ljk5OTg1IDEzLjcyNThDNC4yMTY4OCAxMy43MjU1IDEuOTcwOTEgMTAuNzkyNyAxLjUyMzI4IDkuMjQ1MzJDMS40OTM1NiA5LjE0MjQ3IDEuNDkxODQgOS4wMzI2MSAxLjUxODQgOC45Mjg5MUMxLjg1MDQ1IDcuNjM3OTcgMi43OTMxMyA2LjUyNDIzIDQuMDIwMzUgNS43MTg5NUw0Ljg5MDQ3IDYuNTg5MDdaTTguOTk5ODUgNC4yNzU1OUMxMi40ODQ2IDQuMjc1NTkgMTUuNjE5OCA2LjI0NjMxIDE2LjQ3MDUgOC44OTQ3M0MxNi41MDQyIDguOTk5NTYgMTYuNTA4MSA5LjExMTkxIDE2LjQ4MjMgOS4yMTg5NUMxNi4yNDExIDEwLjIxOTIgMTUuNDY1NSAxMS40NDYxIDE0LjA2MzMgMTIuMzY3NEwxMy4xOTMyIDExLjQ5NzNDMTQuNDA1OCAxMC43NyAxNS4wNDc2IDkuODAzNTYgMTUuMjcxMyA5LjA5Nzg1QzE0LjUzOTYgNy4xNDU4NyAxMi4wMzA2IDUuNDc1NzkgOC45OTk4NSA1LjQ3NTc4QzguNDMyNjYgNS40NzU4MyA3Ljg3NTE4IDUuNTM0OTcgNy4zNDA2NyA1LjY0NDczTDYuMzUxNDEgNC42NTU0N0M3LjE4Nzc0IDQuNDEwODIgOC4wODM3MyA0LjI3NTY1IDguOTk5ODUgNC4yNzU1OVpNNy4zNTE0MSA5LjA1QzcuMzc3MzQgOS45MjEyNSA4LjA3Nzk1IDEwLjYyMTMgOC45NDkwNiAxMC42NDc3TDkuOTc2NDEgMTEuNjc1QzkuNjcxMzQgMTEuNzg2NSA5LjM0MjQ3IDExLjg1MDggOC45OTg4NyAxMS44NTA4QzcuNDI1MzkgMTEuODUwMiA2LjE0OTM3IDEwLjU3MzggNi4xNDkyNiA5LjAwMDJDNi4xNDkyOCA4LjY1NjU4IDYuMjEyNiA4LjMyNzY3IDYuMzI0MDYgOC4wMjI2Nkw3LjM1MTQxIDkuMDVaTTguOTk4ODcgNi4xNTA1OUMxMC41NzI4IDYuMTUwNTkgMTEuODQ5NCA3LjQyNjI1IDExLjg0OTUgOS4wMDAyQzExLjg0OTQgOS4zNDM5OSAxMS43ODUzIDkuNjcyNTMgMTEuNjczNyA5Ljk3Nzc0TDEwLjY0NjMgOC45NTAzOUMxMC42MjA0IDguMDc4NzUgOS45MjA0IDcuMzc4NDYgOS4wNDg2NyA3LjM1Mjc0TDguMDIxMzMgNi4zMjUzOUM4LjMyNjMyIDYuMjEzODYgOC42NTUyNyA2LjE1MDcxIDguOTk4ODcgNi4xNTA1OVoiIGZpbGw9IiMzMzM2M0QiLz4KPC9nPgo8L3N2Zz4K") center / contain no-repeat;
+  mask: url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiB2aWV3Qm94PSIwIDAgMTggMTgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSJ0cmFpbGluZy1pY29uIj4KPGcgaWQ9ImNvbnRhaW5lciIgb3BhY2l0eT0iMC4xIj4KPC9nPgo8cGF0aCBpZD0iVmVjdG9yIiBkPSJNMi4yNDk4NSAyLjI1MDJDMi40ODQxNiAyLjAxNTg4IDIuODY0MTYgMi4wMTU4OCAzLjA5ODQ4IDIuMjUwMkwxNS43NTA4IDE0LjkwMTZDMTUuOTg0OSAxNS4xMzU5IDE1Ljk4NSAxNS41MTU5IDE1Ljc1MDggMTUuNzUwMkMxNS41MTY2IDE1Ljk4NDQgMTUuMTM2NSAxNS45ODQzIDE0LjkwMjIgMTUuNzUwMkwxMi4zNTE0IDEzLjE5OTRWMTMuMjAwNEwxMS4zOTA1IDEyLjIzODVMMTAuNTQzOCAxMS4zOTE4VjExLjM5MjhMOS42NjA5OCAxMC41MTA5TDkuNjYxOTYgMTAuNTFMNy40ODgxMyA4LjMzNzExVjguMzM4MDlMNi42MDYyOSA3LjQ1NTI4TDQuNTUwNjMgNS40MDA1OVY1LjM5OTYxTDIuMjQ5ODUgMy4wOTg4M0MyLjAxNTU5IDIuODY0NTcgMi4wMTU3MSAyLjQ4NDUzIDIuMjQ5ODUgMi4yNTAyWk00Ljg5MDQ3IDYuNTg5MDdDNC44Nzc2NCA2LjU5NjgxIDQuODY0MTYgNi42MDQ2OSA0Ljg1MTQxIDYuNjEyNUMzLjc2NzE0IDcuMjc3NTcgMy4wMTgxMiA4LjE1MTAzIDIuNzI3MzkgOS4wNjU2M0MzLjE0ODM1IDEwLjE4OTYgNC45NTkzOSAxMi41MjUzIDguOTk5ODUgMTIuNTI1NkM5LjYxNDIyIDEyLjUyNTYgMTAuMTc2OSAxMi40NzU4IDEwLjY5MDMgMTIuMzg4OUwxMS42OTkxIDEzLjM5NzdDMTAuOTA2MyAxMy42MDQyIDEwLjAwODMgMTMuNzI1OCA4Ljk5OTg1IDEzLjcyNThDNC4yMTY4OCAxMy43MjU1IDEuOTcwOTEgMTAuNzkyNyAxLjUyMzI4IDkuMjQ1MzJDMS40OTM1NiA5LjE0MjQ3IDEuNDkxODQgOS4wMzI2MSAxLjUxODQgOC45Mjg5MUMxLjg1MDQ1IDcuNjM3OTcgMi43OTMxMyA2LjUyNDIzIDQuMDIwMzUgNS43MTg5NUw0Ljg5MDQ3IDYuNTg5MDdaTTguOTk5ODUgNC4yNzU1OUMxMi40ODQ2IDQuMjc1NTkgMTUuNjE5OCA2LjI0NjMxIDE2LjQ3MDUgOC44OTQ3M0MxNi41MDQyIDguOTk5NTYgMTYuNTA4MSA5LjExMTkxIDE2LjQ4MjMgOS4yMTg5NUMxNi4yNDExIDEwLjIxOTIgMTUuNDY1NSAxMS40NDYxIDE0LjA2MzMgMTIuMzY3NEwxMy4xOTMyIDExLjQ5NzNDMTQuNDA1OCAxMC43NyAxNS4wNDc2IDkuODAzNTYgMTUuMjcxMyA5LjA5Nzg1QzE0LjUzOTYgNy4xNDU4NyAxMi4wMzA2IDUuNDc1NzkgOC45OTk4NSA1LjQ3NTc4QzguNDMyNjYgNS40NzU4MyA3Ljg3NTE4IDUuNTM0OTcgNy4zNDA2NyA1LjY0NDczTDYuMzUxNDEgNC42NTU0N0M3LjE4Nzc0IDQuNDEwODIgOC4wODM3MyA0LjI3NTY1IDguOTk5ODUgNC4yNzU1OVpNNy4zNTE0MSA5LjA1QzcuMzc3MzQgOS45MjEyNSA4LjA3Nzk1IDEwLjYyMTMgOC45NDkwNiAxMC42NDc3TDkuOTc2NDEgMTEuNjc1QzkuNjcxMzQgMTEuNzg2NSA5LjM0MjQ3IDExLjg1MDggOC45OTg4NyAxMS44NTA4QzcuNDI1MzkgMTEuODUwMiA2LjE0OTM3IDEwLjU3MzggNi4xNDkyNiA5LjAwMDJDNi4xNDkyOCA4LjY1NjU4IDYuMjEyNiA4LjMyNzY3IDYuMzI0MDYgOC4wMjI2Nkw3LjM1MTQxIDkuMDVaTTguOTk4ODcgNi4xNTA1OUMxMC41NzI4IDYuMTUwNTkgMTEuODQ5NCA3LjQyNjI1IDExLjg0OTUgOS4wMDAyQzExLjg0OTQgOS4zNDM5OSAxMS43ODUzIDkuNjcyNTMgMTEuNjczNyA5Ljk3Nzc0TDEwLjY0NjMgOC45NTAzOUMxMC42MjA0IDguMDc4NzUgOS45MjA0IDcuMzc4NDYgOS4wNDg2NyA3LjM1Mjc0TDguMDIxMzMgNi4zMjUzOUM4LjMyNjMyIDYuMjEzODYgOC42NTUyNyA2LjE1MDcxIDguOTk4ODcgNi4xNTA1OVoiIGZpbGw9IiMzMzM2M0QiLz4KPC9nPgo8L3N2Zz4K") center / contain no-repeat;
+}
+/* 비밀번호가 보일 때 : 눈 뜬 아이콘(시안에 없어 KRDS ico_pw_visible_on — 24 칸에 여백이 있어 2.2rem 로 시안 아이콘과 크기를 맞춤) */
+.cm-login-pw-toggle[aria-pressed="true"] .ico {
+  width: 2.2rem;
+  height: 2.2rem;
+  -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxnIGlkPSJpY29uL3Zpc2liaWxpdHkiPg0KPHBhdGggaWQ9IlZlY3RvciIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00LjM0MDAxIDEwLjg4NTdDMy45MjM4MSAxMS40MjU0IDMuNzk5MjIgMTEuODEzNyAzLjc5OTIyIDEyLjAwMDNDMy43OTkyMiAxMi4xODY5IDMuOTIzODEgMTIuNTc1MiA0LjM0MDAxIDEzLjExNDlDNC43MzY1IDEzLjYyOTEgNS4zMzEyMSAxNC4xOTMgNi4wODk5MyAxNC43MTcxQzcuNjA4OTYgMTUuNzY2MyA5LjcwMzI5IDE2LjYwMDMgMTEuOTk5MiAxNi42MDAzQzE0LjI5NTEgMTYuNjAwMyAxNi4zODk1IDE1Ljc2NjMgMTcuOTA4NSAxNC43MTcxQzE4LjY2NzIgMTQuMTkzIDE5LjI2MTkgMTMuNjI5MSAxOS42NTg0IDEzLjExNDlDMjAuMDc0NiAxMi41NzUyIDIwLjE5OTIgMTIuMTg2OSAyMC4xOTkyIDEyLjAwMDNDMjAuMTk5MiAxMS44MTM3IDIwLjA3NDYgMTEuNDI1NCAxOS42NTg0IDEwLjg4NTdDMTkuMjYxOSAxMC4zNzE1IDE4LjY2NzIgOS44MDc2MSAxNy45MDg1IDkuMjgzNTNDMTYuMzg5NSA4LjIzNDI2IDE0LjI5NTEgNy40MDAyOSAxMS45OTkyIDcuNDAwMjlDOS43MDMyOSA3LjQwMDI5IDcuNjA4OTYgOC4yMzQyNiA2LjA4OTkzIDkuMjgzNTNDNS4zMzEyMSA5LjgwNzYxIDQuNzM2NSAxMC4zNzE1IDQuMzQwMDEgMTAuODg1N1pNNS4xODA1OSA3Ljk2NzA2QzYuOTE4OTEgNi43NjYzMiA5LjMyNDU4IDUuODAwMjkgMTEuOTk5MiA1LjgwMDI5QzE0LjY3MzkgNS44MDAyOSAxNy4wNzk1IDYuNzY2MzIgMTguODE3OSA3Ljk2NzA2QzE5LjY4NzggOC41Njc5OCAyMC40MTExIDkuMjQxNiAyMC45MjU1IDkuOTA4NjZDMjEuNDIwMSAxMC41NTAyIDIxLjc5OTIgMTEuMjg2OSAyMS43OTkyIDEyLjAwMDNDMjEuNzk5MiAxMi43MTM3IDIxLjQyMDEgMTMuNDUwNCAyMC45MjU1IDE0LjA5MTlDMjAuNDExMSAxNC43NTkgMTkuNjg3OCAxNS40MzI2IDE4LjgxNzkgMTYuMDMzNUMxNy4wNzk1IDE3LjIzNDMgMTQuNjczOSAxOC4yMDAzIDExLjk5OTIgMTguMjAwM0M5LjMyNDU4IDE4LjIwMDMgNi45MTg5MSAxNy4yMzQzIDUuMTgwNTkgMTYuMDMzNUM0LjMxMDYyIDE1LjQzMjYgMy41ODczMiAxNC43NTkgMy4wNzI5NSAxNC4wOTE5QzIuNTc4MyAxMy40NTA0IDIuMTk5MjIgMTIuNzEzNyAyLjE5OTIyIDEyLjAwMDNDMi4xOTkyMiAxMS4yODY5IDIuNTc4MyAxMC41NTAyIDMuMDcyOTUgOS45MDg2NkMzLjU4NzMyIDkuMjQxNiA0LjMxMDYyIDguNTY3OTggNS4xODA1OSA3Ljk2NzA2Wk0xMS45OTkyIDkuNTYwMjlDMTAuNTQ2IDkuNTYwMjkgOS40MjQyMiAxMC42ODMyIDkuNDI0MjIgMTIuMDAwM0M5LjQyNDIyIDEzLjMxNzQgMTAuNTQ2IDE0LjQ0MDMgMTEuOTk5MiAxNC40NDAzQzEzLjQ1MjQgMTQuNDQwMyAxNC41NzQyIDEzLjMxNzQgMTQuNTc0MiAxMi4wMDAzQzE0LjU3NDIgMTAuNjgzMiAxMy40NTI0IDkuNTYwMjkgMTEuOTk5MiA5LjU2MDI5Wk03LjgyNDIyIDEyLjAwMDNDNy44MjQyMiA5LjczODYgOS43MjQ1MiA3Ljk2MDI5IDExLjk5OTIgNy45NjAyOUMxNC4yNzM5IDcuOTYwMjkgMTYuMTc0MiA5LjczODYgMTYuMTc0MiAxMi4wMDAzQzE2LjE3NDIgMTQuMjYyIDE0LjI3MzkgMTYuMDQwMyAxMS45OTkyIDE2LjA0MDNDOS43MjQ1MiAxNi4wNDAzIDcuODI0MjIgMTQuMjYyIDcuODI0MjIgMTIuMDAwM1oiIGZpbGw9IiMzMDMzMzYiLz4NCjwvZz4NCjwvc3ZnPg0K");
+  mask-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxnIGlkPSJpY29uL3Zpc2liaWxpdHkiPg0KPHBhdGggaWQ9IlZlY3RvciIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00LjM0MDAxIDEwLjg4NTdDMy45MjM4MSAxMS40MjU0IDMuNzk5MjIgMTEuODEzNyAzLjc5OTIyIDEyLjAwMDNDMy43OTkyMiAxMi4xODY5IDMuOTIzODEgMTIuNTc1MiA0LjM0MDAxIDEzLjExNDlDNC43MzY1IDEzLjYyOTEgNS4zMzEyMSAxNC4xOTMgNi4wODk5MyAxNC43MTcxQzcuNjA4OTYgMTUuNzY2MyA5LjcwMzI5IDE2LjYwMDMgMTEuOTk5MiAxNi42MDAzQzE0LjI5NTEgMTYuNjAwMyAxNi4zODk1IDE1Ljc2NjMgMTcuOTA4NSAxNC43MTcxQzE4LjY2NzIgMTQuMTkzIDE5LjI2MTkgMTMuNjI5MSAxOS42NTg0IDEzLjExNDlDMjAuMDc0NiAxMi41NzUyIDIwLjE5OTIgMTIuMTg2OSAyMC4xOTkyIDEyLjAwMDNDMjAuMTk5MiAxMS44MTM3IDIwLjA3NDYgMTEuNDI1NCAxOS42NTg0IDEwLjg4NTdDMTkuMjYxOSAxMC4zNzE1IDE4LjY2NzIgOS44MDc2MSAxNy45MDg1IDkuMjgzNTNDMTYuMzg5NSA4LjIzNDI2IDE0LjI5NTEgNy40MDAyOSAxMS45OTkyIDcuNDAwMjlDOS43MDMyOSA3LjQwMDI5IDcuNjA4OTYgOC4yMzQyNiA2LjA4OTkzIDkuMjgzNTNDNS4zMzEyMSA5LjgwNzYxIDQuNzM2NSAxMC4zNzE1IDQuMzQwMDEgMTAuODg1N1pNNS4xODA1OSA3Ljk2NzA2QzYuOTE4OTEgNi43NjYzMiA5LjMyNDU4IDUuODAwMjkgMTEuOTk5MiA1LjgwMDI5QzE0LjY3MzkgNS44MDAyOSAxNy4wNzk1IDYuNzY2MzIgMTguODE3OSA3Ljk2NzA2QzE5LjY4NzggOC41Njc5OCAyMC40MTExIDkuMjQxNiAyMC45MjU1IDkuOTA4NjZDMjEuNDIwMSAxMC41NTAyIDIxLjc5OTIgMTEuMjg2OSAyMS43OTkyIDEyLjAwMDNDMjEuNzk5MiAxMi43MTM3IDIxLjQyMDEgMTMuNDUwNCAyMC45MjU1IDE0LjA5MTlDMjAuNDExMSAxNC43NTkgMTkuNjg3OCAxNS40MzI2IDE4LjgxNzkgMTYuMDMzNUMxNy4wNzk1IDE3LjIzNDMgMTQuNjczOSAxOC4yMDAzIDExLjk5OTIgMTguMjAwM0M5LjMyNDU4IDE4LjIwMDMgNi45MTg5MSAxNy4yMzQzIDUuMTgwNTkgMTYuMDMzNUM0LjMxMDYyIDE1LjQzMjYgMy41ODczMiAxNC43NTkgMy4wNzI5NSAxNC4wOTE5QzIuNTc4MyAxMy40NTA0IDIuMTk5MjIgMTIuNzEzNyAyLjE5OTIyIDEyLjAwMDNDMi4xOTkyMiAxMS4yODY5IDIuNTc4MyAxMC41NTAyIDMuMDcyOTUgOS45MDg2NkMzLjU4NzMyIDkuMjQxNiA0LjMxMDYyIDguNTY3OTggNS4xODA1OSA3Ljk2NzA2Wk0xMS45OTkyIDkuNTYwMjlDMTAuNTQ2IDkuNTYwMjkgOS40MjQyMiAxMC42ODMyIDkuNDI0MjIgMTIuMDAwM0M5LjQyNDIyIDEzLjMxNzQgMTAuNTQ2IDE0LjQ0MDMgMTEuOTk5MiAxNC40NDAzQzEzLjQ1MjQgMTQuNDQwMyAxNC41NzQyIDEzLjMxNzQgMTQuNTc0MiAxMi4wMDAzQzE0LjU3NDIgMTAuNjgzMiAxMy40NTI0IDkuNTYwMjkgMTEuOTk5MiA5LjU2MDI5Wk03LjgyNDIyIDEyLjAwMDNDNy44MjQyMiA5LjczODYgOS43MjQ1MiA3Ljk2MDI5IDExLjk5OTIgNy45NjAyOUMxNC4yNzM5IDcuOTYwMjkgMTYuMTc0MiA5LjczODYgMTYuMTc0MiAxMi4wMDAzQzE2LjE3NDIgMTQuMjYyIDE0LjI3MzkgMTYuMDQwMyAxMS45OTkyIDE2LjA0MDNDOS43MjQ1MiAxNi4wNDAzIDcuODI0MjIgMTQuMjYyIDcuODI0MjIgMTIuMDAwM1oiIGZpbGw9IiMzMDMzMzYiLz4NCjwvZz4NCjwvc3ZnPg0K");
+}
+
+.cm-login-pw-toggle:focus-visible {
+  outline: 2px solid var(--cm-login-primary);
+  outline-offset: 2px;
+}
+
+.cm-login-page .cm-login-submit {
+  width: 100%;
+  height: 5.6rem;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #fff;
+  background-color: var(--cm-login-primary);
+  border-color: var(--cm-login-primary);
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px -6px rgba(11, 92, 255, 0.18); /* 실측 */
+}
+
+/* 개발 서버 전용 빠른 로그인 단추 묶음(cms.admin-bff.dev-quick-login.public, 기본 꺼짐) */
+.cm-login-quick {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding-top: 2rem;
+  border-top: 1px dashed var(--cm-login-card-border);
+}
+.cm-login-quick-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+/* 하단 저작권 (Figma : 카드 아래, top 871) */
+.cm-login-foot {
+  position: absolute;
+  top: calc(100% + 7.9rem);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  text-align: center;
+}
+.cm-login-foot p {
+  font-size: 1.2rem;
+  letter-spacing: -0.012rem;
+  color: var(--cm-login-foot);
+}
+
+/* 모바일 */
+@media (max-width: 767px) {
+  .cm-login-top {
+    top: 2.4rem;
+    left: 1.6rem;
+    width: calc(100% - 3.2rem);
+  }
+  .cm-login-main {
+    padding: 8rem 1.6rem 9.6rem;
+  }
+  .cm-login-logo {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .cm-login-page .cm-login-logo .cm-logo-symbol {
+    width: 3rem;
+    height: 3rem;
+  }
+  .cm-login-page .cm-login-logo .cm-logo-name {
+    font-size: 1.5rem;
+  }
+  .cm-login-back .txt {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .cm-login-card {
+    padding: 3.2rem 2rem 4rem;
+    border-radius: 1.6rem;
+  }
+  .cm-login-head .tit {
+    font-size: 2.4rem;
+    line-height: 1.25;
+  }
+  .cm-login-head .desc {
+    font-size: 1.5rem;
+  }
+  .cm-login-foot {
+    top: calc(100% + 4rem);
+  }
+}

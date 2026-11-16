@@ -1,0 +1,46 @@
+/*
+  교차분석(sub_0201) 화면 보정 — 테마 krds-custom.css(.cm-var-*) 위에 얹는다.
+  #116 디자인팀 협의(2026-11-09): 분석 차원·조건/필터 두 칸은 같은 너비로, 조건/필터 내용이 길어도 칸이 넓어지지 않는다.
+*/
+/* 테마는 repeat(2, 1fr) — 1fr 은 최소 너비가 내용 크기(auto)라 긴 값 목록이 칸을 늘린다. 0 부터 줄일 수 있게 해 두 칸을 같게 고정 */
+.cm-cross .cm-var-zones {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.cm-cross .cm-var-zone {
+  min-width: 0;
+}
+.cm-cross .cm-var-drop {
+  overflow-x: hidden;
+}
+/* fieldset 은 기본 min-inline-size: min-content 라 칸을 밀어낸다. 변수마다 한 묶음(칸 너비 전체), 값은 줄을 바꿔 이어 놓는다 */
+.cm-cross .cm-cross-cond {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem 1.6rem;
+  width: 100%;
+  min-width: 0;
+}
+.cm-cross .cm-cross-cond .krds-form-check {
+  flex: 0 1 auto;
+  max-width: 100%;
+}
+.cm-cross .cm-cross-cond label {
+  overflow-wrap: break-word;
+}
+/* 분석 차원 아래 설명문 — 하위 변수 안내(.cm-var-pool .guide)와 같은 글자 */
+.cm-cross .cm-var-zone-guide {
+  margin-top: 0.7rem;
+  font-size: var(--krds-pc-font-size-label-small);
+  line-height: 1.5;
+  color: var(--cm-color-line-strong);
+}
+@media (max-width: 1023px) {
+  .cm-cross .cm-var-zones {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* 테마가 .cm-chart·.cm-ts-type 에 display:flex 를 줘 hidden 속성이 먹지 않는다 — 조사·문항이 바뀌어 그래프를 숨겨도 이전 그래프가 남았다 */
+.cm-cross [hidden] {
+  display: none !important;
+}

@@ -1,0 +1,105 @@
+@charset "UTF-8";
+/* ==========================================================================
+   관리자 로그인 (Figma 노드 11809:23082 「특수원-관리자 로그인화면」, 1920×1080)
+   - login.css 다음에 읽는다. 입력창·단추·제목 서체는 login.css 그대로, 여기는 좌우 나눔과 왼쪽 브랜드 영역만.
+   - 세로 위치는 Figma 1080 높이 비율(vh)로 둔다 — 화면 높이가 달라도 시안과 같은 자리에 온다.
+   ========================================================================== */
+.cm-admin-login {
+  display: flex;
+  background: linear-gradient(180deg, #f8fafd, #eef3fa); /* 실측 */
+}
+
+/* 왼쪽 : 사진 + 파란 덧칠 2겹 (폭 770/1920) */
+.cm-admin-login-brand {
+  position: relative;
+  flex: 0 0 40.1%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 25.93vh 0 0 10.2rem; /* 위 280 · 왼쪽 102 */
+  color: #fff;
+  background:
+    linear-gradient(180deg, rgba(11, 42, 138, 0) 65%, rgba(11, 42, 138, 0.4)),
+    linear-gradient(90deg, rgba(11, 42, 138, 0.66), rgba(22, 63, 176, 0.22) 60%, rgba(29, 79, 208, 0)),
+    url("../img/login/admin_login_bg.png") center bottom / cover no-repeat;
+}
+.cm-admin-login-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 6.2rem;
+}
+.cm-admin-login .cm-login-logo .cm-logo-name {
+  color: #fff;
+}
+.cm-admin-login-intro .copy .tit {
+  margin-bottom: 2rem;
+  font-family: "KIMM", "Pretendard GOV", sans-serif;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.08rem;
+}
+.cm-admin-login-intro .desc {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.86);
+  opacity: 0.82;
+}
+/* 하단 Powered by (위 944/1080) */
+.cm-admin-login-powered {
+  position: absolute;
+  left: 10.2rem;
+  bottom: 11.11vh;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0.4;
+}
+.cm-admin-login-powered span:first-child {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+.cm-admin-login-powered strong {
+  font-weight: 700;
+}
+
+/* 오른쪽 : 로그인 (위 320 · 아래 140, 폭 420) */
+.cm-admin-login-side {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  min-width: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 29.63vh 1.6rem 12.96vh;
+}
+.cm-admin-login-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 42rem;
+  max-width: 100%;
+}
+.cm-admin-login .cm-login-foot {
+  position: static;
+  transform: none;
+}
+.cm-admin-login .cm-login-foot p {
+  letter-spacing: 0.02rem;
+  color: #7b8594; /* 실측 */
+}
+
+/* 태블릿·모바일 : 브랜드 영역을 빼고 로그인만 */
+@media (max-width: 1023px) {
+  .cm-admin-login-brand {
+    display: none;
+  }
+  .cm-admin-login-side {
+    padding: 12rem 1.6rem 4rem;
+  }
+}

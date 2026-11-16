@@ -1,0 +1,160 @@
+/* 게시판 관리 v2 페이지 전용 스타일 (토큰만 참조). 공통 컴포넌트는 cms-admin-v2.css */
+
+/* reveal 대상은 display 를 덮어쓰므로 hidden 속성을 명시적으로 존중 */
+.bd-page[hidden], .bd-qna [hidden] { display: none !important; }
+
+/* 게시판 목록 · 권한관리 보기: 게시판명은 검정 .menu-link(admin-parts.css), 고른 줄은 파랑 */
+.bd-table tr[aria-selected="true"] .menu-link { color: var(--cms-primary-text); }
+/* 패널의 "제목 + 스위치" 한 줄 행(820:57331 사용여부) */
+.bd-switch-row { flex-direction: row; align-items: center; justify-content: space-between; }
+
+/* 게시글 관리 (Figma 820:51731) */
+.bd-posts-header .nv-page-header__title { font-size: var(--cms-fs-h2); }
+.bd-summary { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.bd-summary .nv-summary__item { min-height: 11rem; padding: 1.8rem 2.4rem; }
+@media (max-width: 1280px) { .bd-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.bd-post-table td.is-title { max-width: 70rem; }
+.bd-post-table .bd-notice { margin-right: .6rem; vertical-align: middle; }
+.bd-post-link { border: 0; background: none; padding: 0; font: inherit; font-weight: var(--cms-fw-medium); color: inherit; text-align: left; cursor: pointer; }
+.bd-post-link:hover { color: var(--cms-primary-text); }
+
+/* 게시글 등록·수정·상세 전체 화면 (820:50870 / 52010 / 51667): 편집 헤더 + 본문 카드 + 우측 설정 컬럼 */
+.bd-page { display: flex; flex-direction: column; gap: var(--cms-sp-6); }
+.bd-page__grid { display: grid; grid-template-columns: minmax(0, 1fr) 42rem; gap: var(--cms-sp-6); align-items: start; }
+@media (max-width: 1280px) { .bd-page__grid { grid-template-columns: minmax(0, 1fr); } }
+.bd-page__main { padding: var(--cms-sp-8); min-height: 60rem; }
+.bd-page__main .nv-editor__title { font-size: var(--cms-fs-h2); padding: .4rem 0 1.2rem; }
+.bd-page__main .nv-editor__toolbar { gap: .8rem; }
+.bd-page__main .nv-editor__body { min-height: 44rem; padding: 1.2rem 0; border: 0; resize: vertical; }
+.bd-page__side .nv-form-group { padding: var(--cms-sp-5); }
+.bd-page__side .nv-field__hint { line-height: 1.5; }
+.bd-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--cms-sp-4); }
+.cms-admin-editor[data-view="edit"] .bd-split { grid-template-columns: minmax(0, 1fr); }
+.cms-admin-editor[data-view="edit"] .cms-admin-editor__pane--preview { display: none; }
+.cms-admin-editor[data-view="preview"] .bd-split { grid-template-columns: minmax(0, 1fr); }
+.cms-admin-editor[data-view="preview"] .cms-admin-editor__pane--edit { display: none; }
+.cms-admin-editor__pane { display: flex; flex-direction: column; gap: .6rem; min-width: 0; }
+.bd-preview { min-height: 44rem; padding: 1rem 1.2rem; border: 1px dashed var(--cms-border-strong); border-radius: var(--cms-radius-sm); background: var(--cms-surface); font-size: var(--cms-fs-base); line-height: var(--cms-lh-loose); overflow: auto; }
+.bd-meta { display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: .6rem 1.2rem; font-size: var(--cms-fs-md); }
+.bd-meta dt { color: var(--cms-subtle); } .bd-meta dd { margin: 0; }
+.bd-code { min-height: 28rem; font-size: var(--cms-fs-md); line-height: 1.5; }
+
+/* 상세 읽기 카드 (820:51667) */
+.bd-view { display: flex; flex-direction: column; gap: var(--cms-sp-4); padding: var(--cms-sp-10) var(--cms-sp-10) var(--cms-sp-8); border-radius: var(--cms-radius-xl); }
+.bd-view__board { padding-left: 1rem; border-left: 3px solid var(--cms-primary); color: var(--cms-primary-text); font-size: var(--cms-fs-base); font-weight: var(--cms-fw-semibold); }
+.bd-view__title { font-size: var(--cms-fs-h2); font-weight: var(--cms-fw-bold); line-height: 1.3; padding-bottom: var(--cms-sp-4); border-bottom: 1px solid var(--cms-border); }
+.bd-view__meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem 2.4rem; padding-bottom: var(--cms-sp-4); border-bottom: 1px solid var(--cms-border); font-size: var(--cms-fs-base); }
+.bd-view__meta div { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: .8rem; }
+.bd-view__meta dt { color: var(--cms-muted); } .bd-view__meta dd { margin: 0; }
+.bd-view__body { min-height: 16rem; font-size: var(--cms-fs-lg); line-height: var(--cms-lh-loose); word-break: keep-all; overflow-wrap: anywhere; }
+.bd-view__body :where(img, video, table) { max-width: 100%; }
+
+/* QNA 답변 영역 (e2e 훅 .cms-admin-qna* 유지) */
+.bd-qna { display: flex; flex-direction: column; gap: var(--cms-sp-3); padding: var(--cms-sp-5); border-top: 1px solid var(--cms-border); border-radius: var(--cms-radius); background: var(--cms-surface-soft); }
+.bd-qna__title { display: inline-flex; align-items: center; gap: .6rem; font-size: var(--cms-fs-base); font-weight: var(--cms-fw-semibold); color: var(--cms-text); }
+.bd-qna__list { display: flex; flex-direction: column; gap: .8rem; }
+.bd-qna__item { padding: 1.2rem 1.6rem; border: 1px solid var(--cms-border); border-radius: var(--cms-radius); background: var(--cms-surface); font-size: var(--cms-fs-base); line-height: var(--cms-lh-base); }
+.bd-qna__meta { display: flex; align-items: center; gap: .6rem; margin-top: .8rem; color: var(--cms-subtle); font-size: var(--cms-fs-sm); }
+.bd-qna__meta form { margin-left: auto; }
+.nv-panel__form { display: flex; flex-direction: column; min-height: 0; flex: 1; }
+
+/* 게시글 편집 — 공공누리 · 첨부파일(첨부·표지) (lje/nurijieum#28) */
+.bd-kogl .nv-select,
+.bd-kogl .nv-input { width: 100%; }
+.bd-kogl-cell { white-space: nowrap; }
+
+/* 예약 게시(adm_1504-04 · adm_1503-04) */
+.bd-schedule { display: flex; flex-direction: column; gap: .6rem; margin-top: 1.2rem; }
+.bd-schedule .nv-btn { align-self: flex-start; }
+.bd-sched-at { display: block; margin-top: .2rem; white-space: nowrap; }
+
+/* 게시판 등록 폼의 공개 범위 칸(docs/permissions.md) */
+.bd-perm { display: flex; flex-direction: column; gap: var(--cms-sp-3); }
+.bd-perm__rule { margin: 0; padding: 0; border: 0; min-width: 0; display: flex; flex-direction: column; gap: .8rem; }
+.bd-perm__roles { padding: 1rem 1.2rem; border-radius: var(--cms-radius); background: var(--cms-surface-soft); }
+
+/* 기본정보(자료실형) — 발행기관 · 발행연도 한 줄(adm_1504-03) */
+.bd-biblio__row { display: grid; grid-template-columns: 1fr 9rem; gap: .8rem; }
+.bd-biblio__cell { display: flex; flex-direction: column; gap: .4rem; }
+.board-menu-path { color: var(--cms-subtle); font-size: var(--cms-fs-sm); font-weight: var(--cms-fw-regular); }
+@media (max-width: 768px) { .board-menu-path { display: none; } }
+
+/* 목록 제목과 안내 아이콘(설명은 툴팁) */
+.list-title { font-size: var(--cms-fs-lg); font-weight: var(--cms-fw-bold); color: var(--cms-text); }
+.list-hint { display: inline-flex; align-items: center; color: var(--cms-subtle); }
+
+/* ── 퍼블리싱 반영(2026-11) — 수정 화면: 게시판 수정(.edx 틀, 3단계). 연결 메뉴 칩 · 오른쪽 「게시판 설정」 ── */
+.edx .menu-chips { display: flex; flex-wrap: wrap; gap: .8rem; }
+.edx-opt > .nv-select { width: 100%; }
+
+/* ── 퍼블리싱 반영(2026-11) — 목록 ─────────────────────────────────
+   게시판 목록 · 권한관리(시안 board-list · board-perm-list). 모양은 admin-parts.css 가 정하고 여기는 콘솔 마크업 보정만. */
+/* 보기 탭은 링크 탭(a.nv-tab · aria-current) — admin-parts.css 의 밑줄 탭은 [role="tab"] 만 보므로 같은 모양을 잇는다 */
+.gtabs .nv-tab {
+  flex: 0 0 auto; min-width: 0; height: 4.8rem; margin-bottom: -1px; padding: 0 .2rem;
+  border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: none;
+  color: var(--cms-muted); font-size: var(--cms-fs-base); font-weight: var(--cms-fw-medium);
+}
+.gtabs .nv-tab:hover { color: var(--cms-text-strong); }
+.gtabs .nv-tab.is-active, .gtabs a.nv-tab[aria-current="page"] { background: none; border-color: var(--cms-primary); color: var(--cms-primary-text); font-weight: var(--cms-fw-bold); }
+.gtabs .nv-tab:focus-visible { outline: 0; box-shadow: inset 0 0 0 2px var(--cms-primary); border-radius: var(--cms-radius-xs); }
+@media (max-width: 1024px) { .gtabs .nv-tab { flex: 0 0 auto; padding: 0 .2rem; } }
+/* 목록 표(.nv-nav-table)를 메뉴 목록과 같이 쓰지만 navigation.css 는 읽지 않는다 — 작업 · 체크 칸 너비만 맞춘다 */
+.bd-table, #board-perm-table { table-layout: auto; }
+.bd-table .col-check { width: 3.2rem; }
+.bd-table .col-actions, #board-perm-table .col-actions { width: 6.4rem; }
+#board-perm-table tr[hidden] { display: none; }
+/* 재측정(11/10 2차): 게시판 목록 「조건」 — 작성일 기간 · 상태 필터를 단추 하나로 접는다(키트 필터 줄 폭). 고른 조건 수는 단추 모서리 숫자 */
+.bd-cond__btn { display: inline-flex; align-items: center; gap: .6rem; width: auto; text-align: left; cursor: pointer; }
+.bd-cond { position: relative; }
+.bd-cond__n { position: absolute; top: -.6rem; right: -.6rem; display: inline-flex; align-items: center; justify-content: center; min-width: 1.8rem; height: 1.8rem; padding: 0 .4rem; border-radius: 99rem;
+  background: var(--cms-primary); color: var(--cms-on-primary); font-size: var(--cms-fs-xs, 1.2rem); font-weight: var(--cms-fw-bold); }
+.bd-cond__menu { display: grid; grid-template-columns: auto auto; align-items: center; gap: .8rem 1.2rem; padding: 1.2rem 1.6rem; min-width: 0; }
+.bd-cond__menu[hidden] { display: none; }
+.bd-cond__menu .nv-field__label { margin: 0; }
+.bd-cond__menu .nv-select { width: 12rem; }
+/* 게시판 유형 칸은 키트 폭(10.1rem) — 선택지 글이 길어도 필터 줄이 늘지 않게 */
+.nv-filter #lt-type { width: 10.1rem; }
+.nv-filter .bd-cond__btn { width: auto; min-width: 0; }
+
+/* ===== 민원 처리(묻고 답하기) — 게시판 스킨 「관리자 / 민원형(Q&A) / 민원 처리」 ===== */
+.bd-proc { display: flex; flex-direction: column; gap: var(--cms-sp-6); }
+.bd-proc [hidden] { display: none !important; }
+.bd-proc__main { display: flex; flex-direction: column; gap: var(--cms-sp-6); padding: var(--cms-sp-8); }
+.bd-proc__label { margin: 0; color: var(--cms-muted); font-size: var(--cms-fs-sm); }
+.bd-proc__title { margin: -1.6rem 0 0; font-size: var(--cms-fs-h2); font-weight: var(--cms-fw-bold); line-height: 1.35; }
+.bd-proc__origin { display: flex; flex-direction: column; gap: var(--cms-sp-4); padding: var(--cms-sp-6); border: 1px solid var(--cms-border); border-radius: var(--cms-radius-lg, 1rem); background: var(--cms-surface-muted); }
+.bd-proc__origin-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .8rem; margin: 0; }
+.bd-proc__meta { display: flex; flex-wrap: wrap; gap: .6rem 2.4rem; margin: 0; font-size: var(--cms-fs-sm); }
+.bd-proc__meta div { display: flex; gap: .8rem; }
+.bd-proc__meta dt { color: var(--cms-muted); }
+.bd-proc__meta dd { margin: 0; }
+.bd-proc__body { font-size: var(--cms-fs-base); line-height: var(--cms-lh-loose); overflow-wrap: anywhere; }
+.bd-proc__body :where(img, video, table) { max-width: 100%; }
+.bd-proc__files-title { margin: 0 0 .8rem; font-weight: var(--cms-fw-semibold); }
+.bd-proc__files ul { display: flex; flex-direction: column; gap: .8rem; margin: 0; padding: 0; list-style: none; }
+.bd-proc__files li { display: flex; align-items: center; gap: .8rem; padding: .8rem 1.2rem; border-radius: var(--cms-radius); background: var(--cms-surface); }
+.bd-proc__file-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bd-proc__section { display: inline-flex; align-items: center; gap: .8rem; margin: 0; font-weight: var(--cms-fw-semibold); font-size: var(--cms-fs-base); }
+.bd-proc__mark { width: .3rem; height: 1.6rem; border-radius: .2rem; background: var(--cms-primary); }
+.bd-proc__answers { display: flex; flex-direction: column; gap: var(--cms-sp-3); }
+.bd-proc__answer { display: flex; flex-direction: column; gap: var(--cms-sp-3); padding: var(--cms-sp-5); border: 1px solid var(--cms-border); border-radius: var(--cms-radius-lg, 1rem); background: var(--cms-surface-soft); }
+.bd-proc__answer-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem 1.2rem; margin: 0; }
+.bd-proc__answer-body { font-size: var(--cms-fs-base); line-height: var(--cms-lh-loose); overflow-wrap: anywhere; }
+.bd-proc__write { display: flex; flex-direction: column; gap: var(--cms-sp-3); }
+.bd-proc__answer-title { font-size: var(--cms-fs-lg); font-weight: var(--cms-fw-bold); }
+.bd-proc__write .nv-editor__body { min-height: 24rem; }
+.bd-proc__side { gap: var(--cms-sp-6); }
+.bd-proc__card { display: flex; flex-direction: column; gap: var(--cms-sp-3); }
+.bd-proc__card .nv-btn--block { width: 100%; justify-content: center; }
+.bd-proc__now { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; margin: 0; }
+.bd-proc__picker { display: flex; flex-direction: column; gap: var(--cms-sp-3); }
+.bd-proc__fields { display: flex; flex-direction: column; gap: .8rem; }
+.bd-proc__guide { padding: 1.2rem 1.4rem; border-radius: var(--cms-radius); background: var(--cms-surface-muted); color: var(--cms-muted); font-size: var(--cms-fs-sm); line-height: 1.6; }
+.bd-proc__guide p { margin: 0; }
+.bd-proc__staff p { margin: 0; }
+.bd-proc__history { display: flex; flex-direction: column; gap: 1rem; margin: 0; padding: 0; list-style: none; font-size: var(--cms-fs-sm); }
+.bd-proc__history li { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: .2rem 1.2rem; }
+.bd-proc__when { color: var(--cms-muted); font-variant-numeric: tabular-nums; }
+.bd-proc__why { grid-column: 2; }
+.bd-proc__locked-note { margin: 0; }

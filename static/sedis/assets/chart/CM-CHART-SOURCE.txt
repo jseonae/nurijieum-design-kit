@@ -1,0 +1,41 @@
+Source: 디자인팀 퍼블리싱 https://nisedp.netlify.app/_common/resources/js/cm-chart.js (2026-10-13 받음)
+SHA-1: c90051a59aa370e3cd323c09f312a7bb393ae446
+사용법 원본: https://nisedp.netlify.app/_common/html/code/ext_chart.html
+
+원본 + SEDIS 추가분(2026-10-16~, 결정: 퍼블리싱에 없는 그래프 기능은 여기서 더하고 디자인팀에 반영을 요청한다).
+추가한 곳은 파일에서 「SEDIS 추가」로 찾는다. 퍼블리싱에서 새 판을 받으면 아래 목록을 다시 얹는다.
+  - ② 직전 조사 대비 증감 : 통계표 행 data-chart-delta·data-chart-delta-from → 가로 막대를 검토본 #/review/2 모양으로
+       (항목 이름 막대 위 · 트랙 · 사선 패턴 · 「▲1.3%p」 증가 빨강/감소 파랑 · 축 올림), 툴팁, 키보드 설명
+       (readTable · modelOf · barSeries · BUILD.hbar · tooltipFormatter · keyboard describe, 상수 DELTA_*·deltaText·deltaWord·deltaColor)
+  - ④ 콤보형 stack-combo : 세로 누적 막대 + 오른쪽 축 꺾은선, 꺾은선 행 data-chart-line
+       (TYPE_NAME · SERIES_FROM · BUILD["stack-combo"] · CmChart#context 정렬 제외 · configOf line)
+  - ⑦ 도넛 donut : 한 연도 열의 행을 원 조각으로, 조각별 색·패턴 · 범례 · 툴팁 · 키보드 설명 · 내려받기 자리
+       (TYPE_NAME · SERIES_FROM · BUILD.donut · renderLegend 조각 · keyboard describe · exportOption pie 자리)
+  - ⑧ 스몰 멀티플 열 수 : data-chart-cols(1~6) → 패널 격자 열 정의(.cm-chart-panels style). 값이 없으면 원본 그대로(테마 CSS 2열).
+       767px 이하는 퍼블리싱 규칙(1열, 테마 CSS)에 맡기고, 그보다 넓으면 패널 최소 폭 160px 에 맞게 줄인다. 한 장 그림 내려받기도 같은 열 수.
+       특수교육 현황 장애유형별 10패널은 5열×2행(2026-10-19 검증 P6)이었다가 2026-11-13 TC-STA-004 로 테마 기본 2열×5행. 지금 쓰는 곳 없음
+       (panelColsOf · panelColumns · PANEL_MIN_WIDTH · PANEL_GAP · configOf cols · renderPanels · combinedOption cols)
+  - ⑨ 다운로드 메뉴 「선택됨」 걷어내기 : data-chart-download 항목이 든 KRDS 드롭다운에서 항목을 누르면 KRDS(krds_dropEvent)가
+       링크에 붙이는 aria-selected·active·「선택됨」을 지운다(axe aria-allowed-attr — 시계열·핵심데이터 상세·특수교육 현황 공통)
+       (bindTools 끝 · clearDropSelection)
+  - ⑩ 세로 막대 값 레이블 겹침 : 묶음 막대가 많거나 화면이 좁아 이웃 막대 레이블이 겹치면(시계열 상세 「58.2%58.1%」, 2026-10-25 e2e)
+       레이블을 세로로 세워 막대 위에 두고 그림 영역 위 여백을 글 길이만큼 늘림. 세워도 겹치면 ECharts hideOverlap 으로 숨김
+       (값은 툴팁·키보드 설명·통계표에 그대로). 간격이 넉넉하면 원본 그대로 — 1024·1280px 그림은 고치기 전과 같음
+       (textWidth · standBarLabels · BUILD.bar grid.top)
+  - ⑪ 값 없는 칸의 대체 글 : 통계표 칸 글자는 aria-hidden 을 뺀 글(화면낭독기가 읽는 글)로 읽고, 값이 없는 칸에 「가림」처럼 글이 있으면
+       요약 글(aria-describedby)에 「미집계」 대신 그 글을 쓴다(교차분석 사례수 가림 칸 「x」+「가림」). 탐색할 값이 하나도 없을 때
+       키보드 칸 안내는 범례로 숨긴 계열이 있을 때만 「범례에서 항목을 선택하세요」, 아니면 「그릴 값이 없습니다(가림 또는 미집계). 통계표를 참고하세요」.
+       값이 다시 생기면 원래 이름으로 되돌린다(SIR-003 대체텍스트 점검, 2026-10-26)
+       (cellText · missingText · readTable · renderSummary · keyboard emptyText · sync)
+  - ⑫ 키보드 칸 Esc : 값 안내(툴팁)가 열려 있을 때만 Esc 를 받아 닫고, 닫혀 있으면 넘긴다 — 확대 모달 안 그래프 칸에서 Esc 두 번째에
+       모달이 닫힌다(원본은 Esc 를 늘 삼켜 모달이 닫히지 않았음, SIR-001 키보드 점검 2026-10-26) (keyboard keydown)
+  - ⑬ 좁은 화면 겹침 : 연도가 칸보다 넓으면 겹치는 연도를 솎아 내고(yearTicks), 480px 미만 콤보는 처음 · 마지막 값만 글자로 쓴다(반응형 2차 2026-11-05)
+  - ⑭ 많은 묶음 막대 레이블 : 원본은 항목 수 × 계열 수가 36 을 넘으면 레이블 토글을 켜도 막대 값을 숨겼다. 숨기지 않고 늘 가로 글로 두되
+       막대 간격에 맞춰 글씨를 줄인다(세로 막대 = 가장 넓은 글이 간격 안, 가로 막대 = 글 높이가 간격 안, 하한 없음). ⑩ 의 세로로 세우기 ·
+       hideOverlap 숨김도 이것으로 바꿨다(TC-ADM-037 등·하교 주 보조자 순위형, 2026-11-12) (fitBarLabels · barSeries · BUILD.bar·hbar)
+위 SHA-1 은 받은 원본 기준이다(지금 파일과 다르다).
+파일 머리 주석의 "ECharts 5.5.0" 은 퍼블리싱 기준이다. 여기서는 ../vendor/echarts/echarts.min.js(5.5.1) 위에서 돈다.
+
+스타일(.cm-chart* · .cm-chart-box · .cm-chart-area · 확대 모달 .cm-chart-modal)과 --cm-* 변수, 확대 모달 #modal_chart_zoom 은
+누리지음 테마 팩 krds-sedis 가 이미 낸다(pub/_common/resources/css/krds-custom.css 원본 그대로, themes/krds-sedis/fragments/chrome.html).
+그래서 이 폴더에는 스크립트만 둔다. 사용법은 docs/publishing/README.md §1-6.

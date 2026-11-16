@@ -1,0 +1,31 @@
+Source: design team publishing (final) https://nisedp.netlify.app/  (downloaded 2026-10-12)
+Layout: same relative structure as the publishing so CSS url() references keep working.
+  _common/resources/css  krds-base.css, krds-custom.css
+  _common/resources/js   krds-display.js, krds-custom.js, krds-base.js
+  _common/resources/img  common/ ico/ logo/ sns/  (everything the CSS and the common header/footer/modal reference)
+  _common/resources/font GmarketSansBold.woff, BebasNeue-Regular.woff2 (main page display fonts)
+  kr/css/main.css, kr/js/main.js, kr/img/main/* (main page), kr/video/main_hero_loop.mp4 (hero background)
+
+Local edits (the only ones):
+  krds-base.css, krds-custom.css: "../../../krds/resources/" -> "../../../../../../../vendor/krds/"
+    The publishing's krds/resources/ is the krds-uiux 1.1.0 package that this app already vendors at /vendor/krds/
+    (output.css, swiper-bundle, fonts, icons; byte-identical apart from line endings), so it is not copied twice.
+
+Not copied:
+  krds/resources/**          -> served from /vendor/krds/ (ui-script.js there is the same package with a null check + TTS)
+  kr/js/include.js           -> header/footer/page-top/modal are rendered server-side by the theme templates
+  kr/js/user-custom.js       -> publishing-check scripts only; the share-popup handler is reused in ../theme.js
+  kr/css/krds-theme.css, kr/css/user-custom.css (empty), Netlify HUD script
+  sample content images (main banners, report covers, archive covers) -> those come from CMS popups/boards
+
+Added by the dev team (not in the design team publishing):
+  kr/login.html, kr/css/login.css, kr/js/login.js, kr/img/login/*  researcher login, built from Figma
+    "프로젝트 26_003 특수원 krds" node 11809:23177 (2026-11-10). Images are the Figma exports as-is.
+  kr/admin-login.html, kr/css/admin-login.css (+ css/login.css, js/login.js), kr/img/login/{admin_login_bg.png,
+    logo_nurijieum_mark.svg}  admin login, Figma node 11809:23082 (2026-11-11). The nurijieum mark is marked
+    "(임시)" in Figma; replace it when the product logo is final.
+  _common/resources/font/GmarketSansMedium.woff  logo text on both login pages (the Figma logo image is outlined
+    Gmarket Sans Medium). Same source as GmarketSansBold.woff (projectnoonnu/noonfonts_2001@1.1), unmodified.
+  _common/resources/font/KIMM-Bold.subset.{woff2,woff}  login title font. KIMM_bold.ttf from https://www.kimm.re.kr/webfont
+    (attribution required: "출처 – 한국기계연구원, kimm.re.kr"; commercial use and modification allowed),
+    subset to KS X 1001 Hangul + ASCII with fonttools pyftsubset.

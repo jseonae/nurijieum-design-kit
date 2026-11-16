@@ -1,0 +1,1125 @@
+@charset "UTF-8";
+/* ============================================================================
+   누리지음 테마 팩 `krds-sedis` — 디자인팀 최종 퍼블리싱(https://nisedp.netlify.app/) 기준.
+   화면 모양은 퍼블리싱 CSS 원본(pub/…: KRDS output.css → krds-base.css → krds-custom.css → [메인] main.css)이 맡고,
+   이 파일은 CMS 데이터를 퍼블리싱 틀에 넣을 때 생기는 차이만 보정한다(불러오는 순서상 맨 마지막).
+     1. 로고 : 퍼블리싱 logo.svg 는 상징 + 사이트 이름 글자를 한 그림으로 그렸다 → 상징 그림 + 사이트 이름(CMS 값) 글자
+     2. 헤더 : 로그인 · 로그아웃(퍼블리싱에 없음)
+     3. CMS 콘텐츠 본문(.cm-prose) : 디자인팀 마크업(cm-*)은 그대로 두고 평문 HTML(h2 · p · 표 · 목록)만 기본 모양
+     4. 메인 : 콘텐츠 블록(/home-hero · /home-stats · /home-links)의 예전 마크업(sd-*)을 퍼블리싱 모양으로,
+               글만 있는 팝업(알림판), 빈 상태
+     5. 로그인 · 오류 · 사이트맵 화면(퍼블리싱에 없는 화면)
+     6. 게시판 유형별 화면 : 퍼블리싱에는 목록형(공지) · 표지 카드형(자료실)만 있어 갤러리 · 질문답변 · 자주 묻는 질문은
+        KRDS 컴포넌트(badge · accordion)와 퍼블리싱 변수로 짰다
+   색은 퍼블리싱 변수(--cm-color-* : 화면 표시 모드마다 바뀜)와 KRDS 토큰만 쓴다.
+   ========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   1. 로고 (헤더 · 푸터 · 전체메뉴) : 상징 그림 + 사이트 이름
+   --------------------------------------------------------------------------- */
+html #krds-header .header-container .logo {
+  width: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+html #krds-header .header-container .logo a,
+html[data-krds-mode] #krds-header .header-container .logo a {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  width: auto;
+  max-width: 100%;
+  height: 4.8rem;
+  background-image: none;
+}
+html #krds-footer .f-logo,
+html[data-krds-mode] #krds-footer .f-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  width: auto;
+  height: 4rem;
+  background-image: none;
+}
+html .cm-sitemap .cm-sitemap-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.4rem;
+  width: auto;
+  height: 5.6rem;
+  background: none;
+}
+.cm-logo-symbol {
+  flex: none;
+  width: 4.8rem;
+  height: 4.8rem;
+}
+#krds-footer .cm-logo-symbol {
+  width: 4rem;
+  height: 4rem;
+}
+.cm-sitemap .cm-logo-symbol {
+  width: 5.6rem;
+  height: 5.6rem;
+}
+/* 글자 : 퍼블리싱 로고 그림의 글자(#505050, 굵게)와 같은 모양 */
+.cm-logo-name {
+  overflow: hidden;
+  min-width: 0;
+  font-size: 2.6rem;
+  font-weight: var(--krds-font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #505050;
+}
+#krds-footer .cm-logo-name {
+  font-size: 2.2rem;
+}
+.cm-sitemap .cm-logo-name {
+  font-size: 3rem;
+}
+[data-krds-mode=high-contrast] .cm-logo-name {
+  color: var(--krds-high-contrast-color-text-bolder);
+}
+@media (prefers-color-scheme: dark) {
+  [data-krds-mode=theme] .cm-logo-name {
+    color: var(--krds-high-contrast-color-text-bolder);
+  }
+}
+@media (max-width: 1023px) {
+  html #krds-header .header-container .logo a,
+  html[data-krds-mode] #krds-header .header-container .logo a {
+    gap: 0.8rem;
+    height: 3.2rem;
+  }
+  #krds-header .cm-logo-symbol {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+  #krds-header .cm-logo-name {
+    font-size: 1.7rem;
+  }
+}
+@media (max-width: 767px) {
+  /* 좁은 화면 : 퍼블리싱은 로고 그림 전체를 줄인다 → 글자는 두 줄로 접어 읽을 수 있는 크기를 지킨다 */
+  html #krds-header .header-container .logo a,
+  html[data-krds-mode] #krds-header .header-container .logo a {
+    height: auto;
+    min-height: 3.2rem;
+  }
+  #krds-header .cm-logo-symbol {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+  #krds-header .cm-logo-name {
+    font-size: 1.4rem;
+    line-height: 1.25;
+    white-space: normal;
+    word-break: keep-all;
+  }
+  #krds-footer .cm-logo-symbol {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+  #krds-footer .cm-logo-name,
+  .cm-sitemap .cm-logo-name {
+    font-size: 1.7rem;
+    white-space: normal;
+  }
+  .cm-sitemap .cm-logo-symbol {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+@media (max-width: 360px) {
+  #krds-header .cm-logo-name {
+    font-size: 1.3rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   2. 헤더 : 회원 로그인 · 로그아웃 (현재 1차 메뉴는 .is-active · aria-current 만 — 퍼블리싱에 표시 모양이 없다)
+   --------------------------------------------------------------------------- */
+.cm-member {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--krds-gap-2);
+  font-size: var(--krds-pc-font-size-body-small);
+  color: var(--cm-color-text-basic);
+}
+.krds-main-menu-mobile .gnb-utils .cm-member {
+  font-size: var(--krds-mobile-font-size-body-medium);
+}
+
+/* ---------------------------------------------------------------------------
+   3. CMS 콘텐츠 본문 : 평문 HTML 기본 모양. :where() 로 감싸 디자인팀 마크업(cm-*)이 항상 이긴다
+   --------------------------------------------------------------------------- */
+.cm-prose {
+  min-width: 0;
+  font-size: var(--krds-pc-font-size-body-medium);
+  line-height: 1.6;
+  color: var(--cm-color-text-basic);
+}
+:where(.cm-prose) > :where(* + *) {
+  margin-top: var(--krds-gap-5);
+}
+:where(.cm-prose) :where(h2) {
+  margin-top: var(--krds-gap-9);
+  font-size: var(--krds-pc-font-size-heading-medium);
+  font-weight: var(--krds-font-weight-bold);
+  line-height: 1.5;
+  color: var(--cm-color-text-bolder);
+}
+:where(.cm-prose) :where(h3) {
+  margin-top: var(--krds-gap-7);
+  font-size: var(--krds-pc-font-size-heading-small);
+  font-weight: var(--krds-font-weight-bold);
+  line-height: 1.5;
+  color: var(--cm-color-text-bolder);
+}
+:where(.cm-prose) > :where(h2, h3):first-child {
+  margin-top: 0;
+}
+:where(.cm-prose) :where(ul, ol) {
+  padding-left: 2.4rem;
+}
+:where(.cm-prose) :where(ul) > li {
+  list-style: disc;
+}
+:where(.cm-prose) :where(ol) > li {
+  list-style: decimal;
+}
+:where(.cm-prose) :where(li + li) {
+  margin-top: var(--krds-gap-1);
+}
+:where(.cm-prose) :where(a:not([class])) {
+  color: var(--cm-color-text-primary);
+  text-decoration: underline;
+}
+:where(.cm-prose) :where(table) {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 0.2rem solid var(--cm-color-line-strong);
+  font-size: var(--krds-pc-font-size-body-small);
+}
+:where(.cm-prose) :where(th, td) {
+  padding: var(--krds-padding-4) var(--krds-padding-5);
+  border-bottom: 0.1rem solid var(--cm-color-divider);
+  text-align: left;
+}
+:where(.cm-prose) :where(thead th) {
+  background-color: var(--cm-color-box-surface);
+  font-weight: var(--krds-font-weight-bold);
+}
+:where(.cm-prose) :where(img) {
+  max-width: 100%;
+  height: auto;
+}
+:where(.cm-prose) :where(strong, b) {
+  font-weight: var(--krds-font-weight-bold);
+}
+/* 편집기(위지윅) 산출물: 그림 틀 · 캡션 · 정렬 클래스(__se__float-*) · 인용 · 표 제목 */
+:where(.cm-prose) :where(h4) {
+  margin-top: var(--krds-gap-5);
+  font-size: var(--krds-pc-font-size-body-large);
+  font-weight: var(--krds-font-weight-bold);
+  color: var(--cm-color-text-bolder);
+}
+:where(.cm-prose) :where(figure) {
+  margin-left: 0;
+  margin-right: 0;
+}
+:where(.cm-prose) :where(figcaption) {
+  margin-top: var(--krds-gap-2);
+  font-size: var(--krds-pc-font-size-body-small);
+  color: var(--cm-color-text-subtle);
+}
+:where(.cm-prose) :where(.__se__float-left) {
+  float: left;
+  margin: 0 var(--krds-gap-5) var(--krds-gap-3) 0;
+}
+:where(.cm-prose) :where(.__se__float-right) {
+  float: right;
+  margin: 0 0 var(--krds-gap-3) var(--krds-gap-5);
+}
+:where(.cm-prose) :where(.__se__float-center) {
+  text-align: center;
+}
+:where(.cm-prose) :where(.__se__float-center figure) {
+  display: inline-block;
+}
+:where(.cm-prose)::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+:where(.cm-prose) :where(blockquote) {
+  padding-left: var(--krds-padding-5);
+  border-left: 0.4rem solid var(--cm-color-line-strong);
+  color: var(--cm-color-text-subtle);
+}
+:where(.cm-prose) :where(caption) {
+  padding-bottom: var(--krds-padding-3);
+  font-weight: var(--krds-font-weight-bold);
+  text-align: left;
+}
+/* 콘텐츠 첨부(공개 파일) */
+.cm-content-attach .cm-attach {
+  margin-top: var(--krds-gap-9);
+}
+.cm-cms-attach .upload-list > li + li {
+  margin-top: var(--krds-gap-3);
+}
+.cm-cms-attach .file-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--krds-gap-5);
+  padding: var(--krds-padding-4) var(--krds-padding-6);
+  border: 0.1rem solid var(--cm-color-attach-border);
+  border-radius: var(--krds-radius-medium2);
+  background-color: var(--cm-color-attach-item);
+}
+.cm-cms-attach .cm-attach-tit {
+  margin-bottom: var(--krds-gap-4);
+  font-size: var(--krds-pc-font-size-heading-xsmall);
+  font-weight: var(--krds-font-weight-bold);
+  color: var(--cm-color-text-bolder);
+}
+/* 메뉴 밖 라우트(항목 목록) */
+.cm-route-items > li + li {
+  margin-top: var(--krds-gap-5);
+  padding-top: var(--krds-gap-5);
+  border-top: 0.1rem solid var(--cm-color-divider-light);
+}
+.cm-route-items strong {
+  display: block;
+  font-size: var(--krds-pc-font-size-body-large);
+  color: var(--cm-color-text-bolder);
+}
+
+/* ---------------------------------------------------------------------------
+   4. 메인
+   --------------------------------------------------------------------------- */
+/* 4-1. 추천 검색어 : 콘텐츠 블록 /home-hero 의 링크(<a>)를 퍼블리싱 칩(.cm-search-chip) 모양으로 */
+.cm-search-chips--cms > a {
+  display: inline-flex;
+  align-items: center;
+  height: var(--krds-size-height-5);
+  padding: 0 var(--krds-padding-4);
+  border: 0.1rem solid var(--cm-color-border-gray);
+  border-radius: var(--krds-radius-medium1);
+  background-color: var(--cm-color-surface-white);
+  font-size: var(--krds-pc-font-size-label-small);
+  color: var(--cm-color-text-basic);
+}
+.cm-search-chips--cms > a:hover {
+  border-color: var(--cm-color-border-primary);
+  background-color: var(--cm-color-row-hover);
+}
+@media (max-width: 1279px) {
+  .cm-hero-search .cm-search-chips--cms {
+    justify-content: center;
+  }
+}
+
+/* 4-2. 숫자로 보는 특수교육 : 콘텐츠 블록 /home-stats 의 예전 카드 마크업(.sd-stat)을 퍼블리싱 숫자 카드(.cm-stat-card) 모양으로.
+        블록을 퍼블리싱 마크업(ul.cm-stat-cards > li.cm-stat-card)으로 바꾸면 main.css 가 그대로 그린다 */
+.cm-stat-cards--cms .sd-stat {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2.4rem;
+  padding: 5rem 6rem;
+  border-radius: 1.6rem;
+  background-color: #fff;
+  color: #1e2124;
+}
+.cm-stat-cards--cms .sd-stat > div:first-child {
+  min-width: 0;
+}
+.cm-stat-cards--cms .sd-stat__label {
+  font-size: var(--krds-pc-font-size-heading-small);
+  font-weight: var(--krds-font-weight-bold);
+  line-height: 1.5;
+  word-break: keep-all;
+}
+.cm-stat-cards--cms .sd-stat__value {
+  margin-top: 3rem;
+  font-size: var(--krds-pc-font-size-heading-large);
+  font-weight: var(--krds-font-weight-bold);
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+.cm-stat-cards--cms .sd-stat__tag {
+  display: inline-block;
+  margin-top: 0.2rem;
+  padding: 0.4rem 1rem;
+  border: 0.1rem solid #b1b8be;
+  border-radius: 0.4rem;
+  font-size: var(--krds-pc-font-size-body-medium);
+  font-weight: var(--krds-font-weight-bold);
+  line-height: 1.5;
+  color: #464c53;
+}
+.cm-stat-cards--cms .sd-stat__graph {
+  flex: none;
+  width: 29rem;
+}
+.cm-stat-cards--cms .sd-stat__graph img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.cm-stat-empty {
+  padding: 4rem 0;
+  font-size: var(--krds-pc-font-size-body-medium);
+  text-align: center;
+  color: #fff;
+}
+@media (max-width: 1519px) {
+  .cm-stat-cards--cms .sd-stat {
+    padding: 4rem;
+  }
+  .cm-stat-cards--cms .sd-stat__graph {
+    width: 24rem;
+  }
+}
+@media (max-width: 1279px) {
+  .cm-stat-cards--cms .sd-stat {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3.2rem;
+  }
+  .cm-stat-cards--cms .sd-stat__value {
+    margin-top: 1.2rem;
+  }
+  .cm-stat-cards--cms .sd-stat__graph {
+    align-self: center;
+    width: 100%;
+    max-width: 29rem;
+  }
+}
+@media (max-width: 767px) {
+  .cm-stat-cards--cms .sd-stat {
+    padding: 2.4rem;
+  }
+  .cm-stat-cards--cms .sd-stat__label {
+    font-size: var(--krds-mobile-font-size-heading-small);
+  }
+  .cm-stat-cards--cms .sd-stat__value {
+    font-size: var(--krds-mobile-font-size-heading-large);
+  }
+  .cm-stat-cards--cms .sd-stat__tag {
+    font-size: var(--krds-mobile-font-size-body-medium);
+  }
+}
+[data-krds-mode=high-contrast] .cm-stat-cards--cms .sd-stat {
+  border: 0.1rem solid var(--krds-high-contrast-color-border-gray-light);
+  background-color: var(--krds-high-contrast-color-surface-gray-subtler);
+  color: var(--krds-high-contrast-color-text-basic);
+}
+[data-krds-mode=high-contrast] .cm-stat-cards--cms .sd-stat__tag {
+  border-color: var(--krds-high-contrast-color-border-gray);
+  color: var(--krds-high-contrast-color-text-subtle);
+}
+@media (prefers-color-scheme: dark) {
+  [data-krds-mode=theme] .cm-stat-cards--cms .sd-stat {
+    border: 0.1rem solid var(--krds-high-contrast-color-border-gray-light);
+    background-color: var(--krds-high-contrast-color-surface-gray-subtler);
+    color: var(--krds-high-contrast-color-text-basic);
+  }
+  [data-krds-mode=theme] .cm-stat-cards--cms .sd-stat__tag {
+    border-color: var(--krds-high-contrast-color-border-gray);
+    color: var(--krds-high-contrast-color-text-subtle);
+  }
+}
+
+/* 4-3. 공지사항 · 연구 보고서 · 알림판 : 빈 상태, 글만 있는 팝업 */
+.cm-main-article .cm-empty {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+/* 이미지 없는 팝업 : 디자인된 배너 그림(477×288) 자리에 제목 · 본문 · 링크를 글로 */
+.cm-banner.cm-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--krds-gap-3);
+  aspect-ratio: 477 / 288;
+  padding: 3.2rem;
+  border: 0.1rem solid var(--cm-color-border-primary-light);
+  background: linear-gradient(135deg, var(--krds-light-color-surface-primary-subtler) 0%, var(--krds-light-color-surface-secondary-subtler) 100%);
+  color: var(--cm-color-text-basic);
+}
+.cm-banner-text .cm-banner-tit {
+  font-family: var(--cm-main-font-display);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--cm-color-text-secondary);
+  word-break: keep-all;
+}
+.cm-banner-text .cm-banner-body {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  font-size: var(--krds-pc-font-size-body-medium);
+  line-height: 1.5;
+}
+.cm-banner-text .cm-banner-body strong,
+.cm-banner-text .cm-banner-body b {
+  font-weight: var(--krds-font-weight-bold);
+}
+.cm-banner-text .cm-banner-more {
+  margin-top: auto;
+  align-self: flex-start;
+}
+[data-krds-mode=high-contrast] .cm-banner.cm-banner-text {
+  background: var(--krds-high-contrast-color-surface-gray-subtler);
+}
+@media (prefers-color-scheme: dark) {
+  [data-krds-mode=theme] .cm-banner.cm-banner-text {
+    background: var(--krds-high-contrast-color-surface-gray-subtler);
+  }
+}
+@media (max-width: 767px) {
+  .cm-banner.cm-banner-text {
+    padding: 2rem;
+  }
+  .cm-banner-text .cm-banner-tit {
+    font-size: 1.9rem;
+  }
+}
+
+/* 4-4. 원본 데이터 보기 · 유관 사이트 : 콘텐츠 블록 /home-links 의 예전 마크업(.sd-links)을 퍼블리싱 아이콘 타일 모양으로 */
+.cm-main-links .sd-links {
+  display: flex;
+  align-items: stretch;
+  gap: 6.4rem;
+  width: 100%;
+}
+.cm-main-links .sd-links__sep {
+  display: none;
+}
+.cm-main-links .sd-links > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+.cm-main-links .sd-links > div:first-child {
+  flex: none;
+  width: 32rem;
+}
+.cm-main-links .sd-links > div:last-child {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-left: 6.4rem;
+  border-left: 0.1rem solid var(--cm-main-tile-divider);
+}
+.cm-main-links .sd-links h2 {
+  font-size: var(--krds-pc-font-size-heading-medium);
+  font-weight: var(--krds-font-weight-bold);
+  line-height: 1.5;
+  color: var(--cm-color-text-subtle);
+}
+.cm-main-links .sd-links ul {
+  display: flex;
+  justify-content: space-between;
+  gap: 2.4rem 1.6rem;
+}
+.cm-main-links .sd-links > div:first-child ul {
+  justify-content: flex-start;
+  gap: 3.2rem;
+}
+.cm-main-links .sd-links li > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  width: 14.4rem;
+  font-size: var(--krds-pc-font-size-body-medium);
+  line-height: 1.5;
+  text-align: center;
+  color: var(--cm-color-text-basic);
+  word-break: keep-all;
+}
+.cm-main-links .sd-links__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12rem;
+  height: 12rem;
+  border: 0.1rem solid var(--cm-main-tile-bg);
+  border-radius: 1.4rem;
+  background-color: var(--cm-main-tile-bg);
+  transition: var(--krds-transition-base);
+}
+.cm-main-links .sd-links__icon img {
+  width: 4.8rem;
+  height: 4.8rem;
+}
+.cm-main-links .sd-links li > a:hover,
+.cm-main-links .sd-links li > a:focus-visible {
+  color: var(--cm-color-text-primary);
+}
+.cm-main-links .sd-links li > a:hover .sd-links__icon,
+.cm-main-links .sd-links li > a:focus-visible .sd-links__icon {
+  border-color: var(--cm-color-border-primary);
+  background-color: var(--cm-color-surface-white);
+  box-shadow: 0 0 0.2rem var(--cm-color-shadow2), 0 0.8rem 1.6rem var(--cm-color-shadow3);
+}
+.cm-main-links .sd-links li > a:focus-visible {
+  outline: 0.2rem solid var(--cm-color-border-primary);
+  outline-offset: 0.4rem;
+  border-radius: 0.4rem;
+}
+@media (max-width: 1519px) {
+  .cm-main-links .sd-links {
+    gap: 4rem;
+  }
+  .cm-main-links .sd-links > div:last-child {
+    padding-left: 4rem;
+  }
+  .cm-main-links .sd-links li > a {
+    width: 12.4rem;
+  }
+}
+@media (max-width: 1279px) {
+  .cm-main-links .sd-links {
+    flex-direction: column;
+    gap: 4rem;
+  }
+  .cm-main-links .sd-links > div:first-child {
+    width: auto;
+  }
+  .cm-main-links .sd-links > div:last-child {
+    padding-top: 4rem;
+    padding-left: 0;
+    border-top: 0.1rem solid var(--cm-main-tile-divider);
+    border-left: 0;
+  }
+  .cm-main-links .sd-links ul,
+  .cm-main-links .sd-links > div:first-child ul {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2.4rem;
+  }
+  .cm-main-links .sd-links li > a {
+    width: 14.4rem;
+  }
+}
+@media (max-width: 767px) {
+  .cm-main-links .sd-links ul,
+  .cm-main-links .sd-links > div:first-child ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    gap: 2rem 1.2rem;
+  }
+  .cm-main-links .sd-links li > a {
+    gap: 1rem;
+    width: 100%;
+    font-size: var(--krds-mobile-font-size-body-small);
+  }
+  .cm-main-links .sd-links__icon {
+    width: 8.8rem;
+    height: 8.8rem;
+  }
+  .cm-main-links .sd-links__icon img {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   5. 퍼블리싱에 없는 화면 : 오류 · 사이트맵 (로그인은 pub/kr/css/login.css)
+   --------------------------------------------------------------------------- */
+.cm-error-page .code {
+  font-size: 6.4rem;
+  font-weight: var(--krds-font-weight-bold);
+  line-height: 1.2;
+  color: var(--cm-color-text-primary);
+}
+
+/* 통합검색 팝업 — 최소 글자 수 안내(theme.js). 비어 있으면 자리를 차지하지 않는다 */
+.cm-search-popup .cm-search-hint { margin: 8px 0 0; color: var(--krds-light-color-text-danger, #bd2c0f); font-size: 15px; font-weight: 600; }
+.cm-search-popup .cm-search-hint:empty { display: none; }
+
+/* ==========================================================================
+   [1026 통합검색 결과] lje/nurijieum#32 — 결과 화면 보조(퍼블리싱 search_result*.html 에 없는 상태만)
+   연결 대기 · 제목 밖 일치 표시 · 결과 없음의 추천어 · 자동 완성 목록(combobox)
+   ========================================================================== */
+.cm-search-top-form .cm-search-hint { margin: 8px 0 0; color: var(--krds-light-color-text-danger, #bd2c0f); font-size: 15px; font-weight: 600; }
+.cm-search-top-form .cm-search-hint:empty { display: none; }
+.cm-search-result .cm-empty .cm-search-recommend,
+.cm-search-none .cm-search-recommend { margin-top: var(--krds-gap-6, 24px); }
+.cm-search-wait {
+  margin: var(--krds-gap-3, 12px) 0 0;
+  padding: var(--krds-padding-4, 16px) var(--krds-padding-5, 20px);
+  border-radius: var(--krds-radius-medium2, 8px);
+  background-color: var(--cm-color-box-surface, #f4f5f6);
+  color: var(--cm-color-text-basic, #1e2124);
+}
+.cm-search-matched { margin-top: 4px; font-size: var(--krds-pc-font-size-body-small, 15px); color: var(--cm-color-text-primary, #0b50d0); }
+.cm-search-item .cm-search-mark { font-weight: var(--krds-font-weight-bold, 700); }
+.cm-ac-wrap { position: relative; }
+.cm-ac-list {
+  position: absolute; z-index: 20; top: calc(100% + 4px); left: 0; right: 0;
+  margin: 0; padding: 4px 0; list-style: none;
+  border: 1px solid var(--krds-light-color-border-gray, #b1b8be); border-radius: var(--krds-radius-medium2, 8px);
+  background: var(--krds-light-color-surface-white, #fff); box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
+  max-height: 22em; overflow-y: auto;
+}
+.cm-ac-list[hidden] { display: none; }
+.cm-ac-option { display: flex; gap: 8px; align-items: center; padding: 10px 16px; cursor: pointer; font-size: 17px; }
+.cm-ac-option .kind { flex: none; font-size: 13px; color: var(--cm-color-text-sub, #464c53); }
+.cm-ac-option strong { font-weight: var(--krds-font-weight-bold, 700); }
+/* 마우스를 올린 항목과 키보드 선택 항목을 같은 모양으로(설계서 sub_search-01). 색만으로 구분하지 않도록 밑줄도 */
+.cm-ac-option[aria-selected=true] { background: var(--krds-light-color-surface-secondary-subtler, #eef2f7); text-decoration: underline; outline: 2px solid var(--krds-light-color-border-primary, #256ef4); outline-offset: -2px; }
+
+/* 1106 게시판 — 공공누리 글자 배지 · 이용 제한 안내 · PDF 바로보기(sub_0303_뷰어) (lje/nurijieum#28) */
+.cm-kogl .cm-kogl-mark {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  margin-top: var(--krds-padding-2);
+  padding: 0.4rem 1rem;
+  border: 0.1rem solid var(--cm-color-border-light);
+  border-radius: var(--krds-radius-medium1, 0.4rem);
+  background-color: var(--krds-light-color-surface-white);
+  color: var(--cm-color-text-primary);
+  font-size: var(--krds-pc-font-size-body-small);
+  font-weight: var(--krds-font-weight-bold);
+  white-space: nowrap;
+  text-decoration: none;
+}
+.cm-kogl-restrict {
+  padding: var(--krds-padding-4) var(--krds-padding-5);
+  border-radius: var(--krds-radius-medium2);
+  background-color: var(--cm-color-box-surface);
+  font-size: var(--krds-pc-font-size-body-medium);
+  color: var(--cm-color-text-subtle);
+}
+.cm-pdf-viewer { display: flex; flex-direction: column; gap: var(--krds-gap-5); }
+.cm-pdf-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--krds-gap-5);
+  padding-bottom: var(--krds-padding-6); border-bottom: 0.1rem solid var(--cm-color-border-light); }
+.cm-pdf-head-tit { min-width: 0; }
+.cm-pdf-head-tit .tit { font-size: var(--krds-pc-font-size-heading-medium); font-weight: var(--krds-font-weight-bold); line-height: 1.4; overflow-wrap: anywhere; }
+.cm-pdf-head-tit .file { margin-top: var(--krds-gap-2); color: var(--cm-color-text-subtle); overflow-wrap: anywhere; }
+.cm-pdf-head .btn-wrap { display: flex; flex-wrap: wrap; gap: var(--krds-gap-3); }
+.cm-pdf-alt { font-size: var(--krds-pc-font-size-body-small); color: var(--cm-color-text-subtle); }
+.cm-pdf-alt a { text-decoration: underline; }
+.cm-pdf-frame { border: 0.1rem solid var(--cm-color-border-light); border-radius: var(--krds-radius-medium2); background-color: var(--cm-color-box-surface); overflow: hidden; }
+.cm-pdf-frame iframe { display: block; width: 100%; height: 80vh; min-height: 48rem; border: 0; }
+@media print {
+  .cm-pdf-viewer .cm-pdf-head .btn-wrap, .cm-pdf-viewer .cm-pdf-alt { display: none; }
+}
+
+/* 1019 게시판 목록 보완 — 첨부 개수(sub_0302-05) · 표시 개수 [적용] · 자료 카드 비활성 버튼(sub_0303-04) */
+.cm-board-list .title .cm-file-count {
+  margin-left: var(--krds-gap-1, 0.4rem);
+  font-size: var(--krds-pc-font-size-body-small);
+  font-weight: var(--krds-font-weight-bold);
+  color: var(--cm-color-text-subtle);
+}
+.cm-board-search .cm-select-sort .krds-btn { flex: 0 0 auto; }
+.cm-cover-item .btns .krds-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* 1019 목록 복귀 — 쪽 이동 이전·다음이 없을 때 진짜 비활성 버튼(button[disabled])으로: 퍼블리싱 span 과 같은 모양 */
+.krds-pagination button.page-navi { border: 0; font: inherit; cursor: default; }
+
+/* ---------------------------------------------------------------------------
+   6. 게시판 유형별 화면 (공통코드 CG-BOARD-TYPE) — 템플릿 pages/board-list.html · board-post.html
+      갤러리 GALLERY : 목록 .cm-gallery-list · 상세 .cm-gallery-view
+      질문답변 QNA   : 목록 .cm-qna(목록형 + Q 배지 · 작성자) · 상세 답변 없음 .cm-answer-wait
+      자주 묻는 질문 FAQ : .krds-accordion.cm-faq (열고 닫기는 KRDS ui-script.js krds_accordion, 색은 KRDS 가 표시 모드별로 바꾼다)
+      색은 퍼블리싱 변수(--cm-color-*, 표시 모드마다 바뀜)만 쓴다. 너비 기준은 디자인팀 브레이크포인트(1600 · 1280 · 1024 · 768 · 360).
+   --------------------------------------------------------------------------- */
+/* [목록 공통] 페이지네이션 비활성 「이전 · 다음」 글자 대비 — KRDS 기본 text-disabled(gray-40, 흰 바탕 3.08:1)는 AA 미달.
+   목록이 짧아 화면 안에 들어오면 axe serious 로 잡힌다 → gray-60(6.3:1) · 선명하게 모드 gray-40(검은 바탕 6.81:1) */
+.cm-contents .krds-pagination {
+  --krds-pagination--color-text-disabled: var(--krds-color-light-gray-60);
+}
+[data-krds-mode=high-contrast] .cm-contents .krds-pagination {
+  --krds-pagination--color-text-disabled: var(--krds-color-high-contrast-gray-40);
+}
+@media (prefers-color-scheme: dark) {
+  [data-krds-mode=theme] .cm-contents .krds-pagination {
+    --krds-pagination--color-text-disabled: var(--krds-color-high-contrast-gray-40);
+  }
+}
+
+/* [갤러리 목록] 그림 카드 그리드 : 4열 → 1280 이하 3열 → 1024 이하 2열 → 768 이하 2열(좁은 간격) → 360 이하 1열 */
+.cm-gallery-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--krds-gap-9) var(--krds-gap-7);
+}
+.cm-gallery-item {
+  min-width: 0;
+}
+.cm-gallery-item > a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 0.1rem solid var(--cm-color-divider-light);
+  border-radius: var(--krds-radius-medium3);
+  background-color: var(--cm-color-surface-white);
+  text-decoration: none;
+  transition: var(--krds-transition-base);
+}
+.cm-gallery-item > a:hover,
+.cm-gallery-item > a:focus-visible {
+  border-color: var(--cm-color-row-hover-border);
+  box-shadow: 0 0 0.2rem var(--cm-color-shadow2), 0 0.8rem 1.6rem var(--cm-color-shadow3);
+}
+.cm-gallery-item > a:focus-visible {
+  outline: 0.2rem solid var(--cm-color-border-primary);
+  outline-offset: 0.2rem;
+}
+.cm-gallery-item.is-notice > a {
+  border-color: var(--cm-color-row-notice-border);
+  background-color: var(--cm-color-row-notice);
+}
+.cm-gallery-item .thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--cm-color-box-surface);
+}
+.cm-gallery-item .thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cm-gallery-item .thumb .no-img-txt {
+  padding: var(--krds-padding-5);
+  font-size: var(--krds-pc-font-size-body-small);
+  color: var(--cm-color-text-subtle);
+  text-align: center;
+}
+.cm-gallery-item .info {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--krds-gap-3);
+  padding: var(--krds-padding-6);
+}
+.cm-gallery-item .tit {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  max-width: 100%;
+  font-size: var(--krds-pc-font-size-heading-xsmall);
+  font-weight: var(--krds-font-weight-bold);
+  line-height: 1.5;
+  color: var(--cm-color-text-bolder);
+  overflow-wrap: anywhere;
+}
+.cm-gallery-item .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--krds-gap-2) var(--krds-gap-5);
+  margin-top: auto;
+  font-size: var(--krds-pc-font-size-body-small);
+  line-height: 1.5;
+  color: var(--cm-color-text-subtle);
+}
+.cm-gallery .cm-board + .krds-pagination {
+  margin-top: var(--krds-gap-9);
+}
+@media (max-width: 1600px) {
+  .cm-gallery-list {
+    gap: var(--krds-gap-8) var(--krds-gap-6);
+  }
+}
+@media (max-width: 1280px) {
+  .cm-gallery-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 1024px) {
+  .cm-gallery-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--krds-gap-7) var(--krds-gap-5);
+  }
+}
+@media (max-width: 768px) {
+  .cm-gallery-list {
+    gap: var(--krds-gap-5) var(--krds-gap-4);
+  }
+  .cm-gallery-item .info {
+    padding: var(--krds-padding-5);
+  }
+  .cm-gallery-item .tit {
+    font-size: var(--krds-mobile-font-size-body-medium);
+  }
+  .cm-gallery-item .meta {
+    font-size: var(--krds-mobile-font-size-body-small);
+  }
+}
+@media (max-width: 360px) {
+  .cm-gallery-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* [갤러리 상세] 그림 첨부를 본문 아래 두 칸으로, 파일명을 설명으로 */
+.cm-board-view .cm-gallery-view .cm-attach-tit {
+  margin-bottom: var(--krds-gap-5);
+}
+.cm-gallery-view-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--krds-gap-7);
+}
+.cm-gallery-view-list figure {
+  margin: 0;
+}
+.cm-gallery-view-list img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0.1rem solid var(--cm-color-divider-light);
+  border-radius: var(--krds-radius-medium3);
+  background-color: var(--cm-color-box-surface);
+}
+.cm-gallery-view-list figcaption {
+  margin-top: var(--krds-gap-3);
+  font-size: var(--krds-pc-font-size-body-small);
+  color: var(--cm-color-text-subtle);
+  overflow-wrap: anywhere;
+}
+@media (max-width: 768px) {
+  .cm-gallery-view-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--krds-gap-5);
+  }
+}
+
+/* [질문답변 목록] 목록형 행 + Q 배지 · 작성자 */
+.cm-qna .search-item .category {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cm-qna .cm-qna-q {
+  min-width: 3.2rem;
+  font-weight: var(--krds-font-weight-bold);
+}
+.cm-qna .search-item .writer {
+  flex: 0 0 auto;
+  overflow: hidden;
+  max-width: 16rem;
+  padding: var(--krds-padding-5) 0 var(--krds-padding-5) var(--krds-padding-6);
+  font-size: var(--krds-pc-font-size-body-small);
+  color: var(--cm-color-text-subtle);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 768px) {
+  .cm-qna .search-item .writer {
+    flex-basis: auto;
+    order: 3;
+    padding: var(--krds-padding-5) var(--krds-padding-3) 0 var(--krds-padding-6);
+  }
+  .cm-qna .search-item .writer + .date {
+    padding-left: 0;
+  }
+}
+
+/* [질문답변 상세] 답변 목록 · 답변 없음 */
+.cm-board-view .cm-cms-attach .upload-list > li {
+  padding: var(--krds-padding-7);
+  border: 0.1rem solid var(--cm-color-attach-border);
+  border-radius: var(--krds-radius-medium3);
+  background-color: var(--cm-color-attach-item);
+}
+.cm-board-view .cm-cms-attach .cm-prose {
+  font-size: var(--krds-pc-font-size-body-medium);
+  line-height: 1.6;
+  color: var(--cm-color-text-basic);
+}
+.cm-board-view .cm-answer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--krds-gap-3);
+  margin-top: var(--krds-gap-4);
+  font-size: var(--krds-pc-font-size-body-small);
+  color: var(--cm-color-text-subtle);
+}
+/* 게시판 내려받기 권한이 없을 때 첨부 안내(게시글 첨부 목록 아래 · 자료실 목록 위) */
+.cm-attach-lock {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--krds-gap-3);
+  margin: var(--krds-gap-4) 0;
+  font-size: var(--krds-pc-font-size-body-small);
+  color: var(--cm-color-text-subtle);
+}
+.cm-answer-wait-msg {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--krds-gap-4);
+  padding: var(--krds-padding-6) var(--krds-padding-7);
+  border: 0.1rem dashed var(--cm-color-border-light);
+  border-radius: var(--krds-radius-medium3);
+  background-color: var(--cm-color-box-surface);
+  font-size: var(--krds-pc-font-size-body-medium);
+  line-height: 1.5;
+  color: var(--cm-color-text-subtle);
+}
+
+/* [자주 묻는 질문] KRDS 아코디언(type-line) 에 Q · A 표시. 제목 <h3> 는 KRDS 버튼 모양을 그대로 */
+.cm-faq .cm-faq-h {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+.cm-faq .accordion-item .btn-accordion {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--krds-gap-4);
+  line-height: 1.5;
+}
+.cm-faq .cm-faq-q,
+.cm-faq .cm-faq-marker {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: var(--krds-radius-max);
+  background-color: var(--cm-color-element-primary);
+  font-size: var(--krds-pc-font-size-body-small);
+  font-weight: var(--krds-font-weight-bold);
+  line-height: 1;
+  color: var(--cm-color-text-inverse);
+}
+.cm-faq .cm-faq-marker {
+  background-color: var(--cm-color-element-secondary);
+}
+.cm-faq .cm-faq-tit {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.cm-faq .btn-accordion .krds-badge {
+  flex: 0 0 auto;
+  margin-top: 0.2rem;
+}
+.cm-faq .cm-faq-a {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--krds-gap-4);
+}
+.cm-faq .cm-faq-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding-top: 0.4rem;
+  font-size: var(--krds-pc-font-size-body-medium);
+  line-height: 1.6;
+  color: var(--cm-color-text-basic);
+  overflow-wrap: anywhere;
+}
+.cm-faq .cm-faq-body .krds-btn.text {
+  padding-left: 0;
+}
+@media (max-width: 768px) {
+  .cm-faq .cm-faq-q,
+  .cm-faq .cm-faq-marker {
+    width: 2.8rem;
+    height: 2.8rem;
+    font-size: var(--krds-mobile-font-size-body-small);
+  }
+  .cm-faq .cm-faq-body {
+    font-size: var(--krds-mobile-font-size-body-medium);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   7. 3차 메뉴 (sub01_01_01) : 전체메뉴 팝업 · 모바일 전체메뉴 · 사이트맵 화면. 헤더 GNB(PC)는 3차가 있는 2차만 KRDS 펼침, 화면 안은 menutabs 탭.
+      2차 항목 아래 들여쓴 작은 글자 목록. 퍼블리싱 변수만 쓴다.
+   --------------------------------------------------------------------------- */
+.cm-sitemap-col ul.cm-sitemap-third {
+  margin: 0.2rem 0 0.4rem;
+  padding: 0 0 0 var(--krds-padding-5);
+  gap: var(--krds-gap-2);
+  border-left: 0.2rem solid var(--cm-sitemap-line);
+}
+.cm-sitemap-col .cm-sitemap-third a {
+  min-height: 4rem;
+  justify-content: flex-start;
+  padding: var(--krds-padding-3) var(--krds-padding-5);
+  font-size: var(--krds-pc-font-size-body-small);
+  text-align: left;
+  color: var(--cm-color-text-subtle);
+}
+.cm-sitemap-col .cm-sitemap-third a::before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-right: var(--krds-gap-3);
+  border-radius: 50%;
+  background-color: currentColor;
+  flex: none;
+}
+.krds-main-menu-mobile .gnb-sub-list ul.cm-gnb-third {
+  margin: 0 0 0.4rem;
+  padding-left: var(--krds-padding-6);
+}
+.krds-main-menu-mobile .gnb-sub-list .cm-gnb-third-trigger {
+  font-size: var(--krds-mobile-font-size-body-small);
+  color: var(--cm-color-text-subtle);
+}
+.krds-main-menu-mobile .gnb-sub-list .cm-gnb-third-trigger::before {
+  content: "-";
+  margin-right: var(--krds-gap-2);
+}
+
+/* 3차 메뉴 탭(chrome :: menutabs) — 퍼블리싱 archive_list 탭(KRDS fill full)과 목록 사이 40px.
+   링크 탭이라 KRDS 탭 스크립트(.krds-tab-area.layer, role=tab)를 쓰지 않는다 — 모양만 .tab.fill 규칙을 따른다 */
+.cm-contents > .cm-menu-tabs {
+  margin-bottom: var(--krds-gap-9);
+}
+.cm-menu-tabs .btn-tab {
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   [#72 홈·헤더 검색 자동 완성] 결과 화면과 같은 목록(.cm-ac-list)을 홈 히어로 검색창 · 헤더 팝업에도.
+   홈 히어로: 알약 입력 아래로 목록을 띄우고(폼 position:relative — 퍼블리싱 main.css), 짧은 검색어 안내는
+   추천 검색어 줄을 밀지 않게 입력 아래 겹쳐 놓는다(흰 바탕 — 배경 영상 위 대비).
+   ========================================================================== */
+.cm-hero-form .cm-ac-list { top: calc(100% + 0.6rem); left: 2.4rem; right: 2.4rem; }
+.cm-hero-form .cm-search-hint {
+  position: absolute; z-index: 15; top: calc(100% + 0.4rem); left: 3.8rem; margin: 0; padding: 2px 8px;
+  border-radius: 4px; background: var(--krds-light-color-surface-white, #fff);
+  color: var(--krds-light-color-text-danger, #bd2c0f); font-size: 15px; font-weight: 600;
+}
+.cm-hero-form .cm-search-hint:empty { display: none; }
+
+/* ==========================================================================
+   본문 아래 담당 정보(page-owner 조각). 퍼블리싱에 틀이 없어 KRDS 토큰으로 맞춘다.
+   ========================================================================== */
+.cms-page-owner-wrap { margin-top: 2.4rem; }
+.cms-page-owner {
+  display: flex; flex-wrap: wrap; gap: 0.8rem 2.4rem; margin: 0; padding: 1.6rem;
+  border-top: 1px solid var(--krds-light-color-border-gray-light, #cdd1d5); font-size: 15px;
+}
+.cms-page-owner > div { display: flex; gap: 0.8rem; }
+.cms-page-owner dt { font-weight: 700; }
+.cms-page-owner dd { margin: 0; }

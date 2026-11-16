@@ -1,0 +1,107 @@
+/*
+ * onboarding-tour.css — 첫 사용자 샌드박스 튜토리얼 오버레이.
+ *  - 시각 언어는 .cms-admin-cmdk(커맨드 팔레트) 차용. 모든 색은 디자인 토큰 → cms-air/nsaeup·고대비 자동 대응.
+ *  - 마크업은 onboarding-tour.js 가 생성. 여기선 스타일만 정의.
+ */
+
+/* 오버레이 */
+.cms-admin-tour { position: fixed; inset: 0; z-index: 320; display: flex; align-items: center; justify-content: center; }
+.cms-admin-tour[hidden] { display: none; }
+.cms-admin-tour__backdrop { position: absolute; inset: 0; background: rgba(16, 28, 69, .55); }
+
+/* 다이얼로그 카드 */
+.cms-admin-tour__dialog {
+  position: relative; width: min(58rem, 94vw); max-height: 90vh; display: flex; flex-direction: column;
+  background: var(--cms-surface); border: 1px solid var(--cms-border); border-radius: var(--cms-radius-lg, 1.2rem);
+  box-shadow: var(--cms-shadow-lg, 0 24px 64px rgba(16, 28, 69, .28)); overflow: hidden;
+}
+
+/* 헤더: 단계 라벨 + 닫기 */
+.cms-admin-tour__head {
+  display: flex; align-items: center; gap: 1.2rem; padding: 1.8rem 2rem 1.2rem;
+  border-bottom: 1px solid var(--cms-border);
+}
+.cms-admin-tour__eyebrow { font-size: 1.2rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--cms-primary-text, var(--cms-primary-strong)); margin: 0; }
+.cms-admin-tour__title { font-size: 2rem; font-weight: 800; color: var(--cms-text); margin: .2rem 0 0; }
+.cms-admin-tour__headtext { flex: 1 1 auto; min-width: 0; }
+.cms-admin-tour__close {
+  flex: 0 0 auto; width: 3.6rem; height: 3.6rem; border: 0; border-radius: .8rem; background: none;
+  font-size: 2.2rem; line-height: 1; color: var(--cms-muted); cursor: pointer;
+}
+.cms-admin-tour__close:hover { background: var(--cms-surface-soft, #f4f6fb); color: var(--cms-text); }
+.cms-admin-tour__close:focus-visible { outline: 2px solid var(--cms-focus, var(--cms-primary)); outline-offset: 2px; }
+
+/* 본문(스크롤) */
+.cms-admin-tour__body { padding: 2rem; overflow: auto; }
+.cms-admin-tour__lead { font-size: 1.5rem; line-height: 1.6; color: var(--cms-text); margin: 0 0 1.6rem; }
+.cms-admin-tour__lead code {
+  font-family: inherit; font-weight: 800; background: var(--cms-primary-soft, #ecf2fe); color: var(--cms-primary-strong, var(--cms-primary));
+  border-radius: .4rem; padding: .1rem .6rem;
+}
+
+/* 연습 배지 — 가짜 데이터임을 알림 */
+.cms-admin-tour__note {
+  display: inline-flex; align-items: center; gap: .6rem; margin-bottom: 1.6rem;
+  font-size: 1.25rem; font-weight: 700; color: var(--cms-warn-fg, #8a5a00);
+  background: var(--cms-warn-bg, #fff6e5); border: 1px solid var(--cms-warn-fg, #e0a106);
+  border-radius: 999px; padding: .5rem 1.2rem;
+}
+
+/* 가짜 폼(읽기 데모) */
+.cms-admin-tour__form { display: grid; gap: 1.2rem; }
+.cms-admin-tour__field { display: grid; gap: .5rem; }
+.cms-admin-tour__label { font-size: 1.3rem; font-weight: 700; color: var(--cms-text); }
+.cms-admin-tour__input {
+  font-size: 1.45rem; color: var(--cms-text); background: var(--cms-surface-soft, #f4f6fb);
+  border: 1px solid var(--cms-border); border-radius: .8rem; padding: 1.1rem 1.4rem; cursor: default;
+}
+.cms-admin-tour__input--area { min-height: 8rem; white-space: pre-wrap; line-height: 1.5; }
+.cms-admin-tour__hint { font-size: 1.2rem; color: var(--cms-muted); }
+
+/* 진행 점(●○○) */
+.cms-admin-tour__dots { display: flex; gap: .8rem; align-items: center; }
+.cms-admin-tour__dot {
+  width: 1rem; height: 1rem; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
+  background: var(--cms-border-strong, #c3cbe0);
+}
+.cms-admin-tour__dot[aria-current="step"] { background: var(--cms-primary); transform: scale(1.25); }
+.cms-admin-tour__dot:focus-visible { outline: 2px solid var(--cms-focus, var(--cms-primary)); outline-offset: 2px; }
+
+/* 푸터: 진행점 + 이동 버튼 */
+.cms-admin-tour__foot {
+  display: flex; align-items: center; gap: 1.2rem; padding: 1.4rem 2rem;
+  border-top: 1px solid var(--cms-border); background: var(--cms-surface-soft, #f8f9fc);
+}
+.cms-admin-tour__foot-actions { margin-left: auto; display: flex; gap: 1rem; }
+
+/* 작은 화면 */
+@media (max-width: 768px) {
+  .cms-admin-tour__dialog { width: 96vw; max-height: 94vh; }
+  .cms-admin-tour__body { padding: 1.6rem; }
+  .cms-admin-tour__foot { flex-wrap: wrap; }
+  .cms-admin-tour__foot-actions { margin-left: 0; width: 100%; }
+}
+
+/* ===== 튜토리얼 완료 후 사이드바 메뉴 강조(다음에 눌러볼 항목) ===== */
+.cms-admin-side-nav__item--guide {
+  position: relative;
+  background: var(--cms-primary-soft, #ecf2fe);
+  box-shadow: inset 3px 0 0 var(--cms-primary);
+  font-weight: 700;
+}
+/* 색 외 형태 단서: 우측 점 배지(접근성) */
+.cms-admin-side-nav__item--guide::after {
+  content: ""; position: absolute; top: 50%; right: 1.2rem; transform: translateY(-50%);
+  width: .8rem; height: .8rem; border-radius: 50%;
+  background: var(--cms-primary);
+  box-shadow: 0 0 0 0 var(--cms-primary);
+  animation: cms-guide-pulse 1.8s ease-out infinite;
+}
+@keyframes cms-guide-pulse {
+  0%   { box-shadow: 0 0 0 0 var(--cms-primary-soft, rgba(45, 108, 223, .5)); }
+  70%  { box-shadow: 0 0 0 .7rem transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cms-admin-side-nav__item--guide::after { animation: none; }
+}

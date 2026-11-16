@@ -1,0 +1,96 @@
+/* 이미지 탐색기(image-explorer.js) — 「이미지 관리」 화면 · 콘텐츠 편집기 「이미지 삽입」 창 공용. 토큰만 참조. */
+.im-explorer { display: flex; flex-direction: column; gap: var(--cms-sp-4); min-width: 0; }
+/* 「이미지 관리」 화면 카드(.nv-list) 안쪽 여백 */
+.im-page { gap: var(--cms-sp-4); padding: var(--cms-sp-6); }
+.im-page__rule { margin: 0; overflow-wrap: anywhere; }
+.im-page__rule code { font-family: var(--cms-font-mono); }
+.im-explorer__body { display: grid; grid-template-columns: 26rem minmax(0, 1fr); gap: var(--cms-sp-6); min-width: 0; }
+.im-notice { margin: 0; padding: 1rem 1.4rem; border-radius: var(--cms-radius-sm); background: var(--cms-surface-muted); color: var(--cms-muted); font-size: var(--cms-fs-md); }
+
+/* 폴더 나무 */
+.im-tree { min-width: 0; max-height: 64rem; overflow: auto; padding: .8rem; border: 1px solid var(--cms-border); border-radius: var(--cms-radius); background: var(--cms-surface); }
+.im-tree__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .2rem; }
+.im-tree__item {
+  display: flex; align-items: center; gap: .8rem; width: 100%; min-height: 3.6rem;
+  padding: .4rem 1rem .4rem calc(1rem + var(--im-depth, 0) * 1.6rem);
+  border: 0; border-radius: var(--cms-radius-xs); background: none; color: var(--cms-text); font: inherit; font-size: var(--cms-fs-md); text-align: left; cursor: pointer;
+}
+.im-tree__item:hover { background: var(--cms-surface-muted); }
+.im-tree__item[aria-current="true"] { background: var(--cms-primary-soft); color: var(--cms-primary-text); font-weight: var(--cms-fw-semibold); }
+.im-tree__item .nv-icon { flex: none; color: var(--cms-muted); }
+.im-tree__label { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.im-tree__count { flex: none; min-width: 2.2rem; padding: 0 .6rem; border-radius: 99rem; background: var(--cms-surface-muted); color: var(--cms-muted); font-size: var(--cms-fs-xs); text-align: center; }
+
+/* 오른쪽: 경로 · 도구 · 끌어 놓기 · 격자 */
+.im-pane { display: flex; flex-direction: column; gap: var(--cms-sp-4); min-width: 0; }
+.im-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem 1.6rem; }
+.im-toolbar__actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+.im-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: .2rem .4rem; margin: 0; min-width: 0; font-family: var(--cms-font-mono, ui-monospace, monospace); font-size: var(--cms-fs-md); color: var(--cms-muted); }
+.im-crumbs strong { color: var(--cms-text); }
+.im-crumbs__link { border: 0; background: none; padding: 0; color: var(--cms-primary-text); font: inherit; text-decoration: underline; text-underline-offset: .3rem; cursor: pointer; }
+.im-drop { padding: var(--cms-sp-4); }
+.im-file-input { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; pointer-events: none; }
+.im-status { min-height: 2rem; margin: 0; font-size: var(--cms-fs-md); color: var(--cms-muted); overflow-wrap: anywhere; }
+.im-status--ok { color: var(--cms-ok-fg); }
+.im-status--error { color: var(--cms-err-fg); }
+
+.im-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1.2rem; }
+.im-tile {
+  position: relative; display: flex; flex-direction: column; gap: .6rem; width: 100%; height: 100%; padding: 1rem;
+  border: 1px solid var(--cms-border); border-radius: var(--cms-radius); background: var(--cms-surface); color: var(--cms-text); font: inherit; text-align: left;
+}
+button.im-tile { cursor: pointer; }
+button.im-tile:hover, .im-tile--file:hover { border-color: var(--cms-border-strong); }
+.im-tile[aria-pressed="true"] { border-color: var(--cms-primary); box-shadow: 0 0 0 2px var(--cms-primary-soft); }
+.im-tile__thumb {
+  display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--cms-radius-sm);
+  background-color: var(--cms-surface-muted);
+  background-image: linear-gradient(45deg, var(--cms-border) 25%, transparent 25%, transparent 75%, var(--cms-border) 75%),
+                    linear-gradient(45deg, var(--cms-border) 25%, transparent 25%, transparent 75%, var(--cms-border) 75%);
+  background-size: 1.6rem 1.6rem; background-position: 0 0, .8rem .8rem;
+}
+.im-tile--folder .im-tile__thumb { background-image: none; color: var(--cms-muted); }
+.im-tile--folder .im-tile__thumb .nv-icon { width: 3.2rem; height: 3.2rem; }
+.im-tile__thumb img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+.im-tile__view { display: block; border-radius: var(--cms-radius-sm); }
+.im-tile__name { font-weight: var(--cms-fw-medium); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.im-tile__meta { color: var(--cms-subtle); font-size: var(--cms-fs-sm); }
+.im-tile__url { color: var(--cms-muted); font-family: var(--cms-font-mono, ui-monospace, monospace); font-size: var(--cms-fs-xs); overflow-wrap: anywhere; }
+.im-tile__actions { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; }
+/* 그림 고르기 체크 — KRDS component.css 가 input[type=checkbox] 를 !important 로 1px 시각 숨김(label::before 방식)하므로
+   .nv-check input 처럼 네이티브 칸을 직접 그린다(위치는 그림 왼쪽 위). 숨겨지면 마우스로 고를 수 없어 「선택 삭제」가 늘 꺼진다 */
+.im-tile .im-tile__check {
+  position: absolute !important; top: 1.6rem; left: 1.6rem; z-index: 1;
+  width: 1.8rem !important; height: 1.8rem !important; margin: 0 !important; padding: 0 !important;
+  clip: auto !important; overflow: visible !important; white-space: normal !important;
+  border: 1.5px solid var(--cms-border-strong) !important; border-radius: var(--cms-radius-xs);
+  appearance: none; display: inline-grid; place-content: center; cursor: pointer;
+  background: var(--cms-surface); box-shadow: 0 0 0 2px var(--cms-surface);
+}
+.im-tile .im-tile__check:checked { background: var(--cms-primary); border-color: var(--cms-primary) !important; }
+.im-tile .im-tile__check:checked::after { content: ""; width: .5rem; height: .9rem; border: solid var(--cms-on-primary); border-width: 0 2px 2px 0; transform: translateY(-1px) rotate(45deg); }
+.im-tile .im-tile__check:focus-visible { box-shadow: var(--cms-focus); }
+
+@media (max-width: 1024px) {
+  .im-explorer__body { grid-template-columns: minmax(0, 1fr); }
+  .im-tree { max-height: 24rem; }
+}
+@media (max-width: 768px) {
+  .im-page { padding: var(--cms-sp-4); }
+  .im-grid { grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
+  .im-toolbar { flex-direction: column; align-items: stretch; }
+}
+
+/* ── 퍼블리싱 반영(2026-11) — 「이미지 삽입」 창(mode=pick, mountPick). 모양은 admin-parts.css .imgmodal · .imgbar · .imggrid · .imgpicked,
+   여기는 실제 썸네일 · 올리기 단추 보정만 ── */
+.im-pick { gap: 1.2rem; }
+.imgmodal__tools { display: inline-flex; flex-wrap: wrap; gap: 1.2rem; }
+button.imgmodal__up { border: 0; background: none; padding: 0; font-family: inherit; cursor: pointer; }
+button.imgmodal__up:hover { text-decoration: underline; }
+button.imgmodal__up:focus-visible { box-shadow: var(--cms-focus); outline: 0; border-radius: var(--cms-radius-xs); }
+.im-pick .imgitem__thumb, .imgpicked .imgitem__thumb { overflow: hidden; }
+.im-pick .imgitem__thumb img, .imgpicked .imgitem__thumb img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; }
+.im-pick .imggrid.is-dragover { border-color: var(--cms-primary); background: var(--cms-primary-soft); }
+.im-pick .im-status:empty, .im-pick .im-notice[hidden] { display: none; }
+.imgmodal .nv-modal__body { max-height: calc(100vh - 20rem); overflow-y: auto; }
+.imgbar .nv-input-wrap:has(.nv-input-wrap__btn) input[type="search"]::-webkit-search-cancel-button { display: none; }

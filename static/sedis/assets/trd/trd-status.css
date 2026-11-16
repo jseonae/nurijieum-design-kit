@@ -1,0 +1,4 @@
+@charset "UTF-8";
+/* 특수교육 현황(sub_0102) — 출처 둘째 줄을 첫 줄 글자 시작(「출처 -」 뒤)에 맞춘다(sub_0102-08). */
+.cm-es-notes .cm-es-source { display: flex; gap: .25em; }
+.cm-es-notes .cm-es-source strong { flex: none; }

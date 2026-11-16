@@ -1,0 +1,103 @@
+/* 특수교육 현황 관리자(adm_1001~1202) — 콘솔 UI v2(nv-*) 위에 이 화면만의 배치. 길이는 px. 미리보기 본문(사용자 화면 조각)은 trd-preview.css 가 맡는다.
+   모양 기준: 화면설계서 v1.4.13 adm_1001·1101·1102·1201·1202(#86). */
+/* 머리: 시계열 관리(ts.css)와 같이 조각이 자기 머리(h1 + 안내 한 줄)를 그리고 콘솔이 그리는 머리는 감춘다 */
+.nv-content:has(> .cms-svc-fragment .sd-trd) > .nv-page-header { display: none; }
+.sd-trd { display: flex; flex-direction: column; gap: 16px; }
+.sd-trd .nv-text-muted { color: var(--cms-text-muted, #6b7280); }
+.sd-trd .sd-trd-strong, .sd-trd .nv-table th.sd-trd-strong { font-weight: 700; text-align: left; }
+
+/* adm_1001 목록 */
+.sd-trd .sd-trd-sources .sd-trd-col-no { width: 64px; }
+.sd-trd .sd-trd-sources .sd-trd-col-kind { width: 190px; }
+.sd-trd .sd-trd-sources .sd-trd-col-range { width: 168px; }
+.sd-trd .sd-trd-sources .sd-trd-col-num { width: 96px; }
+.sd-trd .sd-trd-sources .sd-trd-col-date { width: 120px; }
+.sd-trd .sd-trd-sources .sd-trd-col-state { width: 80px; }
+.sd-trd .sd-trd-sources .sd-trd-col-work { width: 176px; }
+.sd-trd .sd-trd-sources .col-actions { text-align: center; }
+.sd-trd .sd-trd-upload { display: inline-flex; align-items: center; gap: 6px; }
+.sd-trd .sd-trd-upload__file { max-width: 220px; }
+/* adm_1001 올린 파일 확인 — 파란 테두리 카드, ✓·!·× 한 줄 점검 목록 */
+.sd-trd .sd-trd-check { border: 2px solid var(--cms-primary, #256ef4); }
+.sd-trd .sd-trd-check__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; margin-bottom: 12px; }
+.sd-trd .sd-trd-check__title { margin: 0; font-size: 16px; font-weight: 700; }
+.sd-trd .sd-trd-checklist { list-style: none; margin: 0 0 12px; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.sd-trd .sd-trd-checklist li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; line-height: 1.5; }
+.sd-trd .sd-trd-checklist__mark { flex: none; width: 14px; font-weight: 700; }
+.sd-trd .sd-trd-checklist .is-ok .sd-trd-checklist__mark { color: #15803d; }
+.sd-trd .sd-trd-checklist .is-warn { color: #9a5b00; }
+.sd-trd .sd-trd-checklist .is-err { color: #c62828; font-weight: 600; }
+.sd-trd .sd-trd-checklist__sub { color: var(--cms-text-muted, #6b7280); font-size: 13px; }
+.sd-trd .sd-trd-changes { margin-bottom: 12px; }
+.sd-trd .sd-trd-newsum { margin: 4px 0 12px; padding: 12px 16px; border-radius: 8px; background: var(--cms-primary-50, #f4f8ff); }
+.sd-trd .sd-trd-newsum__title { margin: 0 0 8px; display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.sd-trd .sd-trd-newsum__row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.sd-trd .sd-trd-newsum__count { width: 120px; }
+.sd-trd .sd-trd-newsum__src { flex: 1 1 260px; min-width: 220px; }
+.sd-trd .sd-trd-check__actions { gap: 8px; }
+.sd-trd .nv-section-title { margin: 24px 0 12px; font-size: 18px; font-weight: 700; }
+.sd-trd .sd-trd-file { word-break: break-all; }
+.sd-trd .sd-trd-replaced summary { cursor: pointer; font-weight: 700; }
+.sd-trd .sd-trd-replaced .nv-table-wrap { margin-top: 12px; }
+.sd-trd .sd-trd-stat th, .sd-trd .sd-trd-stat td { white-space: nowrap; text-align: right; }
+.sd-trd .sd-trd-stat th[scope="row"], .sd-trd .sd-trd-stat thead th:first-child { text-align: left; position: sticky; left: 0; background: var(--nv-color-surface, #fff); }
+/* adm_1102 머리 카드 · 구획 머리(번호 · 제목 · 오른쪽 안내) · 공표 계 한 줄 입력 */
+.sd-trd .sd-trd-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 16px 20px; background: var(--cms-primary-50, #f4f8ff); }
+.sd-trd .sd-trd-head__title { margin: 0; font-size: 20px; font-weight: 700; }
+.sd-trd .sd-trd-head__meta { margin-left: auto; }
+.sd-trd .sd-trd-sec-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 12px; }
+.sd-trd .sd-trd-sec-head__title { margin: 0; font-size: 16px; font-weight: 700; }
+.sd-trd .sd-trd-sec-head__hint { margin-left: auto; font-size: 13px; color: var(--cms-text-muted, #6b7280); }
+.sd-trd .sd-trd-step { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--cms-primary, #256ef4); color: #fff; font-size: 12px; font-weight: 700; }
+.sd-trd .sd-trd-origins .sd-trd-col-item { width: 200px; }
+.sd-trd .sd-trd-sums .sd-trd-col-year { width: 72px; }
+.sd-trd .sd-trd-sums .sd-trd-col-count { width: 120px; }
+.sd-trd .sd-trd-sums .sd-trd-col-na { width: 72px; }
+.sd-trd .sd-trd-sums .sd-trd-col-src { width: 240px; }
+.sd-trd .sd-trd-sums .sd-trd-col-growth { width: 128px; }
+.sd-trd .sd-trd-sums .nv-input, .sd-trd .sd-trd-sums .nv-select { width: 100%; }
+.sd-trd .sd-trd-num { text-align: right; }
+.sd-trd .sd-trd-note { width: 100%; min-height: 0; height: 36px; padding-top: 7px; padding-bottom: 7px; resize: vertical; line-height: 1.5; overflow: hidden; }
+.sd-trd .sd-trd-note:focus { height: auto; min-height: 80px; overflow: auto; white-space: pre-wrap; }
+.sd-trd .sd-trd-form-actions { margin-top: 12px; }
+.sd-trd .sd-trd-graph { display: grid; grid-template-columns: minmax(224px, 288px) 1fr; gap: 16px; align-items: start; }
+.sd-trd .sd-trd-graph__main { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+@media (max-width: 960px) { .sd-trd .sd-trd-graph { grid-template-columns: 1fr; } }
+
+/* adm_1101 목록 */
+.sd-trd .sd-trd-tables .sd-trd-col-no { width: 64px; }
+.sd-trd .sd-trd-tables .sd-trd-col-metric { width: 96px; }
+.sd-trd .sd-trd-tables .sd-trd-col-rows { width: 64px; }
+.sd-trd .sd-trd-tables .sd-trd-col-years { width: 128px; }
+.sd-trd .sd-trd-tables .sd-trd-col-menu { width: 72px; }
+.sd-trd .sd-trd-title-link { font-weight: 700; color: var(--cms-text, #1e2124); text-decoration: none; }
+.sd-trd .sd-trd-title-link:hover, .sd-trd .sd-trd-title-link:focus-visible { color: var(--cms-primary-text, #0b50d0); text-decoration: underline; }
+.sd-trd .sd-trd-nowrap { white-space: nowrap; }
+
+/* adm_1201 통계표 목록 트리 · 정보 카드 */
+.sd-trd .sd-trd-tree { padding: 16px 12px; }
+.sd-trd .sd-trd-tree__head { margin: 0 8px 8px; }
+.sd-trd .sd-trd-tree__group { margin: 12px 8px 4px; font-size: 13px; color: var(--cms-text-muted, #6b7280); }
+.sd-trd .sd-trd-tree ul { list-style: none; margin: 0; padding: 0; }
+.sd-trd .sd-trd-tree ul ul { padding-left: 12px; }
+.sd-trd .sd-trd-tree__sub { display: block; padding: 6px 10px; font-weight: 700; }
+.sd-trd .sd-trd-tree__item { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 10px; border-radius: 6px;
+  color: var(--cms-text, #1e2124); text-decoration: none; }
+.sd-trd .sd-trd-tree__item:hover { background: var(--cms-surface-2, #f4f5f6); }
+.sd-trd .sd-trd-tree__item.is-current { background: var(--cms-primary-50, #eef4ff); color: var(--cms-primary-text, #0b50d0); font-weight: 700; }
+.sd-trd .sd-trd-tree__count { min-width: 22px; padding: 0 6px; border-radius: 999px; background: var(--cms-surface-2, #eef0f2); font-size: 12px; text-align: center;
+  color: var(--cms-text-muted, #464c53); font-weight: 600; }
+.sd-trd .sd-trd-tree__item.is-current .sd-trd-tree__count { background: var(--cms-primary, #256ef4); color: #fff; }
+.sd-trd .sd-trd-info { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding-bottom: 12px; margin-bottom: 12px;
+  border-bottom: 1px solid var(--cms-border, #e6e8ea); }
+.sd-trd .sd-trd-info__title { margin: 0 0 4px; font-size: 18px; font-weight: 700; }
+.sd-trd .sd-trd-info p { margin: 0; }
+
+/* adm_1202 미리보기 머리 경로(본문은 trd-preview.css) */
+.sd-trd .sd-trd-crumb { margin-bottom: 8px; }
+.sd-trd .sd-trd-crumb b { color: var(--cms-text, #1e2124); }
+
+/* 라벨 옆 회색 보조 글 · 통계표 단위(고정 열 배경 위 대비 4.5:1) */
+.sd-trd .nv-field__label .nv-text-muted { margin-left: 6px; font-weight: 400; }
+.sd-trd .sd-trd-stat th[scope="row"] .nv-text-muted { color: #464c53; }

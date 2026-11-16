@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko" data-krds-mode="light">
+<!--
+  관리자 로그인 (퍼블리싱) — Figma 「프로젝트 26_003 특수원 krds」 노드 11809:23082 「특수원-관리자 로그인화면」
+  디자인팀 퍼블리싱에 없는 화면이라 개발팀이 Figma 기준으로 짰다(2026-11-11).
+  입력창·비밀번호 보기·로그인 단추·제목 서체는 연구원 로그인(login.html)과 같아 css/login.css 를 같이 읽고,
+  왼쪽 브랜드 영역과 좌우 나눔만 css/admin-login.css 에 둔다.
+  시안의 아이디 저장 · 비밀번호 찾기는 연구원 로그인과 같이 기획에 없어 뺐다.
+-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>관리자 로그인 | 특수교육 실태조사 데이터 활용 시스템</title>
+  <link rel="stylesheet" href="../../../../../vendor/krds/css/component/output.css">
+  <link rel="stylesheet" href="../_common/resources/css/krds-base.css">
+  <link rel="stylesheet" href="../_common/resources/css/krds-custom.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/admin-login.css">
+</head>
+<body>
+<div class="cm-login-page cm-admin-login">
+  <section class="cm-admin-login-brand">
+    <div class="cm-admin-login-intro">
+      <p class="cm-login-logo">
+        <img class="cm-logo-symbol" src="../../img/logo-symbol.svg" alt="" width="35" height="35">
+        <span class="cm-logo-name">특수교육 실태조사 데이터 활용 시스템</span>
+      </p>
+      <div class="copy">
+        <p class="tit">특수교육 실태조사<br>데이터 활용<br>통합관리시스템</p>
+        <p class="desc">콘텐츠와 게시판을 관리하는 관리자 전용 공간입니다.</p>
+      </div>
+    </div>
+    <p class="cm-admin-login-powered">
+      <span>Powered by</span>
+      <img src="img/login/logo_nurijieum_mark.svg" width="16" height="16" alt="">
+      <strong>누리지음 CMS</strong>
+      <span aria-hidden="true">|</span>
+      <span>WITHRUN</span>
+    </p>
+  </section>
+
+  <main id="container" class="cm-admin-login-side">
+    <div class="cm-login cm-admin-login-card">
+      <div class="cm-login-head">
+        <h1 class="tit">관리자 로그인</h1>
+        <p class="desc">메뉴와 기능은 계정에 배정된 권한에 따라 달라집니다.</p>
+      </div>
+
+      <!-- 오류 문구 : 서버가 넣을 때만 hidden 을 뺀다 -->
+      <p class="cm-login-msg is-error" role="alert" hidden>아이디 또는 비밀번호가 올바르지 않습니다.</p>
+
+      <form class="cm-login-form" method="post" action="#" novalidate>
+        <div class="cm-login-fields">
+          <div class="cm-login-field">
+            <label for="login_id" class="sr-only">아이디</label>
+            <input type="text" id="login_id" name="loginId" class="krds-input" autocomplete="username" required aria-required="true" placeholder="아이디를 입력해주세요">
+          </div>
+          <div class="cm-login-field cm-login-field-pw">
+            <label for="login_pw" class="sr-only">비밀번호</label>
+            <input type="password" id="login_pw" name="password" class="krds-input" autocomplete="current-password" required aria-required="true" placeholder="비밀번호를 입력해주세요">
+            <button type="button" class="cm-login-pw-toggle" aria-controls="login_pw" aria-pressed="false" data-login-pw-toggle>
+              <i class="ico" aria-hidden="true"></i><span class="sr-only">비밀번호 보기</span>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="krds-btn large primary cm-login-submit">로그인</button>
+      </form>
+    </div>
+    <footer class="cm-login-foot">
+      <p>Copyright ⓒ 2026 국립특수교육원. All rights reserved.</p>
+    </footer>
+  </main>
+</div>
+<script src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+/* 권한 관리 v2 페이지 전용 (토큰만 참조) — 공통은 cms-admin-v2.css, 키트 개선 부품은 admin-parts.css(이 파일 다음에 읽는다) */
+/* 탭 아래 칸들: 16 간격으로 쌓고 표는 카드 끝까지(가로 여백 없음). 좁으면 표만 가로 스크롤 */
+.id-tabpanel { display: flex; flex-direction: column; gap: 1.6rem; padding-bottom: 1.6rem; }
+.id-tabpanel[hidden] { display: none !important; }
+.id-tabpanel > .nv-table-wrap { padding: 0; }
+.id-subview { padding: 1.6rem 1.6rem 0; }
+.id-nowrap { white-space: nowrap; }
+.id-switch-form, .id-inline-form { display: inline-flex; align-items: center; margin: 0; }
+/* 권한관리 하위 화면 헤더: 역할명은 연한 색으로, "권한 관리" 는 본문색(Figma 820:56275) */
+.id-subhead { padding-top: var(--cms-sp-2); }
+.id-subhead__role { color: var(--cms-subtle); font-weight: var(--cms-fw-bold); margin-right: .6rem; }
+.id-subhead .nv-page-header__desc.is-code { font-family: var(--cms-font-mono); }
+/* 데드레터 접이식 카드 */
+.id-deadletter > summary { list-style: none; cursor: pointer; }
+.id-deadletter > summary::-webkit-details-marker { display: none; }
+.id-deadletter[open] > summary .nv-icon { transform: rotate(180deg); }
+.id-deadletter > summary .nv-icon { transition: transform .15s; color: var(--cms-muted); }
+.id-deadletter .nv-table-wrap { padding: var(--cms-sp-4) var(--cms-sp-6) var(--cms-sp-6); }
+/* 패널 폼: 패널 안에서 body 가 스크롤, foot 고정 */
+.id-panel-form { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+.id-panel-form .nv-panel__body { flex: 1; }
+/* KRDS common.css 가 table 에 table-layout:fixed 를 주므로 공통 .col-actions{width:1%} 가 글자 그대로 1% 가 된다 →
+   이 페이지는 auto 레이아웃으로 되돌려 작업 컬럼이 내용 폭을 갖게 한다(공통 보강 제안: .nv-table { table-layout:auto }) */
+.id-tabpanel .nv-table, .id-deadletter .nv-table { table-layout: auto; }
+.id-tabpanel .nv-table .col-actions { width: auto; min-width: 4.8rem; }
+.tip-help { border-bottom: 1px dotted var(--cms-subtle); cursor: help; }
+tr.is-gone td { color: var(--cms-subtle); }
+.nv-text-err { color: var(--cms-err-fg); }
+/* 폐기 해제 창 */
+.id-restore-groups { display: flex; flex-direction: column; gap: .8rem; margin: 0; padding: 0; border: 0; min-width: 0; }
+
+/* ── 퍼블리싱 반영(2026-11) — 키트 auth-* (4단계 09 · 10 · 11, 6단계 13) 마크업에 맞춘 보정 ──────────────
+   부품 모양은 admin-parts.css(키트 new-features.css 「개선」 규칙). 여기는 키트 앞부분(콘솔에 없는 기본 규칙)과 콘솔에만 있는 칸만 둔다. */
+/* 키트 기본 규칙 중 이 화면이 쓰는 것(new-features.css 앞부분) */
+.mgr__icon { flex: none; width: 3.2rem; height: 3.2rem; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--cms-surface-alt); color: var(--cms-muted); }
+.mgr__icon .nv-icon { width: 1.6rem; height: 1.6rem; }
+.nv-text-warn { color: var(--cms-warn-fg); }
+.menu-link { border: 0; background: none; padding: 0; font: inherit; font-weight: var(--cms-fw-semibold); color: var(--cms-text-strong); cursor: pointer; text-align: left; }
+.menu-link:hover { color: var(--cms-primary-text); text-decoration: underline; text-underline-offset: .3rem; }
+.menu-link:focus-visible { box-shadow: var(--cms-focus); outline: 0; border-radius: .2rem; }
+.list2 td, .list2 th, .acc-list td, .acc-list th { white-space: nowrap; }
+
+/* 권한그룹명단관리: 위 막대 · 본문은 탭 아래 바로(16 간격 없이), 표는 본문 여백 안 */
+.id-tabpanel.roster { gap: 0; padding-bottom: 0; }
+.roster-gpick .pick__list { max-height: 40rem; }
+.roster-gpick .pick__list[hidden] { display: none; }
+.roster-gpick .pick__row { text-decoration: none; }
+.pick__search { padding: .2rem .2rem .6rem; }
+.pick__search .nv-input { height: 3.6rem; }
+.pick__hint { margin: 0; padding: .2rem 1.2rem .4rem; color: var(--cms-subtle); font-size: var(--cms-fs-sm); }
+.roster-top__link { border: 0; background: none; padding: 0; cursor: pointer; font: inherit; font-size: var(--cms-fs-md); }
+.roster-site { display: inline-flex; align-items: center; gap: .6rem; white-space: nowrap; font-size: var(--cms-fs-md); color: var(--cms-muted); }
+.roster-site .nv-select { width: auto; min-width: 12rem; }
+.roster-head .edx-hint { flex: 1 1 24rem; justify-content: flex-end; }
+#id-table-assign { min-width: 64rem; }
+/* 서브관리자관리 */
+#id-table-accounts { min-width: 110rem; }
+.acc-list tr.is-added td { background: var(--cms-surface-soft); }
+.acc-list .tag-new { margin-left: .4rem; }
+.checkpop[hidden] { display: none; }
+.checkpop__item .nv-check { flex: none; }
+/* 권한그룹관리 · 관리자접속IP관리 */
+#id-table-roles { min-width: 100rem; }
+/* 넓은 표의 숨은 머리 글(.nv-sr-only, position:absolute)이 가로 스크롤 영역 밖 문서 폭을 늘리지 않게 — 768 에서 가로 넘침 */
+.id-tabpanel .nv-table-scroll { position: relative; }
+#id-table-ip { min-width: 72rem; }
+.id-tabpanel .segchips { margin: 0; padding: 0; border: 0; }
+.nv-dropmenu__menu form { display: contents; }
+/* 서브관리자 등록 · 허용 IP 추가 패널 */
+.addpanel [hidden] { display: none !important; }
+.addpanel .aa-idhint { margin-top: -.4rem; }
+.addpanel .nv-field__error:empty { display: none; }
+.addcard .checkpop__item input:disabled { cursor: not-allowed; }
+@media (max-width: 1024px) {
+  .roster-top__link { margin-left: 0; }
+  .roster-gpick { width: 100%; }
+}
+@media (max-width: 768px) {
+  .roster-add { flex-wrap: wrap; }
+  .roster-add .pick { flex-basis: 100%; }
+  .roster-gpick .pick__list { width: 100%; }
+}
+.gsel b { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.gsel small, .gsel .nv-badge { flex: none; white-space: nowrap; }
+.checkpop__item { font-size: var(--cms-fs-base); margin: 0; }
+/* 재측정(11/10 2차): 서브관리자 표가 1440 · 1024 에서 가로로 밀리지 않게 — 이름(배지) · 권한그룹 배지 칸은 줄을 바꾸고, 1024 이하는 최소 폭을 풀어 칸이 줄어든다 */
+#id-table-accounts td.is-title, #id-table-accounts td:nth-child(5) { white-space: normal; }
+#id-table-accounts td.is-title { min-width: 12rem; }
+#id-table-accounts td:nth-child(5) { max-width: 18rem; }
+#id-table-accounts .gcell { flex-wrap: wrap; row-gap: .4rem; }
+@media (max-width: 1024px) {
+  #id-table-accounts { min-width: 0; }
+  #id-table-accounts .id-nowrap { white-space: normal; }
+}
+
+/* 임시 비밀번호 창(서브관리자 등록 · 비밀번호 초기화): 값을 크게, 옆에 「복사」 */
+.cred-box { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border: 1px solid var(--cms-border); border-radius: var(--cms-radius); background: var(--cms-surface-muted); }
+.cred-box__value { flex: 1; min-width: 0; font-size: 20px; font-weight: 700; letter-spacing: .04em; word-break: break-all; user-select: all; }

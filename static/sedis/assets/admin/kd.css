@@ -1,0 +1,127 @@
+/* 핵심데이터 시각화 관리(adm_0801~) — 누리지음 콘솔 UI v2(nv-*) 위에 이 화면들에만 필요한 보정. 색·간격은 콘솔 토큰(--cms-*)을 쓴다. */
+/* 머리: 콘솔 게시판 목록처럼 제목·안내를 한 줄에, 버튼은 오른쪽 — 조각이 자기 머리(h1)를 그리고 콘솔이 그리는 머리는 감춘다 */
+.nv-content:has(> .cms-svc-fragment .sd-kd) > .nv-page-header { display: none; }
+.sd-kd { display: flex; flex-direction: column; gap: var(--cms-sp-4, 1.6rem); }
+.sd-kd-table .sd-kd-col-no { width: 7rem; }
+.sd-kd-table .sd-kd-col-yr { width: 9rem; }
+.sd-kd-table .sd-kd-col-code { width: 18%; }
+.sd-kd-table .sd-kd-col-num { width: 10rem; }
+.sd-kd-table .sd-kd-col-state { width: 10rem; }
+.sd-kd-table .sd-kd-col-actions { width: 8rem; }
+.sd-kd-table .col-actions { white-space: nowrap; }
+.sd-kd .nv-filter__left .nv-btn { margin-left: var(--cms-sp-2, .8rem); }
+/* 통계표 목록(adm_0901) */
+.sd-kd-table .sd-kd-col-check { width: 4.4rem; text-align: center; }
+.sd-kd-table .sd-kd-col-group { width: 13rem; }
+.sd-kd-table .sd-kd-col-target { width: 14rem; }
+.sd-kd-table .sd-kd-col-type { width: 14rem; }
+.sd-kd-table .sd-kd-col-date { width: 11rem; }
+.sd-kd-sub { margin-top: .2rem; color: var(--cms-text-muted, #6b7280); font-size: 1.3rem; }
+.sd-kd-nowrap { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.sd-kd-hier { display: inline-flex; align-items: center; gap: var(--cms-sp-1, .4rem); }
+.sd-kd-hier__sep { color: var(--cms-text-muted, #6b7280); }
+.sd-kd-copy { margin-top: var(--cms-sp-3, 1.2rem); }
+@media (max-width: 768px) {
+  .sd-kd-table .sd-kd-col-code,
+  .sd-kd-table .sd-kd-col-actions { width: auto; }
+}
+/* 등록·수정(adm_0802·0902) — 콘솔 전체 화면 편집 머리(nv-editor-header) + 왼쪽 본문·오른쪽 곁 카드(화면설계서 배치).
+   단 나눔은 콘솔 「메뉴 수정」(navigation.css .nv-nav-form__grid)과 같게 — 오른쪽 42rem · 간격·위 여백 24 · 1280 이하 한 단 · 라벨 14/600 */
+.sd-kd--editor { gap: 0; }
+.sd-kd--editor > .nv-alert { margin-top: var(--cms-sp-6, 2.4rem); }
+.sd-kd--editor .nv-editor-header__title { margin: 0; }
+.sd-kd-grid { display: grid; grid-template-columns: minmax(0, 1fr) 42rem; gap: var(--cms-sp-6, 2.4rem); padding-top: var(--cms-sp-6, 2.4rem); align-items: start; }
+.sd-kd-grid .nv-card { border-radius: var(--cms-radius-lg); background: var(--cms-surface); }
+.sd-kd-grid .nv-field__label { font-size: var(--cms-fs-base); font-weight: var(--cms-fw-semibold); }
+.sd-kd-input-num { max-width: 12rem; }
+.sd-kd-input-yr { max-width: 16rem; }
+.sd-kd-row { display: flex; align-items: center; justify-content: space-between; gap: var(--cms-sp-3, 1.2rem); }
+.sd-kd-row .nv-field__label { margin: 0; }
+.sd-kd-sec-title { margin: 0 0 var(--cms-sp-2, .8rem); font-size: 1.6rem; font-weight: 700; }
+.sd-kd-sttbls { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--cms-sp-1, .4rem); font-size: 1.4rem; }
+.sd-kd-sttbls .nv-badge { margin-left: var(--cms-sp-1, .4rem); }
+.sd-kd-sttbls a { color: inherit; text-decoration: none; }
+.sd-kd-sttbls a:hover { color: var(--cms-primary-text, #256ef4); }
+.sd-kd-dim { margin: 0; color: var(--cms-text-muted, #6b7280); }
+@media (max-width: 1280px) {
+  .sd-kd-grid { grid-template-columns: minmax(0, 1fr); }
+}
+/* 통계표 등록·수정(adm_0902) */
+/* 통계표명: 콘솔 게시글 등록 제목 칸(nv-editor__title + board.css .bd-page__main)과 같게 — 밑줄만, 큰 글씨 */
+.sd-kd-title-input { font-size: var(--cms-fs-h2); padding: .4rem 0 1.2rem; }
+.sd-kd-title-input[aria-invalid="true"] { border-bottom-color: var(--cms-err-fg); }
+.sd-kd-card-title .nv-field__hint .req { color: var(--cms-err-fg); margin-left: .3rem; }
+.sd-kd-sec-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--cms-sp-2, .8rem); margin-bottom: var(--cms-sp-3, 1.2rem); }
+.sd-kd-sec-head .sd-kd-sec-title { margin: 0; }
+.sd-kd-sec-opt { margin-left: auto; }
+.sd-kd-step { display: inline-flex; align-items: center; justify-content: center; width: 2.2rem; height: 2.2rem; margin-right: .8rem; border-radius: 50%;
+  background: var(--cms-primary, #256ef4); color: #fff; font-size: 1.2rem; font-weight: 700; vertical-align: .1rem; }
+.sd-kd-file { display: flex; align-items: center; gap: var(--cms-sp-2, .8rem); padding: 1.2rem 1.4rem; border: 1px solid var(--cms-border, #e5e7eb);
+  border-radius: var(--cms-radius-sm, .6rem); background: var(--cms-surface-2, #f8f9fa); }
+.sd-kd-file__name { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .2rem; overflow-wrap: anywhere; }
+.sd-kd-file-err, .sd-kd-fixnote { margin-top: var(--cms-sp-3, 1.2rem); }
+.sd-kd-errlist { margin: .4rem 0 0; padding-left: 1.8rem; }
+.sd-kd-types { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; }
+/* 유형 카드: 라디오는 「게시 여부 설정」과 같은 콘솔 라디오(nv-radio — 네이티브 input, 선택 시 5px 테두리)를 그대로 쓰고, 카드는 칸 배치·선택 테두리만 더한다 */
+.sd-kd-type.nv-radio { position: relative; display: grid; grid-template-columns: 1.8rem minmax(0, 1fr); column-gap: .8rem; row-gap: .2rem; align-items: center;
+  padding: 1rem 1.2rem; border: 1px solid var(--cms-border, #e5e7eb); border-radius: var(--cms-radius-sm, .6rem); background: #fff; }
+.sd-kd-type.nv-radio input { grid-column: 1; grid-row: 1 / 3; }
+.sd-kd-type b { grid-column: 2; grid-row: 1; font-size: 1.4rem; overflow-wrap: anywhere; }
+.sd-kd-type small { grid-column: 2; grid-row: 2; font-size: 1.2rem; color: var(--cms-text-muted, #6b7280); }
+.sd-kd-type:has(input:checked) { border-color: var(--cms-primary, #256ef4); background: var(--cms-primary-50, #eef4ff); }
+.sd-kd-ts { margin-left: .6rem; padding: .1rem .6rem; border-radius: .4rem; background: var(--cms-surface-2, #f3f4f6); color: var(--cms-text-muted, #6b7280);
+  font-size: 1.1rem; font-style: normal; font-weight: 600; }
+.sd-kd-g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.4rem; margin-top: var(--cms-sp-3, 1.2rem); }
+.sd-kd-pv { margin-top: var(--cms-sp-3, 1.2rem); padding: 1.2rem 1.4rem; border: 1px solid var(--cms-border, #e5e7eb); border-radius: var(--cms-radius-sm, .6rem); }
+/* 그래프가 없을 때(안내 알림만)는 바깥 테두리 없이 알림만 */
+.sd-kd-pv:not(:has([data-cm-chart])) { padding: 0; border: 0; }
+.sd-kd-data th, .sd-kd-data td { white-space: nowrap; }
+.sd-kd-row-inline { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; }
+.sd-kd-row-inline > .nv-input, .sd-kd-row-inline > .nv-select { flex: 1 1 18rem; min-width: 0; }
+.sd-kd-tags { display: flex; flex-wrap: wrap; gap: .6rem; margin: .8rem 0 0; padding: 0; list-style: none; }
+.sd-kd-tags .nv-tag { background: var(--cms-info-bg); color: var(--cms-info-fg); }
+.sd-kd-tags .nv-tag button { color: var(--cms-muted); }
+.sd-kd-pop { display: flex; flex-direction: column; gap: .6rem; }
+.sd-kd-pop__row > .nv-select { flex: 0 1 20rem; }
+.sd-kd-pop__row > .nv-input { flex: 0 1 14rem; text-align: right; }
+.sd-kd-radios { display: flex; flex-wrap: wrap; gap: var(--cms-sp-4, 1.6rem); margin-top: .6rem; }
+.sd-kd-mt { margin-top: .8rem; }
+.sd-kd-kv { display: grid; grid-template-columns: auto 1fr; gap: .4rem 1.2rem; margin: .6rem 0 0; font-size: 1.4rem; }
+.sd-kd-kv dt { color: var(--cms-text-muted, #6b7280); }
+.sd-kd-kv dd { margin: 0; }
+.sd-kd-terms { margin: 0; display: grid; grid-template-columns: 16rem 1fr; gap: .6rem 1.2rem; font-size: 1.4rem; }
+.sd-kd-terms dt { font-weight: 700; }
+.sd-kd-terms dd { margin: 0; }
+.sd-kd-terms p, .sd-kd-terms ul { margin: 0; }
+@media (max-width: 1280px) { .sd-kd-types { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 768px) { .sd-kd-types, .sd-kd-g2, .sd-kd-terms { grid-template-columns: 1fr; } }
+/* 미리보기 그래프 틀·범례 — 사용자 테마 krds-custom.css 의 cm-chart 규칙을 콘솔 px 로 옮긴 것(시계열 미리보기 ts.css 와 같은 값 —
+   콘솔은 사용자 테마 CSS 를 싣지 않는다). 범례는 표시만(설계서 v1.4.12) — 누름 표시(취소선)는 쓰지 않는다. */
+.sd-kd-pv .cm-chart-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 8px; }
+.sd-kd-pv .cm-chart-legend[hidden] { display: none; }
+.sd-kd-pv .cm-chart-legend-item { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 12px;
+  border: 1px solid #256ef4; border-radius: 6px; background: #f4f8ff; font-size: 14px; color: var(--cms-primary-text, #0b50d0); cursor: default; }
+.sd-kd-pv .cm-chart-legend-swatch { flex: none; width: 20px; height: 20px; }
+.sd-kd-pv .cm-chart-legend-swatch.line { width: 36px; }
+.sd-kd-pv .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.sd-kd-pv .cm-chart { display: flex; flex-direction: column; gap: 12px; width: 100%; min-width: 0; }
+.sd-kd-pv .cm-chart-body { width: 100%; min-width: 0; }
+.sd-kd-pv .cm-chart-plot { position: relative; width: 100%; height: 400px; }
+.sd-kd-pv .cm-chart-focus-grid { position: absolute; top: 0; left: 0; z-index: 10; pointer-events: none; }
+.sd-kd-pv .cm-chart-focus-point { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.sd-kd-pv .cm-chart-plot:has(.cm-chart-focus-grid:focus-within) { outline: 3px solid #256ef4; outline-offset: 3px; border-radius: 8px; }
+.sd-kd-pv .cm-chart-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.sd-kd-pv .cm-chart-panel { overflow: hidden; border: 1px solid #cdd1d5; border-radius: 8px; background: #fff; }
+.sd-kd-pv .cm-chart-panel-tit { margin: 0; padding: 12px; border-bottom: 1px solid #cdd1d5; background: #f4f5f6; font-size: 15px; font-weight: 700; text-align: center; color: #131416; }
+.sd-kd-pv .cm-chart-panel .cm-chart-plot { height: 280px; }
+@media (max-width: 960px) { .sd-kd-pv .cm-chart-panels { grid-template-columns: 1fr; } }
+/* 사용자 화면 미리보기(adm_0903) */
+.sd-kd-crumb { margin: 0; color: var(--cms-text-muted, #6b7280); font-size: 1.4rem; }
+.sd-kd-crumb b { color: var(--cms-text, #1e2124); }
+.sd-kd-view__chips { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0 0 .8rem; }
+.sd-kd-view__title { margin: 0 0 1.2rem; font-size: 2.2rem; font-weight: 800; line-height: 1.4; }
+.sd-kd-view__year { margin: 0 0 1.2rem; padding: 1rem 1.6rem; border-radius: .6rem; background: var(--cms-surface-2, #f2f4f7); }
+.sd-kd-view__sec { margin: 2.4rem 0 .8rem; }
+.sd-kd-view__p { margin: .4rem 0; line-height: 1.7; }
+.sd-kd-view__notes { margin: .8rem 0; padding: 0; list-style: none; line-height: 1.6; }
+.sd-kd-view__notes li::before { content: "※ "; }

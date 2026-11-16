@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="krds-sedis" data-krds-mode="light"><head>
+<!-- [키트] SEDIS 판 · 게시판 스킨(임시 게시판) · 게시판
+     원래 주소: /public/board/BD45fa2629b891447b94e2dd9b17896a0a
+     스크립트(원래 순서): ../../../static/public-ui/themes/krds-sedis/pub/_common/resources/js/krds-display.js , ../../../static/vendor/krds/js/plugin/swiper-bundle.min.js , ../../../static/vendor/krds/js/component/ui-script.js , ../../../static/public-ui/themes/krds-sedis/pub/_common/resources/js/krds-custom.js , ../../../static/public-ui/themes/krds-sedis/pub/_common/resources/js/krds-base.js , ../../../static/public-ui/themes/krds-sedis/theme.js , ../../../static/public-ui/menu-popup.js -->
+
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>게시판 | 개발용 사이트</title>
+    <link rel="icon" type="image/svg+xml" href="../../../static/vendor/krds/img/component/favicon/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../static/vendor/krds/img/component/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="../../../static/vendor/krds/img/component/favicon/favicon-192x192.png">
+    <link rel="stylesheet" href="../../../static/vendor/krds/css/plugin/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../../../static/vendor/krds/css/component/output.css">
+    <link rel="stylesheet" href="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/css/krds-base.css">
+    <link rel="stylesheet" href="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/css/krds-custom.css">
+    
+    <link rel="stylesheet" href="../../../static/public-ui/themes/krds-sedis/theme.css">
+    <!-- 글자·화면 표시 설정 : 깜빡임 방지를 위해 head 에서(퍼블리싱과 같음) -->
+    <!-- [키트] 스크립트 뺌: ../../../static/public-ui/themes/krds-sedis/pub/_common/resources/js/krds-display.js -->
+    
+    
+
+
+</head>
+<body>
+<div id="wrap">
+
+<div id="krds-skip-link">
+    <a href="#container">본문 바로가기</a>
+</div>
+<!-- 공식 누리집 안내 띠(퍼블리싱·KRDS 와 같은 자리 — 헤더 앞). 랜드마크 밖이면 axe region 경고 → 이름 있는 region 랜드마크로(모양 그대로) -->
+<div id="krds-masthead" role="region" aria-label="공식 전자정부 누리집 안내">
+    <div class="toggle-wrap">
+        <div class="toggle-head">
+            <div class="inner">
+                <span class="nuri-txt">이 누리집은 대한민국 공식 전자정부 누리집입니다.</span>
+            </div>
+        </div>
+    </div>
+</div>
+<header id="krds-header">
+    <div class="header-in">
+        <div class="header-container">
+            <div class="inner">
+                <div class="header-utility">
+                    <ul class="utility-list">
+                        <li>
+                            <button type="button" class="krds-btn small text open-modal" data-target="modal_sitemap" aria-haspopup="dialog">전체메뉴 <i class="svg-icon ico-all"></i></button>
+                        </li>
+                        <li>
+                            <a href="https://www.mois.go.kr/frt/sub/popup/p_taegugki_banner/screen.do" class="krds-btn small text" target="_blank" rel="noopener noreferrer" title="새 창 열림">국가상징 알아보기 <i class="svg-icon ico-go"></i></a>
+                        </li>
+                        <li>
+                            <button type="button" class="krds-btn small text open-modal" data-target="modal_adjust_display"><i class="svg-icon ico-view-mode"></i> 글자·화면 설정</button>
+                        </li>
+                        <li>
+                            <a class="krds-btn small text" href="../login/로그인-public-login-5bdc89.html">로그인</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="header-branding">
+                    <h2 class="logo">
+                        <a href="../public/공개-화면-public-preview-74f074.html">
+                            <img class="cm-logo-symbol" src="../../../static/public-ui/themes/krds-sedis/img/logo-symbol.svg" alt="" width="48" height="48">
+                            <span class="cm-logo-name">개발용 사이트</span>
+                        </a>
+                    </h2>
+                    <!-- 1차 메뉴(아이콘) : CMS 메뉴 트리. 아이콘은 메뉴명으로 고른다(통계 · 분석 · 그 밖). 모바일은 통합검색 · 전체메뉴만 -->
+                    <div class="header-actions">
+                        <a href="게시판-스킨-임시-게시판-public-board-BDc6fccb34d780427d860fc5562a57d1fa-9ebe80.html" class="btn-navi pc-only cm-notice">게시판1</a><a href="#kit-missing" data-kit-href="/public/dev/sub02" class="btn-navi pc-only cm-notice">「점검-test 메뉴」</a>
+                        <button type="button" class="btn-navi sch" aria-expanded="false" aria-controls="cm_search_popup">통합검색</button>
+                        <button type="button" class="btn-navi all" aria-controls="mobile-nav">전체메뉴</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 통합검색 영역 : 공개 통합검색(/public/search)으로 보낸다. 추천 검색어·최소 글자 수는 설정(cms.admin-bff.public.search) -->
+            <div id="cm_search_popup" class="cm-search-popup" hidden="">
+                <div class="inner">
+                    <form class="cm-search-form" role="search" aria-label="통합검색" action="../public/공개-화면-public-search-b37d12.html" method="get" data-min-length="2">
+                        <p class="cm-search-guide"><img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/common/cm_search_title.svg" alt="" width="49" height="44">궁금한 특수교육 데이터를 찾아보세요.</p>
+                        <div class="form-group">
+                            <div class="form-conts btn-ico-wrap cm-ac-wrap">
+                                
+                                <input type="text" name="q" id="cm_search_keyword" class="krds-input large" placeholder="검색어를 입력하세요." title="통합검색 검색어 입력" autocomplete="off" aria-describedby="cm_search_hint" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="cm_search_ac_list" data-ac-suggestions="특수교육대상자|통합교육|특수학급|장애유형|교원" value="" style="">
+                                <div class="btn-group">
+                                    <button type="button" class="krds-btn medium icon cm-search-delete" hidden="">
+                                        <span class="sr-only">입력한 검색어 지우기</span>
+                                        <i class="svg-icon ico-delete-fill"></i>
+                                    </button>
+                                    <button type="submit" class="krds-btn medium icon">
+                                        <span class="sr-only">검색</span>
+                                        <i class="svg-icon ico-sch"></i>
+                                    </button>
+                                </div>
+                                <ul id="cm_search_ac_list" class="cm-ac-list" role="listbox" aria-label="검색어 자동 완성" hidden=""></ul>
+                            </div>
+                        </div>
+                        <p class="cm-search-hint" id="cm_search_hint" aria-live="polite"></p>
+                        <p class="sr-only" aria-live="polite" data-ac-status=""></p>
+                        <div class="cm-search-recommend">
+                            <p class="tit" id="cm_search_recommend_tit">추천 검색어</p>
+                            <ul class="cm-search-chips" aria-labelledby="cm_search_recommend_tit">
+                                <li><button type="button" class="cm-search-chip" data-keyword="특수교육대상자">#특수교육대상자</button></li>
+                                <li><button type="button" class="cm-search-chip" data-keyword="통합교육">#통합교육</button></li>
+                                <li><button type="button" class="cm-search-chip" data-keyword="특수학급">#특수학급</button></li>
+                                <li><button type="button" class="cm-search-chip" data-keyword="장애유형">#장애유형</button></li>
+                                <li><button type="button" class="cm-search-chip" data-keyword="교원">#교원</button></li>
+                            </ul>
+                        </div>
+                    </form>
+                    <button type="button" class="krds-btn medium icon cm-search-close">
+                        <span class="sr-only">통합검색 닫기</span>
+                        <i class="svg-icon ico-popup-close"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 메인메뉴(PC) : 현재 1차 메뉴의 2차를 1단 링크로 (현재 메뉴 .cm-current).
+             2차가 3차를 가지면 KRDS 메인메뉴 펼침(button.gnb-main-trigger + .gnb-toggle-wrap)으로 3차 링크를 보인다 -->
+        
+    </div>
+
+    <!-- 메인메뉴(모바일) : 왼쪽 1차 + 오른쪽 2차 (KRDS main_menu_mobile, 전환은 krds-custom.js cmMobileMenu) -->
+    <div id="mobile-nav" class="krds-main-menu-mobile" style="display: none;">
+        <div class="gnb-wrap">
+            <div class="gnb-header">
+                <div class="gnb-utils">
+                    <ul class="utility-list">
+                        <li>
+                            <button type="button" class="krds-btn medium text open-modal" data-target="modal_adjust_display"><i class="svg-icon ico-view-mode"></i> 글자·화면 설정</button>
+                        </li>
+                        <li>
+                            <a class="krds-btn medium text" href="../login/로그인-public-login-5bdc89.html">로그인</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="gnb-body">
+                <div class="gnb-menu">
+                    <div class="menu-wrap">
+                        <ul role="tablist">
+                            <li role="none">
+                                <a href="#mGnb-anchor1" class="gnb-main-trigger active" role="tab" aria-selected="true" aria-controls="mGnb-anchor1" id="tab-0">게시판1</a>
+                            </li>
+                            <li role="none">
+                                <a href="#mGnb-anchor2" class="gnb-main-trigger" role="tab" aria-selected="false" aria-controls="mGnb-anchor2" id="tab-1">「점검-test 메뉴」</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="submenu-wrap">
+                        <div class="gnb-sub-list" id="mGnb-anchor1" role="tabpanel" aria-labelledby="tab-0">
+                            <h2 class="sub-title">게시판1</h2>
+                            <!-- 2차 + 3차(.cm-gnb-third): 파일 일괄 등록으로 sub01_01_01 깊이가 생긴다. 헤더 GNB(PC)는 3차가 있는 2차만 펼침 -->
+                            <ul>
+                                
+                                <li>
+                                    <a href="게시판-스킨-임시-게시판-public-board-BDc6fccb34d780427d860fc5562a57d1fa-9ebe80.html" class="gnb-sub-trigger">게시판1</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="gnb-sub-list" id="mGnb-anchor2" role="tabpanel" aria-labelledby="tab-1" hidden="">
+                            <h2 class="sub-title">「점검-test 메뉴」</h2>
+                            <!-- 2차 + 3차(.cm-gnb-third): 파일 일괄 등록으로 sub01_01_01 깊이가 생긴다. 헤더 GNB(PC)는 3차가 있는 2차만 펼침 -->
+                            <ul>
+                                <li>
+                                    <a href="#kit-missing" data-kit-href="/public/dev/sub02_01" class="gnb-sub-trigger">「점검-test 메뉴」2</a>
+                                    <ul class="cm-gnb-third">
+                                        <li>
+                                            <a href="#kit-missing" data-kit-href="/public/dev/sub02_01_01" class="gnb-sub-trigger cm-gnb-third-trigger">「점검-test 메뉴」3</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="krds-btn medium icon" id="close-nav">
+                <span class="sr-only">전체메뉴 닫기</span>
+                <i class="svg-icon ico-popup-close"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main id="container">
+    <div class="cm-page-top">
+    <div class="inner">
+        <div class="cm-page-top-util">
+            <nav class="krds-breadcrumb-wrap" aria-label="현재 경로">
+                <ol class="breadcrumb">
+                    <li class="home"><a href="../public/공개-화면-public-preview-74f074.html" class="txt">홈</a></li>
+                    
+                    
+                    
+                    <li><a href="게시판-스킨-임시-게시판-public-board-BD45fa2629b891447b94e2dd9b17896a0a-89caa1.html" class="txt" aria-current="page">게시판</a></li>
+                </ol>
+            </nav>
+            <div class="cm-btn-group">
+    <div class="krds-contextual-help bottom left cm-share">
+        <div class="tooltip-action">
+            <button type="button" class="krds-btn xlarge icon border tooltip-btn" aria-expanded="false">
+                <span class="sr-only">공유하기</span>
+                <i class="svg-icon ico-share"></i>
+            </button>
+            <div class="tooltip-popover" role="tooltip" style="width: 360px;">
+                <h2 class="tooltip-title">공유하기</h2>
+                <ul class="tooltip-contents cm-share-list">
+                    <li><a href="#" class="cm-share-btn" data-share="facebook" target="_blank" rel="noopener noreferrer" title="새 창 열림"><img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/sns/cm_share_facebook.svg" alt="페이스북에 공유하기"></a></li>
+                    <li><a href="#" class="cm-share-btn" data-share="x" target="_blank" rel="noopener noreferrer" title="새 창 열림"><img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/sns/cm_share_x.svg" alt="X(트위터)에 공유하기"></a></li>
+                    <li><a href="#" class="cm-share-btn" data-share="band" target="_blank" rel="noopener noreferrer" title="새 창 열림"><img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/sns/cm_share_band.svg" alt="네이버 밴드에 공유하기"></a></li>
+                    <li><a href="#" class="cm-share-btn" data-share="naver_blog" target="_blank" rel="noopener noreferrer" title="새 창 열림"><img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/sns/cm_share_naver_blog.svg" alt="네이버 블로그에 공유하기"></a></li>
+                    <li><button type="button" class="cm-share-btn" data-share="url"><img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/sns/cm_share_url.svg" alt="페이지 주소 복사하기"></button></li>
+                </ul>
+                <button type="button" class="krds-btn xsmall icon tooltip-close">
+                    <span class="sr-only">닫기</span>
+                    <i class="svg-icon ico-modal-close"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="krds-btn xlarge icon border" data-cm-print="">
+        <span class="sr-only">인쇄하기</span>
+        <i class="svg-icon ico-print"></i>
+    </button>
+</div>
+        </div>
+        <div class="cm-page-title">
+            <h1 class="h-tit">게시판</h1>
+            <p class="desc">사진과 그림으로 소식을 전해 드립니다.</p>
+        </div>
+    </div>
+</div>
+    <div class="inner cm-contents cm-gallery">
+        
+        <div class="cm-board" data-board-type="GALLERY">
+            <!-- 목록 상단 : 게시물 수 · 쪽 · 검색 -->
+            <div class="cm-board-top">
+                <div class="cm-board-count" aria-live="polite">
+                    <p class="total">총 <span class="num">3</span>개</p>
+                    <p class="page"><span class="sr-only">현재 페이지</span><span class="current">1</span> / <span class="sr-only">전체 페이지</span>1</p>
+                </div>
+                <form class="cm-board-search" role="search" action="게시판-스킨-임시-게시판-public-board-BD45fa2629b891447b94e2dd9b17896a0a-89caa1.html" method="get" data-board-search="">
+                    <div class="cm-select-sort">
+                        <label for="list_size">목록 표시 개수</label>
+                        <!-- 퍼블리싱처럼 [적용] 없이 — 고르면 이 폼(검색어 포함)을 1쪽으로 다시 부른다(아래 스크립트). 미리 알리는 글은 sr-only(WCAG 3.2.2) -->
+                        <select id="list_size" name="size" class="krds-form-select-sort medium" aria-describedby="list_size_hint" data-autosubmit="">
+                            <option value="15" selected="">15개</option>
+                            <option value="30">30개</option>
+                            <option value="50">50개</option>
+                        </select>
+                        <span class="sr-only" id="list_size_hint">고르면 목록을 그 개수로 다시 불러옵니다.</span>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-conts btn-ico-wrap">
+                            <label class="sr-only" for="search_keyword">게시판 내 검색어 입력</label>
+                            <input type="text" name="q" id="search_keyword" class="krds-input" placeholder="검색어를 입력해주세요." title="게시판 내 검색어 입력" value="" maxlength="100" style="">
+                            <button type="submit" class="krds-btn medium icon">
+                                <span class="sr-only">검색</span>
+                                <i class="svg-icon ico-sch"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+
+            
+
+                <!-- 갤러리(GALLERY) : 그림 카드 그리드. 표지 = COVER 사용처 그림 → 첫 그림 첨부 → 첫 PDF 첨부의 첫 쪽 → 없으면 빈 칸.
+                     카드 전체가 하나의 링크라 그림 alt 는 비우고(제목 글자가 링크 이름) 제목 · 날짜 · 조회를 안에 둔다. -->
+                
+                    <h2 class="sr-only">게시판 목록</h2>
+                    <ul class="cm-gallery-list">
+                        <li class="cm-gallery-item">
+                            <a href="게시판-스킨-임시-게시판-public-board-BD45fa2629b891447b94e2dd9b17896a0a-posts-BP-38d201.html">
+                                <span class="thumb">
+                                    <img src="../../../static/public/board/BD45fa2629b891447b94e2dd9b17896a0a/posts/BP796dcbd774a3447d84f320a8d5212b3a/cover/MDbe1d82018b064754aaca969d1185647c" alt="" loading="eager">
+                                    
+                                </span>
+                                <span class="info">
+                                    
+                                    <strong class="tit">학부모 간담회</strong>
+                                    <span class="meta">
+                                        <span class="date">2026.11.16</span>
+                                        <span class="views">조회 1</span>
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="cm-gallery-item">
+                            <a href="#kit-missing" data-kit-href="/public/board/BD45fa2629b891447b94e2dd9b17896a0a/posts/BP319520d9f04a44cb8dab90108c312888">
+                                <span class="thumb">
+                                    <img src="../../../static/public/board/BD45fa2629b891447b94e2dd9b17896a0a/posts/BP319520d9f04a44cb8dab90108c312888/cover/MDac0632c5223d4e7dbf669c23c8108856" alt="" loading="eager">
+                                    
+                                </span>
+                                <span class="info">
+                                    
+                                    <strong class="tit">교육 자료 전시회</strong>
+                                    <span class="meta">
+                                        <span class="date">2026.11.16</span>
+                                        <span class="views">조회 0</span>
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="cm-gallery-item">
+                            <a href="#kit-missing" data-kit-href="/public/board/BD45fa2629b891447b94e2dd9b17896a0a/posts/BPb3305e6620c24422b6af899bb8ba251d">
+                                <span class="thumb">
+                                    <img src="../../../static/public/board/BD45fa2629b891447b94e2dd9b17896a0a/posts/BPb3305e6620c24422b6af899bb8ba251d/cover/MD05a47776dcac4d0a89dcad1addba2f2e" alt="" loading="eager">
+                                    
+                                </span>
+                                <span class="info">
+                                    
+                                    <strong class="tit">겨울 연수 현장 사진</strong>
+                                    <span class="meta">
+                                        <span class="date">2026.11.16</span>
+                                        <span class="views">조회 0</span>
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                
+
+                <!-- 질문답변(QNA) : 목록형 행에 Q 배지(KRDS badge) · 작성자 · 날짜. 공지 행은 공지 그대로 -->
+                
+
+                <!-- 자주 묻는 질문(FAQ) : KRDS 아코디언(ui-script.js krds_accordion 이 열고 닫는다 — .btn-accordion / .accordion-collapse).
+                     aria-expanded · aria-controls · id 는 서버가 먼저 넣고, KRDS 가 초기화하면서 같은 뜻으로 다시 쓴다.
+                     여러 항목을 동시에 열 수 있게 data-type="multiOpen". -->
+                
+
+                <!-- 자료실(DATA) : 표지 카드형. COVER → 첫 그림 첨부 → 첫 PDF 첨부의 첫 쪽을 표지로, 없으면 기본 표지.
+                     게시판 내려받기 권한이 없으면 미리보기 · 내려받기 버튼은 비활성이고 안내 한 줄(attachmentNotice) -->
+                
+
+                <!-- 공지(NOTICE) · 일반(GENERAL) · 그 밖 : KRDS 사이트 새소식 목록 마크업, 공지 행 .is-notice -->
+                
+            
+
+            
+        </div>
+
+        <!-- 페이지네이션 : KRDS pagination -->
+        <!-- 1쪽뿐이면 감춘다(sub_0302-06 · 0303-05) -->
+        
+        <!-- 담당자 표시. 만족도 조사는 목록에 붙이지 않는다(게시글 상세에서만) -->
+        
+        <!-- [키트] 인라인 스크립트 뺌 -->
+    </div>
+</main>
+
+<footer id="krds-footer">
+    <div class="inner">
+        <div class="f-logo">
+            <img class="cm-logo-symbol" src="../../../static/public-ui/themes/krds-sedis/img/logo-symbol.svg" alt="" width="40" height="40">
+            <span class="cm-logo-name">개발용 사이트</span>
+        </div>
+        <div class="f-cnt">
+            <div class="f-info">
+                <p class="info-addr">(31470) 충청남도 아산시 배방읍 공원로 40</p>
+                <ul class="info-cs">
+                    <li><strong class="key-info">대표전화 <span>041-537-1500</span></strong></li>
+                    <li><strong class="key-info">팩스 <span>041-531-6412</span></strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="cm-wa-mark">
+            <img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/common/web_accessibility_mark.png" alt="과학기술정보통신부 웹 접근성 품질인증 마크">
+        </div>
+        <div class="f-btm">
+            <div class="f-btm-text">
+                <div class="f-menu">
+                    <a href="../public/공개-화면-public-terms-b9efc2.html">이용안내</a>
+                    <a href="https://www.nise.go.kr/sub/info.do?m=0803" target="_blank" rel="noopener noreferrer" title="새 창 열림">저작권정책</a>
+                    <a href="https://www.nise.go.kr/sub/info.do?m=0801" class="point" target="_blank" rel="noopener noreferrer" title="새 창 열림">개인정보처리방침</a>
+                </div>
+                <p class="f-copy">© 2027 NISE ALL RIGHTS RESERVED</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<button type="button" class="page-top-button krds-tooltip" data-tooltip="페이지 상단으로 이동" aria-labelledby="tooltip-popover-0c4tbsc5"><i class="svg-icon ico-go-top"></i></button><div class="krds-tooltip-popover" id="tooltip-popover-0c4tbsc5" aria-hidden="true">
+      <span class="sr-only"></span>
+      페이지 상단으로 이동
+    </div>
+
+</div>
+
+<div class="modal-wrap">
+    <section id="modal_adjust_display" class="krds-modal fade" aria-labelledby="tit_modal_adjust_display">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="tit_modal_adjust_display" class="modal-title">글자·화면 표시 설정</h2>
+                </div>
+                <div class="modal-conts">
+                    <div class="conts-area">
+                        <div class="adjust_display">
+                            <div class="fieldset adjust_scale">
+                                <div class="form-group scale-options">
+                                    <h3>글자·화면 표시 설정</h3>
+                                    <div class="form-conts">
+                                        <div class="krds-check-area chk-column">
+                                            <div class="krds-form-check">
+                                                <input type="radio" name="scale_level" id="scale_level_small" value="small" style="">
+                                                <label for="scale_level_small">작게</label>
+                                            </div>
+                                            <div class="krds-form-check">
+                                                <input type="radio" name="scale_level" id="scale_level_medium" value="medium" checked="" style="">
+                                                <label for="scale_level_medium">보통</label>
+                                            </div>
+                                            <div class="krds-form-check">
+                                                <input type="radio" name="scale_level" id="scale_level_large" value="large" style="">
+                                                <label for="scale_level_large">조금 크게</label>
+                                            </div>
+                                            <div class="krds-form-check">
+                                                <input type="radio" name="scale_level" id="scale_level_xlarge" value="xlarge" style="">
+                                                <label for="scale_level_xlarge">크게</label>
+                                            </div>
+                                            <div class="krds-form-check">
+                                                <input type="radio" name="scale_level" id="scale_level_xxlarge" value="xxlarge" style="">
+                                                <label for="scale_level_xxlarge">가장 크게</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fieldset">
+                                <div class="form-group view-mode-options">
+                                    <h3>화면 표시 모드</h3>
+                                    <div class="form-conts">
+                                        <div class="krds-check-area chk-column">
+                                            <div class="krds-form-check view-mode-light">
+                                                <input type="radio" name="view_mode" id="view_mode_light" value="light" checked="" style="">
+                                                <label for="view_mode_light">기본 (밝은 배경)</label>
+                                            </div>
+                                            <div class="krds-form-check view-mode-dark">
+                                                <input type="radio" name="view_mode" id="view_mode_dark" value="high-contrast" style="">
+                                                <label for="view_mode_dark">선명하게 (어두운 배경)</label>
+                                            </div>
+                                            <div class="krds-form-check view-mode-default">
+                                                <input type="radio" name="view_mode" id="view_mode_default" value="theme" style="">
+                                                <label for="view_mode_default">시스템 설정</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-btn btn-wrap">
+                    <button type="button" class="krds-btn medium tertiary close-modal" id="reset_display">초기화</button>
+                    <button type="button" class="krds-btn medium primary close-modal">설정</button>
+                </div>
+                <button type="button" class="krds-btn medium icon btn-close close-modal">
+                    <span class="sr-only">닫기</span>
+                    <i class="svg-icon ico-popup-close"></i>
+                </button>
+            </div>
+        </div>
+        <div class="modal-back" style="background-color: transparent;"></div>
+    </section>
+
+    <section id="modal_chart_zoom" class="krds-modal fade cm-chart-modal" aria-labelledby="tit_modal_chart_zoom">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="tit_modal_chart_zoom" class="modal-title">차트 확대</h2>
+                </div>
+                <div class="modal-conts">
+                    <div class="conts-area">
+                        <div class="cm-chart-zoom-font" role="group" aria-label="그래프 글자 크기">
+                            <button type="button" class="krds-btn small tertiary" data-chart-font="down">글자 작게</button>
+                            <span class="cm-chart-zoom-level" aria-live="polite">100%</span>
+                            <button type="button" class="krds-btn small tertiary" data-chart-font="up">글자 크게</button>
+                        </div>
+                        <div class="cm-chart-zoom-body"></div>
+                    </div>
+                </div>
+                <button type="button" class="krds-btn medium icon btn-close close-modal">
+                    <span class="sr-only">닫기</span>
+                    <i class="svg-icon ico-popup-close"></i>
+                </button>
+            </div>
+        </div>
+        <div class="modal-back"></div>
+    </section>
+
+    <section id="modal_sitemap" class="krds-modal fade cm-sitemap" aria-labelledby="tit_modal_sitemap">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="tit_modal_sitemap" class="modal-title sr-only">전체메뉴</h2>
+                </div>
+                <div class="modal-conts">
+                    <div class="conts-area cm-sitemap-inner">
+                        <p class="cm-sitemap-logo">
+                            <img class="cm-logo-symbol" src="../../../static/public-ui/themes/krds-sedis/img/logo-symbol.svg" alt="" width="56" height="56">
+                            <span class="cm-logo-name">개발용 사이트</span>
+                        </p>
+                        <nav class="cm-sitemap-menu" aria-label="전체메뉴">
+                            <div class="cm-sitemap-col">
+                                <h3 class="tit">게시판1</h3>
+                                <ul>
+                                    
+                                    <li><a href="게시판-스킨-임시-게시판-public-board-BDc6fccb34d780427d860fc5562a57d1fa-9ebe80.html">게시판1</a></li>
+                                </ul>
+                            </div>
+                            <div class="cm-sitemap-col">
+                                <h3 class="tit">「점검-test 메뉴」</h3>
+                                <ul>
+                                    <li>
+                                        <a href="#kit-missing" data-kit-href="/public/dev/sub02_01">「점검-test 메뉴」2</a>
+                                        <ul class="cm-sitemap-third">
+                                            <li>
+                                                <a href="#kit-missing" data-kit-href="/public/dev/sub02_01_01">「점검-test 메뉴」3</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </nav>
+                        <div class="cm-sitemap-foot">
+                            <div class="info">
+                                <ul class="links">
+                                    <li><a href="../public/공개-화면-public-terms-b9efc2.html" class="krds-btn medium text">이용안내 <i class="svg-icon ico-angle right"></i></a></li>
+                                    <li><a href="https://www.nise.go.kr/sub/info.do?m=0801" class="krds-btn medium text" target="_blank" rel="noopener noreferrer" title="새 창 열림">개인정보처리방침 <i class="svg-icon ico-go"></i></a></li>
+                                    <li><a href="https://www.mois.go.kr/frt/sub/popup/p_taegugki_banner/screen.do" class="krds-btn medium text" target="_blank" rel="noopener noreferrer" title="새 창 열림">국가상징 알아보기 <i class="svg-icon ico-go"></i></a></li>
+                                </ul>
+                                <ul class="addr">
+                                    <li>(31470) 충청남도 아산시 배방읍 공원로 40</li>
+                                    <li><strong>대표전화</strong> 041-537-1500</li>
+                                    <li><strong>팩스</strong> 041-531-6412</li>
+                                </ul>
+                            </div>
+                            <ul class="cm-sitemap-sns">
+                                <li><a href="https://www.youtube.com/channel/UCiYy7XRdi7tc36_iEyTC6cA" target="_blank" rel="noopener noreferrer" title="새 창 열림"><img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/sns/cm_sns_youtube.svg" alt="국립특수교육원 유튜브"></a></li>
+                                <li><a href="https://www.band.us/band/75866230/post" target="_blank" rel="noopener noreferrer" title="새 창 열림"><img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/sns/cm_share_band.svg" alt="국립특수교육원 네이버 밴드"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="krds-btn large icon btn-close close-modal">
+                    <span class="sr-only">전체메뉴 닫기</span>
+                    <i class="svg-icon ico-popup-close"></i>
+                </button>
+            </div>
+        </div>
+        <div class="modal-back"></div>
+    </section>
+</div>
+
+
+<!-- [키트] 스크립트 뺌: ../../../static/vendor/krds/js/plugin/swiper-bundle.min.js -->
+<!-- [키트] 스크립트 뺌: ../../../static/vendor/krds/js/component/ui-script.js -->
+<!-- [키트] 스크립트 뺌: ../../../static/public-ui/themes/krds-sedis/pub/_common/resources/js/krds-custom.js -->
+<!-- [키트] 스크립트 뺌: ../../../static/public-ui/themes/krds-sedis/pub/_common/resources/js/krds-base.js -->
+<!-- [키트] 스크립트 뺌: ../../../static/public-ui/themes/krds-sedis/theme.js -->
+<!-- [키트] 스크립트 뺌: ../../../static/public-ui/menu-popup.js -->
+<!-- 홈 숫자 카드 그래프: 콘텐츠 /home-stats 글자 → 퍼블리싱 SVG(main.js cmMainStat 보다 먼저 — home-stats.js 머리 주석) -->
+
+
+
+
+
+<script src="../../../static/_kit/kit.js"></script></body></html>

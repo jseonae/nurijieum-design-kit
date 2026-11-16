@@ -1,0 +1,10 @@
+Source: Apache ECharts 5.5.1
+Package: https://www.npmjs.com/package/echarts
+Project: https://github.com/apache/echarts
+Origin file: https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js
+License: Apache-2.0
+
+폐쇄망(오프라인) 운영 정책에 따라 외부 CDN을 직접 참조하지 않고 로컬에 vendoring 한다.
+원본 파일은 로컬 수정 없이 그대로 복사한다. KRDS vendoring(vendor/krds/KRDS-VENDOR.txt) 정책과 동일.
+
+사용처: 관리자 대시보드 차트(SVG 렌더러). 로드는 각 페이지 </body> 직전 defer.

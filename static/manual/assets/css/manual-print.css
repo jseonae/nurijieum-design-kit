@@ -1,0 +1,131 @@
+/* 누리지음 매뉴얼 공유 스타일 — 화면 + 인쇄(PDF). 외부 CDN 금지, 로컬 자산만.
+   3종 매뉴얼(CMS/AIR/이미지생성)이 공유한다. */
+
+@font-face {
+  font-family: 'PretendardGOV';
+  src: url('../fonts/PretendardGOV-Regular.subset.woff2') format('woff2');
+  font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: 'PretendardGOV';
+  src: url('../fonts/PretendardGOV-Medium.subset.woff2') format('woff2');
+  font-weight: 500; font-display: swap;
+}
+@font-face {
+  font-family: 'PretendardGOV';
+  src: url('../fonts/PretendardGOV-Bold.subset.woff2') format('woff2');
+  font-weight: 700; font-display: swap;
+}
+
+:root {
+  --nj-primary: #0b50d0;        /* 누리지음 블루 */
+  --nj-primary-strong: #083891; /* 네이비 */
+  --nj-ink: #1e2124;
+  --nj-muted: #58616a;
+  --nj-line: #cdd1d5;
+  --nj-line-soft: #e6e9ec;
+  --nj-bg-soft: #f4f7fb;
+  --nj-bg-tint: #ecf2fe;
+  --nj-ok: #267337; --nj-warn: #9e6a00; --nj-danger: #bd2c0f;
+  --nj-font: 'PretendardGOV', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body {
+  margin: 0; font-family: var(--nj-font); color: var(--nj-ink);
+  line-height: 1.7; background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── 레이아웃: 화면에서 좌측 TOC + 본문 ───────────────────────────── */
+.nj-doc { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+.nj-layout { display: grid; grid-template-columns: 248px minmax(0,1fr); gap: 40px; align-items: start; }
+.nj-toc {
+  position: sticky; top: 24px; align-self: start; font-size: .86rem;
+  border: 1px solid var(--nj-line); border-radius: 12px; padding: 18px 16px; background: #fff;
+  max-height: calc(100vh - 48px); overflow: auto;
+}
+.nj-toc h2 { font-size: .8rem; letter-spacing: .04em; color: var(--nj-muted); text-transform: uppercase; margin: 0 0 10px; }
+.nj-toc ol { list-style: none; margin: 0; padding: 0; }
+.nj-toc li { margin: 2px 0; }
+.nj-toc a { color: var(--nj-ink); text-decoration: none; display: block; padding: 5px 8px; border-radius: 7px; }
+.nj-toc a:hover { background: var(--nj-bg-tint); color: var(--nj-primary); }
+.nj-toc .lvl3 { padding-left: 14px; font-size: .82rem; color: var(--nj-muted); }
+
+/* ── 표지 ─────────────────────────────────────────────────────────── */
+.nj-cover {
+  border-radius: 16px; padding: 64px 56px; margin: 28px 0 8px; color: #fff;
+  background: linear-gradient(135deg, var(--nj-primary-strong), var(--nj-primary));
+}
+.nj-cover__mark { display: inline-flex; width: 56px; height: 56px; align-items: center; justify-content: center;
+  background: rgba(255,255,255,.16); border-radius: 14px; font-weight: 700; font-size: 1.3rem; margin-bottom: 22px; }
+.nj-cover h1 { font-size: 2.6rem; font-weight: 700; margin: 0 0 10px; letter-spacing: -.01em; }
+.nj-cover p { margin: 0; font-size: 1.05rem; opacity: .92; }
+.nj-cover .nj-cover__meta { margin-top: 28px; font-size: .9rem; opacity: .85; }
+
+/* ── 본문 타이포 ──────────────────────────────────────────────────── */
+.nj-main h2 { font-size: 1.7rem; font-weight: 700; margin: 2.4em 0 .6em; padding-bottom: .3em;
+  border-bottom: 2px solid var(--nj-primary); letter-spacing: -.01em; }
+.nj-main h3 { font-size: 1.25rem; font-weight: 700; margin: 1.8em 0 .5em; color: var(--nj-primary-strong); }
+.nj-main p { margin: .7em 0; }
+.nj-main ol, .nj-main ul { margin: .7em 0; padding-left: 1.4em; }
+.nj-main li { margin: .3em 0; }
+.nj-main code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .9em;
+  background: var(--nj-bg-soft); padding: .1em .4em; border-radius: 5px; }
+.nj-lead { font-size: 1.05rem; color: var(--nj-muted); }
+
+/* 코드 블록 */
+.nj-main pre { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .8rem;
+  background: #1e2430; color: #e6e9ec; padding: 14px 16px; border-radius: 10px; overflow-x: auto;
+  line-height: 1.55; margin: 1em 0; white-space: pre-wrap; word-break: break-word; }
+.nj-main pre code { background: none; padding: 0; color: inherit; font-size: 1em; }
+
+/* 표 */
+.nj-main table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: .92rem; }
+.nj-main th, .nj-main td { border: 1px solid var(--nj-line-soft); padding: 9px 12px; text-align: left; vertical-align: top; }
+.nj-main thead th { background: var(--nj-bg-soft); font-weight: 700; }
+
+/* 콜아웃 */
+.nj-callout { border-left: 4px solid var(--nj-primary); background: var(--nj-bg-tint);
+  padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 1.2em 0; }
+.nj-callout--warn { border-left-color: var(--nj-warn); background: #fff5e1; }
+.nj-callout--hold { border-left-color: var(--nj-muted); background: var(--nj-bg-soft); }
+.nj-callout strong { display: block; margin-bottom: 4px; }
+
+/* 그림 */
+.nj-fig { margin: 1.4em 0; }
+.nj-fig img { width: 100%; height: auto; display: block; border: 1px solid var(--nj-line); border-radius: 10px; }
+.nj-fig figcaption { margin-top: 8px; font-size: .85rem; color: var(--nj-muted); }
+.nj-fig figcaption b { color: var(--nj-ink); }
+
+/* 단계 배지 */
+.nj-steps { counter-reset: step; list-style: none; padding-left: 0; }
+.nj-steps > li { position: relative; padding-left: 36px; margin: .6em 0; }
+.nj-steps > li::before { counter-increment: step; content: counter(step);
+  position: absolute; left: 0; top: 1px; width: 24px; height: 24px; border-radius: 50%;
+  background: var(--nj-primary); color: #fff; font-size: .82rem; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center; }
+
+.nj-badge { display: inline-block; font-size: .72rem; font-weight: 700; padding: .1em .6em; border-radius: 999px;
+  background: var(--nj-bg-tint); color: var(--nj-primary); vertical-align: middle; }
+.nj-badge--hold { background: var(--nj-bg-soft); color: var(--nj-muted); }
+
+footer.nj-foot { margin: 48px 0 32px; padding-top: 16px; border-top: 1px solid var(--nj-line-soft);
+  font-size: .82rem; color: var(--nj-muted); }
+
+/* ── 인쇄(PDF) ────────────────────────────────────────────────────── */
+@page { size: A4; margin: 18mm 16mm 20mm; }
+@media print {
+  html { font-size: 11.5pt; }
+  .nj-doc { max-width: none; padding: 0; }
+  .nj-layout { display: block; }
+  .nj-toc, .nj-print-hide { display: none !important; }
+  .nj-cover { break-after: page; margin: 0; border-radius: 0;
+    min-height: 60vh; display: flex; flex-direction: column; justify-content: center; }
+  .nj-main h2 { break-before: page; }
+  .nj-main h2:first-of-type { break-before: avoid; }
+  .nj-main h3, .nj-fig, table, .nj-callout { break-inside: avoid; }
+  .nj-fig img { border-color: #bbb; }
+  a { color: inherit; text-decoration: none; }
+}

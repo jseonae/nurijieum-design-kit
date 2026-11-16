@@ -1,0 +1,40 @@
+/* 권한그룹관리 패널(토큰만 참조). 메뉴 · 게시판 · 권한 화면에 함께 실리므로 전부 .gpanel 아래로 묶는다.
+   모양은 admin-parts.css 의 .gp2 · .gpl · .gmem · .gplace · .kindpick(키트 「개선 4단계」). 여기는 그 밖의 칸과 콘솔에만 있는 칸. */
+
+/* ── 퍼블리싱 반영(2026-11) — 키트 group-panel* 마크업에 맞춘 보정 ───────────────────────────── */
+/* 폭은 키트 실측 64rem(키트 앞부분 .nv-panel.gpanel 이 .gp2 56rem 을 이긴다) */
+.nv-panel.gpanel.gp2 { width: min(64rem, 100vw); }
+.gpanel .nv-panel__body { gap: 1.6rem; }
+.gpanel .nv-panel__foot { flex-wrap: wrap; }
+/* 키트 기본 규칙 중 패널이 쓰는 것(메뉴 · 게시판 화면에는 identity.css 가 없다) */
+.gpanel .mgr__icon { flex: none; width: 3.2rem; height: 3.2rem; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--cms-surface-alt); color: var(--cms-muted); }
+.gpanel .mgr__icon .nv-icon { width: 1.6rem; height: 1.6rem; }
+.gpanel .gpl__row.is-hl { box-shadow: inset 3px 0 0 var(--cms-primary); }
+.gpanel .gpl__name b { color: var(--cms-text-strong); }
+.gpanel .gp2__subtitle { font-size: var(--cms-fs-base); }
+.gpanel .gp2__head .nv-btn { flex: none; }
+.gpanel .gplace__path a { color: inherit; text-decoration: none; }
+.gpanel .gplace__path a:hover b { color: var(--cms-primary-text); text-decoration: underline; }
+.gpanel .gplace__path a:focus-visible { box-shadow: var(--cms-focus); outline: 0; border-radius: .2rem; }
+.gpanel .gnote { margin: 0; color: var(--cms-subtle); font-size: var(--cms-fs-md); }
+.gpanel .tip-help { border-bottom: 1px dotted var(--cms-subtle); cursor: help; }
+.gpanel .nv-field { display: flex; flex-direction: column; gap: .6rem; }
+.gpanel .nv-field__error:empty { display: none; }
+.gpanel .pick__list[hidden] { display: none; }
+/* 명단 업로드(엑셀로 여러 명 넣기) — 콘솔에만 있는 칸 */
+.gpanel .gbulk { display: flex; flex-direction: column; gap: 1rem; padding: 1.2rem 1.4rem; background: var(--cms-surface); border: 1px solid var(--cms-border); border-radius: var(--cms-radius); }
+.gpanel .gbulk__head { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; }
+.gpanel .gbulk__head label { cursor: pointer; }
+.gpanel .gbulk__head label:focus-within { box-shadow: var(--cms-focus); }
+.gpanel .gbulk__scroll { max-height: 32rem; overflow: auto; }
+.gpanel .nv-text-err { color: var(--cms-err-fg); }
+.gpanel .gbulk__foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+/* 삭제 확인 창의 쓰는 곳 목록 */
+.gconfirm__list { margin: .8rem 0 0; padding-left: 2rem; max-height: 24rem; overflow-y: auto; list-style: disc; font-size: var(--cms-fs-md); }
+@media (max-width: 768px) {
+  .nv-panel.gpanel.gp2 { width: 100vw; border-radius: 0; padding: 1.6rem; }
+  .gpanel .gmem { flex-wrap: wrap; }
+  .gpanel .gmem .nv-select { order: 3; width: 100%; }
+}
+/* 고를 수 없는 그룹의 체크 칸(이미 있는 그룹은 체크된 채로 그대로) */
+.gpanel .gpl__chk input:disabled:not(:checked) { opacity: .45; cursor: not-allowed; }

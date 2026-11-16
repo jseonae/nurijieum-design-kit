@@ -1,0 +1,768 @@
+@charset "UTF-8";
+/* ==========================================================================
+   adm_1202 「사용자 화면 미리보기」·adm_1201 미리보기 전용 — 사용자 화면(/public/status)의 테마 CSS 를 콘솔 안 .sd-trd-user 영역에 옮긴 것.
+   콘솔(v2)은 사용자 테마를 싣지 않아 같은 조각(cms/trd/status :: content)이 다르게 보였다. 이 파일이 그 차이를 메운다.
+   원본: nurijieum/platform/cms-admin-bff/src/main/resources/static/public-ui/themes/krds-sedis/pub/_common/resources/css/krds-custom.css
+         이 화면이 쓰는 규칙(.cm-page-top · .cm-contents · .cm-edu-status · .cm-es-* · .cm-ts-tool* · .cm-ts-select · .cm-chart* ·
+         .cm-table-scroll* · .cm-stat-table · .cm-term-table · .cm-cross-tit · .cm-source)만 골라 선택자 앞에 .sd-trd-user 를 붙였다.
+         구획마다 원본 줄 번호를 적었다. 원본이 바뀌면 같은 구획을 다시 옮긴다(수정은 원본에서).
+   복사하지 않은 것: 고대비([data-krds-mode=high-contrast]) · 시스템 다크 블록 — 콘솔에는 화면 표시 모드가 없다.
+                    공유 팝업(.cm-share) · 공유/인쇄 버튼(.cm-btn-group) — 미리보기 머리에 두지 않는다. 차트 확대 모달은 아래에 따로 옮겼다.
+   변수 --cm-* 는 원본 :root(19~57행)에서 이 규칙이 쓰는 것만 .sd-trd-user 에 선언했다(KRDS --krds-* 는 콘솔 common.css 가 이미 낸다).
+   아이콘 url(../img/…) → /public-ui/themes/krds-sedis/pub/_common/resources/img/… (테마 공개 경로, 콘솔에서도 열린다).
+   루트 글자 크기는 콘솔·사용자 화면 모두 10px 이라 rem 값은 그대로다. 본문 기준(글자 17px)은 콘솔(14px)과 달라 .sd-trd-user 에 준다.
+   ========================================================================== */
+
+/* 콘솔 상단 고정 헤더(66px) 아래로 구획 제목이 가리지 않게 — 탭·보기 전환과 「이 페이지의 구성」이 #section_0n 으로 이동한다 */
+.sd-trd-user .cm-es-section { scroll-margin-top: 8rem; }
+
+/* ---- 본문 기준 · 변수 (사용자 화면 body 와 같은 값 — krds common.css body · 원본 :root 19~57행) ---- */
+.sd-trd-user {
+  font-family: PretendardGOV, "Pretendard GOV", sans-serif;
+  font-size: var(--krds-pc-font-size-body-medium);
+  line-height: var(--krds-line-height-base);
+  color: var(--krds-light-color-text-basic);
+  word-break: keep-all;
+  --cm-color-page-top-surface: var(--krds-light-color-surface-gray-subtler);
+  --cm-color-text-bolder: var(--krds-light-color-text-bolder);
+  --cm-color-text-basic: var(--krds-light-color-text-basic);
+  --cm-color-text-subtle: var(--krds-light-color-text-subtle);
+  --cm-color-text-primary: var(--krds-light-color-text-primary);
+  --cm-color-divider-light: var(--krds-light-color-divider-gray-light);
+  --cm-color-border-light: var(--krds-light-color-border-gray-light);
+  --cm-color-surface-white: var(--krds-light-color-background-white);
+  --cm-color-row-hover: var(--krds-light-color-surface-primary-subtler);
+  --cm-color-attach-border: var(--krds-light-color-border-secondary-light);
+  --cm-color-box-surface: var(--krds-light-color-surface-gray-subtler);
+  --cm-color-border-primary-light: var(--krds-light-color-border-primary-light);
+  --cm-color-border-primary: var(--krds-light-color-border-primary);
+  --cm-color-shadow-sticky: rgba(42, 49, 58, 0.2); /* Figma 고정 칸 그림자 (원본 55행) */
+  --cm-color-border-gray-dark: var(--krds-light-color-border-gray-dark);
+}
+
+/* ---- 콘솔 보정 (원본에 없음) ----
+   사용자 화면은 KRDS ui-script.js 가 값이 있는 선택 상자에 .completed 를 붙여 글자색을 subtle 로 만든다. 콘솔은 그 스크립트를 싣지 않고,
+   이 화면의 선택 상자는 늘 값이 있으므로(계·전체 배치 등) 같은 색을 CSS 로 준다. */
+.sd-trd-user .cm-ts-select .krds-form-select {
+  color: var(--krds-form-select--color-text-completed);
+}
+
+/* ---- 페이지 머리 (원본 527~547, 578~593행) ---- */
+/* [페이지 상단] 브레드크럼 · 공유/인쇄 · 페이지 제목 (사이드메뉴 없는 1단 레이아웃) */
+.sd-trd-user .cm-page-top {
+  padding: var(--krds-number-14) 0;
+  background-color: var(--cm-color-page-top-surface);
+}
+.sd-trd-user .cm-page-top .inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--krds-gap-3);
+}
+.sd-trd-user .cm-page-top .cm-page-top-util {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.sd-trd-user .cm-page-top .krds-breadcrumb-wrap {
+  --krds-breadcrumb--color-text: var(--cm-color-text-subtle);
+  margin-bottom: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.sd-trd-user .cm-page-top .cm-page-title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--krds-gap-1);
+}
+.sd-trd-user .cm-page-top .cm-page-title .h-tit {
+  font-size: var(--krds-pc-font-size-heading-xlarge);
+  font-weight: var(--krds-font-weight-bold);
+  line-height: 1.5;
+  color: var(--cm-color-text-bolder);
+}
+.sd-trd-user .cm-page-top .cm-page-title .desc {
+  font-size: var(--krds-pc-font-size-body-medium);
+  line-height: 1.5;
+  color: var(--cm-color-text-subtle);
+}
+
+/* ---- 본문 칸(.cm-contents) · 콘텐츠 내 탐색 위치 (원본 687~725행) ---- */
+/* [컨텐츠] 1단 레이아웃 본문 */
+.sd-trd-user .cm-contents {
+  display: flex;
+  flex-direction: column;
+  gap: var(--krds-gap-9);
+  padding-top: var(--krds-number-18);
+  padding-bottom: var(--krds-number-21);
+}
+/* [컨텐츠] 콘텐츠 내 탐색 : KRDS in_page_navigation 위치 변형 (Figma: 컨텐츠 > *-view > in_page_navigation)
+   - KRDS 기본은 화면 고정(top 25.6rem)이라 페이지 상단(.cm-page-top) 높이와 맞지 않고 공유하기 팝업과 겹침
+   - Figma대로 본문 첫 섹션과 같은 높이에서 시작(본문 오른쪽 60px), 스크롤하면 따라오다가 본문 끝에서 멈춤
+     · 바깥(.krds-in-page-navigation-type) : 본문 높이만큼의 세로 띠, 안쪽(-area) : 그 안에서 sticky
+     · sticky 위치는 KRDS 값 그대로 : 헤더가 보일 때 25.6rem, 헤더가 숨을 때(.scroll-down) 6rem
+   - 1680px 이하 : 탐색이 들어갈 자리만큼 본문 오른쪽을 비움 (KRDS in_page_navigation 과 같은 계산)
+   - 767px 이하 : KRDS 기본(본문 흐름 안에 배치) */
+.sd-trd-user .cm-contents {
+  position: relative;
+}
+@media (min-width: 768px) {
+  .sd-trd-user .cm-contents > .krds-in-page-navigation-type {
+    position: absolute;
+    top: var(--krds-number-18); /* .cm-contents 위 여백 = 첫 섹션 시작 */
+    bottom: var(--krds-number-21); /* .cm-contents 아래 여백과 같은 값 */
+    left: calc(100% - var(--krds-contents-padding-x) + 6rem); /* Figma : 본문 오른쪽 + 60px */
+    width: 16rem;
+  }
+  .sd-trd-user .cm-contents > .krds-in-page-navigation-type .krds-in-page-navigation-area {
+    position: sticky;
+    right: auto;
+  }
+}
+@media (min-width: 768px) and (max-width: 1680px) {
+  .sd-trd-user .cm-contents:has(> .krds-in-page-navigation-type) {
+    padding-right: calc(16rem + var(--krds-pc-gap-layout-contents-right) + var(--krds-contents-padding-x)); /* 16rem = KRDS 탐색 폭(--krds-in-page-navigation--width) */
+  }
+  .sd-trd-user .cm-contents > .krds-in-page-navigation-type {
+    left: auto;
+    right: var(--krds-contents-padding-x);
+  }
+}
+
+/* ---- 조회 도구 (원본 2107~2122, 2148~2212행) ---- */
+/* 조회 도구 (Figma fillterbox : surface-gray-subtler, 반경 8px) */
+.sd-trd-user .cm-ts-tool {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--krds-gap-3);
+  padding: var(--krds-padding-6);
+  border-radius: var(--krds-radius-medium3);
+  background-color: var(--cm-color-box-surface);
+}
+/* 도구 상자(회색 바탕) 안의 tertiary 버튼 : KRDS 는 바탕이 투명이라 회색이 비침 → 흰 바탕으로 (선명하게 모드에서는 그 모드의 바탕색)
+   KRDS 버튼 변수만 바꿔 hover · pressed · disabled 색은 KRDS 그대로 */
+.sd-trd-user .cm-ts-tool .krds-btn.tertiary {
+  --krds-button--color-tertiary-fill: var(--cm-color-surface-white);
+}
+
+.sd-trd-user .cm-ts-tool-filter,
+.sd-trd-user .cm-ts-tool-btns,
+.sd-trd-user .cm-ts-select {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.sd-trd-user .cm-ts-tool-filter {
+  max-width: 66rem; /* 칩이 많을 때(장애유형별 등) 이 폭 안에서 줄바꿈 */
+  gap: var(--krds-gap-3);
+}
+.sd-trd-user .cm-ts-select {
+  flex-wrap: nowrap;
+  gap: var(--krds-gap-2);
+}
+.sd-trd-user .cm-ts-select label {
+  flex: none;
+}
+.sd-trd-user .cm-ts-select label {
+  font-size: var(--krds-pc-font-size-label-small);
+  color: var(--cm-color-text-basic);
+}
+.sd-trd-user .cm-ts-select .krds-form-select {
+  flex: none;
+  width: 14rem; /* Figma selectbox 140px */
+}
+.sd-trd-user .cm-ts-tool-btns {
+  flex: 1 1 auto;
+  min-width: 40rem; /* Figma btnrap 최소 400px */
+  justify-content: flex-end;
+  /* 줄 사이 gap-3, 묶음 사이 gap-3 + gap-2 (묶음을 나누기 전 토글과 버튼 사이 간격 그대로) */
+  gap: var(--krds-gap-3) calc(var(--krds-gap-3) + var(--krds-gap-2));
+}
+/* 묶음 : 패턴 적용 · 레이블 보기 / 차트 확대 · 다운로드 · 인쇄. 좁은 화면에서 낱개가 아니라 묶음째로 줄바꿈 */
+.sd-trd-user .cm-ts-tool-group {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--krds-gap-3);
+}
+/* 다운로드 드롭다운 : KRDS 메뉴 최소 폭(13rem)에 17px 글자라 항목이 두세 줄로 꺾여 틀을 벗어남
+   → small 버튼과 같은 글자 크기(15px) + 한 줄 + 메뉴 폭은 내용에 맞춤 */
+.sd-trd-user .cm-ts-tool-btns .krds-drop-wrap .drop-menu {
+  width: max-content;
+  max-width: calc(100vw - var(--krds-padding-6) * 2);
+}
+.sd-trd-user .cm-ts-tool-btns .krds-drop-wrap .drop-menu .drop-list .item-link {
+  font-size: var(--krds-pc-font-size-body-small);
+  white-space: nowrap;
+}
+
+/* ---- 차트 상자 · 통계표 · 용어해설 · 출처 (원본 2213~2230, 2253~2294, 2336~2341행) ---- */
+/* 차트 상자 */
+.sd-trd-user .cm-chart-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--krds-gap-5);
+  padding: var(--krds-padding-10) var(--krds-number-16);
+  border: 0.1rem solid var(--cm-color-border-light);
+  border-radius: var(--krds-radius-medium3);
+  background-color: var(--cm-color-surface-white);
+}
+/* 그래프 자리 : 그래프(.cm-chart, 신규 컴포넌트 ext_chart)를 담음 */
+.sd-trd-user .cm-chart-area {
+  display: flex;
+  flex-direction: column;
+  gap: var(--krds-gap-5);
+  width: 100%;
+}
+
+/* 통계표 : KRDS 표(table data) + 칸 테두리·윗선 2px·첫 칸 그림자 (KRDS 코드 없음, Figma "KRDS Table scroll" 그대로) */
+.sd-trd-user .cm-stat-table {
+  overflow-x: auto;
+  border-top: 0.2rem solid var(--cm-color-border-gray-dark);
+}
+.sd-trd-user .cm-stat-table .tbl.data {
+  width: 100%;
+  min-width: 60rem;
+}
+.sd-trd-user .cm-stat-table .tbl.data thead th,
+.sd-trd-user .cm-stat-table .tbl.data tbody th,
+.sd-trd-user .cm-stat-table .tbl.data tbody td {
+  border: 0.1rem solid var(--cm-color-divider-light);
+  text-align: center;
+}
+.sd-trd-user .cm-stat-table .tbl.data thead tr th {
+  border-color: var(--cm-color-attach-border);
+}
+.sd-trd-user .cm-stat-table .tbl.data thead tr > :first-child,
+.sd-trd-user .cm-stat-table .tbl.data tbody tr > :first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  border-left: 0;
+  border-right-width: 0.2rem;
+  box-shadow: 0.2rem 0 0.6rem 0 var(--cm-color-shadow-sticky);
+}
+.sd-trd-user .cm-stat-table .tbl.data thead tr > :last-child,
+.sd-trd-user .cm-stat-table .tbl.data tbody tr > :last-child {
+  border-right: 0;
+}
+/* 용어해설 : KRDS 표(table data) + 윗선 (Figma) */
+.sd-trd-user .cm-term-table {
+  border-top: 0.1rem solid var(--cm-color-border-gray-dark);
+}
+.sd-trd-user .cm-term-table .tbl.data thead th:first-child,
+.sd-trd-user .cm-term-table .tbl.data tbody th {
+  text-align: center;
+}
+.sd-trd-user .cm-term-table .cm-term-sub {
+  margin-top: 0;
+}
+
+.sd-trd-user .cm-source {
+  padding-top: var(--krds-padding-5);
+  font-size: var(--krds-pc-font-size-body-medium);
+  line-height: 1.5;
+  color: var(--cm-color-text-basic);
+}
+
+/* ---- 좁은 화면(조회 도구 · 차트 상자) (원본 2342~2371행) ---- */
+@media (max-width: 1023px) {
+  .sd-trd-user .cm-ts-tool-btns {
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 767px) {
+  .sd-trd-user .cm-chart-box {
+    padding: var(--krds-padding-6);
+  }
+  /* 좁은 화면 : 조회 도구가 화면 밖으로 넘치지 않게 줄바꿈 */
+  .sd-trd-user .cm-ts-tool-filter {
+    flex: 1 1 100%;
+    min-width: 0;
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+  .sd-trd-user .cm-ts-tool-btns {
+    min-width: 0;
+  }
+}
+
+/* ---- 소제목 (원본 2629~2634행) ---- */
+.sd-trd-user .cm-cross-tit {
+  font-size: var(--krds-pc-font-size-heading-large);
+  font-weight: var(--krds-font-weight-bold);
+  line-height: 1.5;
+  color: var(--cm-color-text-bolder);
+}
+
+/* ---- 특수교육 현황 (.cm-es-*) (원본 3322~3351, 3362~3500행) ---- */
+.sd-trd-user .cm-edu-status {
+  gap: var(--krds-number-16);
+}
+.sd-trd-user .cm-es-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--krds-gap-6);
+}
+.sd-trd-user .cm-es-section-top .desc {
+  margin-top: var(--krds-gap-1);
+  font-size: var(--krds-pc-font-size-body-medium);
+  color: var(--cm-color-text-subtle);
+}
+/* 요약 카드 (Figma: 3열 · 간격 18px · 반경 10px) */
+.sd-trd-user .cm-es-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+}
+.sd-trd-user .cm-es-summary > li {
+  display: flex;
+  flex-direction: column;
+  padding: var(--krds-padding-8) var(--krds-padding-8) var(--krds-padding-9);
+  border: 0.1rem solid var(--cm-color-border-primary-light);
+  border-radius: 1rem; /* Figma radius/large1 10px (KRDS 반경 토큰에 10px 없음) */
+  background-color: var(--cm-color-surface-white);
+  line-height: 1.5;
+  color: var(--cm-color-text-bolder);
+}
+/* 선명하게(어두운 배경) 모드 : 조사 변천사 카드(.cm-survey-card)와 같은 면 · 테두리 색으로, 검은 본문 배경에서 상자가 보이게 */
+
+.sd-trd-user .cm-es-summary .tit {
+  font-size: var(--krds-pc-font-size-body-medium);
+}
+.sd-trd-user .cm-es-summary .val {
+  margin-top: var(--krds-gap-2);
+  font-size: var(--krds-pc-font-size-heading-medium);
+  font-weight: var(--krds-font-weight-bold);
+  color: var(--cm-color-text-primary);
+}
+.sd-trd-user .cm-es-summary .desc {
+  margin-top: var(--krds-gap-4);
+  font-size: var(--krds-pc-font-size-body-small);
+}
+.sd-trd-user .cm-es-summary .desc strong {
+  font-weight: var(--krds-font-weight-bold);
+}
+.sd-trd-user .cm-es-foot {
+  margin-top: calc(var(--krds-gap-3) - var(--krds-gap-6));
+  font-size: var(--krds-pc-font-size-body-xsmall);
+  color: var(--cm-color-text-subtle);
+}
+/* 배치 유형 구성비 상자 */
+.sd-trd-user .cm-es-ratio {
+  margin-top: calc(var(--krds-gap-7) - var(--krds-gap-6));
+  overflow: hidden;
+  border: 0.1rem solid var(--cm-color-border-light);
+  border-radius: var(--krds-radius-medium3);
+}
+.sd-trd-user .cm-es-ratio .head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--krds-gap-4);
+  padding: var(--krds-padding-8);
+  background-color: var(--cm-color-surface-white);
+}
+.sd-trd-user .cm-es-ratio .head .tit {
+  font-size: var(--krds-pc-font-size-heading-medium);
+  font-weight: var(--krds-font-weight-bold);
+  line-height: 1.5;
+  color: var(--cm-color-text-bolder);
+}
+.sd-trd-user .cm-es-ratio .head .desc {
+  font-size: var(--krds-pc-font-size-body-small);
+  color: var(--cm-color-text-subtle);
+}
+.sd-trd-user .cm-es-ratio .head .btns {
+  display: flex;
+  align-items: center;
+  gap: var(--krds-gap-3);
+}
+.sd-trd-user .cm-es-ratio .body {
+  padding: var(--krds-padding-8);
+  background-color: var(--cm-color-box-surface);
+}
+.sd-trd-user .cm-es-ratio .body .cm-chart-area {
+  align-items: center;
+  padding: var(--krds-padding-9);
+  border-radius: var(--krds-radius-small3);
+  background-color: var(--cm-color-surface-white);
+}
+/* 학생 수 · 기관 수 탭 */
+.sd-trd-user .cm-es-tab {
+  gap: var(--krds-gap-9);
+}
+.sd-trd-user .cm-es-tab > .tab-conts-wrap > .tab-conts {
+  margin-top: 0;
+}
+.sd-trd-user .cm-es-tab > .tab-conts-wrap > .tab-conts.active {
+  gap: var(--krds-gap-6);
+}
+.sd-trd-user .cm-es-result {
+  display: flex;
+  flex-direction: column;
+  gap: var(--krds-gap-6);
+}
+.sd-trd-user .cm-es-result[hidden],
+.sd-trd-user .cm-es-sub[hidden] {
+  display: none;
+}
+.sd-trd-user .cm-es-sub .krds-form-select {
+  width: auto;
+  min-width: 10rem;
+}
+.sd-trd-user .cm-es-chart {
+  align-items: stretch;
+  padding: var(--krds-padding-10) var(--krds-number-14);
+}
+/* 계(막대 + 꺾은선, combo) 그래프는 좌우 여백을 줄여 넓게 : 막대 값 · 증가율 레이블이 들어갈 자리 (767px 이하는 아래 모바일 여백 그대로) */
+@media (min-width: 768px) {
+  .sd-trd-user .cm-es-chart:has([data-cm-chart="combo"]) {
+    padding: var(--krds-padding-10) var(--krds-number-8);
+  }
+  /* 그 상자의 안내 문구는 좌우를 더 들여 다른 그래프 상자의 안내 문구와 비슷한 자리에서 시작 (기관 수 계) */
+  .sd-trd-user .cm-es-chart:has([data-cm-chart="combo"]) > .cm-es-desc {
+    padding: 0 var(--krds-padding-7);
+  }
+}
+.sd-trd-user .cm-es-desc {
+  font-size: var(--krds-pc-font-size-body-small);
+  line-height: 1.5;
+  color: var(--cm-color-text-subtle);
+}
+.sd-trd-user .cm-es-tit {
+  margin-top: var(--krds-gap-6);
+  font-size: var(--krds-pc-font-size-heading-medium);
+  font-weight: var(--krds-font-weight-bold);
+  color: var(--cm-color-text-bolder);
+}
+.sd-trd-user .cm-es-notes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--krds-gap-1);
+  font-size: var(--krds-pc-font-size-body-medium);
+  line-height: 1.5;
+  color: var(--cm-color-text-basic);
+}
+.sd-trd-user .cm-es-notes strong {
+  font-weight: var(--krds-font-weight-bold);
+}
+.sd-trd-user .cm-es-notes .cm-es-source {
+  padding-top: 0;
+}
+/* 표 아래 ※ 주석 (기관 수 계 : 연도별 공표 계 산식 안내) */
+.sd-trd-user .cm-es-notes .cm-es-marks {
+  font-size: var(--krds-pc-font-size-body-small);
+  color: var(--cm-color-text-subtle);
+}
+/* 통계표 : 열 110px (Figma), 첫 칸 너비는 --cm-first-col */
+.sd-trd-user .cm-es-table .tbl.data {
+  table-layout: fixed;
+  width: calc(var(--cm-first-col, 6.5rem) + 19 * 11rem);
+  min-width: 0;
+}
+.sd-trd-user .cm-es-table .tbl.data thead tr > :first-child,
+.sd-trd-user .cm-es-table .tbl.data tbody tr > :first-child {
+  width: var(--cm-first-col, 6.5rem);
+}
+
+/* ---- 가로 스크롤 표 (원본 3501~3586행) ---- */
+/* [표] 가로 스크롤 표 (신규 컴포넌트 _common/html/code/ext_table_scroll.html) : 오른쪽 흰 그라데이션 · 손가락 그림 · 이전/다음 (Figma 그대로) */
+.sd-trd-user .cm-table-scroll {
+  position: relative;
+}
+.sd-trd-user .cm-table-scroll .krds-table-wrap {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.sd-trd-user .cm-table-scroll .krds-table-wrap:focus-visible {
+  outline: 0.2rem solid var(--krds-light-color-border-inverse);
+  box-shadow: var(--krds-box-shadow-outline);
+}
+.sd-trd-user .cm-table-scroll::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 5.3rem; /* 아래 이동 버튼 줄 높이 */
+  width: 8.6rem; /* Figma scrollBg 86px */
+  background: linear-gradient(to right, transparent, var(--cm-color-surface-white));
+  pointer-events: none;
+}
+.sd-trd-user .cm-table-scroll.is-end::after,
+.sd-trd-user .cm-table-scroll.no-scroll::after {
+  display: none;
+}
+.sd-trd-user .cm-table-scroll-hint {
+  position: absolute;
+  top: 1.5rem;
+  right: 0;
+  width: 8.6rem;
+  height: 6.5rem;
+  background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTEuMDAwNyIgaGVpZ2h0PSI3MyIgdmlld0JveD0iMCAwIDkxLjAwMDcgNzMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSJzY3JvbGwtaW1nIj4KPGcgaWQ9IkVsbGlwc2UgMiIgZmlsdGVyPSJ1cmwoI2ZpbHRlcjBfZF8wXzUzNjApIj4KPGVsbGlwc2UgY3g9IjUzLjc4NTMiIGN5PSIzNS41IiByeD0iMzIuMjE1NCIgcnk9IjMyLjUiIGZpbGw9IndoaXRlIi8+CjwvZz4KPGcgaWQ9Ikdyb3VwIDM0Njk5Ij4KPGcgaWQ9Ikdyb3VwIDM0Njk4Ij4KPHBhdGggaWQ9IlZlY3RvciIgZD0iTTAgMzUuNTMwMUMwLjA4NjgyNTMgMzUuMTU4OCA2LjY0Njg5IDI4LjU4MTMgNy40NjI4NiAyNy43MjE2QzguNDQ4NTQgMjguNjkzNCA5LjQyNTMgMjkuNjc0NCAxMC4zOTMyIDMwLjY2NDdDOS41MDEzNCAzMS41NTY2IDguNjE5NjQgMzIuNDU5MSA3Ljc0ODI1IDMzLjM3MjFMMjEuMjE2MiAzMy4zNjU1TDIxLjIxNTYgMzUuNTg4MUwyMS4yMjk0IDM3LjU0TDcuNzc0NjQgMzcuNTM2NkM4LjU4ODg0IDM4LjQ0MTMgOS41MzIxNCAzOS4zNTI0IDEwLjM5NDkgNDAuMjE3OEw3LjQ4MzU2IDQzLjE3NTRDNS4wODMzNSA0MC42Mjk4IDIuNDUyNTkgMzguMDQ2OCAwIDM1LjUzMDFaIiBmaWxsPSIjMjU2RUY0Ii8+CjxwYXRoIGlkPSJWZWN0b3JfMiIgZD0iTTI1LjQyNSAzNy42MDM2TDI1LjQzNTUgMzMuNDcxNEwyOS40NTUxIDMzLjQ2ODhMMjkuNDYyOSAzNy41OTg5TDI1LjQyNSAzNy42MDM2WiIgZmlsbD0iIzI1NkVGNCIvPgo8L2c+CjxnIGlkPSJHcm91cCAzNDY5NyI+CjxwYXRoIGlkPSJWZWN0b3JfMyIgZD0iTTU3LjIyODYgMzYuODE1NUM1Ny4xOTA4IDM1LjUyNDQgNTcuMjEwOCAzNC4xMjMxIDU3LjIwNjkgMzIuODIzNUw3MC42NiAzMi44MTI2TDY4LjAzOTQgMzAuMTIzNkM2OS4wMDU4IDI5LjE2MDcgNjkuOTczNyAyOC4xNDg1IDcwLjkzMDUgMjcuMTcxM0w3Ny42Mjg1IDM0LjAwOTFMNzguNTM0NyAzNC44Nzg0Qzc2LjA2OTUgMzcuMjYzMyA3My4zMTkzIDQwLjE2NzIgNzAuOTM4NCA0Mi42NDk5TDY4LjAzOTMgMzkuNjgyMkM2OC45MzMzIDM4Ljc4NTcgNjkuODA5NSAzNy45MTc2IDcwLjY1OCAzNi45NzQ1TDYyLjAxOTEgMzYuOTgyOEM2MC41NzcgMzYuOTg0MyA1OC43MzI1IDM3LjAzNjcgNTcuMzI2OCAzNi45Njc1TDU3LjIyODYgMzYuODE1NVoiIGZpbGw9IiMyNTZFRjQiLz4KPHBhdGggaWQ9IlZlY3Rvcl80IiBkPSJNNDkuMTU4OSAzNi44NTMyTDQ5LjE2NDUgMzIuNzQyMkM1MC41MDg1IDMyLjczNTMgNTEuODUyNCAzMi43Mzc1IDUzLjE5NjQgMzIuNzQ4N0M1My4xODE2IDM0LjEyMTQgNTMuMTg2NCAzNS40OTQyIDUzLjIxMDggMzYuODY2OEw0OS4xNTg5IDM2Ljg1MzJaIiBmaWxsPSIjMjU2RUY0Ii8+CjwvZz4KPC9nPgo8L2c+CjxkZWZzPgo8ZmlsdGVyIGlkPSJmaWx0ZXIwX2RfMF81MzYwIiB4PSIxOC41Njk5IiB5PSIwIiB3aWR0aD0iNzIuNDMwOCIgaGVpZ2h0PSI3MyIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9InNSR0IiPgo8ZmVGbG9vZCBmbG9vZC1vcGFjaXR5PSIwIiByZXN1bHQ9IkJhY2tncm91bmRJbWFnZUZpeCIvPgo8ZmVDb2xvck1hdHJpeCBpbj0iU291cmNlQWxwaGEiIHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAxMjcgMCIgcmVzdWx0PSJoYXJkQWxwaGEiLz4KPGZlT2Zmc2V0IGR4PSIxIiBkeT0iMSIvPgo8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIyIi8+CjxmZUNvbXBvc2l0ZSBpbjI9ImhhcmRBbHBoYSIgb3BlcmF0b3I9Im91dCIvPgo8ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMC4yNSAwIi8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0iZWZmZWN0MV9kcm9wU2hhZG93XzBfNTM2MCIvPgo8ZmVCbGVuZCBtb2RlPSJub3JtYWwiIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9ImVmZmVjdDFfZHJvcFNoYWRvd18wXzUzNjAiIHJlc3VsdD0ic2hhcGUiLz4KPC9maWx0ZXI+Cgo8L2RlZnM+Cjwvc3ZnPgo=") no-repeat center / contain;
+  pointer-events: none;
+}
+/* 손 그림만 좌우로 살짝 움직여 "옆으로 밀 수 있음"을 알림 (참고 : nise2026 프로토타입의 표 밀기 안내, 1.5초 주기 ±3px)
+   - 바탕(원 · 화살표)은 위 배경 이미지, 손은 따로 겹쳐서 움직임
+   - 동작 줄이기 설정이면 움직이지 않음. 표를 한 번 옮기면 안내 그림 전체가 사라지므로 계속 움직이지 않음 */
+.sd-trd-user .cm-table-scroll-hint::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTEuMDAwNyIgaGVpZ2h0PSI3MyIgdmlld0JveD0iMCAwIDkxLjAwMDcgNzMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSImIzIzNjsmIzEzNDsmIzE0NDsiIGNsaXAtcGF0aD0idXJsKCNjbGlwMF8wXzUzNjApIj4KPHBhdGggaWQ9IlZlY3Rvcl81IiBkPSJNMjUuNjY4IDEzLjU2NDNDMjUuMzAzNCAxMy40MzY3IDI0LjY0MTkgMTMuMzAzOSAyNC4yNjAyIDEzLjM2MjlDMjIuNTI4NCAxMy41NTQyIDIwLjkwNTYgMTQuNzg5MyAyMC42MzUzIDE2LjYyNDVDMjAuNTMyNSAxNy4zMjI1IDIwLjU1MzIgMTguMDMwNiAyMC41NTI5IDE4LjczNUwyMC41NTI0IDIxLjQ4MjNMMjAuNTYyNCAzMC45NDE0QzE4LjI2MTcgMzEuMjA1NyAxNi45MTI2IDMxLjY1MTUgMTUuMzQ0NyAzMy41NDUxQzEzLjUyODggMzUuNzM4MyAxMy45ODE0IDM4LjQwMDkgMTMuOTQxIDQxLjA1MjVMMTMuOTQwOCA0MS4wNjA3QzEzLjkyMSA0Mi4zNTY3IDEzLjg5OTYgNDMuNzU4MSAxMy45NTg1IDQ1LjAyODlDMTUuMTE3OCA0Ni40NzUzIDE2LjI2MzIgNDcuOTMzMyAxNy4zOTQ2IDQ5LjQwMjdDMTcuOTg1MSA1MC4xNjM3IDE4LjYzOTEgNTAuOTU5IDE5LjE5NzUgNTEuNzM0M0MxOS4yMDA4IDUyLjQzNTIgMTkuMTc5MiA1My4yNjI0IDE5LjIxNzUgNTMuOTQ3N0wzOC40Njc5IDUzLjk0MDlMMzkuMDQxNiA1My45NDQ1QzM5LjAzMjUgNTMuMjA3NCAzOS4wMzMxIDUyLjQ3MDQgMzkuMDQzMSA1MS43MzM1QzM5Ljc3MjMgNTAuNjcwOCA0Mi4zOTI0IDQ3LjI4NjYgNDMuMDEwMiA0Ni4yMTQ5QzQzLjEwNDYgNDYuMDUxMSA0My4wNiA0Mi4yNjk1IDQzLjA2IDQxLjcxMDFMNDMuMDU5OCAzMS4yNTk0QzQyLjI4ODcgMzEuMTUwOCA0MS4wNjcgMzAuNzAzIDQwLjI2NCAzMC40OTQ4QzM5LjgwMDQgMzAuMzc0NSAzNi4zMzI0IDI5LjQzMTkgMzUuOTM0NiAyOS4yNzlDMzUuNDIxNCAyOS4xNjYgMzEuMjk1NyAyOC4xMDQ1IDMwLjg0NDQgMjcuOUMzMC41NDQ4IDI3LjgxNjMgMjguNjk0MSAyNy4zNjg0IDI4LjUyNjMgMjcuMjExOUMyOC40MTUxIDI3LjEwODIgMjguNDQzIDI1Ljg0NDIgMjguNDQzNSAyNS41NTE4TDI4LjQ1MjIgMjAuNDIyVjE4LjQzOTlDMjguNDUwOCAxNi44OTggMjguMzk1NCAxNS42NzM2IDI3LjIxNzMgMTQuNTI1NkMyNi43NzIzIDE0LjA5NzYgMjYuMjQ0NSAxMy43NzAyIDI1LjY2OCAxMy41NjQzWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggaWQ9IlZlY3Rvcl82IiBkPSJNMjQuMjU5OSAxMy4zNjI3QzI0LjY0MTUgMTMuMzAzNyAyNS4zMDMxIDEzLjQzNjUgMjUuNjY3NyAxMy41NjQxQzI2LjI0NDIgMTMuNzcgMjYuNzcyIDE0LjA5NzUgMjcuMjE3IDE0LjUyNTRDMjguMzk1IDE1LjY3MzQgMjguNDUwNCAxNi44OTc4IDI4LjQ1MTkgMTguNDM5N1YyMC40MjE5TDI4LjQ0MzIgMjUuNTUxNkMyOC40NDI3IDI1Ljg0NCAyOC40MTQ3IDI3LjEwOCAyOC41MjYgMjcuMjExN0MyOC42OTM3IDI3LjM2ODIgMzAuNTQ0NSAyNy44MTYxIDMwLjg0NDEgMjcuODk5OEMzMC42NzIgMjguMjk4NiAzMC4yNDE2IDI5Ljk1MDcgMzAuMDkzNiAzMC40NjNDMjkuOTc0NyAzMC40MjUxIDI5Ljg0OSAzMC4zOTMyIDI5LjcyNzUgMzAuMzYzNEMyOC40Mjc5IDMwLjA0NTYgMjcuMTMwNSAyOS41ODc1IDI1LjgyNDUgMjkuMzAwN0wyNS44MjQzIDIwLjkwMTRMMjUuODI3NCAxOC41MDVDMjUuODI4NiAxOC4yMjA3IDI1Ljg0ODQgMTcuNDkzMyAyNS44MTY0IDE3LjI1NTJDMjUuNzgxNSAxNi45ODAxIDI1LjY2MTUgMTYuNzIzNyAyNS40NzQxIDE2LjUyMzRDMjUuMjE2NCAxNi4yNTE5IDI0Ljg2NDcgMTYuMDk1NCAyNC40OTUxIDE2LjA4NzhDMjQuMTQxNCAxNi4wODE3IDIzLjc5OTcgMTYuMjE5MiAyMy41NDQ3IDE2LjQ3MDRDMjMuMTg2MSAxNi44MzA0IDIzLjEzNzMgMTcuMzQ5NiAyMy4xMzI0IDE3LjgzODlDMjMuMTI0NCAxOC42Mzc0IDIzLjEzMDkgMTkuNDM3NSAyMy4xMzE3IDIwLjIzNjJMMjMuMTM1MiAyNS41ODAzTDIzLjEzMTUgNDMuMTA3NEMyMi4yODU0IDQzLjA5MTEgMjEuNDA1NyA0My4xMDQ3IDIwLjU1NzIgNDMuMTA2MUMyMC41MjM0IDM5Ljk3MDEgMjAuNTU0IDM2Ljc3NTkgMjAuNTUzNyAzMy42MzUyQzE5Ljk4NDggMzMuNjU1NyAxOS41NjQ4IDMzLjc2OTIgMTkuMDMxOSAzMy45NTQ3QzE4LjUyNTkgMzQuMTQ3OSAxOC4xMDc3IDM0LjQ2NDcgMTcuNzIwNSAzNC44NDM1QzE2LjI4NSAzNi4yNDgxIDE2LjUxNTYgMzguMjYzOSAxNi41MTU1IDQwLjEyMDVMMTYuNTE0OSA0NC4wMDAyQzE2Ljg0OTcgNDQuMzcyIDE3LjM2NTggNDUuMDc1OCAxNy42OTM0IDQ1LjQ5MzhMMjAuMjU0NiA0OC43Njg2QzIwLjczNDIgNDkuMzg3MSAyMS4zMzAyIDUwLjIwNjggMjEuODM4MyA1MC43ODA0TDIxLjg0MzQgNTMuOTQ2MkMyMC45NzkzIDUzLjkzMjYgMjAuMDgzNyA1My45NDYyIDE5LjIxNzIgNTMuOTQ3NkMxOS4xNzg4IDUzLjI2MjIgMTkuMjAwNCA1Mi40MzUxIDE5LjE5NzIgNTEuNzM0MUMxOC42Mzg3IDUwLjk1ODggMTcuOTg0OCA1MC4xNjM1IDE3LjM5NDMgNDkuNDAyNUMxNi4yNjI5IDQ3LjkzMzEgMTUuMTE3NSA0Ni40NzUxIDEzLjk1ODIgNDUuMDI4N0MxMy44OTkyIDQzLjc1NTIgMTMuOTIwOCA0Mi4zNTA1IDEzLjk0MDYgNDEuMDUyM0MxMy45ODExIDM4LjQwMDcgMTMuNTI4NSAzNS43MzgxIDE1LjM0NDQgMzMuNTQ0OUMxNi45MTIzIDMxLjY1MTMgMTguMjYxNCAzMS4yMDU1IDIwLjU2MjEgMzAuOTQxMkwyMC41NTIxIDIxLjQ4MjFMMjAuNTUyNiAxOC43MzQ4QzIwLjU1MjkgMTguMDMwNCAyMC41MzIyIDE3LjMyMjMgMjAuNjM1IDE2LjYyNDNDMjAuOTA1MyAxNC43ODkyIDIyLjUyODEgMTMuNTU0IDI0LjI1OTkgMTMuMzYyN1oiIGZpbGw9IiMyNTZFRjQiLz4KPHBhdGggaWQ9IlZlY3Rvcl83IiBkPSJNMzguNTA5IDI5Ljk5NThDMzguOTA2OCAzMC4xNDg3IDM5LjgwMDEgMzAuMzc0MyA0MC4yNjM3IDMwLjQ5NDZDNDEuMDY2NyAzMC43MDI5IDQyLjI4ODQgMzEuMTUwNiA0My4wNTk1IDMxLjI1OTJMNDMuMDU5NiA0MS43MDk5QzQzLjA1OTcgNDIuMjY5MyA0My4xMDQyIDQ2LjA1MSA0My4wMDk4IDQ2LjIxNDdDNDIuMzkyMSA0Ny4yODY0IDM5Ljc3MiA1MC42NzA3IDM5LjA0MjggNTEuNzMzM0MzOS4wMzI3IDUyLjQ3MDIgMzkuMDMyMiA1My4yMDcyIDM5LjA0MTIgNTMuOTQ0NEwzOC40Njc2IDUzLjk0MDdMMzYuNDMzNCA1My45NDQ0TDM2LjQzNjQgNTAuODE5NEMzNy4yOTMyIDQ5LjQ4MTggMzguNDQ0MiA0OC4wNjM4IDM5LjM4ODcgNDYuNzY2N0MzOS43MDI5IDQ2LjMzNTQgNDAuMTI5MyA0NS44NzY3IDQwLjM1NDkgNDUuMzkzM0M0MC40NjM5IDQ1LjE1OTUgNDAuMzk5OSAzNC41Nzc2IDQwLjQxMDIgMzMuMzEwMUMzOS41OTg4IDMzLjE5NiAzOC43NTk5IDMyLjc3NjQgMzcuODM4MSAzMi42NTg2TDM4LjUwOSAyOS45OTU4WiIgZmlsbD0iIzI1NkVGNCIvPgo8cGF0aCBpZD0iVmVjdG9yXzgiIGQ9Ik0zMy40NTMzIDI4LjU3NjlDMzMuOTA0NiAyOC43ODE1IDM1LjQyMTEgMjkuMTY1OSAzNS45MzQzIDI5LjI3ODhDMzUuNzM1NyAzMC4xNTAyIDM1LjQ3OTcgMzEuMDM1NiAzNS4yNDE1IDMxLjg5ODhDMzQuNjAxIDMxLjY2NTggMzMuNDIxMiAzMS4zNjMxIDMyLjczMjEgMzEuMTY1NEMzMi45OTA0IDMwLjMzODYgMzMuMTY0NiAyOS4zNzE1IDMzLjQ1MzMgMjguNTc2OVoiIGZpbGw9IiMyNTZFRjQiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF8wXzUzNjAiPgo8cmVjdCB3aWR0aD0iMjkuMzYxNyIgaGVpZ2h0PSI0MC44NTcxIiBmaWxsPSJ3aGl0ZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTMuOTExNSAxMy4yMTQzKSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=") no-repeat center / contain;
+  animation: cm-table-scroll-hint-swipe 1.5s ease-in-out infinite;
+}
+@keyframes cm-table-scroll-hint-swipe {
+  0%,
+  100% {
+    transform: translateX(-0.3rem);
+  }
+  50% {
+    transform: translateX(0.3rem);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sd-trd-user .cm-table-scroll-hint::after {
+    animation: none;
+  }
+}
+.sd-trd-user .cm-table-scroll.is-scrolled .cm-table-scroll-hint,
+.sd-trd-user .cm-table-scroll.no-scroll .cm-table-scroll-hint {
+  display: none;
+}
+.sd-trd-user .cm-table-scroll-ctrl {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--krds-gap-4);
+  margin-top: var(--krds-gap-4);
+  padding-bottom: var(--krds-padding-5);
+  border-bottom: 0.1rem solid var(--cm-color-border-light);
+}
+.sd-trd-user .cm-table-scroll-ctrl p {
+  font-size: var(--krds-pc-font-size-body-small);
+  color: var(--cm-color-text-subtle);
+}
+.sd-trd-user .cm-table-scroll-ctrl .krds-btn + .krds-btn {
+  margin-left: calc(var(--krds-gap-3) - var(--krds-gap-4));
+}
+.sd-trd-user .cm-table-scroll-ctrl .krds-btn .svg-icon {
+  width: var(--krds-number-8);
+  height: var(--krds-number-8);
+}
+.sd-trd-user .cm-table-scroll.no-scroll .cm-table-scroll-ctrl {
+  display: none;
+}
+
+/* ---- 좁은 화면(요약 카드 · 차트) (원본 3587~3600행) ---- */
+@media (max-width: 1023px) {
+  .sd-trd-user .cm-es-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .sd-trd-user .cm-es-summary {
+    grid-template-columns: 1fr;
+  }
+  .sd-trd-user .cm-es-chart,
+  .sd-trd-user .cm-es-ratio .body .cm-chart-area {
+    padding: var(--krds-padding-6);
+  }
+}
+
+/* ---- 그래프 · 범례 · 패널 (원본 3739~3858, 3915~3926행) ---- */
+/* [그래프] 신규 컴포넌트 (KRDS 없음) : _common/html/code/ext_chart.html, 스크립트 _common/resources/js/cm-chart.js
+   - 그래프 안쪽(색·패턴·글자·축)은 nise2026/nise_graph_13types_v1.0.html(검토본 v63) 기준, 범례·상자 배치는 Figma 기준
+   - 범례 : 버튼(aria-pressed). 켜진 항목은 Figma 범례(연한 Primary 바탕·Primary 테두리), 숨긴 항목은 회색 + 취소선 */
+.sd-trd-user .cm-chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--krds-gap-5);
+  width: 100%;
+  min-width: 0;
+}
+.sd-trd-user .cm-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--krds-gap-2);
+}
+.sd-trd-user .cm-chart-legend[hidden] {
+  display: none;
+}
+.sd-trd-user .cm-chart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--krds-gap-2);
+  min-height: 3.6rem;
+  padding: 0 var(--krds-padding-5);
+  border: 0.1rem solid var(--cm-color-border-primary);
+  border-radius: var(--krds-radius-medium1);
+  background-color: var(--cm-color-row-hover);
+  font-size: var(--krds-pc-font-size-label-small);
+  color: var(--cm-color-text-primary);
+}
+.sd-trd-user .cm-chart-legend-item[aria-pressed=false] {
+  border-color: var(--cm-color-border-light);
+  background-color: var(--cm-color-surface-white);
+  color: var(--cm-color-text-subtle);
+  text-decoration: line-through;
+}
+.sd-trd-user .cm-chart-legend-item[aria-pressed=false] .cm-chart-legend-swatch {
+  opacity: 0.35;
+  filter: grayscale(0.65);
+}
+.sd-trd-user .cm-chart-legend-swatch {
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+}
+.sd-trd-user .cm-chart-legend-swatch.line {
+  width: 3.6rem;
+}
+.sd-trd-user .cm-chart-legend-all {
+  min-height: 3.6rem;
+  padding: 0 var(--krds-padding-5);
+  border: 0.1rem dashed var(--cm-color-border-gray-dark);
+  border-radius: var(--krds-radius-medium1);
+  background-color: transparent;
+  font-size: var(--krds-pc-font-size-label-small);
+  color: var(--cm-color-text-basic);
+}
+.sd-trd-user .cm-chart-body {
+  width: 100%;
+  min-width: 0;
+}
+.sd-trd-user .cm-chart-plot {
+  position: relative;
+  width: 100%;
+  height: 40rem;
+}
+/* 키보드 탐색 : 그래프 안 대리 칸(role=grid)은 화면에 보이지 않고, 초점이 오면 그래프 전체에 초점 테두리 */
+.sd-trd-user .cm-chart-focus-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+.sd-trd-user .cm-chart-focus-point {
+  position: absolute;
+  width: 0.1rem;
+  height: 0.1rem;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.sd-trd-user .cm-chart-plot:has(.cm-chart-focus-grid:focus-within) {
+  outline: 0.3rem solid var(--cm-color-border-primary);
+  outline-offset: 0.3rem;
+  border-radius: var(--krds-radius-medium3);
+}
+@media (forced-colors: active) {
+  .sd-trd-user .cm-chart-plot:has(.cm-chart-focus-grid:focus-within) {
+    outline-color: Highlight;
+  }
+}
+/* 스몰 멀티플 패널 카드 (13types ⑧ sm-card, Figma 특수교육현황 배치·급별·장애유형별) */
+.sd-trd-user .cm-chart-panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--krds-gap-5);
+}
+.sd-trd-user .cm-chart-panel {
+  overflow: hidden;
+  border: 0.1rem solid var(--cm-color-border-light);
+  border-radius: var(--krds-radius-medium3);
+  background-color: var(--cm-color-surface-white);
+}
+.sd-trd-user .cm-chart-panel-tit {
+  padding: var(--krds-padding-6);
+  border-bottom: 0.1rem solid var(--cm-color-border-light);
+  background-color: var(--cm-color-box-surface);
+  font-size: var(--krds-pc-font-size-body-small);
+  font-weight: var(--krds-font-weight-bold);
+  text-align: center;
+  color: var(--cm-color-text-bolder);
+}
+.sd-trd-user .cm-chart-panel-tit b {
+  color: var(--cm-color-text-primary);
+}
+.sd-trd-user .cm-chart-panel .cm-chart-plot {
+  height: 28rem;
+}
+
+@media (max-width: 767px) {
+  .sd-trd-user .cm-chart-plot {
+    height: 32rem;
+  }
+  .sd-trd-user .cm-chart-panels {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .sd-trd-user .cm-chart-legend-item,
+  .sd-trd-user .cm-chart-legend-all {
+    font-size: var(--krds-mobile-font-size-label-small);
+  }
+}
+
+/* ---- 소제목 · 페이지 제목 좁은 화면 (원본 2920~2923, 4468~4471행) ---- */
+@media (max-width: 767px) {
+  .sd-trd-user .cm-cross-tit {
+    font-size: var(--krds-mobile-font-size-heading-large);
+  }
+  .sd-trd-user .cm-page-top .cm-page-title .h-tit {
+    font-size: var(--krds-mobile-font-size-heading-xlarge);
+  }
+}
+
+/* ---- 차트 확대 모달 (원본 3868~3914행 — 모달 요소에도 .sd-trd-user 클래스를 달아 위 변수·본문 기준·.cm-chart* 규칙을 함께 쓴다) ---- */
+/* 선택자에 .krds-modal 을 붙인 까닭 : KRDS 모바일 모달 규칙(.krds-modal:not([data-type=bottom-sheet]) .modal-dialog)의 폭 · 바깥 여백을 이기려고 */
+.krds-modal.cm-chart-modal.sd-trd-user .modal-dialog {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+}
+/* 화면 전체로 띄움 : KRDS 모달 상자(높이 최대 80% · 둥근 모서리 · 테두리)를 화면 크기에 맞춤 */
+.krds-modal.cm-chart-modal.sd-trd-user .modal-dialog .modal-content {
+  height: 100%;
+  max-height: 100%;
+  border: 0;
+  border-radius: 0;
+}
+/* 아주 넓은 화면에서 그래프가 지나치게 늘어나지 않게 머리글 · 내용의 최대 폭을 둠 */
+.sd-trd-user.cm-chart-modal .modal-dialog .modal-header {
+  max-width: 160rem; /* 1600px */
+}
+.sd-trd-user.cm-chart-modal .modal-dialog .modal-conts {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-width: 160rem; /* 1600px */
+  padding-bottom: var(--krds-number-20);
+}
+.sd-trd-user .cm-chart-zoom-font {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--krds-gap-2);
+  margin-bottom: var(--krds-gap-5);
+}
+.sd-trd-user .cm-chart-zoom-level {
+  min-width: 4.8rem;
+  font-size: var(--krds-pc-font-size-label-small);
+  text-align: center;
+  color: var(--cm-color-text-basic);
+}
+/* 그래프는 남는 높이를 채움 (머리글 · 글자 크기 버튼 · 범례 · 여백을 뺀 값, 너무 낮아지지 않게 최소 32rem) */
+.sd-trd-user .cm-chart-zoom-body .cm-chart-plot {
+  height: max(32rem, calc(100vh - 32rem)); /* 내용 아래 여백(number-20)까지 넣고도 세로 스크롤이 생기지 않는 높이 */
+}
+/* 스몰 멀티플(패널 여러 개)은 패널마다 높이를 따로 가짐 */
+.sd-trd-user .cm-chart-zoom-body .cm-chart-panels .cm-chart-plot {
+  height: 36rem;
+}

@@ -1,0 +1,17 @@
+Source: SunEditor 3.3.3
+Package: https://www.npmjs.com/package/suneditor
+Project: https://github.com/JiHong88/SunEditor
+Origin: https://registry.npmjs.org/suneditor/-/suneditor-3.3.3.tgz (sha1 d71fcc025543866340337a7db904f76bdc13987d — npm 레지스트리 shasum 과 일치)
+Files: dist/suneditor.min.js · dist/suneditor.min.css · dist/suneditor-contents.min.css · src/langs/ko.js(UMD, window.SUNEDITOR_LANG.ko) · LICENSE.txt
+License: MIT
+
+폐쇄망(오프라인) 운영 정책에 따라 외부 CDN을 직접 참조하지 않고 로컬에 vendoring 한다.
+원본 파일은 로컬 수정 없이 그대로 복사한다. ECharts · KRDS vendoring(vendor/*/…-VENDOR.txt) 정책과 동일.
+버전을 올릴 때는 새 버전 폴더(vendor/suneditor/{버전}/)를 만들고 콘텐츠 화면 링크를 바꾼다(정적 캐시 1일 — 같은 경로 덮어쓰기 금지).
+
+선택 근거(docs/images.md §편집기): MIT · 의존성 없음 · 빌드 불필요 · 한국어 UI · eval 없음(CSP). 2026 보안 권고 두 건
+(GHSA-w93q-cq9w-58p7 Embed 플러그인 DOM XSS ≤3.1.3, GHSA-6rf4-v2fh-m6p4 2.x 정화 우회)은 3.3.3 해당 없음이고 embed 플러그인은 쓰지 않는다.
+서버 HtmlSanitizer(저장 · 공개 렌더)가 최종 관문이며 HTML_RAW(퍼블리싱 원문)는 위지윅에 올리지 않는다.
+
+사용처: 관리자 콘텐츠 편집기(templates/admin-v2/pages/content-management.html, static/admin-ui/content-editor.js).
+로드는 페이지 </body> 직전 defer, 테마 매핑은 static/admin-ui/v2/editor.css.
