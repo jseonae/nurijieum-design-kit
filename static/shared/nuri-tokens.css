@@ -42,10 +42,21 @@
   font-weight: 700; font-display: swap;
 }
 
+/* ---- 제목 서체: KIMM Bold (한국기계연구원 서체, 공공누리 제1유형 · 출처 표시) ----
+   Figma 관리자 화면 페이지 머리 제목(Page Header 컴포넌트)이 KIMM Bold 24 로 그려져 있어 맞춘다.
+   파일은 로그인 화면이 쓰는 KS X 1001 한글 + ASCII 서브셋을 같이 쓴다. 서브셋에 없는 글자는 --cms-font 로 대신 그려진다. */
+@font-face {
+  font-family: 'KIMM';
+  src: url('../public-ui/themes/krds-sedis/pub/_common/resources/font/KIMM-Bold.subset.woff2') format('woff2'),
+       url('../public-ui/themes/krds-sedis/pub/_common/resources/font/KIMM-Bold.subset.woff') format('woff');
+  font-weight: 700; font-display: swap;
+}
+
 [data-theme="nuri"] {
   /* ---- 서체 ---- */
   --cms-font: 'PretendardGOV', 'Pretendard GOV', 'Pretendard', -apple-system, 'Malgun Gothic', sans-serif;
   --cms-font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --cms-font-title: 'KIMM', var(--cms-font);   /* 페이지 머리 제목(nv-page-header__title) — Figma KIMM Bold 24 */
 
   /* 타이포 스케일 — 시안 실측(px) → rem. KRDS pc 스케일과 겹치는 단계는 참조.
      xs 11 · sm 12 · md 13 · base 14 · lg 15 · xl 17 · h4 18 · h3 20 · h2 24 · h1 32 */
