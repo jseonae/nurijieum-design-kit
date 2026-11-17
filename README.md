@@ -104,6 +104,17 @@
 
 최신 기록이 위에 옵니다.
 
+### 2026-11-17 · 관리자 화면 페이지 제목 서체를 KIMM Bold 로
+- **PR:** #4 · **브랜치:** `claude/page-title-kimm` · **상태:** 검토 중
+- **작업 폴더별 변경**
+  | 폴더 | 파일 | 내용 |
+  |---|---|---|
+  | `static/shared/` | `nuri-tokens.css` | `@font-face 'KIMM'`(700) 추가 — 로그인 화면이 쓰는 서브셋 파일(`public-ui/themes/krds-sedis/pub/_common/resources/font/KIMM-Bold.subset.woff2·woff`)을 같이 씀. 토큰 `--cms-font-title: 'KIMM', var(--cms-font)` 추가 |
+  | `static/admin-ui/v2/` | `cms-admin-v2.css` | `.nv-page-header__title` 에 `font-family: var(--cms-font-title, var(--cms-font))`, 자간 `-.02em` → `0` |
+- **왜:** Figma 관리자 화면 페이지 머리 제목(Page Header 컴포넌트, 36개 화면)이 KIMM Bold 24 · 자간 0 으로 그려져 있는데, 키트는 Pretendard GOV Bold 24 · 자간 -2% 여서 서로 달랐음. 키트를 Figma 에 맞춤
+- **확인:** `console-콘텐츠-관리` 화면에서 제목 글꼴 KIMM 로드됨(`document.fonts` 상태 loaded), 크기 24px · 줄 높이 1 그대로. 제목을 쓰는 화면 451개는 같은 클래스라 모두 바뀜. 다른 파일 변경 없음
+- **개발팀 참고:** KIMM 은 한국기계연구원 서체(공공누리 제1유형)라 쓸 때 출처 표시가 필요함. 서브셋(KS X 1001 한글 + 영문)에 없는 글자는 Pretendard GOV 로 대신 그려짐. 토큰이 없는 테마에서는 `--cms-font` 로 돌아감
+
 ### 2026-11-16 · README 갱신 · 작업 기록 합치기 · PR 작업 방식 도입
 - **PR:** #1 · **브랜치:** `claude/pr-workflow` · **상태:** 병합됨(2026-11-17)
 - **작업 폴더별 변경**
