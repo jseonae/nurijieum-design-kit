@@ -175,6 +175,7 @@
   --cms-control-h:   3.4rem;   /* 34 필터 입력·select */
   --cms-control-h-lg: 4rem;    /* 40 폼 입력 */
   --cms-button-h:    3.2rem;   /* 32 필터 버튼 */
+  --cms-button-h-md: 3.7rem;   /* 37 기본 단추(nv-btn) · 페이지 머리 최소 높이 */
   --cms-button-h-lg: 4.8rem;   /* 48 패널·모달 버튼 */
   --cms-row-h:       5rem;     /* 50 표 행 */
   --cms-thead-h:     4.4rem;   /* 44 표 헤더 */

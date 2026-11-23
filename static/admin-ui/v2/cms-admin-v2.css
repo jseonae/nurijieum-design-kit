@@ -322,7 +322,7 @@ html[data-cms-fontscale="xl"] { font-size: calc(var(--krds-font-size-base, 62.5%
 .nv-breadcrumb a:hover { color: var(--cms-primary-text); }
 .nv-breadcrumb [aria-current="page"] { color: var(--cms-muted); }
 
-.nv-page-header { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--cms-sp-4); }
+.nv-page-header { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--cms-sp-4); min-height: var(--cms-button-h-md); }   /* 머리 단추 유무와 관계없이 높이 통일(단추 있을 때 기준) */
 .nv-page-header__text { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--cms-sp-2); min-width: 0; }
 .nv-page-header__title { font-size: var(--cms-fs-h2); font-weight: var(--cms-fw-bold); line-height: 1; letter-spacing: -.02em; }
 .nv-page-header__desc { color: var(--cms-muted); font-size: var(--cms-fs-sm); }
@@ -354,7 +354,7 @@ html[data-cms-fontscale="xl"] { font-size: calc(var(--krds-font-size-base, 62.5%
 /* ---------- 3. 버튼 ---------- */
 .nv-btn {
   display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
-  height: 3.7rem; padding: 0 1.6rem; border-radius: var(--cms-radius-sm);
+  height: var(--cms-button-h-md); padding: 0 1.6rem; border-radius: var(--cms-radius-sm);
   border: 1px solid transparent; background: var(--cms-surface); color: var(--cms-text);
   font-size: var(--cms-fs-base); font-weight: var(--cms-fw-semibold); line-height: 1; white-space: nowrap;
   cursor: pointer; transition: background-color .12s, border-color .12s, color .12s;
