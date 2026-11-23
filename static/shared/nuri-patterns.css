@@ -1,0 +1,200 @@
+/* ==========================================================================
+   누리지음 패턴 (nuri-patterns.css)
+   피그마 디자인모음 「00 디자인모음 컴포넌트」의 패턴을 코드로 옮긴 것.
+   패턴 = cms/* 컴포넌트를 조합해 특정 업무 화면의 한 덩어리를 만든 것.
+   클래스: .nuri-p-{이름}. 불러오는 순서: cms-base → nuri-tokens → nuri-components → nuri-patterns → nuri-icons
+   ========================================================================== */
+
+/* 공통: 패턴 안의 작은 글자 */
+.nuri-p-muted { font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-disabled); }
+
+/* --------------------------------------------------------------------------
+   pattern/summary — 요약 영역 (summary-card × 4, 사이 24)
+   -------------------------------------------------------------------------- */
+.nuri-p-summary { display: grid; grid-template-columns: repeat(var(--p-cols, 4), minmax(0, 1fr)); gap: var(--nuri-gap-9); }
+.nuri-p-summary--3 { --p-cols: 3; }
+
+/* --------------------------------------------------------------------------
+   pattern/menu-tree-row — 메뉴 트리 행 (높이 50)
+   열: 체크 · 메뉴명(단계 번호) · 코드 200 · 유형 150 · 담당자 150 · 노출 110 · 작업 40
+   -------------------------------------------------------------------------- */
+.nuri-p-menu-tree { border-top: 1px solid var(--nuri-color-border-gray-light); }
+.nuri-p-menu-tree__head {
+  display: flex; align-items: center; gap: var(--nuri-gap-6); min-height: 4.4rem; padding: 0 var(--nuri-padding-7);
+  background: var(--nuri-color-table-head-surface); font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-subtle);
+}
+.nuri-p-menu-tree__head .nuri-p-menu-tree-row__name { padding-left: 0; }
+.nuri-p-menu-tree-row__more { position: relative; }
+.nuri-p-menu-tree-row__more .nuri-menu { position: absolute; right: 0; top: calc(100% + .4rem); z-index: 2; min-width: 16rem; }
+.nuri-p-menu-tree-row {
+  display: flex; align-items: center; gap: var(--nuri-gap-6);
+  min-height: 5rem; padding: 0 var(--nuri-padding-7);
+  background: var(--nuri-color-background-white); border-bottom: 1px solid var(--nuri-color-border-gray-light);
+  font-size: var(--nuri-font-size-body-small); color: var(--nuri-color-text-basic);
+}
+.nuri-p-menu-tree-row:hover, .nuri-p-menu-tree-row.is-hover { background: var(--nuri-color-surface-gray-subtle); }
+.nuri-p-menu-tree-row__check { display: inline-flex; width: var(--nuri-size-height-3); flex: none; }
+.nuri-p-menu-tree-row__name {
+  flex: 1; min-width: 0; display: flex; align-items: center; gap: var(--nuri-gap-4);
+  padding-left: calc((var(--depth, 1) - 1) * var(--nuri-gap-9));
+}
+.nuri-p-menu-tree-row__name strong { font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-bolder); }
+.nuri-p-menu-tree-row__name .nuri-icon { --nuri-icon-size: 1.6rem; color: var(--nuri-color-icon-gray); }
+/* 표기 아이콘(모두 icon/gray): 접근 통제 = i-lock-simple · 개별 설정(상위와 다르게) = i-link-simple-break */
+.nuri-p-menu-tree-row__flag { display: inline-flex; flex: none; }
+/* 행 상태: 저장 안 함 = 표 행 상태 row-changed + 글자 warning · 미노출 = 글자 disabled + 노출여부 「미노출」 */
+.nuri-p-menu-tree-row.is-changed { background: var(--nuri-color-table-row-changed); color: var(--nuri-color-text-warning); }
+.nuri-p-menu-tree-row.is-changed .nuri-p-menu-tree-row__name strong { color: var(--nuri-color-text-warning); }
+.nuri-p-menu-tree-row.is-changed .nuri-p-menu-tree-row__name .nuri-icon { color: var(--nuri-color-icon-warning); }
+.nuri-p-menu-tree-row.is-unused { color: var(--nuri-color-text-disabled); }
+.nuri-p-menu-tree-row.is-unused .nuri-p-menu-tree-row__name strong { color: var(--nuri-color-text-disabled); }
+.nuri-p-menu-tree-row.is-unused .nuri-depth-badge { opacity: .4; }
+/* 표 아래 설명 */
+.nuri-p-legend { display: flex; flex-wrap: wrap; align-items: center; gap: var(--nuri-gap-4) var(--nuri-gap-9); padding-top: var(--nuri-padding-7); font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-subtle); }
+.nuri-p-legend__item { display: inline-flex; align-items: center; gap: var(--nuri-gap-3); --nuri-icon-size: 1.6rem; }
+.nuri-p-legend__item .nuri-icon { color: var(--nuri-color-icon-gray); }
+.nuri-p-legend__swatch { width: 1.6rem; height: 1.6rem; border-radius: var(--nuri-radius-small); background: var(--nuri-color-table-row-changed); border: 1px solid var(--nuri-color-border-warning-light); }
+.nuri-p-menu-tree-row__col { flex: none; width: var(--w, 15rem); }
+.nuri-p-menu-tree-row__col--code { --w: 20rem; }
+.nuri-p-menu-tree-row__col--state { --w: 11rem; }
+.nuri-p-menu-tree-row__col--act { --w: 4rem; display: inline-flex; justify-content: center; }
+.nuri-p-menu-tree-row[data-depth="2"] { --depth: 2; }
+.nuri-p-menu-tree-row[data-depth="3"] { --depth: 3; }
+.nuri-p-menu-tree-row[data-depth="4"] { --depth: 4; }
+
+/* --------------------------------------------------------------------------
+   pattern/menu-edit-header — 메뉴 편집 머리 (제목 줄 + 탭 줄)
+   -------------------------------------------------------------------------- */
+.nuri-p-menu-edit-header { background: var(--nuri-color-surface-white); }
+.nuri-p-menu-edit-header__top {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--nuri-gap-7);
+  padding: var(--nuri-padding-9) var(--nuri-padding-10) var(--nuri-padding-4);
+}
+.nuri-p-menu-edit-header__title { display: flex; align-items: center; gap: var(--nuri-gap-5); min-width: 0; }
+.nuri-p-menu-edit-header__title h2 { font-size: var(--nuri-font-size-heading-large); font-weight: var(--nuri-font-weight-bold); color: var(--nuri-color-text-bolder); }
+.nuri-p-menu-edit-header__nav { display: flex; align-items: center; gap: var(--nuri-gap-7); flex: none; }
+.nuri-p-menu-edit-header__site {
+  display: inline-flex; align-items: center; gap: var(--nuri-gap-3);
+  font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-basic); --nuri-icon-size: 1.4rem;
+}
+.nuri-p-menu-edit-header__site:hover { text-decoration: underline; }
+.nuri-p-prev-next {
+  display: inline-flex; align-items: center;
+  background: var(--nuri-color-surface-white); border: 1px solid var(--nuri-color-border-gray-light); border-radius: var(--nuri-radius-small);
+}
+.nuri-p-prev-next a {
+  display: inline-flex; align-items: center; gap: var(--nuri-gap-3); padding: var(--nuri-padding-4) var(--nuri-padding-6) var(--nuri-padding-4) var(--nuri-padding-5);
+  font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-basic); --nuri-icon-size: 1.4rem;
+}
+.nuri-p-prev-next a + a { padding: var(--nuri-padding-4) var(--nuri-padding-5) var(--nuri-padding-4) var(--nuri-padding-6); border-left: 1px solid var(--nuri-color-border-gray-light); }
+.nuri-p-prev-next a:hover { background: var(--nuri-color-surface-gray-subtle); }
+.nuri-p-menu-edit-header .nuri-tabs { padding: 0 var(--nuri-padding-10); gap: var(--nuri-gap-11); border-bottom: 1px solid var(--nuri-color-border-gray-light); }
+
+/* --------------------------------------------------------------------------
+   pattern/manager-select — 담당자 선택 (선택 전 · 선택됨)
+   -------------------------------------------------------------------------- */
+.nuri-p-manager-select { display: flex; flex-direction: column; gap: var(--nuri-gap-4); }
+.nuri-p-manager-select__label { display: flex; align-items: center; justify-content: space-between; gap: var(--nuri-gap-4); }
+.nuri-p-manager-select__info {
+  display: flex; flex-direction: column; gap: var(--nuri-gap-3);
+  padding: var(--nuri-padding-5) var(--nuri-padding-7);
+  background: var(--nuri-color-background-gray-subtler); border: 1px solid var(--nuri-color-border-gray-light); border-radius: var(--nuri-radius-small);
+  font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-basic);
+}
+.nuri-p-manager-select__name { display: flex; gap: var(--nuri-gap-4); font-size: var(--nuri-font-size-body-small); }
+.nuri-p-manager-select__name strong { font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-bolder); }
+
+/* --------------------------------------------------------------------------
+   pattern/access-row — 접근 권한 표 (권한그룹 × 목록 · 읽기 · 쓰기 · 답변 · 다운로드)
+   -------------------------------------------------------------------------- */
+.nuri-p-access { border: 1px solid var(--nuri-color-table-head-surface); border-radius: var(--nuri-radius-medium); overflow: hidden; }
+.nuri-p-access-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) repeat(5, 11.2rem) 4rem; align-items: center;
+  min-height: 6rem; padding: 0 var(--nuri-padding-4) 0 var(--nuri-padding-7);
+  background: var(--nuri-color-surface-white); border-bottom: 1px solid var(--nuri-color-table-head-surface);
+  font-size: var(--nuri-font-size-body-xsmall);
+}
+.nuri-p-access-row:last-child { border-bottom: 0; }
+.nuri-p-access-row--head { min-height: 4.4rem; background: var(--nuri-color-surface-gray-subtle); font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-basic); }
+.nuri-p-access-row.is-changed { background: var(--nuri-color-surface-warning-subtler); }
+.nuri-p-access-row__group { display: flex; flex-direction: column; gap: var(--nuri-gap-1); min-width: 0; }
+.nuri-p-access-row__name { display: flex; align-items: center; gap: var(--nuri-gap-3); font-size: var(--nuri-font-size-body-small); }
+.nuri-p-access-row__name strong { font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-bolder); }
+.nuri-p-access-row__desc { color: var(--nuri-color-text-subtle); }
+.nuri-p-access-row__act { display: inline-flex; justify-content: center; }
+
+/* --------------------------------------------------------------------------
+   pattern/permission-item — 권한 항목 줄 (방패 · 이름 · 코드 · 설명 · 배지 · 빼기)
+   -------------------------------------------------------------------------- */
+.nuri-p-permission-list { display: flex; flex-direction: column; gap: var(--nuri-gap-4); }
+.nuri-p-permission-item {
+  display: flex; align-items: center; gap: var(--nuri-gap-6);
+  padding: var(--nuri-padding-5) var(--nuri-padding-4) var(--nuri-padding-5) var(--nuri-padding-7);
+  background: var(--nuri-color-surface-white); border: 1px solid var(--nuri-color-border-gray-light); border-radius: var(--nuri-radius-medium);
+}
+.nuri-p-permission-item__icon {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 3.6rem; height: 3.6rem; border-radius: var(--nuri-radius-max);
+  background: var(--nuri-color-surface-gray-subtle); color: var(--nuri-color-text-subtle); --nuri-icon-size: 1.6rem;
+}
+.nuri-p-permission-item__text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--nuri-gap-1); }
+.nuri-p-permission-item__name { display: flex; align-items: baseline; gap: var(--nuri-gap-3); font-size: var(--nuri-font-size-body-small); }
+.nuri-p-permission-item__name strong { font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-bolder); }
+.nuri-p-permission-item__desc { font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-subtle); }
+
+/* --------------------------------------------------------------------------
+   pattern/inherit-bar — 상위 설정 따르기 막대 (체크 · 제목 · 설명)
+   -------------------------------------------------------------------------- */
+.nuri-p-inherit-bar {
+  display: flex; align-items: center; gap: var(--nuri-gap-5);
+  padding: var(--nuri-padding-5) var(--nuri-padding-7);
+  background: var(--nuri-color-surface-gray-subtler, var(--nuri-color-background-gray-subtler)); border-radius: var(--nuri-radius-medium); cursor: pointer;
+}
+.nuri-p-inherit-bar__title { font-size: var(--nuri-font-size-body-small); font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-bolder); flex: none; }
+.nuri-p-inherit-bar__desc { font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-subtle); min-width: 0; }
+
+/* --------------------------------------------------------------------------
+   pattern/status-card · pattern/deadline-card — 민원 처리 상태 · 처리 기한 카드 (너비 420)
+   -------------------------------------------------------------------------- */
+.nuri-p-status-card, .nuri-p-deadline-card {
+  display: flex; flex-direction: column; gap: var(--nuri-gap-6);
+  width: 100%; max-width: 42rem; padding: var(--nuri-padding-8);
+  background: var(--nuri-color-background-white); border: 1px solid var(--nuri-color-border-gray-light); border-radius: var(--nuri-radius-medium);
+  font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-basic);
+}
+.nuri-p-card-title { display: flex; align-items: center; gap: var(--nuri-gap-4); font-size: var(--nuri-font-size-body-small); font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-bolder); }
+.nuri-p-card-row { display: flex; align-items: center; gap: var(--nuri-gap-4); }
+.nuri-p-card-row > .nuri-button { margin-left: auto; }
+.nuri-p-status-card__now { color: var(--nuri-color-text-subtle); }
+.nuri-p-hint {
+  display: flex; flex-direction: column; gap: var(--nuri-gap-3); margin: 0; padding: var(--nuri-padding-5) var(--nuri-padding-6); list-style: none;
+  background: var(--nuri-color-background-gray-subtler); border-radius: var(--nuri-radius-small); color: var(--nuri-color-text-basic);
+}
+.nuri-p-hint li::before { content: '· '; }
+.nuri-p-status-card__notify { padding-top: var(--nuri-padding-4); }
+.nuri-p-status-card > .nuri-button { width: 100%; }
+.nuri-p-deadline-card--warning { background: var(--nuri-color-surface-warning-subtler); border-color: var(--nuri-color-border-warning-light); }
+.nuri-p-deadline-card--danger { background: var(--nuri-color-surface-danger-subtler); border-color: var(--nuri-danger-30); }
+.nuri-p-deadline-card .is-danger { color: var(--nuri-color-text-danger); }
+.nuri-p-deadline-card .is-success { color: var(--nuri-color-text-success); }
+.nuri-p-status-card__fields { display: flex; flex-direction: column; gap: var(--nuri-gap-4); }
+.nuri-p-status-card__fields .nuri-label { font-size: var(--nuri-font-size-body-small); }
+.nuri-p-extend-form {
+  display: flex; flex-direction: column; gap: var(--nuri-gap-4); padding: var(--nuri-padding-6);
+  background: var(--nuri-color-background-gray-subtler); border-radius: var(--nuri-radius-small);
+}
+.nuri-p-extend-form .nuri-label { font-size: var(--nuri-font-size-body-small); }
+.nuri-p-extend-form__help { color: var(--nuri-color-text-subtle); }
+.nuri-p-notice {
+  display: flex; flex-direction: column; gap: var(--nuri-gap-2); padding: var(--nuri-padding-5) var(--nuri-padding-6);
+  background: var(--nuri-color-surface-primary-subtler); border-radius: var(--nuri-radius-small);
+}
+.nuri-p-notice strong { font-size: var(--nuri-font-size-body-small); font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-secondary-70); }
+.nuri-p-extend-form__foot { display: flex; justify-content: flex-end; gap: var(--nuri-gap-4); }
+
+/* --------------------------------------------------------------------------
+   pattern/apply-summary — 접근권한 화면 오른쪽 「적용 요약」 (제목 + key-value 줄)
+   -------------------------------------------------------------------------- */
+.nuri-p-apply-summary { display: flex; flex-direction: column; gap: var(--nuri-gap-7); max-width: 30.3rem; }
+.nuri-p-apply-summary__title { font-size: var(--nuri-font-size-body-small); font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-bolder); }
+.nuri-p-apply-summary .nuri-key-value { gap: var(--nuri-gap-7); }

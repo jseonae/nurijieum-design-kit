@@ -20,22 +20,22 @@
 /* adm_1001 올린 파일 확인 — 파란 테두리 카드, ✓·!·× 한 줄 점검 목록 */
 .sd-trd .sd-trd-check { border: 2px solid var(--cms-primary, #256ef4); }
 .sd-trd .sd-trd-check__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; margin-bottom: 12px; }
-.sd-trd .sd-trd-check__title { margin: 0; font-size: 16px; font-weight: 700; }
+.sd-trd .sd-trd-check__title { margin: 0; font-size: var(--cms-fs-lg); font-weight: 700; }
 .sd-trd .sd-trd-checklist { list-style: none; margin: 0 0 12px; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.sd-trd .sd-trd-checklist li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; line-height: 1.5; }
+.sd-trd .sd-trd-checklist li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; line-height: var(--cms-lh); }
 .sd-trd .sd-trd-checklist__mark { flex: none; width: 14px; font-weight: 700; }
-.sd-trd .sd-trd-checklist .is-ok .sd-trd-checklist__mark { color: #15803d; }
-.sd-trd .sd-trd-checklist .is-warn { color: #9a5b00; }
-.sd-trd .sd-trd-checklist .is-err { color: #c62828; font-weight: 600; }
-.sd-trd .sd-trd-checklist__sub { color: var(--cms-text-muted, #6b7280); font-size: 13px; }
+.sd-trd .sd-trd-checklist .is-ok .sd-trd-checklist__mark { color: var(--nuri-success-60); }
+.sd-trd .sd-trd-checklist .is-warn { color: var(--cms-warn-fg); }
+.sd-trd .sd-trd-checklist .is-err { color: var(--nuri-danger-70); font-weight: 600; }
+.sd-trd .sd-trd-checklist__sub { color: var(--cms-text-muted, #6b7280); font-size: var(--cms-fs-md); }
 .sd-trd .sd-trd-changes { margin-bottom: 12px; }
-.sd-trd .sd-trd-newsum { margin: 4px 0 12px; padding: 12px 16px; border-radius: 8px; background: var(--cms-primary-50, #f4f8ff); }
+.sd-trd .sd-trd-newsum { margin: 4px 0 12px; padding: 12px 16px; border-radius: var(--cms-radius); background: var(--cms-primary-50, #f4f8ff); }
 .sd-trd .sd-trd-newsum__title { margin: 0 0 8px; display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
 .sd-trd .sd-trd-newsum__row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .sd-trd .sd-trd-newsum__count { width: 120px; }
 .sd-trd .sd-trd-newsum__src { flex: 1 1 260px; min-width: 220px; }
 .sd-trd .sd-trd-check__actions { gap: 8px; }
-.sd-trd .nv-section-title { margin: 24px 0 12px; font-size: 18px; font-weight: 700; }
+.sd-trd .nv-section-title { margin: 24px 0 12px; font-size: var(--cms-fs-h4); font-weight: 700; }
 .sd-trd .sd-trd-file { word-break: break-all; }
 .sd-trd .sd-trd-replaced summary { cursor: pointer; font-weight: 700; }
 .sd-trd .sd-trd-replaced .nv-table-wrap { margin-top: 12px; }
@@ -43,13 +43,13 @@
 .sd-trd .sd-trd-stat th[scope="row"], .sd-trd .sd-trd-stat thead th:first-child { text-align: left; position: sticky; left: 0; background: var(--nv-color-surface, #fff); }
 /* adm_1102 머리 카드 · 구획 머리(번호 · 제목 · 오른쪽 안내) · 공표 계 한 줄 입력 */
 .sd-trd .sd-trd-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 16px 20px; background: var(--cms-primary-50, #f4f8ff); }
-.sd-trd .sd-trd-head__title { margin: 0; font-size: 20px; font-weight: 700; }
+.sd-trd .sd-trd-head__title { margin: 0; font-size: var(--cms-fs-h3); font-weight: 700; }
 .sd-trd .sd-trd-head__meta { margin-left: auto; }
 .sd-trd .sd-trd-sec-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 12px; }
-.sd-trd .sd-trd-sec-head__title { margin: 0; font-size: 16px; font-weight: 700; }
-.sd-trd .sd-trd-sec-head__hint { margin-left: auto; font-size: 13px; color: var(--cms-text-muted, #6b7280); }
+.sd-trd .sd-trd-sec-head__title { margin: 0; font-size: var(--cms-fs-lg); font-weight: 700; }
+.sd-trd .sd-trd-sec-head__hint { margin-left: auto; font-size: var(--cms-fs-md); color: var(--cms-text-muted, #6b7280); }
 .sd-trd .sd-trd-step { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%;
-  background: var(--cms-primary, #256ef4); color: #fff; font-size: 12px; font-weight: 700; }
+  background: var(--cms-primary, #256ef4); color: var(--cms-on-dark); font-size: var(--cms-fs-md); font-weight: 700; }
 .sd-trd .sd-trd-origins .sd-trd-col-item { width: 200px; }
 .sd-trd .sd-trd-sums .sd-trd-col-year { width: 72px; }
 .sd-trd .sd-trd-sums .sd-trd-col-count { width: 120px; }
@@ -58,7 +58,7 @@
 .sd-trd .sd-trd-sums .sd-trd-col-growth { width: 128px; }
 .sd-trd .sd-trd-sums .nv-input, .sd-trd .sd-trd-sums .nv-select { width: 100%; }
 .sd-trd .sd-trd-num { text-align: right; }
-.sd-trd .sd-trd-note { width: 100%; min-height: 0; height: 36px; padding-top: 7px; padding-bottom: 7px; resize: vertical; line-height: 1.5; overflow: hidden; }
+.sd-trd .sd-trd-note { width: 100%; min-height: 0; height: 36px; padding-top: 7px; padding-bottom: 7px; resize: vertical; line-height: var(--cms-lh); overflow: hidden; }
 .sd-trd .sd-trd-note:focus { height: auto; min-height: 80px; overflow: auto; white-space: pre-wrap; }
 .sd-trd .sd-trd-form-actions { margin-top: 12px; }
 .sd-trd .sd-trd-graph { display: grid; grid-template-columns: minmax(224px, 288px) 1fr; gap: 16px; align-items: start; }
@@ -78,20 +78,20 @@
 /* adm_1201 통계표 목록 트리 · 정보 카드 */
 .sd-trd .sd-trd-tree { padding: 16px 12px; }
 .sd-trd .sd-trd-tree__head { margin: 0 8px 8px; }
-.sd-trd .sd-trd-tree__group { margin: 12px 8px 4px; font-size: 13px; color: var(--cms-text-muted, #6b7280); }
+.sd-trd .sd-trd-tree__group { margin: 12px 8px 4px; font-size: var(--cms-fs-md); color: var(--cms-text-muted, #6b7280); }
 .sd-trd .sd-trd-tree ul { list-style: none; margin: 0; padding: 0; }
 .sd-trd .sd-trd-tree ul ul { padding-left: 12px; }
 .sd-trd .sd-trd-tree__sub { display: block; padding: 6px 10px; font-weight: 700; }
-.sd-trd .sd-trd-tree__item { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 10px; border-radius: 6px;
+.sd-trd .sd-trd-tree__item { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 10px; border-radius: var(--cms-radius-xs);
   color: var(--cms-text, #1e2124); text-decoration: none; }
 .sd-trd .sd-trd-tree__item:hover { background: var(--cms-surface-2, #f4f5f6); }
 .sd-trd .sd-trd-tree__item.is-current { background: var(--cms-primary-50, #eef4ff); color: var(--cms-primary-text, #0b50d0); font-weight: 700; }
-.sd-trd .sd-trd-tree__count { min-width: 22px; padding: 0 6px; border-radius: 999px; background: var(--cms-surface-2, #eef0f2); font-size: 12px; text-align: center;
+.sd-trd .sd-trd-tree__count { min-width: 22px; padding: 0 6px; border-radius: var(--cms-radius-pill); background: var(--cms-surface-2, #eef0f2); font-size: var(--cms-fs-caption); text-align: center;
   color: var(--cms-text-muted, #464c53); font-weight: 600; }
-.sd-trd .sd-trd-tree__item.is-current .sd-trd-tree__count { background: var(--cms-primary, #256ef4); color: #fff; }
+.sd-trd .sd-trd-tree__item.is-current .sd-trd-tree__count { background: var(--cms-primary, #256ef4); color: var(--cms-on-dark); }
 .sd-trd .sd-trd-info { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding-bottom: 12px; margin-bottom: 12px;
   border-bottom: 1px solid var(--cms-border, #e6e8ea); }
-.sd-trd .sd-trd-info__title { margin: 0 0 4px; font-size: 18px; font-weight: 700; }
+.sd-trd .sd-trd-info__title { margin: 0 0 4px; font-size: var(--cms-fs-h4); font-weight: 700; }
 .sd-trd .sd-trd-info p { margin: 0; }
 
 /* adm_1202 미리보기 머리 경로(본문은 trd-preview.css) */
@@ -100,4 +100,117 @@
 
 /* 라벨 옆 회색 보조 글 · 통계표 단위(고정 열 배경 위 대비 4.5:1) */
 .sd-trd .nv-field__label .nv-text-muted { margin-left: 6px; font-weight: 400; }
-.sd-trd .sd-trd-stat th[scope="row"] .nv-text-muted { color: #464c53; }
+.sd-trd .sd-trd-stat th[scope="row"] .nv-text-muted { color: var(--cms-muted); }
+
+/* =========================================================================
+   스타일가이드 적용 — 특수교육 현황(통계표 원본 · 통계표 통합 · 그래프) 2026-11-23
+   마크업은 그대로, 값은 스타일가이드 토큰(--nuri-*). 위 규칙을 덮어쓴다.
+   ========================================================================= */
+.sd-trd { gap: var(--nuri-gap-9); }
+.sd-trd .nv-text-muted { color: var(--nuri-color-text-subtle); }
+
+/* 공통: 구획 머리(번호 · 제목 · 오른쪽 안내) — 번호는 메뉴 단계 번호와 같은 20 원(primary), 제목 16 SemiBold */
+.sd-trd .sd-trd-sec-head { gap: var(--nuri-gap-4); margin-bottom: var(--nuri-gap-7); }
+.sd-trd .sd-trd-sec-head__title { font-size: var(--nuri-font-size-heading-xsmall); font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-bolder); }
+.sd-trd .sd-trd-sec-head__hint { font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-subtle); }
+.sd-trd .sd-trd-step { width: var(--nuri-size-height-2); height: var(--nuri-size-height-2); background: var(--nuri-color-element-primary, var(--nuri-primary-60));
+  color: var(--nuri-color-text-bolder-inverse); font-size: var(--nuri-font-size-label-xsmall); font-weight: var(--nuri-font-weight-semibold); }
+
+/* 공통: 표 행 작업 단추 — 줄마다 파란 채움 단추가 반복되지 않게 보조(테두리) 단추로, ⋮ 는 테두리 없는 아이콘 단추로 */
+.sd-trd .col-actions .nv-btn--primary {
+  background: var(--nuri-color-surface-white); color: var(--nuri-color-text-basic); border: 1px solid var(--nuri-color-border-gray);
+}
+.sd-trd .col-actions .nv-btn--primary:hover { background: var(--nuri-color-surface-gray-subtle); }
+.sd-trd .col-actions .nv-btn--icon { border-color: transparent; background: none; color: var(--nuri-color-icon-gray); }
+.sd-trd .col-actions .nv-btn--icon:hover, .sd-trd .col-actions .nv-btn--icon[aria-expanded="true"] { background: var(--nuri-color-surface-gray-subtle); color: var(--nuri-color-text-basic); border-color: transparent; }
+
+/* 공통: 가로로 넘치는 표 — 좌우 끝에 그림자로 「더 있음」을 알린다(스크롤하면 사라짐) */
+.sd-trd .nv-table-scroll {
+  background:
+    linear-gradient(to right, var(--nuri-color-surface-white) 30%, transparent) left center / 4rem 100% no-repeat local,
+    linear-gradient(to left, var(--nuri-color-surface-white) 30%, transparent) right center / 4rem 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, var(--nuri-alpha-black10), transparent) left center / 1.2rem 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, var(--nuri-alpha-black10), transparent) right center / 1.2rem 100% no-repeat scroll;
+}
+.sd-trd .nv-table-scroll .nv-table { background: transparent; }
+
+/* adm_1001 통계표 원본 */
+/* 안내(올린 파일은 바로 반영되지 않음)는 표보다 먼저 읽혀야 한다 — 표 위로 옮김(마크업 순서는 그대로, 보이는 순서만) */
+.sd-trd > .nv-page-header { order: -3; }
+.sd-trd > .nv-alert--ok, .sd-trd > .nv-alert--err { order: -2; }
+.sd-trd > .nv-alert--warn { order: -1; }
+.sd-trd .sd-trd-sources .sd-trd-col-kind { width: 18rem; }
+.sd-trd .sd-trd-sources .sd-trd-col-range { width: 15rem; }
+.sd-trd .sd-trd-sources .sd-trd-col-num { width: 8.8rem; }
+.sd-trd .sd-trd-sources .sd-trd-col-date { width: 10.4rem; }
+.sd-trd .sd-trd-sources .sd-trd-col-state { width: 7.2rem; }
+.sd-trd .sd-trd-sources .sd-trd-col-work { width: 16rem; }
+.sd-trd .sd-trd-file { word-break: normal; overflow-wrap: anywhere; font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-subtle); }
+.sd-trd .sd-trd-upload { gap: var(--nuri-gap-3); }
+/* 이전 파일: 접기 표시를 Phosphor caret 으로(브라우저 ▶ 삼각형 대신) */
+.sd-trd .sd-trd-replaced > summary { display: flex; align-items: center; gap: var(--nuri-gap-4); list-style: none;
+  font-size: var(--nuri-font-size-label-small); font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-bolder); }
+.sd-trd .sd-trd-replaced > summary::-webkit-details-marker { display: none; }
+.sd-trd .sd-trd-replaced > summary::before { content: ""; flex: none; width: 1.6rem; height: 1.6rem; background: var(--nuri-color-icon-gray);
+  -webkit-mask: url("../../../shared/icons/caret-right.svg") center / contain no-repeat; mask: url("../../../shared/icons/caret-right.svg") center / contain no-repeat; transition: transform .15s; }
+.sd-trd .sd-trd-replaced[open] > summary::before { transform: rotate(90deg); }
+.sd-trd .sd-trd-replaced > summary .nv-text-muted { font-weight: var(--nuri-font-weight-regular); }
+
+/* adm_1102 통계표 통합 상세: 머리는 「등록 · 수정형 머리」(흰 막대)로 — 연한 파랑 카드 대신 */
+/* 연도 표: 머리 첫 칸(항목)도 표 머리 바탕 · 고정 열은 흰 바탕 + 오른쪽 구분선 */
+.sd-trd .sd-trd-stat thead th:first-child { background: var(--nuri-color-table-head-surface); z-index: 1; }
+.sd-trd .sd-trd-stat th[scope="row"] { background: var(--nuri-color-surface-white); box-shadow: inset -1px 0 0 var(--nuri-color-border-gray-light); }
+.sd-trd .sd-trd-stat thead th:first-child { box-shadow: inset -1px 0 0 var(--nuri-color-border-gray-light); }
+.sd-trd .sd-trd-stat th[scope="row"] .nv-text-muted { color: var(--nuri-color-text-subtle); font-weight: var(--nuri-font-weight-regular); }
+.sd-trd .sd-trd-stat td:has(> .nv-text-muted), .sd-trd .sd-trd-stat .nv-text-muted { color: var(--nuri-color-text-disabled); }
+
+/* adm_1201 그래프: 통계표 목록 — 고르기 목록(높이 36 · 모서리 4), 개수는 작은 배지 */
+.sd-trd .sd-trd-tree { padding: var(--nuri-padding-7) var(--nuri-padding-5); }
+.sd-trd .sd-trd-tree__head { display: flex; align-items: baseline; gap: var(--nuri-gap-3); margin: 0 var(--nuri-padding-4) var(--nuri-gap-4);
+  font-size: var(--nuri-font-size-label-small); color: var(--nuri-color-text-bolder); }
+.sd-trd .sd-trd-tree__head b { font-weight: var(--nuri-font-weight-semibold); }
+.sd-trd .sd-trd-tree__group { margin: var(--nuri-gap-7) var(--nuri-padding-4) var(--nuri-gap-2); font-size: var(--nuri-font-size-caption-xsmall); font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-subtle); }
+.sd-trd .sd-trd-tree__head + .sd-trd-tree__group { margin-top: var(--nuri-gap-4); }
+.sd-trd .sd-trd-tree ul { display: flex; flex-direction: column; gap: var(--nuri-gap-1); }
+.sd-trd .sd-trd-tree ul ul { padding-left: var(--nuri-padding-6); }
+.sd-trd .sd-trd-tree__sub { padding: var(--nuri-padding-4) var(--nuri-padding-6); font-size: var(--nuri-font-size-label-small); font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-basic); }
+.sd-trd .sd-trd-tree__item { min-height: var(--nuri-size-height-6); padding: 0 var(--nuri-padding-5) 0 var(--nuri-padding-6); border-radius: var(--nuri-radius-small);
+  font-size: var(--nuri-font-size-label-small); color: var(--nuri-color-text-basic); }
+.sd-trd .sd-trd-tree__item:hover { background: var(--nuri-color-surface-gray-subtle); }
+.sd-trd .sd-trd-tree__item.is-current { background: var(--nuri-color-nav-item-selected); color: var(--nuri-color-nav-text-selected); font-weight: var(--nuri-font-weight-semibold); }
+.sd-trd .sd-trd-tree__count { min-width: 2rem; height: 2rem; padding: 0 var(--nuri-padding-3); display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--nuri-radius-small); background: var(--nuri-color-surface-gray-subtle); color: var(--nuri-color-text-subtle);
+  font-size: var(--nuri-font-size-label-xsmall); font-weight: var(--nuri-font-weight-regular); }
+.sd-trd .sd-trd-tree__item.is-current .sd-trd-tree__count { background: var(--nuri-color-surface-white); color: var(--nuri-color-nav-text-selected); font-weight: var(--nuri-font-weight-semibold); }
+/* 정보 카드: 제목 18 Bold · 보조 13 subtle */
+.sd-trd .sd-trd-info { padding-bottom: var(--nuri-gap-7); margin-bottom: var(--nuri-gap-7); border-bottom-color: var(--nuri-color-border-gray-light); }
+.sd-trd .sd-trd-info__title { font-size: var(--nuri-font-size-heading-small); color: var(--nuri-color-text-bolder); }
+.sd-trd .sd-trd-info__text, .sd-trd .sd-trd-info p { font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-subtle); }
+.sd-trd .nv-field__label .nv-text-muted { margin-left: var(--nuri-gap-3); font-size: var(--nuri-font-size-body-xsmall); }
+
+/* adm_1202 사용자 화면 미리보기 머리 경로 */
+.sd-trd .sd-trd-crumb { font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-subtle); }
+.sd-trd .sd-trd-crumb b { color: var(--nuri-color-text-bolder); font-weight: var(--nuri-font-weight-semibold); }
+/* 페이지 머리 안 경로는 다른 화면 경로와 같은 간격(머리 쌓기 간격)만 쓴다 — 2026-11-23 */
+.sd-trd .nv-page-header .sd-trd-crumb { margin-bottom: 0; }
+
+/* 통계표 원본 표 열 너비 — 2026-11-23
+   colgroup 은 7개(파일명 열 없음)라 열이 한 칸씩 밀려 걸리므로 col 너비는 풀고 머리 칸 순서로 정한다.
+   파일명은 길이가 거의 바뀌지 않아 한 줄에 맞춘 고정 너비, 통계표 원본은 남는 너비를 모두 받는다(최소 24rem).
+   전체 최소 폭보다 좁은 화면에서는 표 상자가 가로로 넘어간다. */
+.sd-trd .sd-trd-sources { table-layout: fixed; min-width: 139.6rem; }
+.sd-trd .sd-trd-sources col[class] { width: auto; }
+.sd-trd .sd-trd-sources thead th:nth-child(1) { width: 6.4rem; }   /* 번호 */
+.sd-trd .sd-trd-sources thead th:nth-child(2) { width: auto; }     /* 통계표 원본 — 나머지 */
+.sd-trd .sd-trd-sources thead th:nth-child(3) { width: 46.8rem; }  /* 파일명 */
+.sd-trd .sd-trd-sources thead th:nth-child(4) { width: 16rem; }    /* 연도 범위 */
+.sd-trd .sd-trd-sources thead th:nth-child(5) { width: 10rem; }    /* 분기 통계표 */
+.sd-trd .sd-trd-sources thead th:nth-child(6) { width: 11.2rem; }  /* 반영일 */
+.sd-trd .sd-trd-sources thead th:nth-child(7) { width: 8rem; }     /* 상태 */
+.sd-trd .sd-trd-sources thead th:nth-child(8) { width: 17rem; }    /* 작업 */
+.sd-trd .sd-trd-sources .sd-trd-file { white-space: nowrap; overflow-wrap: normal; }
+
+/* 통계표 통합 상세 머리 — 시계열 편집 화면과 같은 nv-editor-header(흰 막대 · 뒤로 · 제목 · 사용자 화면 코드 · 단추). 2026-11-23
+   .sd-trd 안의 안내(order -2 · -1)보다 늘 위에 오게 한다 */
+.sd-trd > .nv-editor-header { order: -4; }
+.sd-trd .nv-editor-header__title { margin: 0; }

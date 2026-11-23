@@ -11,7 +11,7 @@
 .nv-media-thumb .nv-icon { width: 2.4rem; height: 2.4rem; }
 .nv-media-table tbody td { height: auto; padding-top: 1.2rem; padding-bottom: 1.2rem; }
 .nv-media-info { display: flex; flex-direction: column; gap: .4rem; min-width: 0; }
-.nv-media-info__name { font-weight: var(--cms-fw-medium); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 48rem; }
+.nv-media-info__name { font-weight: var(--cms-fw-semibold); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 48rem; }
 .nv-media-info__meta { color: var(--cms-subtle); font-size: var(--cms-fs-md); }
 .nv-media-kind { color: var(--cms-muted); font-size: var(--cms-fs-base); white-space: nowrap; }
 
@@ -25,7 +25,7 @@
 .nv-media-card__top { display: flex; align-items: center; justify-content: space-between; }
 .nv-media-card .nv-media-thumb { width: 100%; height: 19.4rem; }
 .nv-media-card__name { display: flex; align-items: baseline; gap: .8rem; min-width: 0; }
-.nv-media-card__name b { font-weight: var(--cms-fw-medium); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nv-media-card__name b { font-weight: var(--cms-fw-semibold); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .nv-media-card__name small { color: var(--cms-subtle); font-size: var(--cms-fs-sm); white-space: nowrap; }
 .nv-media-card__foot { display: flex; align-items: center; justify-content: space-between; gap: .8rem; }
 .nv-media-card__meta { display: flex; gap: .8rem; color: var(--cms-muted); font-size: var(--cms-fs-md); }

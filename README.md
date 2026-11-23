@@ -60,7 +60,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 서체 | PretendardGOV 400 · 500 · 600 · 700 |
+| 서체 | Pretendard 400 · 600 · 700 (`static/shared/fonts`) |
 | 단위 | rem(1rem = 10px). 글자 크기 설정(`data-cms-fontscale`)이 그대로 먹습니다 |
 | 글자 크기 | 11 · 12 · 13 · 14 · 15 · 17 · 18 · 20 · 24 · 32px |
 | 간격 | 4px 그리드: 4 · 8 · 12 · 16 · 20 · 24 · 32 · 40 |
@@ -108,6 +108,130 @@
 ## 8. 작업 기록
 
 최신 기록이 위에 옵니다.
+
+### 2026-11-23 · SEDIS 특수교육 현황(통계표 원본 · 통계표 통합 · 그래프) 스타일가이드 적용
+- **파일:** `static/sedis/assets/admin/trd-admin.css` 끝에 「스타일가이드 적용」 묶음 추가(마크업 그대로, `--nuri-*` 토큰)
+- **통계표 원본:** 「올린 파일은 바로 반영되지 않습니다」 안내를 표 위로(보이는 순서만) · 줄마다 반복되던 파란 「새 파일 올리기」를 보조(테두리) 단추로 · 파일명 열 넓힘(13 subtle) · 「이전 파일」 접기 표시를 caret 아이콘으로
+- **통계표 통합:** 행 ⋮ 단추를 테두리 없는 아이콘 단추로
+- **통계표 통합 상세:** 머리를 흰 막대(등록 · 수정형 머리)로 · 연도 표 머리 첫 칸 바탕 · 고정 열 구분선 · 가로로 넘치는 표에 좌우 그림자(더 있음 표시) · 구획 번호 20 원
+- **그래프:** 통계표 목록을 고르기 목록(36 · 모서리 4, 선택 nav/item-selected, 개수 작은 배지)으로 · 정보 카드 제목 18 · 사용자 화면 미리보기 본문은 사용자 화면 그대로 둠
+
+### 2026-11-23 · 키트 화면 공통 틀(머리 · 사이드 메뉴 · 로고) 스타일가이드 적용
+- **파일:** `static/admin-ui/v2/cms-admin-v2.css` — 「1. 앱셸」 뒤에 「1-1. 머리 · 사이드 메뉴 · 로고」 덮어쓰기 묶음 추가(마크업 · 클래스 · data-* 그대로, 값은 `--nuri-*` 토큰)
+- **로고:** 판에 따라 자동 — 누리지음 기본 `logo/nurijieum-cms.svg`, SEDIS(설치 판 PROJECT 눌림) 기관로고 `logo/nise-cms.svg`. 기존 PNG `<img>` · 「CMS」 꼬리표는 화면에서만 숨김(alt 유지)
+- **사이드 메뉴:** 1차 48 · 2차 36(앞 6px 줄 블릿) · 모서리 8 · 선택 nav/item-selected + SemiBold · 도움말 카드 point-subtler
+- **머리:** 높이 66 · 좌우 40 · 사이트 선택 · 검색 pill(흰 10% 바탕 + 흰 25% 테두리, 40) · 오른쪽 단추 13 SemiBold · 아바타 header/avatar-surface
+- **아이콘:** 머리 · 사이드 메뉴의 kit 아이콘 16종을 Phosphor 로(마스크). 다른 영역 아이콘은 다음 단계
+- **머리 셀렉트 · 검색 원본 기준 수정:** 사이트 선택 = 테두리만(새 토큰 `--nuri-color-header-site-border` 흰 40%), 검색 = 바탕만(`--nuri-color-header-search-surface` 흰 12%, 425×40). 새 원본 색 `--nuri-alpha-white40` · `white12`. 피그마 `cms/header-bar` 에 사이트 선택 추가(백업 있음) · 스타일가이드 `.nuri-header-bar__site` 추가
+- **시안에 있으나 키트에 없는 것:** 머리의 「알림」(종) — 마크업이 없어 넣지 않음
+
+### 2026-11-23 · 디자인모음 컴포넌트 · 패턴 추가 (스타일가이드)
+- **컴포넌트 5종** (`nuri-components.css` 끝에 추가): `.nuri-depth-badge`(1~4단계) · `.nuri-summary-card` · `.nuri-key-value`(디자인모음 summary-row) · `.nuri-editor-toolbar` · `.nuri-list-item`(디자인모음 picker-item, Group · Action · Person)
+- **패턴 11종** (새 파일 `static/shared/nuri-patterns.css`, 클래스 `.nuri-p-*`): 사이드 메뉴(누리지음 판 · SEDIS 판 따로) · 요약 영역 · 메뉴 트리 행 · 메뉴 편집 머리 · 담당자 선택 · 접근 권한 표 · 권한 항목 · 상위 설정 따르기 · 민원 처리 상태 카드 · 민원 처리 기한 카드
+- **결정:** 권한 항목(permission-item)과 상위 설정 따르기(inherit-bar)는 컴포넌트로 합치지 않고 별도 패턴. 사이드 메뉴 두 판은 합치지 않음
+- **스타일가이드:** 상황별 컴포넌트 25~29, 새 「패턴」 묶음 30~40, 현재 위치(예비) 41. 불러오는 순서 cms-base → nuri-tokens → nuri-components → nuri-patterns → nuri-icons
+- **반복 패턴 컴포넌트화:** 피그마 디자인모음의 반복 덩어리를 컴포넌트로 묶고 스타일가이드에 추가 — `.nuri-field-card`(토글 · 입력 · 라디오, 133곳) · `.nuri-inline-notice`(링크 있음 · `--subtle`, 42곳) · 패턴 `.nuri-p-apply-summary`(26곳) · 메뉴 트리 `menu-tree-head` · `menu-tree-more`. 바닥글 139곳은 `cms/footer` 인스턴스로 바꿈
+- **스타일가이드 정리(2):** 패턴의 사이드 메뉴를 누리지음 판 하나로 합침(SEDIS 판 삭제, 누리지음이 기본). 로고 2종을 SVG 로 추가 — `static/shared/logo/nurijieum-cms.svg`(누리지음, 130×20) · `nise-cms.svg`(기관로고 · 특수원 CMS, 163×30), 클래스 `.nuri-logo-img`(`--nise`), 스타일가이드 「화면 틀 › Logo」. 메뉴 트리 섹션에 표 머리 · 상태 3가지 · 표기 아이콘 · 표 아래 안내 · 더보기 메뉴를 나눠 넣음. 민원 처리 상태 카드 9가지 · 기한 카드 8가지를 피그마 상태 전부로 채움
+- **메뉴 트리 표기 정리:** 「개별」 · 「변경」 글자 배지를 없애고 아이콘과 행 상태로 바꿈 — 접근 통제 `i-lock-simple`(icon/gray) · 개별 설정 `i-link-simple-break`(모두 icon/gray) · 저장 안 함 = 표 행 상태 `table/row-changed` 배경 + 글자 `text/warning`(`.is-changed`) · 미노출 = 글자 disabled + 노출여부 「미노출」(`.is-unused`, 노출여부는 노출 · 미노출 두 가지). 표 아래 설명 `.nuri-p-legend`. 키트 화면(`mtree__tag`)에는 아직 적용 전
+- **단계 번호 색 수정:** 2·3단계 색이 같던 것을 단계마다 다르게 — 1 secondary/80 · 2 secondary/60 · 3 secondary/50 · 4 gray/50 (피그마 컴포넌트도 같이 수정, 수정 전은 백업). 메뉴 트리 들여쓰기는 피그마와 같게 단계마다 24
+
+### 2026-11-23 · 피그마 디자인스타일 토큰 · 컴포넌트 코드화 + 스타일가이드 페이지(`styleguide/`)
+- **브랜치:** `claude/kit-update-1117`(작업 중, 커밋 전) · **상태:** 검토 대기
+- **작업 폴더별 변경**
+  - `static/shared/nuri-tokens.css`: 맨 끝에 「피그마 변수」 블록 추가 — 「누리지음 primitive(neutral · alpha · number) · semantic(gap · padding · size-height · radius) · mode(색 역할 303개, light · high-contrast) · responsive(글자 크기 pc · mobile)」와 그림자 shadow1~4를 그대로 옮김. 이름 = `--nuri-` + 피그마 변수 이름(`/` → `-`), 예: `color/text/basic` → `--nuri-color-text-basic`. 고대비는 `data-krds-mode="high-contrast"`. 기존 `--cms-*`는 그대로 둠
+  - `static/shared/nuri-components.css`(새 파일): 디자인스타일 6~24의 `cms/*` 컴포넌트를 클래스로 옮김(피그마 `cms/이름` → `.nuri-이름`, 변형 → `--값`). 버튼 · 아이콘 버튼 · 글자 버튼 · 배지 · 아이콘 · 입력 · 셀렉트 · 글자형 셀렉트 · 체크박스 · 라디오 · 토글 · 탭 · 메뉴 · 표(줄형 · 카드형) · 빈 목록 · 사이드 메뉴 · 상단 바 · 화면 제목 · 목록 도구 막대 · 바닥글 · 맨 위로 · 모달 · 패널 · 쪽 번호 · 선택 목록 · 날짜 입력 · 달력 · 파일 첨부 · 태그 · 보기 전환 · 현재 위치 · 라벨 · 입력 항목 · 텍스트 영역 · 아코디언 · 트리 · 정보 표 · 토스트 · 얼럿. 값은 위 피그마 변수만 씀
+  - `static/shared/icons/`(새 폴더): 피그마 「아이콘」 페이지 컴포넌트와 같은 Phosphor Icons v2.1.1 전체 3,024개(Regular 1,512 · Fill 1,512, MIT). 피그마 이름 목록과 하나도 빠짐없이 같은지 확인함
+  - `static/shared/nuri-icons.css`(새 파일): 아이콘 모양 클래스 3,024개 — 피그마 `icon/{이름}` → `class="nuri-icon i-{이름}"`, `icon/{이름}-fill` → `i-{이름}-fill`. 크기 · 색 클래스는 `nuri-components.css`(`nuri-icon--16`, `nuri-icon--danger` 등)
+  - 스타일가이드 8. Icon: 아이콘 목록(찾기 · 분류 18개 · Regular/Fill · 미리보기 크기, 누르면 마크업 복사)
+  - `styleguide/index.html`(새 파일): 섹션 1~24를 키트 CSS로 실제로 그린 견본 + 견본마다 「코드」(마크업). 색 · 간격 · 역할 색(light · 고대비 나란히) · 글자 · 그림자 표, 「고대비 보기」 버튼. 읽는 CSS는 `cms-base.css` · `nuri-tokens.css` · `nuri-components.css`뿐(KRDS 없음)
+  - 스타일가이드 섹션 순서를 우선순위로 바꿈 — 기초(색 · 역할 색 · 글자 · 간격 · 그림자 · 아이콘) → 화면 틀 → 자주 쓰는 컴포넌트(키트 관리 화면에서 쓰는 화면 수가 많은 순: 버튼 · 입력 · 입력 항목 · 선택 목록 · 모달 · 패널 · 탭 · 메뉴 · 표 · 쪽 번호 · 배지 · 알림) → 상황별 컴포넌트(빈 목록 · 날짜 · 파일 · 태그 · 보기 전환 · 아코디언 · 정보 표) → 예비(현재 위치). 섹션마다 피그마 디자인스타일 원래 번호를 함께 적음
+  - `index.html`: 맨 위에 스타일가이드 링크
+  - 관리 화면 HTML · 기존 `.nv-*` CSS는 아직 안 바꿈 — 다음 단계에서 `.nv-*`를 이 컴포넌트 값으로 맞춤
+- **확인:** 견본 크기를 피그마 컴포넌트와 비교 — 버튼 높이 28 · 32 · 40 · 44 · 48, 배지 20 · 24 · 32, 탭 48 · 44, 메뉴 176 · 항목 36, 쪽 번호 24, 달력 280 × 284, 모달 400 · 560, 패널 476, 토스트 높이 45, 태그 24 · 28, 보기 전환 32 · 40, 상단 바 66, 도구 막대 72, 바닥글 56, 트리 48 · 36, 정보 표 120 × 44 모두 같음. 얼럿만 2px 낮음(81 · 45, 피그마 83 · 47)
+- **크기별 견본 보강:** 버튼(XS~XL × 스타일 · 아이콘) · 아이콘 버튼(XS · S · M) · 배지(Small · Medium · Large) · 입력 · 셀렉트 · 날짜 입력(S · M · L) · 글자형 셀렉트(S · M · L) · 체크박스 · 라디오 · 토글(S · M) · 모달(S · M · L) · 보기 전환 · 태그(S · M) · 아코디언(M · L)을 크기별 표 + 크기별 코드로 보여 줌. CSS도 피그마 크기별 값으로 맞춤 — 입력 · 셀렉트 앞 아이콘 S 16 · M · L 20(펼침 꺾쇠는 16 고정), 날짜 입력 L 너비 176, 글자형 셀렉트 L 16(`nuri-select-text--l`)
+  - `static/shared/illust/`(새 폴더): 피그마 cms/empty-img 9종 · cms/error-img 5종을 SVG로 내보낸 그림(182×160, empty-search · empty-data · empty-file · empty-permission · empty-error · empty-user · empty-stats · empty-menu · empty-target · error-404 · error-403 · error-500 · error-503 · error-network). 피그마 SVG 내보내기 결과와 글자 하나까지 같은지 확인함(좌표는 소수 1자리로 줄임, 화면에서는 차이 없음). 스타일가이드 「Empty state」 섹션(11. Table에서 따로 뺌)에 14종 견본
+  - `static/shared/illust/graphic-*.png`: 피그마 graphic/* 10종(60×60 PNG, 피그마에서 직접 내보낸 파일 — 다운로드/graphic 폴더의 PNG만 가져옴, SVG는 안에 비트맵이 들어 개당 200~400KB라 쓰지 않음). `<img class="nuri-graphic" …>`. 스타일가이드 8. Icon에 견본
+- **피그마와 다른 점:** 화면 제목 서체 KIMM_Bold는 글꼴 파일이 없어 Pretendard Bold로 그려짐
+
+### 2026-11-23 · 관리 화면 기본 규칙 파일(`cms-base.css`) 추가 — KRDS CSS 없이 쓰기 위한 첫 단계
+- **브랜치:** `claude/kit-update-1117`(작업 중, 커밋 전) · **상태:** 검토 대기
+- **작업 폴더별 변경**
+  - `static/shared/cms-base.css`(새 파일): KRDS `common.css`가 하던 기본 규칙을 피그마 디자인스타일 기준으로 옮김 — 1rem = 10px(62.5%), Pretendard · 본문 14 · 줄 높이 150% · 글자색 `--cms-text`, 초기화(여백 · box-sizing · 목록 · 링크 · 단추 · 입력 · 표), 화면에 안 보이는 요소(`caption` · `legend` · `hr` · `.sr-only` · `.blind`), 키보드 포커스 링(`--cms-focus`), 선택 영역 색
+    - 모든 선택자를 `:where()`로 감싸 우선순위 0 — 컴포넌트 CSS(`.nv-*`)가 언제나 이김
+    - `<b>`를 Bold 700으로 고정(SemiBold 글자 안에서 900 가짜 굵기로 그려지던 문제 해결)
+    - 이름표(`label`)는 KRDS와 같이 `inline-flex` 유지(필수 * · 아이콘 정렬)
+  - `static/shared/nuri-tokens.css`: `--cms-transition`(.2s) 추가. 서체를 Pretendard GOV → **Pretendard**로 바꿈(피그마 `typo/font/type`). `--cms-font` 첫 이름이 `'Pretendard'`
+  - `static/shared/fonts/`(새 폴더): Pretendard v1.3.9 서브셋 Regular · SemiBold · Bold(woff2 · woff, OFL-1.1). Medium은 쓰지 않아 넣지 않음. 사용자 화면은 KRDS의 Pretendard GOV를 그대로 씀
+  - HTML은 아직 고치지 않음(화면들은 지금도 KRDS 두 파일을 읽음)
+- **왜:** 마크업은 그대로 두고 CSS만 피그마 규칙으로 바꾸기 위해. 개발 쪽은 관리 화면 머리의 KRDS 두 줄을 이 파일 한 줄로 바꾸면 됨
+- **확인:** 대표 관리 화면 41장을 「KRDS 두 파일」 ↔ 「`cms-base.css`」로 바꿔 1920 폭 전체 캡처 · 요소별 계산 스타일 비교
+  - 관리 화면 32장: 화면 차이 0(바뀐 것은 `<b>` 굵기 900 → 700뿐)
+  - 서체를 Pretendard로 바꾼 뒤: 관리 화면 글자 1,721곳 모두 Pretendard 400 · 600 · 700으로 그려짐. 글자 폭이 조금 좁아 줄바꿈이 줄어든 화면 2장(콘텐츠 수정 −13px, 통계표 통합 −21px 높이)
+  - 남은 차이: SEDIS 쪽 번호(`krds-pagination`) 5장 — KRDS 컴포넌트 클래스라 다음 단계에서 누리지음 CSS로 그림 / 사용자 화면 미리보기 3장(그래프 · 그래프 시각화 · 이용안내) — 새 창 방식으로 바꿀 예정이라 KRDS 유지
+
+### 2026-11-23 · SEDIS 왼쪽 메뉴를 개발 서버 최신 메뉴로 맞춤
+- **브랜치:** `claude/kit-update-1117`(작업 중, 커밋 전) · **상태:** 검토 대기
+- **작업 폴더별 변경:** `pages/sedis/console/` 2,518장 — 「시계열 시각화」 묶음을 개발 서버 최신 구성(데이터 그룹 · 데이터 주제 · 통계표 원본 · **통계표 통합 · 시각화** · 라벨 사전)으로 바꿈. 「통계표 통합」 · 「그래프 시각화」 항목은 뺌(두 메뉴가 「통계표 통합 · 시각화」 하나로 합쳐짐)
+  - 뺀 두 메뉴의 예전 화면 663장은 키트에 그대로 남아 목록(`index.html`)에서 열 수 있고, 그 화면들의 메뉴에서는 「통계표 통합 · 시각화」가 선택 상태로 보임
+  - 새 화면의 메뉴 링크(사이트 관리 · 운영관리 묶음 10개, 매뉴얼)는 다른 키트 화면과 같은 파일 링크로 맞춤
+- **왜:** 개발 서버(2026-11-23) 메뉴가 최신이라 키트 메뉴를 그에 맞춤
+- **확인:** 시계열 시각화 묶음이 있는 SEDIS 관리 화면 2,518장 모두 같은 5개 항목
+
+### 2026-11-23 · SEDIS 「통계표 통합 · 시각화」 화면 추가
+- **브랜치:** `claude/kit-update-1117`(작업 중, 커밋 전) · **상태:** 검토 대기
+- **작업 폴더별 변경**
+  | 폴더 | 파일 | 내용 |
+  |---|---|---|
+  | `pages/sedis/console/` | `console-통계표-통합-시각화-ff5106.html` (새 파일) | 개발 서버 `/console-9f3a/svc/sedis/ts/intg-graphs` 1쪽(실제 데이터 15줄)을 키트 형식으로 가져옴: 스크립트 뺌 · 자산 경로 `../../../static` · 키트에 있는 화면은 파일로, 없는 화면은 `#kit-missing` · 엑셀은 `#kit-file` |
+  | `static/sedis/assets/admin/` | `ts.css` · `img/ico-chart-bar.svg` (새 파일) | 목록 전용 스타일(`.sd-ts-ig*` · `.sd-ts-intg` · `.sd-ts-ico-chart`)과 그래프 아이콘을 개발 서버에서 가져와 토큰 규칙에 맞춤 |
+  | `static/admin-ui/v2/` · `static/shared/` | `cms-admin-v2.css` · `nuri-tokens.css` | 「재실행 필요」 버튼 `.nv-btn--warn` · `--cms-warn-border`(warning-40) 추가 |
+  | `/` · `static/_kit/` | `pages.json` · `index.html` · `kit-map.js` | 화면 목록 · 지도에 추가(SEDIS 2,920화면) |
+- **왜:** 키트에 없던 개발 화면(실제 데이터 반영)을 디자인 기준 화면으로 두기 위해
+- **확인:** 1440 · 1920 폭으로 그려 확인. 다른 화면 사이드 메뉴의 「통계표 통합 · 시각화」에서 이 화면으로 이동됨(kit.js 지도 연결)
+- **알아 둘 점:** 통합 상세(`…/ST001`) · 그래프 화면(`…/graph`) · 미리보기 · 작업 메뉴 열린 상태 · 2~6쪽은 아직 없음. 작업 ⋮ 단추는 개발 서버 CSS 대로 가로(…)로 돌아가 있음(피그마는 세로 ⋮)
+
+### 2026-11-23 · 상단 판 전환(누리지음 기본 · SEDIS) 링크 연결
+- **브랜치:** `claude/kit-update-1117`(작업 중, 커밋 전) · **상태:** 검토 대기
+- **작업 폴더별 변경**
+  | 폴더 | 파일 | 내용 |
+  |---|---|---|
+  | `static/_kit/` | `kit.js` | 다시 내보내기 때 예전 판으로 덮인 것을 링크 · 상태 화면 연결판(23b2066)으로 되돌리고, 상단 판 전환 단추 연결 추가 |
+  | `static/_kit/` | `kit-map.js` | `build-kit-map.py` 로 다시 생성(627 → 3,558건, 다시 내보내기 화면 반영) |
+- **판 전환 규칙:** 같은 주소 · 같은 상태 화면 → 같은 주소의 기본 화면 → 같은 경로의 기본 화면 → 같은 파일 이름 → 대시보드 순으로 찾음
+- **확인:** 관리 화면 3,125장 모두 이동할 곳 있음(같은 화면 1,128 · 비슷한 화면 261 · 대시보드 1,736 — 대부분 다른 판에 없는 SEDIS 전용 메뉴). 게시판1 화면에서 SEDIS → 누리지음 기본 왕복 클릭 확인
+- **개발팀 참고:** 키트 전용 파일만 바뀜
+
+### 2026-11-23 · 피그마 디자인스타일 규칙 전체 적용 (이전 스타일 사용 안 함)
+- **브랜치:** `claude/kit-update-1117`(작업 중, 커밋 전) · **상태:** 검토 대기
+- **작업 폴더별 변경**
+  | 폴더 | 파일 | 내용 |
+  |---|---|---|
+  | `static/shared/` | `nuri-tokens.css` | 글자 크기 13 · 14 · 16 · 18 · 20 · 24 · 28 · 32(+ caption 12) · 줄 높이 150% 하나 · Medium → SemiBold · 모서리 2 · 4 · 8 · 12 · 16 · 24 · max(6 · 10 없앰) · 그림자 `--cms-shadow-1~4` · 입력 S 32 · 표 칸/머리 48. 이전 토큰 이름(xs · sm · tight · loose · radius-sm · md · shadow-sm …)은 새 값으로 연결 |
+  | `static/shared/` · `static/admin-ui/v2/`(+ `pages/`) · `static/sedis/assets/admin/` | CSS 27개 | 직접 적힌 값을 토큰으로 바꿈: 글자 크기 138곳 · 줄 높이 74곳 · Medium 31곳 · 모서리 89곳 · 색 58곳 · 그림자 2곳. 굵지 않은 15px 글자는 14, 굵은 글자는 16 |
+  | `static/admin-ui/v2/` | `cms-admin-v2.css` | 목록 도구 막대 좌우 여백 26 → 24, 왼쪽 묶음 사이 16 → 12(피그마 list-toolbar). 대시보드 큰 숫자 40 → 32(display/small) |
+- **왜:** 피그마 「디자인스타일」 규칙만 쓰고 이전 스타일은 쓰지 않기 위해
+- **확인:** 대시보드 · 콘텐츠 관리/수정 · 메뉴관리 · 서브관리자 · 권한그룹 패널 · 게시글 관리 · 민원 처리 · SEDIS 통계표 통합 · 그래프 시각화 · 원본 상세 11화면을 1440×900으로 바꾸기 전후 비교. 메뉴관리 도구 막대가 두 줄로 넘어가던 것은 여백 조정으로 해결. 1440 폭에서는 글자가 커진 표 칸 일부(권한그룹 배지 + 변경)가 두 줄이 됨. 콘텐츠 관리 도구 막대는 바꾸기 전에도 1440에서 두 줄
+- **남은 것:** 이전 `static/admin-ui/cms-admin.css`(로그인 화면만 사용) · 공개 화면 CSS · 화면 HTML 안의 인라인 스타일(차트가 만든 값)은 대상 아님. `var(--토큰, 예비값)` 속 예비값과 `qa-guide.css` 의 자체 변수 색은 그대로
+- **개발팀 참고:** 위 CSS를 실제 자산에 옮기면 됨. 화면 HTML 구조 변경 없음
+
+### 2026-11-23 · 색을 피그마 디자인스타일 값으로 맞춤
+- **브랜치:** `claude/kit-update-1117`(작업 중, 커밋 전) · **상태:** 검토 대기
+- **작업 폴더별 변경**
+  | 폴더 | 파일 | 내용 |
+  |---|---|---|
+  | `static/shared/` | `nuri-tokens.css` | 「누리지음 primitive」 색 8계열을 `--nuri-{색}-{단계}`로 추가. `--cms-*` 색 토큰 50개를 피그마 「누리지음 mode」 역할에 맞춰 `--nuri-*` 참조로 바꿈. 입력 토큰 `--cms-input-border` · `-light` · `-hover` · `--cms-control-track-off` 추가(고대비 값 포함) |
+  | `static/admin-ui/v2/` | `cms-admin-v2.css` | 입력 · 텍스트 영역 · 체크 · 라디오는 진한 테두리(`--cms-input-border`, #55647a), 셀렉트는 연한 테두리(#cbd5e1), 마우스 올림은 `--cms-input-border-hover`, 토글 꺼짐은 `--cms-control-track-off` |
+  | `/` | `NURIJIEUM-DESIGN-RULES.md` (새 파일) | 피그마 디자인스타일 · 디자인모음 · 아이콘 기준 디자인 규칙 |
+- **주요 값 변화:** 회색이 중립 회색(#1e2124 · #464c53 · #e6e8ea …)에서 피그마 주 회색인 푸른 회색으로 바뀜
+  - 글자 #1e293b · 설명 #475569 · 흐린 글자 #64748b
+  - 테두리 #e2e8f0 · 진한 테두리 #cbd5e1 · 표 구분선 #eef2f7
+  - 상태색 글자는 각 색 70단계(성공 #267444, 오류 #bd2c0f, 안내 #096ab3), 회색 배지 #eef2f7 / #334155
+  - 알림 점 #00ffab → #f05f44(header/notice-dot)
+  - 프라이머리 · 헤더 네이비 · 화면 바탕은 이전과 같음
+- **왜:** 피그마 「디자인스타일」에서 KRDS 규칙으로 정리한 색과 키트 색을 일치시키기 위해
+- **확인:** 게시판 게시글 관리 · 민원 처리 화면을 1440×900으로 그려 토큰 값과 입력 · 셀렉트 테두리 색 확인. 흐린 글자 #64748b 는 흰 바탕 4.76:1, 화면 바탕(#f6f8fc) 4.48:1. 도움말 카드 글자는 point-70(3.65:1) 대신 point-80(4.98:1)
+- **남은 것:** 이전 `static/admin-ui/cms-admin.css`, 화면별 CSS에 직접 적힌 색, 글자 크기 · 모서리 토큰(6 · 10, 15px)은 이번에 바꾸지 않음
+- **개발팀 참고:** `static/shared/nuri-tokens.css`, `static/admin-ui/v2/cms-admin-v2.css` 두 파일을 실제 자산에 옮기면 됨
 
 ### 2026-11-17 · 키트 화면 다시 내보내기 반영 (SEDIS 메뉴별 화면 · 게시판별 목록)
 - **PR:** #5 · **브랜치:** `claude/kit-update-1117` (#3 `claude/kit-links` 위에 쌓음) · **상태:** 검토 중
@@ -165,3 +289,37 @@
 - **왜:** 첫 커밋(`28de282 생성`)에서 빠져, 저장소에서 받으면 공개 화면이 없고 아이콘이 깨져 보였음
 - **확인:** 저장소 파일 수 1,762개 = 로컬 폴더 파일 수(`.DS_Store` 제외). 한글 파일 이름은 기존과 같은 NFC 로 넣어 중복 없음
 - **개발팀 참고:** 파일 내용 변경 없음(추가만). `.gitattributes`(`text=auto`)에 따라 svg 줄바꿈은 저장소에서 LF 로 정규화됨
+- 2026-11-23 페이지 헤더 · 브레드크럼(`nv-page-header`, `nv-breadcrumb`) 스타일가이드 적용 — `cms-admin-v2.css` 「2-1」 블록. 제목 brand/page-title(KIMM_Bold 24, 작은 화면 20, @font-face는 `public-ui/…/KIMM-Bold.subset` 사용) · 설명 body/xsmall 13 text-basic · 경로 label/xsmall 13 + caret-right 12 · 현재 위치 text-bolder · 간격 gap-2/3/4/7. `pages/board.css`의 게시글 관리 제목 크기도 같은 토큰으로 바꿈.
+- 2026-11-23 머리 버튼 클래스 정리(마크업) — 페이지 머리 · 등록/수정 머리(`nv-page-header__actions`, `nv-editor-header__actions`)의 버튼 클래스를 계층에 맞게 바꿈(1,826개 화면, 3,956개 버튼). 주요 동작 `nv-btn--primary` · 채움과 함께 쓰는 보조 동작 `nv-btn--primary-outline`(새 클래스, `cms-admin-v2.css`) · 버튼이 하나면 `nv-btn--primary` · 채움이 없던 묶음은 맨 오른쪽을 `nv-btn--primary` · 삭제/보관(`--danger`)은 그대로. 바뀐 클래스: outline→primary-outline 2,718 · outline→primary 618 · soft→primary-outline 343 · muted→primary-outline 277. 앞서 넣었던 색 덮어쓰기(「2-2」)는 뺌. 고치기 전 화면 묶음: `_to_delete/pages-before-header-btn.tgz`.
+- 2026-11-23 페이지 머리 높이 통일 — 제목 줄 최소 높이를 머리 버튼 높이(3.7rem)와 같게(`cms-admin-v2.css` 「2-1」). 버튼이 있든 없든 경로 없는 머리 37 · 경로 있는 머리 62.5. 특수교육 현황 미리보기 머리의 경로(`sd-trd-crumb`) 아래 여백 8을 빼서 다른 화면과 같게(`trd-admin.css`).
+- 2026-11-23 `<main>`의 `tabindex="-1"` 제거 — 본문을 누를 때마다 포커스가 잡히던 문제. 화면 HTML 3,111장에서 뺌(고치기 전 묶음: `_to_delete/pages-before-main-tabindex.tgz`). `static/admin-ui/admin-shell.js`가 불러올 때 다시 넣던 코드도 빼고, 「본문 바로가기」를 누를 때만 잠시 `tabindex="-1"`을 주고 포커스가 떠나면 빼도록 바꿈. **개발팀 참고:** 서버 템플릿의 `<main id="main-content" tabindex="-1">`도 같이 빼야 함.
+- 2026-11-23 박스 요소의 강제 tabindex 제거 — 화면 HTML 2,943장: 표 스크롤 상자(nv-table-scroll · tbl-scroll · krds-table-wrap) · 모달 본문 스크롤(modal-conts) · AI 대화 기록(cm-ai-chat) · 안내 말풍선(reasonbar__opt · list-hint · qg-mini) · 사용 설명서 흐름(qg-flow). kd.js가 표 상자에 주던 tabindex=0도 뺌. 남긴 것: 차트 키보드 탐색(cm-chart-focus-*) · 측면 패널 대화상자(nv-panel) · 메뉴 옮기기 손잡이(nv-nav-menu__grip) · 누르는 표 줄(tr role=link) · AI 패널 제목(cm-ai-title). 고치기 전 묶음: `_to_delete/pages-before-box-tabindex.tgz`.
+- 2026-11-23 통계표 원본 표 열 너비 — `trd-admin.css`. colgroup(7개)이 파일명 열(8번째 칸)을 빠뜨려 너비가 한 칸씩 밀려 걸리던 것을 머리 칸 순서로 다시 정함: 번호 6.4 · 통계표 원본 나머지 전부 · 파일명 46.8(가장 긴 파일명 한 줄) · 연도 범위 16 · 분기 10 · 반영일 11.2 · 상태 8 · 작업 17(rem). 표 최소 폭 139.6rem. **개발팀 참고:** colgroup에 파일명 열 `<col>`이 빠져 있음.
+- 2026-11-23 표 열 너비 점검 · 조정 — 서로 다른 표 175종을 1920 · 1600 화면에서 열마다 실제 너비와 한 줄에 필요한 너비를 재서 비교. 다른 열이 남는데 줄바뀜이 생기던 표만 고침: `ts.css`(시계열 통계표 원본의 데이터 주제 28rem · 원본 연도 25rem · 통계표 통합 시각화 원본 연도 26rem + 표 최소 폭 142rem), `his-admin.css`(조사 구분 28 · 조사 대상자 30 · 영역 24 · 주석 26rem), `kd.css`(데이터 그룹 18.4 · 조사대상 20 · 그래프 유형 17rem + 표 최소 폭 148rem). 앞서 `trd-admin.css` 통계표 원본도 같은 방식.
+- 2026-11-23 **SEDIS 관리자 화면 스타일가이드 적용(공통 컴포넌트)** — 새 파일 `static/admin-ui/v2/sedis-sg.css`를 SEDIS 콘솔 화면(`pages/sedis/console`, 2,542장)에만 연결. 누리지음 기본 판은 그대로.
+  - 버튼(cms/button) · 입력칸 · 선택 · 여러 줄(cms/input) · 체크 · 라디오 · 토글 · 배지 · 태그 · 카드 · 요약 카드 · 목록 도구 막대 · 표(머리 · 줄 48) · 빈 목록 · 쪽 번호 · 더보기 메뉴 · 상자 탭 · 밑줄 탭(.gtabs) · 세그먼트 · 알림 · 측면 패널 · 모달 · 파일 올리기 · 상세 정보표 · 트리 · 말풍선을 스타일가이드 값(--nuri-* 토큰)으로.
+  - 마크업 클래스 정리: 회색 버튼 `nv-btn--outline-strong` 2,551 · `--muted` 619 · `--excel` 180 → `nv-btn--outline`(tertiary 회색 테두리), `nv-btn--soft` 171 → `nv-btn--primary-outline`, 행 더보기 `rowmore` 2,420개에 `nv-btn--icon` 추가.
+  - 확인: 화면 틀 237종을 1600에서 고치기 전과 비교 — 스크립트 오류 · 빠진 파일 · 가로 넘침 · 버튼 줄바뀜 새로 생긴 것 0.
+  - 고치기 전 묶음: `_to_delete/pages-sedis-before-sg.tgz`.
+  - **개발팀 참고:** SEDIS 관리자 화면 템플릿에 `sedis-sg.css`를 마지막 스타일시트로 연결하고, 위 버튼 클래스 정리를 템플릿 · 스크립트(`group-panel.js`의 `nv-btn--soft` 등)에도 반영해야 함.
+- 2026-11-23 특수교육 현황 「통계표 통합」 상세 머리(16장)를 시계열 편집 화면과 같은 `nv-editor-header`로 바꿈(마크업): 흰 막대 · 뒤로(통계표 통합 목록) · 제목 · 사용자 화면 코드 · 「이 통계표의 그래프 보기」(단추 하나라 파랑 채움). `trd-admin.css`에서 머리를 맨 위로(order -4), 쓰지 않게 된 `sd-trd-head` 덮어쓰기 규칙 정리.
+- 2026-11-23 **하위 목록 머리 · 브레드크럼 삭제** (두 판 모두, 마크업)
+  - 하위 목록 머리 `nv-page-header--sub` 182곳: 게시글 관리(`bd-posts-header`) · 조사 대상자 관리 · 권한 역할 상세(`id-subhead`). 제목은 화면 제목(KIMM 24)보다 한 단계 아래인 heading/medium 20 Bold(본문 서체) — `cms-admin-v2.css` 2-1, `board.css`.
+  - 머리 단추: 이전 목록 · 관리 화면으로 돌아가는 단추(「…목록으로」 · 「목록」 · 「그래프 관리」) 220개 → `nv-btn--outline`(tertiary 회색 테두리). 하위 목록 머리의 그 밖의 단추(「사용자 화면 보기(새 창)」) 6개 → `nv-btn--primary-outline`. 하위 목록 머리에는 채움 단추를 쓰지 않는다.
+  - 브레드크럼 삭제: `nav.nv-breadcrumb-wrap` 1,801 · `ol.nv-breadcrumb`(편집 머리 `edh__crumb` 포함) 1,122 · `p.sd-kd-crumb` · `p.sd-his-crumb` 37. 특수교육 현황 미리보기 경로(`sd-trd-crumb`) 19개는 미리보는 통계표 이름 · 코드를 머리 설명으로 옮긴 뒤 삭제. 사용자 화면 미리보기 안의 누리집 경로(`krds-breadcrumb`)와 이미지 탐색기 폴더 경로(`im-crumbs`)는 기능이라 남김.
+  - 고치기 전 묶음: `_to_delete/pages-before-subhead.tgz`. **개발팀 참고:** 서버 템플릿의 브레드크럼 조각과 위 클래스도 같이 바꿔야 함.
+- 2026-11-23 사용자 화면 미리보기 화면(136장)은 고치지 않기로 해 하위 목록 머리 · 브레드크럼 작업 전으로 되돌림(`_to_delete/pages-before-subhead.tgz`에서 복원).
+- 2026-11-23 사이트 관리 > 도메인 관리 머리(`st-detail__head`, 두 판 19장)를 정해진 하위 목록 머리로: `nv-page-header nv-page-header--sub` · 제목 `nv-page-header__title` · 단추 줄 `nv-page-header__actions`, 「사이트 보기」 · 「사이트 수정」 → `nv-btn--primary-outline`, 「사이트 삭제」는 빨강 테두리 그대로. 이 화면은 피그마 시안과 구성이 달라(요소 추가) 마지막에 다시 정리하기로 함.
+- 2026-11-23 **아이콘을 스타일가이드(Phosphor) 아이콘으로** — 관리자 화면(두 판 콘솔 · 설명서 · 로그인, 3,140장)
+  - 화면마다 든 아이콘 스프라이트(`<svg style="display:none">` 안 `#nv-i-…` 81종, 모두 자체 그림)를 Phosphor 모양(`static/shared/icons`)으로 바꿈 + 문맥용 id 15종 추가(96종). 같은 id 를 쓰는 모든 아이콘 · 스크립트가 만드는 아이콘이 함께 바뀜.
+  - id 대응: activity→chart-bar · alert→warning · arrow-counter-clockwise→arrow-counter-clockwise · arrow-left→arrow-left · arrow-right→arrow-right · arrow-right-circle→arrow-circle-right · arrow-up→arrow-up · bell→bell · board→notebook · bold→text-b · book→book-open · calendar→calendar-blank · camera→camera · check→check · check-circle→check-circle · chevron-down→caret-down · chevron-right→caret-right · chevron-up→caret-up · clock→clock-counter-clockwise · close→x · code→code · columns→columns · contrast→circle-half · copy→copy · dashboard→squares-four · database→database · download→download-simple · draft→file-dashed · drag→dots-six-vertical · edit→pencil-simple · excel→microsoft-excel-logo · external→arrow-square-out · eye→eye · eye-slash→eye-slash · file→file · file-code→file-code · file-text→file-text · filter→funnel-simple · folder→folder · folder-plus→folder-plus · font→text-aa · globe→globe · globe-simple→globe-simple · grid→squares-four · h1→text-h-one · h2→text-h-two · help→question · help-chat→chat-circle-dots · home→house · image→image · image-inline→image-square · info→info · italic→text-italic · key→key · link→link · list→list-bullets · list-dashes→list-dashes · lock-simple→lock-simple · logout→sign-out · menu→list · message→chat-circle-dots · minus→minus · minus-circle→minus-circle · more→dots-three-vertical · move→arrow-bend-down-right · ol→list-numbers · paper-plane-tilt→paper-plane-tilt · pause-circle→pause-circle · pencil→pencil-simple · plus→plus · popup→app-window · prohibit→prohibit · puzzle→puzzle-piece · redo→arrow-counter-clockwise · refresh→arrows-clockwise · reset-password→password · search→magnifying-glass · server→hard-drives · settings→gear-six · shield→shield-check · sidebar→sidebar-simple · sitemap→tree-structure · star→star · swap→swap · trash→trash · ul→list-bullets · underline→text-underline · upload→upload-simple · user→user · user-edit→user-gear · users→users · warning-circle→warning-circle · wrench→wrench · x-circle→x-circle · monitor · chat-circle-dots-fill
+  - 같은 id 가 다른 뜻으로 쓰인 곳은 `<use href>` 를 바꿈: 맨 위로 caret-up→arrow-up · 콘솔 권한 key→shield-check · 접근권한 · 메뉴 접근 통제 key→lock-simple · 비밀번호 초기화 key→password · 코드 관리 key→list-dashes · 누리집 접근권한 eye→globe-simple · 회원 정보 eye→user · 편집기 분할 grid→columns · 부서 이동 redo→arrow-bend-down-right · 폐기 해제 refresh→arrow-counter-clockwise · 중지하기→pause-circle · XML생성→file-code · 상태변경→swap · 비공개 x-circle→eye-slash · 비활성화 · 미사용→prohibit · 오류 알림→warning-circle · 발행 upload→paper-plane-tilt · ZIP 반입 upload→file-zip · 부서삭제 minus→trash · 머리 글자·화면 설정→monitor · 도움말 카드→chat-circle-dots-fill · 직원 확인 shield→check-circle. 대시보드는 운영관리(톱니)와 겹치지 않게 squares-four.
+  - CSS: 머리 · 사이드 메뉴 아이콘 마스크 덮어쓰기 블록 삭제(`cms-admin-v2.css`), 선택 상자 꺾쇠 · 이미지 고르기 체크를 Phosphor 모양으로(`cms-admin-v2.css` · `admin-parts.css`), 그래프 아이콘 `img/ico-chart-bar.svg` → `shared/icons/chart-bar.svg`(`ts.css`), SEDIS 행 ⋮ 아이콘 20(`sedis-sg.css`).
+  - 남긴 것: 편집기(SunEditor) 도구 막대 아이콘(외부 라이브러리 — 편집기 설정 icons 옵션으로 바꿔야 함), 사용자 화면 미리보기 안 누리집 아이콘, 대시보드 · 요약 카드 그래픽(그래픽 묶음).
+  - 고치기 전 묶음: `_to_delete/pages-before-icons.tgz`. **개발팀 참고:** 서버의 아이콘 스프라이트 조각을 이 96종으로 바꾸고, 위 문맥 id 를 템플릿에 반영해야 함. 대응표는 `_to_delete/iconmap.py`.
+- 2026-11-23 하위 목록 머리 제목을 화면 머리와 같은 글자(brand/page-title, KIMM_Bold 24)로 — `cms-admin-v2.css` · `board.css`. 게시글 관리 머리의 게시판 종류 배지(133곳)를 단추 영역에서 제목 옆(`nv-page-header__text` 안 제목 뒤)으로 옮김(마크업).
+- 2026-11-23 **빈 목록을 스타일가이드 cms/empty 로** — 두 판 콘솔 782장(사용자 화면 미리보기 제외)
+  - 마크업: `nv-empty` 23종 + 표 안 빈 줄(만족도 응답 · 부가 파일) + 권한 패널 「되살릴 권한그룹이 없습니다」를 그림 + 제목 + 설명 한 틀로. 종류 클래스 `nv-empty--{data|search|file|permission|error|user|stats|menu|target}` 를 붙이고 옛 아이콘은 뺌. 제목은 마침표 없이, 설명이 없던 곳은 할 일 한 문장을 더함(예: 찾는 메뉴가 없습니다 → 「검색어를 바꿔 다시 찾아 보세요.」). 단추 · 링크(확장 서비스 등록 · GA 바로가기)는 그대로.
+  - CSS(`cms-admin-v2.css`): 그림은 `static/shared/illust/empty-*.svg`(182×160)를 종류 클래스로 붙임. 제목 body/medium 16 SemiBold · 설명 body/xsmall 13. 표 · 패널 · 트리 안에서는 여백만 줄임.
+  - 스크립트가 만드는 빈 안내 3곳도 같은 틀로: `menu-edit.js`(찾은 서브관리자) · `board-qna-process.js`(찾은 담당자) · `group-panel.js`(파일에 넣을 사람).
+  - 고치기 전 묶음: `_to_delete/pages-before-empty.tgz`.

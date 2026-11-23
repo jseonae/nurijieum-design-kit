@@ -268,7 +268,7 @@
   function bulkBox(g) {
     var rows = S.bulk.rows;
     var staffKind = g && g.kind === 'staff';
-    var table = !rows ? '' : !rows.length ? '<div class="nv-empty"><p class="nv-empty__desc">파일에 넣을 사람이 없습니다.</p></div>'
+    var table = !rows ? '' : !rows.length ? '<div class="nv-empty nv-empty--user"><p class="nv-empty__title">파일에 넣을 사람이 없습니다</p><p class="nv-empty__desc">명단에 사람을 넣은 뒤 다시 내려받으세요.</p></div>'
       : '<div class="gbulk__scroll"><table class="nv-table"><caption class="nv-sr-only">파일 미리보기</caption><thead><tr><th scope="col">행</th><th scope="col">'
         + (staffKind ? '사번 · 부서코드' : '회원ID') + '</th><th scope="col">이름</th><th scope="col">기간</th><th scope="col">결과</th></tr></thead><tbody>'
         + rows.map(function (row) {

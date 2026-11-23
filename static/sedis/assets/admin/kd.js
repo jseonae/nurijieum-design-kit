@@ -481,7 +481,7 @@
       box.textContent = '';
       if (!table.rows.length) { box.appendChild(el('p', 'sd-kd-dim', '올린 통계표가 없습니다')); return; }
       var wrap = el('div', 'nv-table-scroll');
-      wrap.tabIndex = 0;
+      // 2026-11-23: 표 스크롤 상자에 tabindex 를 강제로 주지 않는다
       var t = el('table', 'nv-table sd-kd-data');
       var cap = el('caption', 'nv-sr-only', '올린 통계표');
       t.appendChild(cap);

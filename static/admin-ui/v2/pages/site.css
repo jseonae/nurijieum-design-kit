@@ -15,7 +15,7 @@
 /* 상세(도메인 관리) 영역 — 행 아래 주입 시 배경 카드로 구분 (Figma 820:54977) */
 .st-detail { display: flex; flex-direction: column; gap: var(--cms-sp-6); padding: var(--cms-sp-6); border-radius: var(--cms-radius-lg); background: var(--cms-bg); }
 .st-detail__head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--cms-sp-4); flex-wrap: wrap; }
-.st-detail__title { display: flex; align-items: center; gap: 1.2rem; font-size: var(--cms-fs-h2); font-weight: var(--cms-fw-bold); letter-spacing: -.02em; line-height: 1.2; }
+.st-detail__title { display: flex; align-items: center; gap: 1.2rem; font-size: var(--cms-fs-h2); font-weight: var(--cms-fw-bold); letter-spacing: -.02em; line-height: var(--cms-lh); }
 .st-detail__dl { background: var(--cms-surface); border: 1px solid var(--cms-border); border-top: 1px solid var(--cms-border); border-radius: var(--cms-radius-lg); overflow: hidden; }
 .st-detail__dl dt:first-of-type, .st-detail__dl dt:first-of-type + dd { border-top: 0; }
 .st-domains { border-radius: var(--cms-radius-lg); }

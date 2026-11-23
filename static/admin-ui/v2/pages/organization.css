@@ -103,7 +103,7 @@
 .org-bulk-table tr.is-error td { background: var(--cms-err-bg); }
 .org-bulk-table td:nth-child(-n+2) { white-space: nowrap; }
 .org-bulk-cell { display: flex; flex-direction: column; gap: .2rem; min-width: 0; }
-.org-bulk-name { font-weight: var(--cms-fw-medium); overflow-wrap: anywhere; }
+.org-bulk-name { font-weight: var(--cms-fw-semibold); overflow-wrap: anywhere; }
 .org-bulk-error { color: var(--cms-err-fg); overflow-wrap: anywhere; }
 /* 등록 오류 알림: 요약 아래 행별 오류(행 · 사번 · 사유) — 많으면 알림 안에서 스크롤 */
 .org-bulk-alert > div { min-width: 0; flex: 1; }

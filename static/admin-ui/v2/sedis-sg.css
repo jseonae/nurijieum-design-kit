@@ -1,0 +1,373 @@
+/* =====================================================================
+   SEDIS 관리자 화면 — 스타일가이드(누리지음 cms/*) 공통 컴포넌트 적용
+   2026-11-23
+
+   - SEDIS 콘솔 화면(pages/sedis/console)에만 연결한다. 누리지음 기본 판은 그대로.
+   - 키트의 nv-* 마크업은 그대로 두고, 값만 스타일가이드 컴포넌트(nuri-components.css)와 같게 맞춘다.
+   - 색 · 크기 · 글자는 모두 --nuri-* 토큰. 새 값이 필요하면 static/shared/nuri-tokens.css 에 더한다.
+   - 이 파일은 각 화면 CSS 뒤에 불러온다(같은 우선순위면 이 파일이 이긴다).
+
+   대응
+   nv-btn ............ cms/button        nv-input · nv-select · nv-textarea .. cms/input · select · textarea
+   nv-check · radio .. cms/checkbox · radio   nv-switch ... cms/toggle
+   nv-badge .......... cms/badge         nv-tag ...... cms/tag (fill · S)
+   nv-card ........... cms/card          nv-summary .. cms/summary-card
+   nv-filter ......... cms/list-toolbar  nv-table .... cms/table
+   nv-pagination ..... cms/pagination    nv-dropmenu . cms/menu
+   nv-tabs ........... cms/tab (box)     nv-segment .. cms/segmented
+   nv-alert .......... cms/alert         nv-empty .... cms/empty
+   nv-panel .......... cms/panel         nv-modal .... cms/modal
+   nv-field · nv-form-group ... cms/label · help · field-card
+   nv-dropzone · nv-file ...... cms/file-drop · file-item
+   nv-dl ............. cms/key-value(표 형태)   nv-tree ..... cms/tree
+   ===================================================================== */
+
+/* ---------- 1. 버튼 (cms/button) ----------
+   계층: 주요 동작 .nv-btn--primary(파랑 채움) · 채움과 함께 쓰는 보조 동작 .nv-btn--primary-outline(파랑 테두리)
+         · 그 밖의 보조 동작 .nv-btn--outline(회색 테두리, tertiary) · 삭제 .nv-btn--danger(빨강 테두리) */
+.nv-btn {
+  --b-bg: var(--nuri-color-button-outline-surface); --b-fg: var(--nuri-color-button-tertiary-text);
+  --b-line: var(--nuri-color-button-tertiary-border);
+  --b-bg-hover: var(--nuri-color-button-tertiary-light); --b-bg-pressed: var(--nuri-color-button-tertiary-light-hover);
+  height: var(--nuri-size-height-7); padding: 0 var(--nuri-padding-7); gap: var(--nuri-gap-3);
+  border: 0; border-radius: var(--nuri-radius-small);
+  background: var(--b-bg); color: var(--b-fg); box-shadow: inset 0 0 0 1px var(--b-line);
+  font-family: var(--nuri-font-family); font-size: var(--nuri-font-size-label-small);
+  font-weight: var(--nuri-font-weight-semibold); line-height: var(--nuri-line-height);
+}
+.nv-btn .nv-icon { width: 1.6rem; height: 1.6rem; }
+.nv-btn:hover:not(:disabled), a.nv-btn:hover { background: var(--b-bg-hover); color: var(--b-fg); }
+.nv-btn:active:not(:disabled) { background: var(--b-bg-pressed); }
+a.nv-btn:is(:link, :visited, :focus, :focus-visible, :active) { color: var(--b-fg); }
+.nv-btn--primary {
+  --b-bg: var(--nuri-color-button-primary-solid); --b-fg: var(--nuri-color-button-text-on-solid); --b-line: transparent;
+  --b-bg-hover: var(--nuri-color-button-primary-solid-hover); --b-bg-pressed: var(--nuri-color-button-primary-solid-pressed);
+}
+.nv-btn--primary-outline, .nv-btn--soft {
+  --b-bg: var(--nuri-color-button-outline-surface); --b-fg: var(--nuri-color-button-primary-text);
+  --b-line: var(--nuri-color-button-primary-border);
+  --b-bg-hover: var(--nuri-color-button-primary-light); --b-bg-pressed: var(--nuri-color-button-primary-light-hover);
+}
+.nv-btn--outline, .nv-btn--outline-strong, .nv-btn--muted, .nv-btn--excel { /* tertiary outline — 기본값과 같음 */ }
+.nv-btn--ghost {
+  --b-bg: var(--nuri-color-button-ghost-surface); --b-fg: var(--nuri-color-button-tertiary-text); --b-line: transparent;
+  --b-bg-hover: var(--nuri-color-button-tertiary-light); --b-bg-pressed: var(--nuri-color-button-tertiary-light-hover);
+}
+.nv-btn--danger {
+  --b-bg: var(--nuri-color-button-outline-surface); --b-fg: var(--nuri-color-button-danger-text);
+  --b-line: var(--nuri-color-button-danger-border);
+  --b-bg-hover: var(--nuri-color-button-danger-light); --b-bg-pressed: var(--nuri-color-button-danger-light-hover);
+}
+.nv-btn--danger:hover:not(:disabled) { background: var(--b-bg-hover); color: var(--b-fg); }
+.nv-btn--danger-solid {
+  --b-bg: var(--nuri-color-button-danger-solid); --b-fg: var(--nuri-color-button-text-on-solid); --b-line: transparent;
+  --b-bg-hover: var(--nuri-color-button-danger-solid-hover); --b-bg-pressed: var(--nuri-color-button-danger-solid-pressed);
+}
+.nv-btn--warn {
+  --b-bg: var(--nuri-color-button-warning-light); --b-fg: var(--nuri-color-button-warning-text);
+  --b-line: var(--nuri-color-button-warning-border-light);
+  --b-bg-hover: var(--nuri-color-button-warning-light-hover); --b-bg-pressed: var(--nuri-color-button-warning-light-pressed);
+}
+.nv-btn--sm { height: var(--nuri-size-height-5); padding: 0 var(--nuri-padding-6); font-size: var(--nuri-font-size-label-xsmall); }
+.nv-btn--sm .nv-icon { width: 1.4rem; height: 1.4rem; }
+.nv-btn--lg { height: var(--nuri-size-height-8); padding: 0 var(--nuri-padding-7); font-size: var(--nuri-font-size-label-medium); font-weight: var(--nuri-font-weight-semibold); }
+/* 아이콘 단추(행 ⋮ 등) — ghost 아이콘 32 */
+.nv-btn--icon {
+  --b-bg: var(--nuri-color-button-ghost-surface); --b-fg: var(--nuri-color-icon-gray); --b-line: transparent;
+  --b-bg-hover: var(--nuri-color-button-tertiary-light); --b-bg-pressed: var(--nuri-color-button-tertiary-light-hover);
+  width: var(--nuri-size-height-5); height: var(--nuri-size-height-5); padding: 0;
+}
+.nv-btn--icon.nv-btn--sm { width: var(--nuri-size-height-4); height: var(--nuri-size-height-4); }
+a.nv-btn--icon:is(:link, :visited, :hover, :focus, :focus-visible, :active) { color: var(--b-fg); }
+.nv-btn--icon:hover:not(:disabled), .nv-btn--icon[aria-expanded="true"] { background: var(--b-bg-hover); color: var(--nuri-color-text-basic); }
+.nv-btn:disabled, .nv-btn[aria-disabled="true"] {
+  opacity: 1; background: var(--nuri-color-button-disabled-fill); color: var(--nuri-color-button-disabled-text);
+  box-shadow: inset 0 0 0 1px var(--nuri-color-button-disabled-border);
+}
+.nv-btn--icon:disabled, .nv-btn--icon[aria-disabled="true"] { background: none; box-shadow: none; }
+.nv-btn-group { gap: var(--nuri-gap-3); }
+/* 머리 제목 줄은 버튼 높이(40)와 같게 */
+.nv-page-header__text, .nv-page-header__stack > .nv-page-header__title { min-height: var(--nuri-size-height-7); }
+
+/* ---------- 2. 입력칸 · 선택 · 여러 줄 (cms/input · select · textarea) ---------- */
+.nv-input, .nv-select, .nv-textarea {
+  height: var(--nuri-size-height-7); padding: 0 var(--nuri-padding-7);
+  border: 1px solid var(--nuri-color-input-border); border-radius: var(--nuri-radius-small);
+  background-color: var(--nuri-color-input-surface); color: var(--nuri-color-text-bolder);
+  font-family: var(--nuri-font-family); font-size: var(--nuri-font-size-label-small);
+}
+.nv-select { border-color: var(--nuri-color-input-border-light); padding-right: 3.6rem; background-position: right 1.2rem center; }
+.nv-input::placeholder, .nv-textarea::placeholder { color: var(--nuri-color-text-placeholder); }
+.nv-input:hover, .nv-textarea:hover { border-color: var(--nuri-color-input-border-hover); }
+.nv-select:hover { border-color: var(--nuri-color-input-border-light-hover); }
+.nv-input:focus, .nv-select:focus, .nv-textarea:focus { border-color: var(--nuri-color-input-border-active); box-shadow: inset 0 0 0 1px var(--nuri-color-input-border-active); outline: 0; }
+.nv-input[aria-invalid="true"], .nv-select[aria-invalid="true"], .nv-textarea[aria-invalid="true"] { border-color: var(--nuri-color-input-border-error); box-shadow: inset 0 0 0 1px var(--nuri-color-input-border-error); }
+.nv-input:disabled, .nv-select:disabled, .nv-textarea:disabled { border-color: var(--nuri-color-input-border-disabled); background-color: var(--nuri-color-input-surface-disabled); color: var(--nuri-color-text-disabled); }
+.nv-input[readonly], .nv-textarea[readonly] { border-color: var(--nuri-color-input-border-light); background-color: var(--nuri-color-input-surface-readonly); }
+.nv-textarea { height: auto; min-height: 12rem; padding: var(--nuri-padding-6) var(--nuri-padding-7); line-height: var(--nuri-line-height); }
+.nv-input--sm, .nv-select--sm { height: var(--nuri-size-height-5); padding: 0 var(--nuri-padding-6); font-size: var(--nuri-font-size-label-xsmall); }
+.nv-select--sm { padding-right: 3.2rem; background-position: right 1rem center; }
+.nv-input--search { padding-right: 4rem; }
+.nv-input-wrap > .nv-icon, .nv-input-wrap__btn { color: var(--nuri-color-icon-gray); }
+.nv-input-wrap__btn:hover { color: var(--nuri-color-text-primary); }
+.nv-input-wrap--left > .nv-input { padding-left: 4rem; }
+
+/* ---------- 3. 체크박스 · 라디오 · 토글 (cms/checkbox · radio · toggle, S 16 · 토글 36×20) ---------- */
+.nv-check, .nv-radio { gap: var(--nuri-gap-4); font-size: var(--nuri-font-size-label-small); color: var(--nuri-color-text-basic); }
+.nv-check input, .nv-radio input {
+  width: 1.6rem !important; height: 1.6rem !important; position: relative !important;
+  border: 0 !important; background: var(--nuri-color-input-surface); box-shadow: inset 0 0 0 1px var(--nuri-color-input-border);
+}
+.nv-check input { border-radius: var(--nuri-radius-small); }
+.nv-check input:checked, .nv-check input:indeterminate { background: var(--nuri-color-input-control-on); box-shadow: none; border: 0 !important; }
+.nv-check input:checked::after, .nv-check input:indeterminate::after {
+  content: ""; position: absolute; inset: 0; margin: auto; width: 1.2rem; height: 1.2rem; border: 0; transform: none;
+  background: var(--nuri-color-button-text-on-solid);
+  -webkit-mask: url("../../shared/icons/check.svg") center / contain no-repeat; mask: url("../../shared/icons/check.svg") center / contain no-repeat;
+}
+.nv-check input:indeterminate::after { -webkit-mask-image: url("../../shared/icons/minus.svg"); mask-image: url("../../shared/icons/minus.svg"); }
+.nv-radio input { border-radius: var(--nuri-radius-max); }
+.nv-radio input:checked { border: 0 !important; box-shadow: inset 0 0 0 1px var(--nuri-color-input-control-on); }
+.nv-radio input:checked::after { content: ""; position: absolute; inset: 0; margin: auto; width: .8rem; height: .8rem; border-radius: var(--nuri-radius-max); background: var(--nuri-color-input-control-on); }
+.nv-check input:disabled, .nv-radio input:disabled { background: var(--nuri-color-input-surface-disabled); box-shadow: inset 0 0 0 1px var(--nuri-color-input-border-disabled); }
+.nv-check input:disabled:checked { background: var(--nuri-color-input-control-on-disabled); box-shadow: none; }
+.nv-check:has(input:disabled), .nv-radio:has(input:disabled) { color: var(--nuri-color-text-disabled); }
+.nv-choice-list { gap: var(--nuri-gap-5); }
+.nv-switch { gap: var(--nuri-gap-4); font-size: var(--nuri-font-size-label-small); color: var(--nuri-color-text-basic); }
+.nv-switch input { width: 3.6rem !important; height: 2rem !important; border-radius: var(--nuri-radius-max); background: var(--nuri-color-input-control-track-off); }
+.nv-switch input::after { width: 1.6rem; height: 1.6rem; background: var(--nuri-color-input-surface); box-shadow: var(--nuri-shadow-1); }
+.nv-switch input:checked { background: var(--nuri-color-input-control-on); }
+.nv-switch input:disabled { background: var(--nuri-color-input-border-disabled); }
+.nv-switch input:disabled:checked { background: var(--nuri-color-input-control-on-disabled); }
+
+/* ---------- 4. 입력 항목 · 묶음 (cms/label · help · field-card) ---------- */
+.nv-field { gap: var(--nuri-gap-4); }
+.nv-field__label { font-size: var(--nuri-font-size-label-small); font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-bolder); }
+.nv-field__label .req { color: var(--nuri-color-text-danger); }
+.nv-field__hint { font-size: var(--nuri-font-size-label-xsmall); color: var(--nuri-color-text-subtle); }
+.nv-field__error { font-size: var(--nuri-font-size-label-xsmall); color: var(--nuri-color-text-danger); }
+.nv-form-group {
+  gap: var(--nuri-gap-6); padding: var(--nuri-padding-8);
+  background: var(--nuri-color-surface-white); border: 1px solid var(--nuri-color-border-gray-light); border-radius: var(--nuri-radius-medium);
+}
+.nv-form-group__title { font-size: var(--nuri-font-size-label-small); font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-bolder); }
+
+/* ---------- 5. 배지 · 태그 (cms/badge · tag) ---------- */
+.nv-badge {
+  height: var(--nuri-size-height-3); padding: 0 var(--nuri-padding-4); gap: var(--nuri-gap-2);
+  border-radius: var(--nuri-radius-small); box-shadow: none; border: 0;
+  font-size: var(--nuri-font-size-label-xsmall); font-weight: var(--nuri-font-weight-regular); line-height: var(--nuri-line-height);
+  background: var(--nuri-color-button-tertiary-light); color: var(--nuri-color-button-tertiary-text);
+}
+.nv-badge--ok { background: var(--nuri-color-button-success-light); color: var(--nuri-color-button-success-text); }
+.nv-badge--warn { background: var(--nuri-color-button-warning-light); color: var(--nuri-color-button-warning-text); }
+.nv-badge--err { background: var(--nuri-color-button-danger-light); color: var(--nuri-color-button-danger-text); }
+.nv-badge--info { background: var(--nuri-color-button-info-light); color: var(--nuri-color-button-info-text); }
+.nv-badge--primary { background: var(--nuri-color-button-primary-light); color: var(--nuri-color-button-primary-text); }
+.nv-badge--outline { background: var(--nuri-color-button-outline-surface); box-shadow: inset 0 0 0 1px var(--nuri-color-button-primary-border); color: var(--nuri-color-button-primary-text); }
+.nv-tags { gap: var(--nuri-gap-4); }
+.nv-tag {
+  height: var(--nuri-size-height-3); padding: 0 var(--nuri-padding-4); gap: var(--nuri-gap-2);
+  border-radius: var(--nuri-radius-max); background: var(--nuri-color-tag-surface); color: var(--nuri-color-text-basic);
+  font-size: var(--nuri-font-size-label-xsmall);
+}
+.nv-tag button { color: var(--nuri-color-tag-icon); }
+
+/* ---------- 6. 카드 · 요약 카드 (cms/card · summary-card) ---------- */
+.nv-card { border: 1px solid var(--nuri-color-border-gray-light); border-radius: var(--nuri-radius-large); background: var(--nuri-color-surface-white); }
+.nv-card--pad, .nv-card__body { padding: var(--nuri-padding-9); }
+.nv-card__head { gap: var(--nuri-gap-4); padding: var(--nuri-padding-9) var(--nuri-padding-9) var(--nuri-padding-7); border-bottom-color: var(--nuri-color-border-gray-light); }
+.nv-card__title { font-size: var(--nuri-font-size-heading-xsmall); font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-bolder); }
+.nv-card__desc { font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-subtle); }
+.nv-card > .nv-table-scroll { padding: 0 var(--nuri-padding-9) var(--nuri-padding-9); }
+.nv-summary__item { border-color: var(--nuri-color-border-gray-light); border-radius: var(--nuri-radius-large); box-shadow: var(--nuri-shadow-1); }
+.nv-summary__label { font-size: var(--nuri-font-size-body-medium); color: var(--nuri-color-text-basic); }
+.nv-summary__value { font-size: var(--nuri-font-size-heading-large); font-weight: var(--nuri-font-weight-bold); color: var(--nuri-color-text-bolder); }
+
+/* ---------- 7. 목록 도구 막대 (cms/list-toolbar) ---------- */
+.nv-list { border-color: var(--nuri-color-border-gray-light); border-radius: var(--nuri-radius-large); }
+.nv-filter {
+  gap: var(--nuri-gap-7); min-height: 7.2rem; padding: var(--nuri-padding-8) var(--nuri-padding-9);
+  background: var(--nuri-color-surface-white); border-bottom-color: var(--nuri-color-border-gray-light);
+}
+.nv-filter__left { gap: var(--nuri-gap-7); }
+.nv-filter__right { gap: var(--nuri-gap-4); }
+.nv-filter__title { font-size: var(--nuri-font-size-heading-xsmall); font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-bolder); }
+.nv-filter__total, .nv-filter__label { font-size: var(--nuri-font-size-label-small); font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-bolder); }
+.nv-filter__total b { color: var(--nuri-color-text-primary); }
+.nv-filter__selected { font-size: var(--nuri-font-size-label-small); color: var(--nuri-color-text-basic); }
+.nv-filter__divider { background: var(--nuri-color-border-gray); }
+.nv-date-range { gap: var(--nuri-gap-4); color: var(--nuri-color-text-subtle); font-size: var(--nuri-font-size-label-small); }
+
+/* ---------- 8. 표 (cms/table) — 머리 · 줄 높이 48, 칸 여백 8 ---------- */
+.nv-table, .cms-admin-table.nv-table { font-size: var(--nuri-font-size-body-small); }
+.nv-table thead th {
+  height: var(--nuri-size-height-9); padding: 0 var(--nuri-padding-4);
+  background: var(--nuri-color-table-head-surface); color: var(--nuri-color-text-basic);
+  font-size: var(--nuri-font-size-body-small); font-weight: var(--nuri-font-weight-semibold);
+}
+.nv-table thead th:first-child, .nv-table thead th:last-child { border-radius: 0; }
+.nv-table tbody td, .nv-table tbody th[scope="row"] {
+  height: var(--nuri-size-height-9); padding: 0 var(--nuri-padding-4); color: var(--nuri-color-text-basic);
+  border-bottom: 0; box-shadow: inset 0 -1px 0 var(--nuri-color-table-divider);
+}
+.nv-table tbody tr:hover td, .nv-table tbody tr:hover th[scope="row"] { background: var(--nuri-color-table-row-hover); }
+.nv-table tbody tr[aria-selected="true"] td, .nv-table tbody tr.is-selected td { background: var(--nuri-color-table-row-selected); }
+.nv-table tbody tr.is-changed td { background: var(--nuri-color-table-row-changed); }
+.nv-table tbody tr.is-error td { background: var(--nuri-color-table-row-error); }
+.nv-table .col-num, .nv-table .col-num-r, .nv-table .col-date { color: var(--nuri-color-text-subtle); }
+.nv-table td.is-title { color: var(--nuri-color-text-bolder); }
+.nv-table td.is-title a:hover, .nv-table tr[aria-selected="true"] td.is-title { color: var(--nuri-color-text-primary); }
+.nv-table td.is-code { font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-subtle); }
+.nv-table--compact tbody td, .nv-table--compact tbody th[scope="row"] { height: var(--nuri-size-height-7); }
+.nv-table--compact thead th { height: var(--nuri-size-height-7); }
+.nv-table-wrap { padding: var(--nuri-padding-9); gap: var(--nuri-gap-6); }
+.nv-row-actions { gap: var(--nuri-gap-2); }
+
+/* ---------- 9. 빈 목록 (cms/empty) ---------- */
+.nv-empty { gap: var(--nuri-gap-4); padding: var(--nuri-padding-13) var(--nuri-padding-9); color: var(--nuri-color-text-subtle); }
+.nv-empty > .nv-icon { width: 4.8rem; height: 4.8rem; color: var(--nuri-color-icon-gray-fill); }
+.nv-empty__title { font-size: var(--nuri-font-size-body-medium); font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-bolder); }
+.nv-empty__desc { font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-subtle); }
+
+/* ---------- 10. 쪽 번호 (cms/pagination) — 24 네모, 현재 쪽 진한 채움 ---------- */
+.nv-pagination.krds-pagination { --krds-pagination-gap: var(--nuri-gap-2); padding: var(--nuri-padding-7) 0 var(--nuri-padding-3); font-size: var(--nuri-font-size-label-xsmall); }
+.nv-pagination.krds-pagination .page-links .page-link,
+.nv-pagination.krds-pagination .page-navi {
+  min-width: var(--nuri-size-height-3); height: var(--nuri-size-height-3); padding: 0 var(--nuri-padding-2);
+  border-radius: var(--nuri-radius-small); color: var(--nuri-color-text-basic); font-size: var(--nuri-font-size-label-xsmall);
+}
+.nv-pagination.krds-pagination .page-links .page-link:hover, .nv-pagination.krds-pagination .page-navi:hover { background: var(--nuri-color-action-gray-hover); }
+.nv-pagination.krds-pagination .page-links .page-link.active,
+.nv-pagination.krds-pagination .page-links .page-link[aria-current="page"] {
+  background: var(--nuri-color-pagination-selected); color: var(--nuri-color-text-inverse-static); font-weight: var(--nuri-font-weight-semibold);
+}
+.nv-pagination.krds-pagination .page-navi[aria-disabled="true"] { opacity: 1; color: var(--nuri-color-text-disabled); }
+
+/* ---------- 11. 더보기 메뉴 (cms/menu) ---------- */
+.nv-dropmenu__menu {
+  min-width: 17.6rem; padding: var(--nuri-padding-4); border: 0; border-radius: var(--nuri-radius-medium);
+  background: var(--nuri-color-surface-white); color: var(--nuri-color-text-basic);
+  box-shadow: inset 0 0 0 1px var(--nuri-color-border-gray-light), var(--nuri-shadow-2);
+}
+.nv-dropmenu__item {
+  gap: var(--nuri-gap-4); height: var(--nuri-size-height-6); padding: 0 var(--nuri-padding-6);
+  border-radius: var(--nuri-radius-small); background: var(--nuri-color-button-ghost-surface);
+  color: var(--nuri-color-text-basic); font-size: var(--nuri-font-size-label-small);
+}
+.nv-dropmenu__item .nv-icon { width: 1.6rem; height: 1.6rem; color: var(--nuri-color-icon-gray); }
+.nv-dropmenu__item:hover, .nv-dropmenu__item:focus-visible { background: var(--nuri-color-action-gray-hover); color: var(--nuri-color-text-basic); }
+.nv-dropmenu__item:active { background: var(--nuri-color-action-gray-pressed); }
+.nv-dropmenu__item--danger, .nv-dropmenu__item--danger .nv-icon, .nv-dropmenu__item--danger:hover { color: var(--nuri-color-text-danger); }
+.nv-dropmenu__sep { margin: var(--nuri-gap-2) 0; background: var(--nuri-color-border-gray-light); }
+.nv-dropmenu__empty { font-size: var(--nuri-font-size-label-small); color: var(--nuri-color-text-subtle); }
+
+/* ---------- 12. 탭 (cms/tab — box) · 세그먼트 (cms/segmented) ---------- */
+.nv-tabs { gap: var(--nuri-gap-4); }
+.nv-tabs [role="tab"], .nv-tab {
+  height: var(--nuri-size-height-8); padding: 0 var(--nuri-padding-8); border: 0; border-radius: var(--nuri-radius-medium);
+  background: var(--nuri-color-tab-box-surface); box-shadow: inset 0 0 0 1px var(--nuri-color-tab-box-border);
+  color: var(--nuri-color-text-subtle); font-size: var(--nuri-font-size-label-small); font-weight: var(--nuri-font-weight-semibold);
+}
+.nv-tabs [role="tab"]:hover, .nv-tab:hover { background: var(--nuri-color-tab-box-hover); color: var(--nuri-color-text-subtle); }
+.nv-tabs [role="tab"][aria-selected="true"], .nv-tab.is-active, .nv-tabs a[aria-current="page"] {
+  background: var(--nuri-color-tab-box-selected); color: var(--nuri-color-text-bolder-inverse); box-shadow: none;
+}
+.gtabs [role="tab"], .gtabs .nv-tab { height: var(--nuri-size-height-7); font-size: var(--nuri-font-size-label-small); }
+.nv-segment { gap: var(--nuri-gap-1); padding: var(--nuri-padding-2); border: 0; border-radius: var(--nuri-radius-medium); background: var(--nuri-color-segmented-surface); }
+.nv-segment button { width: auto; min-width: var(--nuri-size-height-5); height: var(--nuri-size-height-5); padding: 0 var(--nuri-padding-4); border-radius: var(--nuri-radius-small); color: var(--nuri-color-text-basic); font-size: var(--nuri-font-size-label-small); }
+.nv-segment button:hover { background: var(--nuri-color-segmented-item-hover); }
+.nv-segment button[aria-pressed="true"] { background: var(--nuri-color-segmented-item-selected); color: var(--nuri-color-text-primary); font-weight: var(--nuri-font-weight-semibold); box-shadow: var(--nuri-shadow-1); }
+
+/* ---------- 13. 알림 (cms/alert) — 바탕 · 테두리는 상태색, 본문은 기본 글자색 ---------- */
+.nv-alert {
+  --a-bg: var(--nuri-color-surface-information-subtler); --a-line: var(--nuri-color-border-information-light); --a-fg: var(--nuri-color-text-information); --a-icon: var(--nuri-color-icon-information);
+  gap: var(--nuri-gap-4); padding: var(--nuri-padding-6) var(--nuri-padding-7); border: 0; border-radius: var(--nuri-radius-medium);
+  background: var(--a-bg); box-shadow: inset 0 0 0 1px var(--a-line);
+  color: var(--nuri-color-text-basic); font-size: var(--nuri-font-size-body-small);
+}
+.nv-alert .nv-icon { color: var(--a-icon); }
+.nv-alert__title { color: var(--a-fg); font-weight: var(--nuri-font-weight-semibold); }
+.nv-alert--ok { --a-bg: var(--nuri-color-surface-success-subtler); --a-line: var(--nuri-color-border-success-light); --a-fg: var(--nuri-color-text-success); --a-icon: var(--nuri-color-icon-success); background: var(--a-bg); color: var(--nuri-color-text-basic); }
+.nv-alert--warn { --a-bg: var(--nuri-color-surface-warning-subtler); --a-line: var(--nuri-color-border-warning-light); --a-fg: var(--nuri-color-text-warning); --a-icon: var(--nuri-color-icon-warning); background: var(--a-bg); color: var(--nuri-color-text-basic); }
+.nv-alert--err { --a-bg: var(--nuri-color-surface-danger-subtler); --a-line: var(--nuri-color-border-danger-light); --a-fg: var(--nuri-color-text-danger); --a-icon: var(--nuri-color-icon-danger); background: var(--a-bg); color: var(--nuri-color-text-basic); }
+.nv-alert--info { background: var(--a-bg); color: var(--nuri-color-text-basic); }
+
+/* ---------- 14. 측면 패널 · 모달 (cms/panel · modal) ---------- */
+.nv-panel-backdrop, .nv-modal-backdrop { background: var(--nuri-color-background-dim); }
+.nv-panel { background: var(--nuri-color-background-gray-subtler); border-radius: var(--nuri-radius-xxlarge) 0 0 var(--nuri-radius-xxlarge); box-shadow: var(--nuri-shadow-4); }
+.nv-panel--inline { background: var(--nuri-color-surface-white); border-color: var(--nuri-color-border-gray-light); border-radius: var(--nuri-radius-large); box-shadow: none; }
+.nv-panel__head { align-items: center; gap: var(--nuri-gap-7); padding: var(--nuri-padding-8) 0; }
+.nv-panel__title { font-size: var(--nuri-font-size-heading-medium); font-weight: var(--nuri-font-weight-bold); color: var(--nuri-color-text-bolder); }
+.nv-panel__desc { font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-subtle); }
+.nv-panel__close { color: var(--nuri-color-icon-gray); }
+.nv-panel__close .nv-icon { width: 2.8rem; height: 2.8rem; }
+.nv-panel__close:hover { background: var(--nuri-color-action-gray-hover); }
+.nv-panel__body { gap: var(--nuri-gap-6); font-size: var(--nuri-font-size-body-small); color: var(--nuri-color-text-basic); }
+.nv-panel__foot { gap: var(--nuri-gap-4); padding: var(--nuri-padding-8) 0 var(--nuri-padding-3); }
+.nv-modal { border: 0; border-radius: var(--nuri-radius-large); background: var(--nuri-color-surface-white); box-shadow: var(--nuri-shadow-4); color: var(--nuri-color-text-basic); }
+.nv-modal__head { padding: var(--nuri-padding-9) var(--nuri-padding-9) 0; }
+.nv-modal__title { font-size: var(--nuri-font-size-heading-medium); font-weight: var(--nuri-font-weight-bold); color: var(--nuri-color-text-bolder); }
+.nv-modal__body { padding: var(--nuri-padding-7) var(--nuri-padding-9); font-size: var(--nuri-font-size-body-small); line-height: var(--nuri-line-height); }
+.nv-modal__foot { gap: var(--nuri-gap-4); padding: var(--nuri-padding-7) var(--nuri-padding-9) var(--nuri-padding-9); }
+.nv-modal--compact { padding: var(--nuri-padding-9); gap: var(--nuri-gap-7); }
+.nv-modal--compact .nv-modal__title { font-size: var(--nuri-font-size-heading-small); }
+.nv-modal--compact .nv-modal__body { color: var(--nuri-color-text-basic); font-size: var(--nuri-font-size-body-small); }
+
+/* ---------- 15. 파일 올리기 (cms/file-drop · file-item) ---------- */
+.nv-dropzone {
+  gap: var(--nuri-gap-4); padding: var(--nuri-padding-9);
+  border: 1px dashed var(--nuri-color-input-border-light); border-radius: var(--nuri-radius-medium);
+  background: var(--nuri-color-surface-gray-subtler); color: var(--nuri-color-text-basic); font-size: var(--nuri-font-size-label-xsmall);
+}
+.nv-dropzone .nv-icon { color: var(--nuri-color-icon-gray); }
+.nv-dropzone small { color: var(--nuri-color-text-subtle); font-size: var(--nuri-font-size-label-xsmall); }
+.nv-dropzone:hover, .nv-dropzone.is-dragover { background: var(--nuri-color-surface-primary-subtlest); border-color: var(--nuri-color-border-primary); color: var(--nuri-color-text-primary); }
+.nv-file { gap: var(--nuri-gap-4); height: var(--nuri-size-height-7); padding: 0 var(--nuri-padding-3) 0 var(--nuri-padding-6); border-radius: var(--nuri-radius-small); background: var(--nuri-color-surface-gray-subtler); font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-bolder); }
+.nv-file__size { color: var(--nuri-color-text-subtle); font-size: var(--nuri-font-size-label-xsmall); }
+.nv-attach__item { border-color: var(--nuri-color-border-gray-light); border-radius: var(--nuri-radius-small); font-size: var(--nuri-font-size-body-xsmall); }
+
+/* ---------- 16. 상세 정보표 · 트리 (cms/key-value · tree) ---------- */
+.nv-dl { border-top-color: var(--nuri-color-border-gray-light); font-size: var(--nuri-font-size-body-small); }
+.nv-dl dt { padding: var(--nuri-padding-6) var(--nuri-padding-7); background: var(--nuri-color-table-head-surface); color: var(--nuri-color-text-subtle); font-size: var(--nuri-font-size-body-xsmall); font-weight: var(--nuri-font-weight-semibold); border-bottom-color: var(--nuri-color-border-gray-light); }
+.nv-dl dd { padding: var(--nuri-padding-6) var(--nuri-padding-7); color: var(--nuri-color-text-bolder); border-bottom-color: var(--nuri-color-border-gray-light); }
+.nv-tree { font-size: var(--nuri-font-size-label-small); }
+.nv-tree ul { border-left: 1px solid var(--nuri-color-tree-connector); }
+.nv-tree__row { min-height: var(--nuri-size-height-6); padding: 0 var(--nuri-padding-4); border-radius: var(--nuri-radius-small); color: var(--nuri-color-text-basic); }
+.nv-tree__row:hover { background: var(--nuri-color-tree-item-hover); }
+.nv-tree__row[aria-current="true"], .nv-tree__row.is-active { background: var(--nuri-color-tree-item-selected); color: var(--nuri-color-text-primary); font-weight: var(--nuri-font-weight-semibold); }
+.nv-tree__row--root { min-height: var(--nuri-size-height-9); background: var(--nuri-color-tree-root-surface); color: var(--nuri-color-text-bolder); font-weight: var(--nuri-font-weight-bold); }
+.nv-tree__toggle { color: var(--nuri-color-icon-gray-light); }
+
+/* ---------- 17. 말풍선 · 알림 띠 ---------- */
+.nv-tip { border-radius: var(--nuri-radius-small); background: var(--nuri-color-toast-surface); color: var(--nuri-color-toast-text); font-size: var(--nuri-font-size-label-xsmall); font-weight: var(--nuri-font-weight-regular); box-shadow: var(--nuri-shadow-3); }
+.nv-toast { border-radius: var(--nuri-radius-medium); background: var(--nuri-color-toast-surface); color: var(--nuri-color-toast-text); font-size: var(--nuri-font-size-body-small); box-shadow: var(--nuri-shadow-3); }
+
+/* ---------- 12-1. 밑줄 탭 (cms/tab — line) — 화면 안 영역을 나누는 .gtabs ---------- */
+.gtabs { gap: var(--nuri-gap-7); border-bottom: 1px solid var(--nuri-color-border-gray-light); }
+.gtabs [role="tab"], .gtabs .nv-tab, .gtabs .am-tab {
+  flex: 0 0 auto; min-width: 0; height: var(--nuri-size-height-9); margin-bottom: -1px; padding: 0 var(--nuri-padding-2);
+  border: 0; border-radius: 0; background: none; box-shadow: none;
+  color: var(--nuri-color-text-subtle); font-size: var(--nuri-font-size-label-small); font-weight: var(--nuri-font-weight-regular);
+}
+.gtabs [role="tab"]:hover, .gtabs .nv-tab:hover, .gtabs .am-tab:hover { background: none; color: var(--nuri-color-text-basic); }
+.gtabs [role="tab"][aria-selected="true"], .gtabs .nv-tab.is-active, .gtabs a.nv-tab[aria-current="page"], .gtabs a.am-tab[aria-current="page"] {
+  background: none; color: var(--nuri-color-text-primary); font-weight: var(--nuri-font-weight-semibold);
+  box-shadow: inset 0 -2px 0 var(--nuri-color-tab-line-indicator);
+}
+
+/* 아이콘 단추 변형: 빨강 아이콘(삭제) · 회색 테두리 아이콘(뒤로 등) */
+.nv-btn--icon.nv-btn--danger { --b-fg: var(--nuri-color-button-danger-text); --b-bg-hover: var(--nuri-color-button-danger-light); }
+.nv-btn--icon.nv-btn--danger:hover:not(:disabled) { color: var(--nuri-color-button-danger-text); }
+.nv-btn--icon.nv-btn--outline { --b-bg: var(--nuri-color-button-outline-surface); --b-line: var(--nuri-color-button-tertiary-border); --b-fg: var(--nuri-color-button-tertiary-text); }
+/* 행 더보기(⋮) */
+/* 행 더보기(⋮) — Phosphor dots-three-vertical 은 점이 작아 16 에서는 흐리게 보여 스타일가이드 아이콘 크기 20 을 쓴다 */
+.rowmore .nv-icon, .nv-btn--icon[data-dropmenu] .nv-icon { width: 2rem; height: 2rem; }
+
+/* 목록 도구 막대의 「선택 삭제」 — danger outline-fill(연한 빨강 바탕 + 연한 테두리, 스타일가이드 cms/list-toolbar) */
+.nv-filter .nv-btn--danger {
+  --b-bg: var(--nuri-color-button-danger-light); --b-line: var(--nuri-color-button-danger-border-light);
+  --b-bg-hover: var(--nuri-color-button-danger-light-hover); --b-bg-pressed: var(--nuri-color-button-danger-light-pressed);
+}
+/* 측면 패널 바닥 단추 — 스타일가이드 cms/panel 은 큰 단추(48) */
+.nv-panel__foot .nv-btn:not(.nv-btn--sm):not(.nv-btn--icon) { height: var(--nuri-size-height-9); padding: 0 var(--nuri-padding-8); font-size: var(--nuri-font-size-label-medium); }

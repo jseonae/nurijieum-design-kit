@@ -571,7 +571,7 @@
             + '<td>' + (now ? '<span class="chip-now">현재</span>' : '<span class="findtable__no">' + no + '</span>') + '</td>'
             + '<td>' + esc(p.org || '—') + '</td><td class="findtable__name">' + esc(p.name) + '</td><td class="nv-mono">' + esc(p.tel || '—') + '</td>'
             + '<td>' + esc(p.email || '—') + '</td><td class="nv-mono">' + esc(p.login || loginOf(p.id)) + '</td></tr>';
-        }).join('') || '<tr><td colspan="7"><div class="nv-empty"><p class="nv-empty__title">찾은 서브관리자가 없습니다.</p></div></td></tr>';
+        }).join('') || '<tr><td colspan="7"><div class="nv-empty nv-empty--search"><p class="nv-empty__title">찾은 서브관리자가 없습니다</p><p class="nv-empty__desc">검색어를 바꿔 다시 찾아 보세요.</p></div></td></tr>';
         var pager = modal.querySelector('[data-owner-find-pager]');
         pager.hidden = pages <= 1;
         // 쪽 번호는 열 개씩 묶어 보인다(키트 .pager)

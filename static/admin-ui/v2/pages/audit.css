@@ -27,7 +27,7 @@
 #au-nomatch { border-top: 1px solid var(--cms-border-soft); }
 
 /* 시안: 이벤트는 일반 텍스트(개인정보 열람만 배지), 리소스 ID·일시는 회색 */
-.au-event { font-weight: var(--cms-fw-medium); }
+.au-event { font-weight: var(--cms-fw-semibold); }
 
 /* ── 퍼블리싱 반영(2026-11) — 목록 ─────────────────────────────────
    접속기록(시안 logs-work · logs-login · logs-csv). 모양은 admin-parts.css 가 정하고 여기는 콘솔 마크업 보정만. */
@@ -35,7 +35,7 @@
 .gtabs .nv-tab {
   flex: 0 0 auto; min-width: 0; height: 4.8rem; margin-bottom: -1px; padding: 0 .2rem;
   border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: none;
-  color: var(--cms-muted); font-size: var(--cms-fs-base); font-weight: var(--cms-fw-medium);
+  color: var(--cms-muted); font-size: var(--cms-fs-base); font-weight: var(--cms-fw-semibold);
 }
 .gtabs .nv-tab:hover { color: var(--cms-text-strong); }
 .gtabs .nv-tab.is-active, .gtabs a.nv-tab[aria-current="page"] { background: none; border-color: var(--cms-primary); color: var(--cms-primary-text); font-weight: var(--cms-fw-bold); }

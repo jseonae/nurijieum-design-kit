@@ -3,7 +3,9 @@
       주소가 똑같은 화면이 없으면 같은 경로의 기본 화면으로 잇고(쿼리 값이 어긋나지 않을 때), 그래도 없으면 알림만.
    2) 상태 화면 연결: 단추 이름(aria-label · title · 글자)이 「더보기 · 패널 · 창 · 탭」 상태 이름과 같으면 그 상태 화면으로 간다.
       상태 화면에서 닫기 · 바깥 클릭 · Esc · 기본 탭을 누르면 기본 화면으로 돌아온다.
-   3) 폼은 보내지 않는다. */
+   3) 상단 판 전환(누리지음 기본 · SEDIS): 같은 화면(같은 주소 · 상태)의 다른 판으로 간다.
+      없으면 같은 주소의 기본 화면 → 같은 경로 화면 → 대시보드 순으로 찾는다.
+   4) 폼은 보내지 않는다. */
 (function () {
   var me = document.currentScript && document.currentScript.src;
   var ROOT = me ? me.replace(/static\/_kit\/kit\.js(\?.*)?$/, '') : '';
@@ -18,12 +20,47 @@
   function squash(s) { return nfc(String(s || '')).replace(/\s+/g, ''); }
   function go(file) { location.href = ROOT + file.split('/').map(encodeURIComponent).join('/'); }
 
+
+  // 3) 판 전환 — 단추 value: DEFAULT → default, PROJECT → sedis
+  function editionTarget(MAP, mine, here, want) {
+    function parse(u) { try { return new URL(u.replace(/&amp;/g, '&'), 'http://kit'); } catch (e) { return null; } }
+    var rows = MAP.filter(function (r) { return r.e === want; });
+    var i, r;
+    for (i = 0; i < mine.length; i++) {          // 같은 주소 · 같은 상태
+      r = rows.filter(function (x) { return x.u === mine[i].u && x.s === mine[i].s; })[0]; if (r) return r.f;
+    }
+    for (i = 0; i < mine.length; i++) {          // 같은 주소의 기본 화면
+      r = rows.filter(function (x) { return x.u === mine[i].u && !x.s; })[0]; if (r) return r.f;
+    }
+    for (i = 0; i < mine.length; i++) {          // 같은 경로(쿼리 무시)의 기본 화면
+      var L = parse(mine[i].u); if (!L) continue;
+      r = rows.filter(function (x) { var C = parse(x.u); return !x.s && C && C.pathname === L.pathname; })[0]; if (r) return r.f;
+    }
+    var swapped = here.replace(/pages\/(default|sedis)\//, 'pages/' + want + '/');   // 같은 파일 이름
+    r = rows.filter(function (x) { return swapped.slice(-x.f.length) === x.f; })[0]; if (r) return r.f;
+    r = rows.filter(function (x) { return x.u === '/console-9f3a/' && !x.s; })[0];      // 대시보드
+    return r ? r.f : null;
+  }
+  function bindEdition(MAP, mine, here) {
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('.nv-edition__option');
+      if (!b) return;
+      e.preventDefault(); e.stopPropagation();
+      var want = b.value === 'PROJECT' ? 'sedis' : 'default';
+      var cur = (here.match(/pages\/(default|sedis)\//) || [])[1];
+      if (cur === want) return;
+      var f = editionTarget(MAP, mine, here, want);
+      if (f) go(f); else toast('키트에 없는 화면입니다: ' + (want === 'sedis' ? 'SEDIS' : '누리지음 기본') + ' 판');
+    }, true);
+  }
+
   document.addEventListener('submit', function (e) { e.preventDefault(); toast('키트에서는 저장되지 않습니다'); }, true);
 
   function init() {
     var MAP = window.KIT_MAP || [];
     var here = nfc(decodeURIComponent(location.pathname));
     var mine = MAP.filter(function (r) { return here.slice(-r.f.length) === r.f; });
+    bindEdition(MAP, mine, here);
     if (!mine.length) { bindMissingToast(); return; }
     var ED = mine[0].e;
     var myUrls = {}; mine.forEach(function (r) { myUrls[r.u] = 1; });

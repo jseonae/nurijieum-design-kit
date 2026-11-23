@@ -37,7 +37,7 @@ tr.is-gone td { color: var(--cms-subtle); }
 .nv-text-warn { color: var(--cms-warn-fg); }
 .menu-link { border: 0; background: none; padding: 0; font: inherit; font-weight: var(--cms-fw-semibold); color: var(--cms-text-strong); cursor: pointer; text-align: left; }
 .menu-link:hover { color: var(--cms-primary-text); text-decoration: underline; text-underline-offset: .3rem; }
-.menu-link:focus-visible { box-shadow: var(--cms-focus); outline: 0; border-radius: .2rem; }
+.menu-link:focus-visible { box-shadow: var(--cms-focus); outline: 0; border-radius: var(--cms-radius-2xs); }
 .list2 td, .list2 th, .acc-list td, .acc-list th { white-space: nowrap; }
 
 /* 권한그룹명단관리: 위 막대 · 본문은 탭 아래 바로(16 간격 없이), 표는 본문 여백 안 */
@@ -95,4 +95,4 @@ tr.is-gone td { color: var(--cms-subtle); }
 
 /* 임시 비밀번호 창(서브관리자 등록 · 비밀번호 초기화): 값을 크게, 옆에 「복사」 */
 .cred-box { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border: 1px solid var(--cms-border); border-radius: var(--cms-radius); background: var(--cms-surface-muted); }
-.cred-box__value { flex: 1; min-width: 0; font-size: 20px; font-weight: 700; letter-spacing: .04em; word-break: break-all; user-select: all; }
+.cred-box__value { flex: 1; min-width: 0; font-size: var(--cms-fs-h3); font-weight: 700; letter-spacing: .04em; word-break: break-all; user-select: all; }

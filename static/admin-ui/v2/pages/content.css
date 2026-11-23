@@ -19,7 +19,7 @@
 /* 본문 카드(시안 소스 수정): 제목 칸 → 도구 줄 + 편집 칸이 한 덩어리 → 안내 */
 .ct-editor { padding: var(--cms-sp-6); }
 .ct-editor .nv-field { gap: .6rem; }
-.ct-editor .cms-admin-editor__pane .nv-editor__body { min-height: 44rem; border: 0; border-radius: 0; padding: 1.6rem 2rem; font-family: var(--cms-font); font-size: var(--cms-fs-base); line-height: 1.7; background: transparent; }
+.ct-editor .cms-admin-editor__pane .nv-editor__body { min-height: 44rem; border: 0; border-radius: 0; padding: 1.6rem 2rem; font-family: var(--cms-font); font-size: var(--cms-fs-base); line-height: var(--cms-lh); background: transparent; }
 .ct-editor .cms-admin-editor__pane .nv-editor__body:read-only { color: var(--cms-muted); }
 /* 도구 줄: 편집 칸 위에 틈 없이 붙는다. SunEditor 도구 모음(content-editor.js data-wysiwyg-bar)도 이 줄 안에 있다 */
 .ct-editor .cms-admin-editor__toolbar { gap: .4rem; margin-bottom: calc(var(--cms-sp-4) * -1); padding: .6rem; background: var(--cms-surface-alt); border: 1px solid var(--cms-border); border-radius: var(--cms-radius-sm) var(--cms-radius-sm) 0 0; }
@@ -63,7 +63,7 @@
 .nv-table--versions tbody tr.is-selected td { background: none; }
 /* 버전 미리보기 창 */
 .ct-version-preview { width: min(96rem, 100%); }
-.ct-version-preview .nv-modal__title { font-size: var(--cms-fs-h3); line-height: 1.5; }
+.ct-version-preview .nv-modal__title { font-size: var(--cms-fs-h3); line-height: var(--cms-lh); }
 .ct-version-preview iframe { display: block; width: 100%; height: min(70vh, 64rem); border: 1px solid var(--cms-border); border-radius: var(--cms-radius); background: var(--cms-surface); }
 .nv-editor-page__side { display: flex; flex-direction: column; gap: var(--cms-sp-6); }
 .nv-editor-header--inline { position: static; margin: 0; border-radius: var(--cms-radius-lg); border: 1px solid var(--cms-border); flex-wrap: wrap; }
@@ -168,7 +168,7 @@ details[open] > .nv-details__summary::after { transform: rotate(-135deg); }
 .nv-table--versions th:nth-child(1), .nv-table--versions td:nth-child(1) { width: 5.6rem; }
 .nv-table--versions td:nth-child(2) .nv-badge { white-space: nowrap; }
 /* 예약 배지는 일시까지 길어 좁은 옆 칸에서 줄을 바꾼다. 작업 칸 단추도 줄을 바꿔 표 밖으로 잘리지 않게 */
-.nv-table--versions td:nth-child(2) .nv-badge--info { display: inline-block; height: auto; padding-block: .3rem; white-space: normal; word-break: keep-all; line-height: 1.3; }
+.nv-table--versions td:nth-child(2) .nv-badge--info { display: inline-block; height: auto; padding-block: .3rem; white-space: normal; word-break: keep-all; line-height: var(--cms-lh); }
 .nv-table--versions tbody th, .nv-table--versions tbody td { vertical-align: middle; padding: .8rem 1rem; }
 .nv-table--versions .nv-version-actions { flex-wrap: wrap; gap: .4rem; justify-content: flex-end; }
 
@@ -194,6 +194,6 @@ details[open] > .nv-details__summary::after { transform: rotate(-135deg); }
 .ct-ver__filter { display: flex; align-items: center; justify-content: space-between; gap: .8rem; }
 .ct-ver__filter .nv-select { width: auto; }
 .ct-ver .ver__badges { display: flex; flex-wrap: wrap; gap: .4rem; }
-.ct-ver .ver__meta .nv-badge--info { height: auto; padding-block: .3rem; white-space: normal; word-break: keep-all; line-height: 1.3; }
+.ct-ver .ver__meta .nv-badge--info { height: auto; padding-block: .3rem; white-space: normal; word-break: keep-all; line-height: var(--cms-lh); }
 .ct-ver .ver.is-selected { border-color: var(--cms-primary); }
 .ct-ver .ver__form { display: contents; }
