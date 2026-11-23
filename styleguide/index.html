@@ -19,7 +19,6 @@ body { background: var(--cms-bg); }
 .sg-head__logo { font-size: var(--cms-fs-xl); font-weight: var(--cms-fw-bold); }
 .sg-head__sub { font-size: var(--cms-fs-base); opacity: .85; }
 .sg-head__right { margin-left: auto; display: flex; gap: var(--cms-sp-4); align-items: center; font-size: var(--cms-fs-md); }
-.sg-head__right a { text-decoration: underline; text-underline-offset: .3rem; }
 .sg-wrap { display: flex; align-items: flex-start; }
 .sg-nav { position: sticky; top: var(--sg-head); flex: none; width: var(--sg-nav); height: calc(100vh - var(--sg-head)); overflow-y: auto;
   padding: var(--cms-sp-4) var(--cms-sp-3) var(--cms-sp-8); background: var(--nuri-gray-0); border-right: 1px solid var(--nuri-gray-20); }
@@ -154,7 +153,7 @@ code { font-family: var(--cms-font-mono); font-size: .92em; }
 <body>
 <header class="sg-head">
   <span class="sg-head__logo">누리지음 CMS</span><span class="sg-head__sub">스타일가이드</span>
-  <div class="sg-head__right"><span>피그마 「디자인스타일」 기준 · 2026-11-23</span><button type="button" class="sg-hc" aria-pressed="false" id="sg-hc">고대비 보기</button><a href="../index.html">키트 화면 목록</a></div>
+  <div class="sg-head__right"><span>피그마 「디자인스타일」 기준 · 2026-11-23</span><a target="_blank" class="nuri-button nuri-button--tertiary nuri-button--outline nuri-button--xs" href="../index.html">키트 화면 목록 <span class="nuri-icon i-arrow-square-out" aria-hidden="true"></span></a><a target="_blank" class="nuri-button nuri-button--tertiary nuri-button--outline nuri-button--xs" href="../pages/sedis/console/console-대시보드-df1b38.html">SEDIS대시보드 바로가기 <span class="nuri-icon i-arrow-square-out" aria-hidden="true"></span></a></div>
 </header>
 <div class="sg-wrap">
   <nav class="sg-nav" aria-label="스타일가이드 목차">
