@@ -98,7 +98,7 @@
           + '<td><span class="findtable__no">' + (total - (page * PAGE + i)) + '</span></td>'
           + '<td>' + esc(p.org || '—') + '</td><td class="findtable__name">' + esc(p.name) + '</td><td class="nv-mono">' + esc(p.tel || '—') + '</td>'
           + '<td>' + esc(p.email || '—') + '</td><td class="nv-mono">' + esc(p.login || '') + '</td></tr>';
-      }).join('') || '<tr><td colspan="7"><div class="nv-empty"><p class="nv-empty__title">찾은 담당자가 없습니다.</p></div></td></tr>';
+      }).join('') || '<tr><td colspan="7"><div class="nv-empty nv-empty--search"><p class="nv-empty__title">찾은 담당자가 없습니다</p><p class="nv-empty__desc">검색어를 바꿔 다시 찾아 보세요.</p></div></td></tr>';
       var pages = Math.max(1, Math.ceil(total / PAGE));
       var pager = q('[data-owner-find-pager]', modal);
       pager.hidden = pages <= 1;

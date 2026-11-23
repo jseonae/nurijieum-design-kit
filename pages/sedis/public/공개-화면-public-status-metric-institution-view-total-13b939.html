@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" data-theme="krds-sedis" data-krds-mode="light"><head>
-<!-- [키트] SEDIS 판 · 공개 화면 · 특수교육 현황
+<!-- [키트] SEDIS 판 · 공개 화면 · 특수교육 현황 — status?metric=institution&view=total
      원래 주소: /public/status?metric=institution&view=total
      스크립트(원래 순서): ../../../static/public-ui/themes/krds-sedis/pub/_common/resources/js/krds-display.js , ../../../static/public-ui/page-feedback.js , ../../../static/vendor/krds/js/plugin/swiper-bundle.min.js , ../../../static/vendor/krds/js/component/ui-script.js , ../../../static/public-ui/themes/krds-sedis/pub/_common/resources/js/krds-custom.js , ../../../static/public-ui/themes/krds-sedis/pub/_common/resources/js/krds-base.js , ../../../static/public-ui/themes/krds-sedis/theme.js , ../../../static/public-ui/menu-popup.js , ../../../static/sedis/assets/common/loading.js , ../../../static/sedis/assets/vendor/echarts/echarts.min.js , ../../../static/sedis/assets/chart/cm-chart.js , ../../../static/sedis/assets/trd/trd-status.js -->
 
@@ -464,8 +464,8 @@
                       <ul class="drop-list">
                         <li><a href="#" class="item-link" data-chart-download="png">그래프 이미지(PNG)<span class="sr-only"></span></a></li>
                         <li><a href="#" class="item-link" data-chart-download="svg">그래프 벡터 이미지(SVG)<span class="sr-only"></span></a></li>
-                        <li><a class="item-link" href="#kit-missing" data-kit-href="/public/svc/sedis/api/trd/status/csv?metric=institution&amp;amp;view=total" download="">통계표(CSV)<span class="sr-only"></span></a></li>
-                        <li><a class="item-link" href="#kit-missing" data-kit-href="/public/svc/sedis/api/trd/status/xlsx?metric=institution&amp;amp;view=total" download="">통계표(엑셀)<span class="sr-only"></span></a></li>
+                        <li><a class="item-link" href="#kit-file" data-kit-href="/public/svc/sedis/api/trd/status/csv?metric=institution&amp;view=total" download="">통계표(CSV)<span class="sr-only"></span></a></li>
+                        <li><a class="item-link" href="#kit-file" data-kit-href="/public/svc/sedis/api/trd/status/xlsx?metric=institution&amp;view=total" download="">통계표(엑셀)<span class="sr-only"></span></a></li>
                       </ul>
                     </div>
                   </div>
@@ -492,7 +492,7 @@
     <h3 class="cm-es-tit">통계표</h3>
     
     <div class="cm-table-scroll">
-      <div class="krds-table-wrap cm-stat-table cm-es-table" tabindex="0" role="group" aria-label="기관 수 기준 계 표, 좌우로 스크롤">
+      <div class="krds-table-wrap cm-stat-table cm-es-table" role="group" aria-label="기관 수 기준 계 표, 좌우로 스크롤">
         <table class="tbl col data" id="es2_table" style="--cm-first-col: 6.5rem;">
           <caption>기관 수 기준 계 표로 구분과 2008년부터 2026년까지 연도별 기관 수(개)로 구성되어 있습니다.</caption>
           <thead>

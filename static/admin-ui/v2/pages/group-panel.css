@@ -15,7 +15,7 @@
 .gpanel .gp2__head .nv-btn { flex: none; }
 .gpanel .gplace__path a { color: inherit; text-decoration: none; }
 .gpanel .gplace__path a:hover b { color: var(--cms-primary-text); text-decoration: underline; }
-.gpanel .gplace__path a:focus-visible { box-shadow: var(--cms-focus); outline: 0; border-radius: .2rem; }
+.gpanel .gplace__path a:focus-visible { box-shadow: var(--cms-focus); outline: 0; border-radius: var(--cms-radius-2xs); }
 .gpanel .gnote { margin: 0; color: var(--cms-subtle); font-size: var(--cms-fs-md); }
 .gpanel .tip-help { border-bottom: 1px dotted var(--cms-subtle); cursor: help; }
 .gpanel .nv-field { display: flex; flex-direction: column; gap: .6rem; }

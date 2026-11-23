@@ -19,7 +19,7 @@
 .sd-his-table .sd-his-c { text-align: center; }
 .sd-his-table td.sd-his-no { color: var(--cms-muted); font-variant-numeric: tabular-nums; }
 .sd-his-num { font-variant-numeric: tabular-nums; }
-.sd-his-unit { margin-left: .2rem; color: var(--cms-muted); font-size: 1.2rem; }
+.sd-his-unit { margin-left: .2rem; color: var(--cms-muted); font-size: var(--cms-fs-md); }
 .sd-his-title-link { font-weight: var(--cms-fw-semibold); color: var(--cms-text); }
 .sd-his-title-link:hover { color: var(--cms-primary); }
 .sd-his-dim { margin: 0; color: var(--cms-text-muted, #6b7280); }
@@ -27,7 +27,7 @@
 .sd-his-pre { white-space: pre-line; }
 /* 영역별 문항 수 칩(adm_1303) — 앞 4개 + 외 N개 */
 .sd-his-chips { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0; padding: .8rem 0; list-style: none; }
-.sd-his-chips li { padding: .3rem .8rem; border-radius: .6rem; background: var(--cms-primary-50, #eef4ff); color: var(--cms-text); font-size: 1.2rem; font-weight: 500; white-space: nowrap; }
+.sd-his-chips li { padding: .3rem .8rem; border-radius: var(--cms-radius-xs); background: var(--cms-primary-50, #eef4ff); color: var(--cms-text); font-size: var(--cms-fs-md); font-weight: var(--cms-fw-semibold); white-space: nowrap; }
 .sd-his-chips li b { margin-left: .3rem; color: var(--cms-primary-text, #256ef4); }
 .sd-his-chips li.is-more { background: var(--cms-surface-alt, #f3f4f6); color: var(--cms-muted); }
 /* 조사 대상자 관리 머리(adm_1303) — 경로 · 회차 이름 강조 · 집계 카드 4개 */
@@ -37,25 +37,25 @@
 .sd-his-kpi { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--cms-sp-4, 1.6rem); margin: 0; padding: 0; list-style: none; }
 .sd-his-kpi li { display: flex; align-items: center; justify-content: space-between; gap: 1.2rem; padding: 2rem 2.4rem;
   border: 1px solid var(--cms-border, #e5e7eb); border-radius: var(--cms-radius-lg, 1.2rem); background: var(--cms-surface, #fff); }
-.sd-his-kpi small { display: block; margin-bottom: .4rem; color: var(--cms-muted); font-size: 1.4rem; }
-.sd-his-kpi b { font-size: 2.6rem; font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
-.sd-his-kpi i { display: grid; place-items: center; flex: none; width: 4.8rem; height: 4.8rem; border-radius: 1.2rem; color: #fff; }
+.sd-his-kpi small { display: block; margin-bottom: .4rem; color: var(--cms-muted); font-size: var(--cms-fs-base); }
+.sd-his-kpi b { font-size: var(--cms-fs-h2); font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.sd-his-kpi i { display: grid; place-items: center; flex: none; width: 4.8rem; height: 4.8rem; border-radius: var(--cms-radius-lg); color: var(--cms-on-dark); }
 .sd-his-kpi i .nv-icon { width: 2.4rem; height: 2.4rem; }
-.sd-his-kpi i.is-b { background: linear-gradient(135deg, #4f7df5, #2a5cf0); }
-.sd-his-kpi i.is-g { background: linear-gradient(135deg, #3fcf7a, #17a05e); }
-.sd-his-kpi i.is-o { background: linear-gradient(135deg, #f7b84b, #e8890c); }
-.sd-his-kpi i.is-v { background: linear-gradient(135deg, #8fa6f5, #5b7be0); }
+.sd-his-kpi i.is-b { background: linear-gradient(135deg, var(--nuri-primary-50), var(--nuri-primary-70)); }
+.sd-his-kpi i.is-g { background: linear-gradient(135deg, var(--nuri-point-60), var(--nuri-success-50)); }
+.sd-his-kpi i.is-o { background: linear-gradient(135deg, var(--nuri-warning-30), var(--nuri-warning-50)); }
+.sd-his-kpi i.is-v { background: linear-gradient(135deg, var(--nuri-primary-40), var(--nuri-primary-50)); }
 @media (max-width: 1024px) { .sd-his-kpi { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 /* 상세(adm_1303) — 핵심데이터 미리보기처럼 편집 머리 + 경로 한 줄 */
 .sd-his-view .nv-editor-header__title { margin: 0; }
-.sd-his-crumb { margin: 0; color: var(--cms-text-muted, #6b7280); font-size: 1.4rem; }
+.sd-his-crumb { margin: 0; color: var(--cms-text-muted, #6b7280); font-size: var(--cms-fs-base); }
 .sd-his-crumb b { color: var(--cms-text, #1e2124); }
 /* 카드 머리 */
 .sd-his-sec-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--cms-sp-2, .8rem); margin-bottom: var(--cms-sp-3, 1.2rem); }
-.sd-his-sec-title { margin: 0 0 var(--cms-sp-3, 1.2rem); font-size: 1.6rem; font-weight: 700; }
+.sd-his-sec-title { margin: 0 0 var(--cms-sp-3, 1.2rem); font-size: var(--cms-fs-lg); font-weight: 700; }
 .sd-his-sec-head .sd-his-sec-title { margin: 0; }
 .sd-his-step { display: inline-flex; align-items: center; justify-content: center; width: 2.2rem; height: 2.2rem; margin-right: .8rem; border-radius: 50%;
-  background: var(--cms-primary, #256ef4); color: #fff; font-size: 1.2rem; font-weight: 700; vertical-align: .1rem; }
+  background: var(--cms-primary, #256ef4); color: var(--cms-on-dark); font-size: var(--cms-fs-md); font-weight: 700; vertical-align: .1rem; }
 /* 엑셀 등록(adm_1304) — 끌어놓기 상자는 시계열 원본 등록(ts.css .sd-ts-drop)과 같은 값 */
 .sd-his-upload .nv-field { margin: 0; }
 /* 엑셀 등록 — 시계열 원본 등록(ts.css .sd-ts--editor·.sd-ts-grid)과 같은 머리·카드 값, 오른쪽 안내 카드 없이 한 단 */
@@ -83,3 +83,11 @@
   .sd-his-table .sd-his-col-name,
   .sd-his-table .sd-his-col-note { width: auto; }
 }
+
+/* 표 열 너비 조정 — 2026-11-23 (1920 · 1600 화면에서 열 내용 길이를 재서 맞춤)
+   회차별 조사 대상자 목록: 조사 구분 · 조사 대상자가 24rem 이라 대부분 줄바뀜 → 28 · 30rem, 항목 수 칩 열이 나머지 */
+.sd-his-table .sd-his-col-bundle { width: 28rem; }
+.sd-his-table .sd-his-col-name { width: 30rem; }
+/* 관리자용 조사 문항 표: 영역 16rem → 24rem, 주석은 비율(24%) 대신 26rem 고정, 세부 조사 문항이 나머지 */
+.sd-his-table .sd-his-col-realm { width: 24rem; }
+.sd-his-table .sd-his-col-note { width: 26rem; }

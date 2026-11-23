@@ -1,0 +1,186 @@
+/* =========================================================================
+   누리지음 CMS 기본 규칙 (cms-base.css)
+   - 관리 화면이 KRDS common.css · component.css 없이 동작하도록 만든 기본 규칙입니다.
+   - 기준: 피그마 「디자인스타일」 (NURIJIEUM-DESIGN-RULES.md)
+       · 서체 Pretendard(shared/fonts), 기본 본문 body/small 14, 줄 높이 모든 스타일 150%
+       · 굵기 Regular 400 · SemiBold 600 · Bold 700 (Medium 쓰지 않음)
+       · 단위 1rem = 10px (html 62.5%)
+   - 마크업(HTML 구조 · 클래스 · 속성)은 고치지 않습니다. 요소 선택자와
+     관리 화면 마크업에 이미 있는 공통 클래스(.sr-only · .blind)만 다룹니다.
+   - 모든 선택자를 :where() 로 감싸 우선순위를 0 으로 둡니다. 컴포넌트 CSS(.nv-*)가 언제나 이깁니다.
+   - 값은 nuri-tokens.css 의 --cms-* 토큰만 씁니다. 이 파일은 nuri-tokens.css 바로 앞에 읽습니다.
+     (토큰은 나중에 읽혀도 var() 로 참조하므로 순서와 관계없이 적용됩니다.)
+   - 사용자 화면(공개 화면 · 게시판 스킨 · 로그인)은 지금처럼 KRDS 를 그대로 씁니다.
+   ========================================================================= */
+
+/* ---- 1. 문서 기준 ---------------------------------------------------- */
+html {
+  font-size: 62.5%;                         /* 1rem = 10px. 글자 크기 설정(data-cms-fontscale)이 이 값을 키웁니다 */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-family: var(--cms-font);
+  font-weight: var(--cms-fw-regular);
+  line-height: var(--cms-lh);               /* 150% */
+  color: var(--cms-text);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+body {
+  font-size: var(--cms-fs-base);            /* body/small 14 */
+  background-color: var(--cms-bg);
+  overflow-x: hidden;
+}
+
+/* ---- 2. 초기화 ------------------------------------------------------- */
+:where(*),
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:where(body, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, a, button, select, span, em, label) {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  line-height: var(--cms-lh);
+  letter-spacing: inherit;
+}
+
+:where(input, textarea, a, button, select, span, label) {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* 가상 요소(::before · ::after)는 :where() 안에 둘 수 없어 따로 둡니다 */
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: var(--cms-lh);
+  letter-spacing: inherit;
+}
+
+:where(article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section) {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* 굵기: 제목·강조는 Bold 700. <b> 도 700 으로 고정해 SemiBold 안에서 900(가짜 굵기)으로 커지지 않게 합니다 */
+:where(h1, h2, h3, h4, h5, h6, strong, b) {
+  font-weight: var(--cms-fw-bold);
+}
+
+:where(em, i, address) { font-style: normal; }
+:where(pre) { font-family: inherit; }
+
+:where(ul, ol) { list-style: none; }
+
+:where(img, svg, video, canvas) { vertical-align: top; }
+:where(img) { max-width: 100%; border: 0; }
+
+:where(fieldset) { min-width: 0; border: 0; }
+
+/* ---- 3. 링크 · 단추 --------------------------------------------------- */
+:where(a, a:hover, a:active, a:focus) {
+  color: inherit;
+  text-decoration: none;
+}
+
+:where(a, button) { transition: var(--cms-transition); }
+
+:where(button, input[type="submit"], input[type="button"], input[type="reset"]) {
+  overflow: visible;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  border: 0;
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+:where(button:disabled, input:disabled) { cursor: not-allowed; }
+
+button::-moz-focus-inner,
+input::-moz-focus-inner { padding: 0; border: 0; }
+
+:where(label, [role="button"]) { cursor: pointer; }
+/* 이름표 안의 필수 표시(*) · 아이콘이 글자와 한 줄로 붙도록 inline-flex 로 둡니다 */
+:where(label) { display: inline-flex; }
+
+/* ---- 4. 입력 요소 ----------------------------------------------------- */
+:where(input[type="text"], input[type="search"], input[type="tel"], input[type="password"], input[type="email"], input[type="url"], input[type="number"], input[type="date"], input[type="file"], select, textarea) {
+  font: inherit;
+  color: inherit;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(input[type="number"]) { -moz-appearance: textfield; }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
+input::-ms-clear { display: none; }
+
+:where(textarea) { resize: vertical; }
+
+::placeholder { color: var(--cms-subtle); opacity: 1; }
+
+/* ---- 5. 표 ------------------------------------------------------------ */
+:where(table) {
+  width: auto;
+  min-width: 100%;
+  max-width: none;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+/* ---- 6. 화면에 보이지 않는 요소(스크린리더 전용) ----------------------- */
+caption,
+legend,
+hr,
+.sr-only,
+.blind {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+[hidden] { display: none !important; }
+
+/* ---- 7. 포커스 · 선택 영역 ------------------------------------------- */
+/* 마우스로 누를 때는 링을 그리지 않고, 키보드로 이동할 때만 포커스 링을 그립니다 */
+:where(:focus) { outline: 0; }
+:focus-visible {
+  outline: 0;
+  box-shadow: var(--cms-focus);
+}
+
+::selection {
+  color: var(--cms-on-primary);
+  background: var(--cms-primary);
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="cms-air"><head>
+<!-- [키트] SEDIS 판 · 로그인 · 관리자 로그인 — 기존 UI 로 보기
+     원래 주소: /console-9f3a/login?ui=legacy
+     스크립트(원래 순서): ../../../static/admin-ui/admin-interactions.js , ../../../static/admin-ui/command-palette.js , ../../../static/admin-ui/onboarding-tour.js , ../../../static/admin-ui/admin-shell.js , ../../../static/admin-ui/admin-tables.js , ../../../static/admin-ui/content-editor.js , ../../../static/admin-ui/admin-inline-detail.js , ../../../static/vendor/krds/js/component/ui-script.js -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSRF: th:action 폼은 서버가 hidden _csrf 를 자동 삽입. fetch 는 이 meta 를 읽어 X-CSRF-Token 헤더로 보낸다(admin-shell.js cmsCsrf). -->
+    <meta name="_csrf" content="HD6LuPKoaaxwyBaC0ilG-Ous85aWlKXQULsOYF1_AOY">
+    <meta name="_csrf_header" content="X-CSRF-Token">
+    <title>관리자 로그인 | 누리지음 관리자</title>
+    <link rel="icon" href="../../../static/brand/favicon-32.png">
+    <link rel="stylesheet" href="../../../static/vendor/krds/css/common/common.css">
+    <link rel="stylesheet" href="../../../static/vendor/krds/css/component/component.css">
+    <!-- 공유 디자인 시스템 (양방향 동기 source = design-system/cms-design-system.css) -->
+    <link rel="stylesheet" href="../../../static/shared/cms-design-system.css">
+    <link rel="stylesheet" href="../../../static/admin-ui/cms-admin.css">
+    <!-- 첫 사용자 온보딩 튜토리얼(샌드박스) 스타일 -->
+    <link rel="stylesheet" href="../../../static/admin-ui/onboarding-tour.css">
+    <!-- 접근성+테마: 제품 테마(서버기본/localStorage) + 글자크기/고대비를 paint 전에 적용 + 토글 API -->
+    <!-- [키트] 인라인 스크립트 뺌 -->
+    <!-- 공통 상호작용(reveal-on-click·탭·URL 열기·페이지당수 자동제출·그룹내비), 접근성 내장 -->
+    <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/admin-interactions.js -->
+    <!-- 글로벌 커맨드 팔레트(「/」) + 시스템 헬스 닷 -->
+    <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/command-palette.js -->
+    <!-- 첫 사용자 온보딩 튜토리얼: 빈 상태 자동 오픈 + 헤더 "시작 가이드"로 다시보기 -->
+    <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/onboarding-tour.js -->
+    <!-- 셸(모바일 드로어·skip-link) · 데이터 테이블(행클릭·밀도·뷰) · 콘텐츠 에디터(라이브 미리보기) -->
+    <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/admin-shell.js -->
+    <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/admin-tables.js -->
+    <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/content-editor.js -->
+    <!-- 진보적 향상 인라인 상세 로더(목록→행 아래 fragment 주입·스크롤 보존·ARIA) -->
+    <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/admin-inline-detail.js -->
+</head>
+<body>
+<main class="cms-admin-login__split" data-admin-login-root="">
+    <!-- 좌측 브랜드 패널 (시안: 파란 패널) -->
+    <aside class="cms-admin-login__intro" aria-hidden="true">
+        <div class="cms-admin-login__brand-row">
+            <img class="cms-admin-login__brand-logo" src="../../../static/brand/nurijieum-logo-mono-kor.png" alt="누리지음">
+        </div>
+        <div>
+            <p class="cms-admin-page-heading__eyebrow">Public CMS Admin</p>
+            <h2 class="cms-admin-login__headline">공공 서비스 콘텐츠를<br>안전하게 운영합니다</h2>
+            <p class="cms-admin-login__lead">KRDS 기반 통합 관리 · MSA 아키텍처 · AI 추천형 운영. 권한 범위와 작업 컨텍스트를 확인한 뒤 업무를 시작하세요.</p>
+        </div>
+        <ul class="cms-admin-login__features">
+            <li>역할 기반 접근</li>
+            <li>감사 추적</li>
+            <li>사이트 범위 격리</li>
+        </ul>
+        <p class="cms-admin-login__copy">© 2026 공공기관 통합행정포털</p>
+    </aside>
+
+    <!-- 우측 폼 패널 -->
+    <section class="cms-admin-login__formwrap" aria-labelledby="login-title">
+        <div class="cms-admin-login__formcard">
+            <div class="cms-admin-login__formhead">
+                <span class="cms-admin-login__brand-mobile">
+                    <img class="cms-admin-login__brand-icon" src="../../../static/brand/nurijieum-icon.png" alt="" aria-hidden="true">
+                    <span>누리지음</span>
+                </span>
+                <span class="cms-admin-login__status" role="status" aria-live="polite">
+                    <span class="cms-admin-pill cms-admin-pill--ok">READY</span>
+                    
+                    
+                </span>
+            </div>
+
+            <h1 id="login-title">관리자 로그인</h1>
+            <p class="cms-admin-login__desc">관리자 계정의 아이디와 비밀번호로 로그인합니다. 역할은 계정에 배정된 권한으로 정해집니다.</p>
+            
+
+            
+
+            
+
+            <form class="cms-admin-login__form" method="post" action="로그인-console-9f3a-login-58e3f8.html" novalidate=""><input type="hidden" name="_csrf" value="HD6LuPKoaaxwyBaC0ilG-Ous85aWlKXQULsOYF1_AOY">
+                <input type="hidden" name="next" value="">
+                <div class="form-group">
+                    <div class="form-tit"><label for="actorId">관리자 ID</label></div>
+                    <div class="form-conts cms-admin-login__field">
+                        <span class="cms-admin-login__ico" aria-hidden="true">👤</span>
+                        <input id="actorId" class="krds-input" name="actorId" value="" maxlength="100" autocomplete="username" required="" aria-required="true" placeholder="아이디 입력">
+                    </div>
+                </div>
+
+                <div class="cms-admin-login__row">
+                    
+                    <div class="form-group">
+                        <div class="form-tit"><label for="siteId">사이트 ID</label></div>
+                        <div class="form-conts">
+                            <input id="siteId" class="krds-input" name="siteId" value="ST54cf79b1bff2434a896cd1bcf54bb4c3" placeholder="SITE01">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-tit"><label for="password">비밀번호</label></div>
+                    <div class="form-conts cms-admin-login__field">
+                        <span class="cms-admin-login__ico" aria-hidden="true">🔒</span>
+                        <input id="password" class="krds-input" type="password" name="password" autocomplete="current-password" aria-required="true" placeholder="비밀번호 입력">
+                        <button type="button" class="cms-admin-login__eye" data-login-eye="" aria-label="비밀번호 표시 전환" aria-pressed="false">표시</button>
+                    </div>
+                </div>
+
+                <button class="krds-btn large primary cms-admin-login__submit" type="submit">로그인</button>
+            </form>
+
+            <p class="cms-admin-login__foot">
+                관리자 접근은 계정·역할·사이트 범위·접속 위치 기준으로 보호됩니다. 비밀번호를 연속으로 틀리면 계정이 잠기며, 계정·잠금 해제는 플랫폼 관리자가 권한 관리 화면에서 처리합니다. 처음 로그인하거나 비밀번호를 재설정받은 뒤에는(임시 비밀번호) 새 비밀번호를 정해야 콘솔을 쓸 수 있습니다.
+            </p>
+            
+            <p class="cms-admin-login__foot">
+                <a href="로그인-console-9f3a-login-58e3f8.html">새 UI 미리보기</a>
+            </p>
+        </div>
+    </section>
+</main>
+<!-- [키트] 스크립트 뺌: ../../../static/vendor/krds/js/component/ui-script.js -->
+<!-- [키트] 인라인 스크립트 뺌 -->
+
+
+<div class="cms-admin-tour" id="cms-onboarding-tour" hidden=""><div class="cms-admin-tour__backdrop" data-tour-close=""></div><div class="cms-admin-tour__dialog" role="dialog" aria-modal="true" aria-labelledby="cms-tour-title"><div class="cms-admin-tour__head"></div><div class="cms-admin-tour__body"></div><div class="cms-admin-tour__foot"></div></div></div><script src="../../../static/_kit/kit.js"></script></body></html>

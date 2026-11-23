@@ -38,7 +38,7 @@ window.cmsCsrf = (function () {
  *
  *   2) 스킵 링크 포커스:
  *      - .cms-admin-skip-link (href="#main-content") 클릭 시
- *        #main-content (tabindex=-1) 로 focus() 보장.
+ *        #main-content 로 focus() 보장(그때만 잠시 tabindex=-1).
  *
  * window.cmsAdminShell = { init: init } 으로 외부 재사용 가능.
  */
@@ -194,10 +194,8 @@ window.cmsCsrf = (function () {
   /* ── 2) 스킵 링크 포커스 보장 ────────────────────────────────── */
 
   function initSkipLink(root) {
-    // #main-content 가 tabindex 없으면 프로그래매틱 포커스용 -1 부여(페이지별 마크업 편집 회피).
-    var main = (root.getElementById ? root.getElementById('main-content') : document.getElementById('main-content'))
-            || document.getElementById('main-content');
-    if (main && !main.hasAttribute('tabindex')) { main.setAttribute('tabindex', '-1'); }
+    // 2026-11-23: <main> 에 tabindex 를 늘 두면 본문을 누를 때마다 포커스가 잡혀서,
+    // 스킵 링크로 옮길 때만 잠시 tabindex=-1 을 주고 포커스가 떠나면 바로 뺀다.
     var links = root.querySelectorAll('.cms-admin-skip-link');
     links.forEach(function (link) {
       link.addEventListener('click', function (e) {
@@ -205,6 +203,10 @@ window.cmsCsrf = (function () {
         var target = href.startsWith('#') ? document.getElementById(href.slice(1)) : null;
         if (target) {
           e.preventDefault();
+          if (!target.hasAttribute('tabindex')) {
+            target.setAttribute('tabindex', '-1');
+            target.addEventListener('blur', function () { target.removeAttribute('tabindex'); }, { once: true });
+          }
           target.focus();
         }
       });

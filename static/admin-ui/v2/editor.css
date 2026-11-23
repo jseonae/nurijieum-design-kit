@@ -32,20 +32,20 @@
 /* HTML 소스 보기 */
 .sun-editor .se-code-viewer {
   background: var(--cms-surface); color: var(--cms-text-strong);
-  font-family: var(--cms-font-mono); font-size: 1.3rem; line-height: 1.6;
+  font-family: var(--cms-font-mono); font-size: var(--cms-fs-md); line-height: var(--cms-lh);
 }
 /* 본문 영역: 공개 화면(.cm-prose)과 비슷한 제목 · 표 · 그림 */
-.sun-editor-editable h2 { font-size: 2.4rem; font-weight: var(--cms-fw-bold); margin: 1.6em 0 .6em; }
-.sun-editor-editable h3 { font-size: 2rem; font-weight: var(--cms-fw-bold); margin: 1.4em 0 .5em; }
-.sun-editor-editable h4 { font-size: 1.8rem; font-weight: var(--cms-fw-semibold); margin: 1.2em 0 .4em; }
+.sun-editor-editable h2 { font-size: var(--cms-fs-h2); font-weight: var(--cms-fw-bold); margin: 1.6em 0 .6em; }
+.sun-editor-editable h3 { font-size: var(--cms-fs-h3); font-weight: var(--cms-fw-bold); margin: 1.4em 0 .5em; }
+.sun-editor-editable h4 { font-size: var(--cms-fs-h4); font-weight: var(--cms-fw-semibold); margin: 1.2em 0 .4em; }
 .sun-editor-editable table th { background: var(--cms-surface-muted); }
 .sun-editor-editable img { max-width: 100%; height: auto; }
 /* 콘텐츠 수정 · 소스 수정 편집 칸(시안 .prose): 칸 14px/1.7, 안쪽 글 줄 높이 1.5, 여백 16/20 */
 .ct-editor .sun-editor,
 .ct-editor .sun-editor-editable { --se-edit-font-size: var(--cms-fs-base); --se-edit-line-height: 1.5; --se-edit-font-color: var(--cms-text-strong); }
-.ct-editor .sun-editor-editable { padding: 1.6rem 2rem; line-height: 1.7; overflow-wrap: anywhere; }
-.ct-editor .sun-editor-editable h2 { margin: 0 0 1rem; font-size: 2rem; font-weight: var(--cms-fw-bold); }
-.ct-editor .sun-editor-editable h3 { margin: 1.8rem 0 .8rem; font-size: 1.7rem; font-weight: var(--cms-fw-bold); }
+.ct-editor .sun-editor-editable { padding: 1.6rem 2rem; line-height: var(--cms-lh); overflow-wrap: anywhere; }
+.ct-editor .sun-editor-editable h2 { margin: 0 0 1rem; font-size: var(--cms-fs-h3); font-weight: var(--cms-fw-bold); }
+.ct-editor .sun-editor-editable h3 { margin: 1.8rem 0 .8rem; font-size: var(--cms-fs-h4); font-weight: var(--cms-fw-bold); }
 .ct-editor .sun-editor-editable h4 { margin: 1.4rem 0 .6rem; font-size: var(--cms-fs-lg); font-weight: var(--cms-fw-bold); }
 .ct-editor .sun-editor-editable p { margin: 0 0 1rem; }
 .ct-editor .sun-editor-editable ul, .ct-editor .sun-editor-editable ol { margin: 0 0 1rem; padding-left: 2rem; }
@@ -53,7 +53,7 @@
 .ct-editor .sun-editor-editable table th, .ct-editor .sun-editor-editable table td { padding: .6rem .8rem; border: 1px solid var(--cms-border); text-align: left; }
 .ct-editor .sun-editor-editable table thead { border-bottom: 0; }
 .ct-editor .sun-editor-editable table th { background: none; font-weight: var(--cms-fw-bold); }
-.ct-editor .sun-editor .se-code-viewer { padding: 1.6rem 2rem; font-size: 1.3rem; }
+.ct-editor .sun-editor .se-code-viewer { padding: 1.6rem 2rem; font-size: var(--cms-fs-md); }
 
 /* 「이미지 삽입」 창(content-image-picker.js) — 탐색기가 들어가므로 넓게 */
 .cms-imgpick__dialog { width: min(116rem, 100%); max-height: calc(100vh - 3.2rem); }

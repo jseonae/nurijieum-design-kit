@@ -19,7 +19,7 @@
 .im-tree__item[aria-current="true"] { background: var(--cms-primary-soft); color: var(--cms-primary-text); font-weight: var(--cms-fw-semibold); }
 .im-tree__item .nv-icon { flex: none; color: var(--cms-muted); }
 .im-tree__label { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.im-tree__count { flex: none; min-width: 2.2rem; padding: 0 .6rem; border-radius: 99rem; background: var(--cms-surface-muted); color: var(--cms-muted); font-size: var(--cms-fs-xs); text-align: center; }
+.im-tree__count { flex: none; min-width: 2.2rem; padding: 0 .6rem; border-radius: var(--cms-radius-pill); background: var(--cms-surface-muted); color: var(--cms-muted); font-size: var(--cms-fs-xs); text-align: center; }
 
 /* 오른쪽: 경로 · 도구 · 끌어 놓기 · 격자 */
 .im-pane { display: flex; flex-direction: column; gap: var(--cms-sp-4); min-width: 0; }
@@ -53,7 +53,7 @@ button.im-tile:hover, .im-tile--file:hover { border-color: var(--cms-border-stro
 .im-tile--folder .im-tile__thumb .nv-icon { width: 3.2rem; height: 3.2rem; }
 .im-tile__thumb img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
 .im-tile__view { display: block; border-radius: var(--cms-radius-sm); }
-.im-tile__name { font-weight: var(--cms-fw-medium); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.im-tile__name { font-weight: var(--cms-fw-semibold); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .im-tile__meta { color: var(--cms-subtle); font-size: var(--cms-fs-sm); }
 .im-tile__url { color: var(--cms-muted); font-family: var(--cms-font-mono, ui-monospace, monospace); font-size: var(--cms-fs-xs); overflow-wrap: anywhere; }
 .im-tile__actions { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; }

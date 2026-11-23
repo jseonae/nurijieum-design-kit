@@ -14,7 +14,7 @@
 /* 코드 관리 상세 (Figma 820:55438): 헤더(브레드크럼·제목·배지·상태 스위치·목록으로) + 목록 카드 */
 .cd-detail { display: flex; flex-direction: column; gap: var(--cms-sp-5); padding: 0; }
 .cd-detail__head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--cms-sp-4); }
-.cd-detail__title { display: flex; flex-wrap: wrap; align-items: center; gap: var(--cms-sp-3); font-size: var(--cms-fs-h2); font-weight: var(--cms-fw-bold); line-height: 1.2; letter-spacing: -.02em; }
+.cd-detail__title { display: flex; flex-wrap: wrap; align-items: center; gap: var(--cms-sp-3); font-size: var(--cms-fs-h2); font-weight: var(--cms-fw-bold); line-height: var(--cms-lh); letter-spacing: -.02em; }
 .cd-detail__list { background: var(--cms-surface); }
 .cd-detail__list .nv-table-wrap { padding: var(--cms-sp-4) 2.6rem 2.6rem; }
 .cd-code-table tbody tr { outline: 1px solid var(--cms-border); outline-offset: -1px; }

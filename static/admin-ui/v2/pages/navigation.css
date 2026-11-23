@@ -12,7 +12,7 @@
 }
 .nv-nav-menu--d2 .nv-nav-menu__depth, .nv-nav-menu--d3 .nv-nav-menu__depth, .nv-nav-menu--d4 .nv-nav-menu__depth { background: var(--cms-primary-soft); color: var(--cms-primary-strong); }
 .nv-nav-menu__path { width: 100%; padding-left: 2.8rem; color: var(--cms-subtle); font-size: var(--cms-fs-sm); font-weight: var(--cms-fw-regular); }
-.nv-nav-table tbody td.is-title { font-weight: var(--cms-fw-medium); }
+.nv-nav-table tbody td.is-title { font-weight: var(--cms-fw-semibold); }
 /* KRDS common.css 가 table { table-layout: fixed } 를 전역으로 걸어 col-actions(width:1%) 가 16px 로 눌린다 → 내용 기반 배치 */
 .nv-nav-table { table-layout: auto; }
 .nv-nav-table .col-actions { width: 6.4rem; }
@@ -91,7 +91,7 @@
 .nv-nav-bulk-table tbody td { height: auto; vertical-align: top; padding-top: 1rem; padding-bottom: 1rem; }
 .nv-nav-bulk-table tr.is-error td { background: var(--cms-err-bg); }
 .nv-nav-bulk-cell { display: flex; flex-direction: column; gap: .2rem; min-width: 0; }
-.nv-nav-bulk-name { font-weight: var(--cms-fw-medium); overflow-wrap: anywhere; }
+.nv-nav-bulk-name { font-weight: var(--cms-fw-semibold); overflow-wrap: anywhere; }
 .nv-nav-bulk-path { overflow-wrap: anywhere; color: var(--cms-muted); }
 .nv-nav-bulk-table .nv-text-err { color: var(--cms-err-fg); overflow-wrap: anywhere; }
 
@@ -205,7 +205,7 @@
 .pbox__sec { padding: 2rem 2.4rem; display: flex; flex-direction: column; gap: 1.2rem; }
 .pbox__sec + .pbox__sec { border-top: 1px solid var(--cms-border); }
 .pbox__title { font-size: var(--cms-fs-lg); font-weight: var(--cms-fw-bold); display: flex; align-items: center; gap: .8rem; }
-.pbox__desc { color: var(--cms-muted); font-size: var(--cms-fs-md); line-height: 1.6; margin: 0; }
+.pbox__desc { color: var(--cms-muted); font-size: var(--cms-fs-md); line-height: var(--cms-lh); margin: 0; }
 .pbox__note { display: flex; align-items: center; gap: .6rem; color: var(--cms-muted); font-size: var(--cms-fs-md); margin: 0; }
 .inherit-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.2rem; }
 .inherit-row .nv-switch { font-weight: 600; }
@@ -228,7 +228,7 @@
 .th-tip { border-bottom: 1px dotted currentColor; cursor: help; }
 .cellcheck { display: inline-flex; align-items: center; justify-content: center; width: 3.6rem; height: 3.6rem; border-radius: var(--cms-radius-sm); cursor: pointer; position: relative; }
 .cellcheck:hover { background: var(--cms-primary-soft); }
-.cellcheck input[type="checkbox"] { position: relative !important; clip: auto !important; clip-path: none !important; overflow: visible !important; opacity: 1 !important; appearance: none; -webkit-appearance: none; width: 2rem !important; height: 2rem !important; flex: none; margin: 0 !important; padding: 0 !important; border: 1px solid var(--cms-border-strong) !important; border-radius: .4rem; background: var(--cms-surface); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.cellcheck input[type="checkbox"] { position: relative !important; clip: auto !important; clip-path: none !important; overflow: visible !important; opacity: 1 !important; appearance: none; -webkit-appearance: none; width: 2rem !important; height: 2rem !important; flex: none; margin: 0 !important; padding: 0 !important; border: 1px solid var(--cms-border-strong) !important; border-radius: var(--cms-radius-xs); background: var(--cms-surface); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
 .cellcheck input[type="checkbox"]:checked { background: var(--cms-primary); border-color: var(--cms-primary) !important; }
 .cellcheck input[type="checkbox"]:checked::after { content: ""; width: .5rem; height: .9rem; border: solid var(--cms-on-primary); border-width: 0 2px 2px 0; transform: translateY(-1px) rotate(45deg); }
 .cellcheck input[type="checkbox"]:focus-visible { box-shadow: var(--cms-focus); outline: 0; }
@@ -242,7 +242,7 @@
 .addrow .nv-select { width: 26rem; max-width: 100%; }
 .keyhints { display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; font-size: var(--cms-fs-sm); color: var(--cms-subtle); }
 .keyhints span { display: inline-flex; align-items: center; gap: .6rem; }
-.keyhints i { display: inline-block; width: 1.4rem; height: 1.4rem; border-radius: .3rem; }
+.keyhints i { display: inline-block; width: 1.4rem; height: 1.4rem; border-radius: var(--cms-radius-xs); }
 .keyhints .k-on { background: var(--cms-primary); }
 .keyhints .k-imp { background: var(--cms-primary-tint); }
 .keyhints .k-chg { width: .8rem; height: .8rem; border-radius: 50%; background: var(--cms-warn-fg); }
@@ -333,7 +333,7 @@
 .gtabs .nv-tab {
   flex: 0 0 auto; min-width: 0; height: 4.8rem; margin-bottom: -1px; padding: 0 .2rem;
   border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: none;
-  color: var(--cms-muted); font-size: var(--cms-fs-base); font-weight: var(--cms-fw-medium);
+  color: var(--cms-muted); font-size: var(--cms-fs-base); font-weight: var(--cms-fw-semibold);
 }
 .gtabs .nv-tab:hover { color: var(--cms-text-strong); }
 .gtabs .nv-tab.is-active, .gtabs a.nv-tab[aria-current="page"] { background: none; border-color: var(--cms-primary); color: var(--cms-primary-text); font-weight: var(--cms-fw-bold); }
