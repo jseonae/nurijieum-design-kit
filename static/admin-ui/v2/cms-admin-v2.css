@@ -789,6 +789,8 @@ a.nv-kpi:is(:link, :visited, :hover, :focus, :focus-visible, :active) { color: v
 .nv-table-wrap { padding: 2.6rem; display: flex; flex-direction: column; gap: 1.2rem; }
 .nv-table-scroll { overflow-x: auto; overflow-y: visible; }   /* 가로 스크롤 영역: tabindex="0" 로 키보드 초점(axe scrollable-region-focusable) */
 .nv-table-scroll:focus-visible { outline: 2px solid var(--cms-primary); outline-offset: -2px; }
+/* 키트 상태 화면: 고정 좌표 없이 열어 둔 드롭메뉴(버튼 아래 · 오른쪽 맞춤)가 가로 스크롤 영역에 잘리지 않게(member.css 와 같은 방식). 실제 화면은 admin-v2.js 가 --fixed 를 붙여 해당 없음 */
+.nv-table-scroll:has(.nv-dropmenu__menu:not([hidden]):not(.nv-dropmenu__menu--fixed)) { overflow: visible; }
 .nv-table, .cms-admin-table.nv-table { width: 100%; border-collapse: collapse; table-layout: auto; font-size: var(--cms-fs-base); }   /* KRDS common.css 의 table-layout:fixed 해제 */
 .nv-table thead th {
   height: var(--cms-thead-h); padding: 0 1.6rem; text-align: left; white-space: nowrap;

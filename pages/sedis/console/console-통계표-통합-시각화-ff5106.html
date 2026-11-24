@@ -35,6 +35,8 @@
 <link rel="stylesheet" href="../../../static/admin-ui/v2/admin-parts.css">
 <!-- 연결 서비스 조각의 css (계약 v1 §4 — 자산 접두 아래 같은 출처 경로만, 호출기가 검사한 값) -->
 <link rel="stylesheet" href="../../../static/sedis/assets/admin/ts.css" data-svc-asset="">
+    <link rel="stylesheet" href="../../../static/shared/nuri-components.css">
+    <link rel="stylesheet" href="../../../static/shared/nuri-icons.css">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
   <symbol id="nv-i-activity" viewBox="0 0 256 256"><g fill="currentColor" stroke="none"><path d="M224,200h-8V40a8,8,0,0,0-8-8H152a8,8,0,0,0-8,8V80H96a8,8,0,0,0-8,8v40H48a8,8,0,0,0-8,8v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16ZM160,48h40V200H160ZM104,96h40V200H104ZM56,144H88v56H56Z"/></g></symbol>
   <symbol id="nv-i-alert" viewBox="0 0 256 256"><g fill="currentColor" stroke="none"><path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM222.93,203.8a8.5,8.5,0,0,1-7.48,4.2H40.55a8.5,8.5,0,0,1-7.48-4.2,7.59,7.59,0,0,1,0-7.72L120.52,44.21a8.75,8.75,0,0,1,15,0l87.45,151.87A7.59,7.59,0,0,1,222.93,203.8ZM120,144V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z"/></g></symbol>
@@ -602,7 +604,7 @@
                         <td class="sd-ts-yrline">2017 · 2020 · 2023</td>
                         <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--outline" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST001">통합 완료</a></td>
                         <td class="sd-ts-ig-center">
-                            <a class="nv-btn nv-btn--icon nv-btn--sm" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST001/graph" aria-label="거주 형태 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
+                            <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST001/graph" aria-label="거주 형태 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
                         <td>
                             
@@ -612,7 +614,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm sd-ts-ig-more" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="거주 형태 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="거주 형태 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST001/preview"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST001"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-pencil"></use></svg>통계표 수정</a>
@@ -630,7 +632,7 @@
                         <td class="sd-ts-yrline">2017 · 2020 · 2023</td>
                         <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--outline" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST002">통합 완료</a></td>
                         <td class="sd-ts-ig-center">
-                            <a class="nv-btn nv-btn--icon nv-btn--sm" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST002/graph" aria-label="배치 유형 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
+                            <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST002/graph" aria-label="배치 유형 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
                         <td>
                             
@@ -640,7 +642,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm sd-ts-ig-more" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="배치 유형 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="배치 유형 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST002/preview"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST002"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-pencil"></use></svg>통계표 수정</a>
@@ -658,7 +660,7 @@
                         <td class="sd-ts-yrline">2011 · 2014 · 2017 · 2020 · 2023</td>
                         <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST003">불일치 4건</a></td>
                         <td class="sd-ts-ig-center">
-                            <a class="nv-btn nv-btn--icon nv-btn--sm" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST003/graph" aria-label="특수교육대상자 최초 선정·배치 시기 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
+                            <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST003/graph" aria-label="특수교육대상자 최초 선정·배치 시기 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
                         <td>
                             
@@ -668,7 +670,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm sd-ts-ig-more" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수교육대상자 최초 선정·배치 시기 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수교육대상자 최초 선정·배치 시기 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST003/preview"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST003"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-pencil"></use></svg>통계표 수정</a>
@@ -686,7 +688,7 @@
                         <td class="sd-ts-yrline">2014 · 2017 · 2020 · 2023</td>
                         <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--warn" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST004">재실행 필요</a></td>
                         <td class="sd-ts-ig-center">
-                            <a class="nv-btn nv-btn--icon nv-btn--sm" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST004/graph" aria-label="취학유예·유예 경험 유무 및 시기 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
+                            <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST004/graph" aria-label="취학유예·유예 경험 유무 및 시기 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
                         <td>
                             
@@ -696,7 +698,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm sd-ts-ig-more" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="취학유예·유예 경험 유무 및 시기 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="취학유예·유예 경험 유무 및 시기 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST004/preview"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST004"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-pencil"></use></svg>통계표 수정</a>
@@ -714,7 +716,7 @@
                         <td class="sd-ts-yrline">2017 · 2020 · 2023</td>
                         <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--outline" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST005">통합 완료</a></td>
                         <td class="sd-ts-ig-center">
-                            <a class="nv-btn nv-btn--icon nv-btn--sm" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST005/graph" aria-label="취학유예·유예 이유 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
+                            <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST005/graph" aria-label="취학유예·유예 이유 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
                         <td>
                             
@@ -724,7 +726,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm sd-ts-ig-more" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="취학유예·유예 이유 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="취학유예·유예 이유 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST005/preview"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST005"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-pencil"></use></svg>통계표 수정</a>
@@ -742,7 +744,7 @@
                         <td class="sd-ts-yrline">2014 · 2017 · 2020 · 2023</td>
                         <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--warn" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST006">재실행 필요</a></td>
                         <td class="sd-ts-ig-center">
-                            <a class="nv-btn nv-btn--icon nv-btn--sm" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST006/graph" aria-label="전학 경험 유무 및 시기 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
+                            <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST006/graph" aria-label="전학 경험 유무 및 시기 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
                         <td>
                             
@@ -752,7 +754,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm sd-ts-ig-more" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="전학 경험 유무 및 시기 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="전학 경험 유무 및 시기 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST006/preview"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST006"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-pencil"></use></svg>통계표 수정</a>
@@ -770,7 +772,7 @@
                         <td class="sd-ts-yrline">2011 · 2014 · 2017 · 2020 · 2023</td>
                         <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST010">불일치 2건</a></td>
                         <td class="sd-ts-ig-center">
-                            <a class="nv-btn nv-btn--icon nv-btn--sm" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST010/graph" aria-label="혼자 통학 가능 여부 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
+                            <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST010/graph" aria-label="혼자 통학 가능 여부 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
                         <td>
                             
@@ -780,7 +782,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm sd-ts-ig-more" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="혼자 통학 가능 여부 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="혼자 통학 가능 여부 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST010/preview"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST010"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-pencil"></use></svg>통계표 수정</a>
@@ -798,7 +800,7 @@
                         <td class="sd-ts-yrline">2011 · 2014 · 2017 · 2020 · 2023</td>
                         <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST011">불일치 1건</a></td>
                         <td class="sd-ts-ig-center">
-                            <a class="nv-btn nv-btn--icon nv-btn--sm" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST011/graph" aria-label="등·하교 주 보조자 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
+                            <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST011/graph" aria-label="등·하교 주 보조자 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
                         <td>
                             
@@ -808,7 +810,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm sd-ts-ig-more" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="등·하교 주 보조자 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="등·하교 주 보조자 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST011/preview"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST011"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-pencil"></use></svg>통계표 수정</a>
@@ -826,7 +828,7 @@
                         <td class="sd-ts-yrline">2011 · 2014 · 2017 · 2020 · 2023</td>
                         <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--outline" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST012">통합 완료</a></td>
                         <td class="sd-ts-ig-center">
-                            <a class="nv-btn nv-btn--icon nv-btn--sm" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST012/graph" aria-label="사교육 여부 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
+                            <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST012/graph" aria-label="사교육 여부 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
                         <td>
                             
@@ -836,7 +838,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm sd-ts-ig-more" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="사교육 여부 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="사교육 여부 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST012/preview"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST012"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-pencil"></use></svg>통계표 수정</a>
@@ -854,7 +856,7 @@
                         <td class="sd-ts-yrline">2011 · 2017 · 2020 · 2023</td>
                         <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST013">불일치 4건</a></td>
                         <td class="sd-ts-ig-center">
-                            <a class="nv-btn nv-btn--icon nv-btn--sm" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST013/graph" aria-label="참여하는 사교육의 종류 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
+                            <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST013/graph" aria-label="참여하는 사교육의 종류 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
                         <td>
                             
@@ -864,7 +866,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm sd-ts-ig-more" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="참여하는 사교육의 종류 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="참여하는 사교육의 종류 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST013/preview"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST013"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-pencil"></use></svg>통계표 수정</a>
@@ -882,7 +884,7 @@
                         <td class="sd-ts-yrline">2014 · 2017 · 2020 · 2023</td>
                         <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--warn" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST014">재실행 필요</a></td>
                         <td class="sd-ts-ig-center">
-                            <a class="nv-btn nv-btn--icon nv-btn--sm" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST014/graph" aria-label="사교육을 받는 장소 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
+                            <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST014/graph" aria-label="사교육을 받는 장소 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
                         <td>
                             
@@ -892,7 +894,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm sd-ts-ig-more" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="사교육을 받는 장소 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="사교육을 받는 장소 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST014/preview"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST014"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-pencil"></use></svg>통계표 수정</a>
@@ -910,7 +912,7 @@
                         <td class="sd-ts-yrline">2011 · 2014 · 2017 · 2020 · 2023</td>
                         <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST015">불일치 5건</a></td>
                         <td class="sd-ts-ig-center">
-                            <a class="nv-btn nv-btn--icon nv-btn--sm" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST015/graph" aria-label="월평균 사교육비 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
+                            <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST015/graph" aria-label="월평균 사교육비 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
                         <td>
                             
@@ -920,7 +922,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm sd-ts-ig-more" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="월평균 사교육비 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="월평균 사교육비 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST015/preview"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST015"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-pencil"></use></svg>통계표 수정</a>
@@ -938,7 +940,7 @@
                         <td class="sd-ts-yrline">2011 · 2014 · 2017 · 2020 · 2023</td>
                         <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST016">불일치 6건</a></td>
                         <td class="sd-ts-ig-center">
-                            <a class="nv-btn nv-btn--icon nv-btn--sm" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST016/graph" aria-label="고등학교 졸업 후 진로 방향 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
+                            <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST016/graph" aria-label="고등학교 졸업 후 진로 방향 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
                         <td>
                             
@@ -948,7 +950,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm sd-ts-ig-more" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="고등학교 졸업 후 진로 방향 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="고등학교 졸업 후 진로 방향 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST016/preview"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST016"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-pencil"></use></svg>통계표 수정</a>
@@ -966,7 +968,7 @@
                         <td class="sd-ts-yrline">2011 · 2014 · 2017 · 2020 · 2023</td>
                         <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--warn" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST017">재실행 필요</a></td>
                         <td class="sd-ts-ig-center">
-                            <a class="nv-btn nv-btn--icon nv-btn--sm" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST017/graph" aria-label="취업을 위해 개선·강화해야 할 사항 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
+                            <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST017/graph" aria-label="취업을 위해 개선·강화해야 할 사항 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
                         <td>
                             
@@ -976,7 +978,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm sd-ts-ig-more" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="취업을 위해 개선·강화해야 할 사항 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="취업을 위해 개선·강화해야 할 사항 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST017/preview"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST017"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-pencil"></use></svg>통계표 수정</a>
@@ -994,7 +996,7 @@
                         <td class="sd-ts-yrline">2011 · 2014 · 2017 · 2020 · 2023</td>
                         <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST018">불일치 5건</a></td>
                         <td class="sd-ts-ig-center">
-                            <a class="nv-btn nv-btn--icon nv-btn--sm" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST018/graph" aria-label="장애 발견(의심) 시기 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
+                            <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST018/graph" aria-label="장애 발견(의심) 시기 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
                         <td>
                             
@@ -1004,7 +1006,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm sd-ts-ig-more" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="장애 발견(의심) 시기 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="장애 발견(의심) 시기 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST018/preview"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST018"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-pencil"></use></svg>통계표 수정</a>

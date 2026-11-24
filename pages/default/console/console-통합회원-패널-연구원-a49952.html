@@ -31,6 +31,8 @@
 <body class="nv-lock">
 <link rel="stylesheet" href="../../../static/admin-ui/v2/pages/member.css">
 <link rel="stylesheet" href="../../../static/admin-ui/v2/admin-parts.css">
+<link rel="stylesheet" href="../../../static/shared/nuri-components.css">
+<link rel="stylesheet" href="../../../static/shared/nuri-icons.css">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
   <symbol id="nv-i-activity" viewBox="0 0 256 256"><g fill="currentColor" stroke="none"><path d="M224,200h-8V40a8,8,0,0,0-8-8H152a8,8,0,0,0-8,8V80H96a8,8,0,0,0-8,8v40H48a8,8,0,0,0-8,8v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16ZM160,48h40V200H160ZM104,96h40V200H104ZM56,144H88v56H56Z"/></g></symbol>
   <symbol id="nv-i-alert" viewBox="0 0 256 256"><g fill="currentColor" stroke="none"><path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM222.93,203.8a8.5,8.5,0,0,1-7.48,4.2H40.55a8.5,8.5,0,0,1-7.48-4.2,7.59,7.59,0,0,1,0-7.72L120.52,44.21a8.75,8.75,0,0,1,15,0l87.45,151.87A7.59,7.59,0,0,1,222.93,203.8ZM120,144V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z"/></g></symbol>
@@ -441,9 +443,8 @@
                         <div class="nv-input-wrap">
                             <label class="nv-sr-only" for="lt-q">검색어</label>
                             <input type="search" id="lt-q" name="keyword" class="nv-input nv-input--sm nv-input--search" value="" placeholder="아이디/이름/이메일 검색" style="">
-                            <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-search"></use></svg>
+                            <button type="submit" class="nv-input-wrap__btn" aria-label="검색"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-search"></use></svg></button>
                         </div>
-                        <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline">검색</button>
                         <input type="hidden" name="offset" value="0" style="">
                     </div>
                 </form>
@@ -484,9 +485,7 @@
                                 </td>
                                 <td class="col-actions">
                                     <span class="nv-dropmenu">
-                                        <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="연구원 작업">
-                                            <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg>
-                                        </button>
+                                        <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="연구원 작업"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                         <div class="nv-dropmenu__menu" role="menu" hidden="">
                                             <button type="button" class="nv-dropmenu__item" role="menuitem" data-panel-open="#member-info-fbb1e27a-0895-4b62-bae1-d1e2434b4631" aria-expanded="true"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-user"></use></svg>회원 정보</button>
                                             <!-- legacy: data-reveal='#edit-{id}' — id 유지, 실제 열림은 패널 -->
@@ -520,9 +519,7 @@
                                 </td>
                                 <td class="col-actions">
                                     <span class="nv-dropmenu">
-                                        <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="E2E 역할없음 작업">
-                                            <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg>
-                                        </button>
+                                        <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="E2E 역할없음 작업"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                         <div class="nv-dropmenu__menu" role="menu" hidden="">
                                             <button type="button" class="nv-dropmenu__item" role="menuitem" data-panel-open="#member-info-42c49825-38bc-48e8-ba3f-776f8e3f3295"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-user"></use></svg>회원 정보</button>
                                             <!-- legacy: data-reveal='#edit-{id}' — id 유지, 실제 열림은 패널 -->
@@ -556,9 +553,7 @@
                                 </td>
                                 <td class="col-actions">
                                     <span class="nv-dropmenu">
-                                        <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="연구원05 작업">
-                                            <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg>
-                                        </button>
+                                        <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="연구원05 작업"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                         <div class="nv-dropmenu__menu" role="menu" hidden="">
                                             <button type="button" class="nv-dropmenu__item" role="menuitem" data-panel-open="#member-info-7074dd2f-f6a6-49be-ba18-afa110129133"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-user"></use></svg>회원 정보</button>
                                             <!-- legacy: data-reveal='#edit-{id}' — id 유지, 실제 열림은 패널 -->
@@ -592,9 +587,7 @@
                                 </td>
                                 <td class="col-actions">
                                     <span class="nv-dropmenu">
-                                        <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="연구원04 작업">
-                                            <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg>
-                                        </button>
+                                        <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="연구원04 작업"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                         <div class="nv-dropmenu__menu" role="menu" hidden="">
                                             <button type="button" class="nv-dropmenu__item" role="menuitem" data-panel-open="#member-info-abe7b860-eeb9-412b-9d31-7632545da8ed"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-user"></use></svg>회원 정보</button>
                                             <!-- legacy: data-reveal='#edit-{id}' — id 유지, 실제 열림은 패널 -->
@@ -628,9 +621,7 @@
                                 </td>
                                 <td class="col-actions">
                                     <span class="nv-dropmenu">
-                                        <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="연구원03 작업">
-                                            <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg>
-                                        </button>
+                                        <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="연구원03 작업"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                         <div class="nv-dropmenu__menu" role="menu" hidden="">
                                             <button type="button" class="nv-dropmenu__item" role="menuitem" data-panel-open="#member-info-b0f135d7-5386-4d06-a6e6-4a21e44aeaaf"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-user"></use></svg>회원 정보</button>
                                             <!-- legacy: data-reveal='#edit-{id}' — id 유지, 실제 열림은 패널 -->
@@ -664,9 +655,7 @@
                                 </td>
                                 <td class="col-actions">
                                     <span class="nv-dropmenu">
-                                        <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="연구원02 작업">
-                                            <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg>
-                                        </button>
+                                        <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="연구원02 작업"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                         <div class="nv-dropmenu__menu" role="menu" hidden="">
                                             <button type="button" class="nv-dropmenu__item" role="menuitem" data-panel-open="#member-info-cdcea34a-42ca-4b6a-8cab-cdf423a38977"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-user"></use></svg>회원 정보</button>
                                             <!-- legacy: data-reveal='#edit-{id}' — id 유지, 실제 열림은 패널 -->
@@ -700,9 +689,7 @@
                                 </td>
                                 <td class="col-actions">
                                     <span class="nv-dropmenu">
-                                        <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="연구원01 작업">
-                                            <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg>
-                                        </button>
+                                        <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="연구원01 작업"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                         <div class="nv-dropmenu__menu" role="menu" hidden="">
                                             <button type="button" class="nv-dropmenu__item" role="menuitem" data-panel-open="#member-info-db0ece53-0ce6-4e29-ae53-0b621ef7b4d5"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-user"></use></svg>회원 정보</button>
                                             <!-- legacy: data-reveal='#edit-{id}' — id 유지, 실제 열림은 패널 -->
