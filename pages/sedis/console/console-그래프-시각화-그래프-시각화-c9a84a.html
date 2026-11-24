@@ -34,6 +34,8 @@
 <link rel="stylesheet" href="../../../static/admin-ui/v2/admin-parts.css">
 <!-- 연결 서비스 조각의 css (계약 v1 §4 — 자산 접두 아래 같은 출처 경로만, 호출기가 검사한 값) -->
 <link rel="stylesheet" href="../../../static/sedis/assets/admin/ts.css" data-svc-asset="">
+<link rel="stylesheet" href="../../../static/shared/nuri-components.css">
+<link rel="stylesheet" href="../../../static/shared/nuri-icons.css">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
   <symbol id="nv-i-activity" viewBox="0 0 256 256"><g fill="currentColor" stroke="none"><path d="M224,200h-8V40a8,8,0,0,0-8-8H152a8,8,0,0,0-8,8V80H96a8,8,0,0,0-8,8v40H48a8,8,0,0,0-8,8v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16ZM160,48h40V200H160ZM104,96h40V200H104ZM56,144H88v56H56Z"/></g></symbol>
   <symbol id="nv-i-alert" viewBox="0 0 256 256"><g fill="currentColor" stroke="none"><path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM222.93,203.8a8.5,8.5,0,0,1-7.48,4.2H40.55a8.5,8.5,0,0,1-7.48-4.2,7.59,7.59,0,0,1,0-7.72L120.52,44.21a8.75,8.75,0,0,1,15,0l87.45,151.87A7.59,7.59,0,0,1,222.93,203.8ZM120,144V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z"/></g></symbol>
@@ -567,9 +569,8 @@
                 <div class="nv-input-wrap">
                     <label class="nv-sr-only" for="sd-ts-graph-q">검색어(통계표명·데이터 주제명)</label>
                     <input type="search" id="sd-ts-graph-q" name="q" class="nv-input nv-input--sm nv-input--search" value="" maxlength="100" placeholder="통계표명·데이터 주제명 검색">
-                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-search"></use></svg>
+                    <button type="submit" class="nv-input-wrap__btn" aria-label="검색"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-search"></use></svg></button>
                 </div>
-                <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline">검색</button>
             </div>
         </form>
 
@@ -607,7 +608,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="초·중·고등학교 학업성취도의 주요 평가방법 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="초·중·고등학교 학업성취도의 주요 평가방법 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-사용자-화면-미리보기-52489b.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-그래프-시각화-92d22b.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
@@ -630,7 +631,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="학업성취도 평가의 어려움 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="학업성취도 평가의 어려움 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-사용자-화면-미리보기-373c01.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-그래프-시각화-5a8ae5.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
@@ -653,7 +654,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수학교의 학교(학급)단위 통합교육 운영 여부 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수학교의 학교(학급)단위 통합교육 운영 여부 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-사용자-화면-미리보기-2d8ab2.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-그래프-시각화-694253.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
@@ -676,7 +677,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수학교 학생의 통합 방법 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수학교 학생의 통합 방법 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-사용자-화면-미리보기-706e62.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-그래프-시각화-74eb73.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
@@ -699,7 +700,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수교사의 통합학급 수업 참여 여부 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수교사의 통합학급 수업 참여 여부 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-사용자-화면-미리보기-a2d800.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-그래프-시각화-92f24c.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
@@ -722,7 +723,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="통합교육을 통해 얻게 되는 학생의 교육적 효과 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="통합교육을 통해 얻게 되는 학생의 교육적 효과 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-사용자-화면-미리보기-ca673e.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-그래프-시각화-f74257.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
@@ -745,7 +746,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수학교 장애인식개선교육 대상 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수학교 장애인식개선교육 대상 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-사용자-화면-미리보기-c08711.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-그래프-시각화-181ec0.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
@@ -768,7 +769,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수학급 장애인식개선교육 횟수 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수학급 장애인식개선교육 횟수 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-사용자-화면-미리보기-34d885.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-그래프-시각화-238f28.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
@@ -791,7 +792,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="진로 및 직업교육 실시 여부 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="진로 및 직업교육 실시 여부 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-사용자-화면-미리보기-43c9eb.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-그래프-시각화-f02cc4.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
@@ -814,7 +815,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="진로 및 직업교육 내용 선정 시 고려사항 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="진로 및 직업교육 내용 선정 시 고려사항 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-사용자-화면-미리보기-6b73e3.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-그래프-시각화-e6f77b.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
@@ -837,7 +838,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="진로 및 직업교육 운영 방법 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="진로 및 직업교육 운영 방법 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-사용자-화면-미리보기-98752e.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-그래프-시각화-ca48f1.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
@@ -860,7 +861,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="중·고등학교 진로 및 직업교육의 중점 내용 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="중·고등학교 진로 및 직업교육의 중점 내용 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-사용자-화면-미리보기-d60ef3.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-그래프-시각화-569622.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
@@ -883,7 +884,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="지난 3개월간 방과후 프로그램 참여 현황 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="지난 3개월간 방과후 프로그램 참여 현황 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-사용자-화면-미리보기-4ea7a4.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-그래프-시각화-d8a7f6.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
@@ -906,7 +907,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="현재 지원 받고 있는 특수교육 관련서비스 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="현재 지원 받고 있는 특수교육 관련서비스 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-사용자-화면-미리보기-66f354.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-그래프-시각화-b1853e.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
@@ -929,7 +930,7 @@
                         <td><span class="nv-badge nv-badge--ok">출력중</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="지원이 더 필요한 가족지원 프로그램 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="지원이 더 필요한 가족지원 프로그램 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-사용자-화면-미리보기-c053ad.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg>미리보기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-그래프-시각화-그래프-시각화-652e42.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>

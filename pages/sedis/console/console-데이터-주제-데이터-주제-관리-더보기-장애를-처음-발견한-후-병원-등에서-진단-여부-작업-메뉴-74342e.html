@@ -34,6 +34,8 @@
 <link rel="stylesheet" href="../../../static/admin-ui/v2/admin-parts.css">
 <!-- 연결 서비스 조각의 css (계약 v1 §4 — 자산 접두 아래 같은 출처 경로만, 호출기가 검사한 값) -->
 <link rel="stylesheet" href="../../../static/sedis/assets/admin/ts.css" data-svc-asset="">
+<link rel="stylesheet" href="../../../static/shared/nuri-components.css">
+<link rel="stylesheet" href="../../../static/shared/nuri-icons.css">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
   <symbol id="nv-i-activity" viewBox="0 0 256 256"><g fill="currentColor" stroke="none"><path d="M224,200h-8V40a8,8,0,0,0-8-8H152a8,8,0,0,0-8,8V80H96a8,8,0,0,0-8,8v40H48a8,8,0,0,0-8,8v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16ZM160,48h40V200H160ZM104,96h40V200H104ZM56,144H88v56H56Z"/></g></symbol>
   <symbol id="nv-i-alert" viewBox="0 0 256 256"><g fill="currentColor" stroke="none"><path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM222.93,203.8a8.5,8.5,0,0,1-7.48,4.2H40.55a8.5,8.5,0,0,1-7.48-4.2,7.59,7.59,0,0,1,0-7.72L120.52,44.21a8.75,8.75,0,0,1,15,0l87.45,151.87A7.59,7.59,0,0,1,222.93,203.8ZM120,144V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z"/></g></symbol>
@@ -564,9 +566,8 @@
                 <div class="nv-input-wrap">
                     <label class="nv-sr-only" for="sd-ts-topic-q">검색어(데이터 주제명·통계표명)</label>
                     <input type="search" id="sd-ts-topic-q" name="q" class="nv-input nv-input--sm nv-input--search" value="" maxlength="100" placeholder="데이터 주제명·통계표명 검색">
-                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-search"></use></svg>
+                    <button type="submit" class="nv-input-wrap__btn" aria-label="검색"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-search"></use></svg></button>
                 </div>
-                <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline">검색</button>
             </div>
         </form>
 
@@ -599,7 +600,7 @@
                         <td class="col-num">16</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="장애를 처음 발견한 후 병원 등에서 진단 여부 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="장애를 처음 발견한 후 병원 등에서 진단 여부 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="" style="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-데이터-주제-데이터-주제-수정-b16959.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-topic-delete="" data-id="ST019" data-name="장애를 처음 발견한 후 병원 등에서 진단 여부"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -618,7 +619,7 @@
                         <td class="col-num">17</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="장애 진단 의뢰 권유자 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="장애 진단 의뢰 권유자 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-데이터-주제-데이터-주제-수정-381e13.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-topic-delete="" data-id="ST020" data-name="장애 진단 의뢰 권유자"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -637,7 +638,7 @@
                         <td class="col-num">18</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="장애 진단 시기 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="장애 진단 시기 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-데이터-주제-데이터-주제-수정-347af6.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-topic-delete="" data-id="ST021" data-name="장애 진단 시기"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -656,7 +657,7 @@
                         <td class="col-num">19</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="일상생활을 하는 데 주로 도움을 주는 사람 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="일상생활을 하는 데 주로 도움을 주는 사람 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-데이터-주제-데이터-주제-수정-0aa862.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-topic-delete="" data-id="ST050" data-name="일상생활을 하는 데 주로 도움을 주는 사람"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -675,7 +676,7 @@
                         <td class="col-num">20</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="일과를 주로 보내는 장소 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="일과를 주로 보내는 장소 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-데이터-주제-데이터-주제-수정-af4687.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-topic-delete="" data-id="ST051" data-name="일과를 주로 보내는 장소"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -694,7 +695,7 @@
                         <td class="col-num">21</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="여가 시간에 주로 하는 활동 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="여가 시간에 주로 하는 활동 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-데이터-주제-데이터-주제-수정-28c542.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-topic-delete="" data-id="ST052" data-name="여가 시간에 주로 하는 활동"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -713,7 +714,7 @@
                         <td class="col-num">22</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="약물 복용 여부 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="약물 복용 여부 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-데이터-주제-데이터-주제-수정-06fb52.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-topic-delete="" data-id="ST053" data-name="약물 복용 여부"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -732,7 +733,7 @@
                         <td class="col-num">23</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="약물 복용 이유 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="약물 복용 이유 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-데이터-주제-데이터-주제-수정-527947.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-topic-delete="" data-id="ST054" data-name="약물 복용 이유"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -751,7 +752,7 @@
                         <td class="col-num">24</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="같이 살고 있는 사람 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="같이 살고 있는 사람 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-데이터-주제-데이터-주제-수정-d3fb5a.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-topic-delete="" data-id="ST055" data-name="같이 살고 있는 사람"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -770,7 +771,7 @@
                         <td class="col-num">25</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="가정경제 책임자 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="가정경제 책임자 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-데이터-주제-데이터-주제-수정-6f0368.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-topic-delete="" data-id="ST056" data-name="가정경제 책임자"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -789,7 +790,7 @@
                         <td class="col-num">26</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="지난 6개월간 지출한 치료 및 장애관리비 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="지난 6개월간 지출한 치료 및 장애관리비 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-데이터-주제-데이터-주제-수정-050c7e.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-topic-delete="" data-id="ST058" data-name="지난 6개월간 지출한 치료 및 장애관리비"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -808,7 +809,7 @@
                         <td class="col-num">27</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="교육과정 편성·운영 재량권 부여 정도 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="교육과정 편성·운영 재량권 부여 정도 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-데이터-주제-데이터-주제-수정-f5b78d.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-topic-delete="" data-id="ST059" data-name="교육과정 편성·운영 재량권 부여 정도"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -827,7 +828,7 @@
                         <td class="col-num">28</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수학교 IEP 작성 참여자 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수학교 IEP 작성 참여자 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-데이터-주제-데이터-주제-수정-bc7053.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-topic-delete="" data-id="ST065" data-name="특수학교 IEP 작성 참여자"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -846,7 +847,7 @@
                         <td class="col-num">29</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수학급 IEP 작성 참여자 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수학급 IEP 작성 참여자 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-데이터-주제-데이터-주제-수정-a2ca96.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-topic-delete="" data-id="ST066" data-name="특수학급 IEP 작성 참여자"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -865,7 +866,7 @@
                         <td class="col-num">30</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="IEP 최소 작성 목표(또는 내용) 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="IEP 최소 작성 목표(또는 내용) 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-데이터-주제-데이터-주제-수정-c5585d.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-topic-delete="" data-id="ST067" data-name="IEP 최소 작성 목표(또는 내용)"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>

@@ -34,6 +34,8 @@
 <link rel="stylesheet" href="../../../static/admin-ui/v2/admin-parts.css">
 <!-- 연결 서비스 조각의 css (계약 v1 §4 — 자산 접두 아래 같은 출처 경로만, 호출기가 검사한 값) -->
 <link rel="stylesheet" href="../../../static/sedis/assets/admin/ts.css" data-svc-asset="">
+<link rel="stylesheet" href="../../../static/shared/nuri-components.css">
+<link rel="stylesheet" href="../../../static/shared/nuri-icons.css">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
   <symbol id="nv-i-activity" viewBox="0 0 256 256"><g fill="currentColor" stroke="none"><path d="M224,200h-8V40a8,8,0,0,0-8-8H152a8,8,0,0,0-8,8V80H96a8,8,0,0,0-8,8v40H48a8,8,0,0,0-8,8v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16ZM160,48h40V200H160ZM104,96h40V200H104ZM56,144H88v56H56Z"/></g></symbol>
   <symbol id="nv-i-alert" viewBox="0 0 256 256"><g fill="currentColor" stroke="none"><path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM222.93,203.8a8.5,8.5,0,0,1-7.48,4.2H40.55a8.5,8.5,0,0,1-7.48-4.2,7.59,7.59,0,0,1,0-7.72L120.52,44.21a8.75,8.75,0,0,1,15,0l87.45,151.87A7.59,7.59,0,0,1,222.93,203.8ZM120,144V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z"/></g></symbol>
@@ -571,9 +573,8 @@
                 <div class="nv-input-wrap">
                     <label class="nv-sr-only" for="sd-ts-src-q">검색어(통계표명·통계표ID·파일명)</label>
                     <input type="search" id="sd-ts-src-q" name="q" class="nv-input nv-input--sm nv-input--search" value="" maxlength="100" placeholder="통계표명·통계표ID·파일명 검색">
-                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-search"></use></svg>
+                    <button type="submit" class="nv-input-wrap__btn" aria-label="검색"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-search"></use></svg></button>
                 </div>
-                <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline">검색</button>
             </div>
         </form>
 
@@ -609,7 +610,7 @@
                         <td><span class="nv-badge  nv-badge--info">연결</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2014년 특수교육 보조인력의 주 보조 내용 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2014년 특수교육 보조인력의 주 보조 내용 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-시계열-시각화-통계표-원본-원본-상세-bc10b8.html?kit-same=%2Fconsole-9f3a%2Fsvc%2Fsedis%2Fts%2Fsources%2FSRbc274fe2dab753f3995ac74962ce120b"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-file" data-kit-href="/api/console-9f3a/v1/svc/sedis/ts/sources/SRbc274fe2dab753f3995ac74962ce120b/file" download=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>다운로드</a>
@@ -631,7 +632,7 @@
                         <td><span class="nv-badge  nv-badge--info">연결</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2017년 특수교육 보조인력의 주 보조 내용 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2017년 특수교육 보조인력의 주 보조 내용 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-시계열-시각화-통계표-원본-원본-상세-bc10b8.html?kit-same=%2Fconsole-9f3a%2Fsvc%2Fsedis%2Fts%2Fsources%2FSR099915fe274c5d4a99dbff076a54177e"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-file" data-kit-href="/api/console-9f3a/v1/svc/sedis/ts/sources/SR099915fe274c5d4a99dbff076a54177e/file" download=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>다운로드</a>
@@ -653,7 +654,7 @@
                         <td><span class="nv-badge  nv-badge--info">연결</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2020년 특수교육 보조인력의 주 보조 내용 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2020년 특수교육 보조인력의 주 보조 내용 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-시계열-시각화-통계표-원본-원본-상세-bc10b8.html?kit-same=%2Fconsole-9f3a%2Fsvc%2Fsedis%2Fts%2Fsources%2FSR23b902c829355a71b113ecec5cbfbaf2"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-file" data-kit-href="/api/console-9f3a/v1/svc/sedis/ts/sources/SR23b902c829355a71b113ecec5cbfbaf2/file" download=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>다운로드</a>
@@ -675,7 +676,7 @@
                         <td><span class="nv-badge  nv-badge--info">연결</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2023년 특수교육 지원인력의 주 지원 내용 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2023년 특수교육 지원인력의 주 지원 내용 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-시계열-시각화-통계표-원본-원본-상세-bc10b8.html?kit-same=%2Fconsole-9f3a%2Fsvc%2Fsedis%2Fts%2Fsources%2FSRfb8bae561de65dd398d7bd7080b230fe"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-file" data-kit-href="/api/console-9f3a/v1/svc/sedis/ts/sources/SRfb8bae561de65dd398d7bd7080b230fe/file" download=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>다운로드</a>
@@ -697,7 +698,7 @@
                         <td><span class="nv-badge  nv-badge--info">연결</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2011년 향후 지원받고 싶은 특수교육 관련서비스(2011) 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2011년 향후 지원받고 싶은 특수교육 관련서비스(2011) 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-시계열-시각화-통계표-원본-원본-상세-bc10b8.html?kit-same=%2Fconsole-9f3a%2Fsvc%2Fsedis%2Fts%2Fsources%2FSRf41a5173c17151f2a76a58db648ba9a2"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-file" data-kit-href="/api/console-9f3a/v1/svc/sedis/ts/sources/SRf41a5173c17151f2a76a58db648ba9a2/file" download=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>다운로드</a>
@@ -719,7 +720,7 @@
                         <td><span class="nv-badge  nv-badge--info">연결</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2014년 향후 지원이 필요한 특수교육 관련서비스 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2014년 향후 지원이 필요한 특수교육 관련서비스 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-시계열-시각화-통계표-원본-원본-상세-bc10b8.html?kit-same=%2Fconsole-9f3a%2Fsvc%2Fsedis%2Fts%2Fsources%2FSRa5f08828d4f1501092697d7b87f38aae"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-file" data-kit-href="/api/console-9f3a/v1/svc/sedis/ts/sources/SRa5f08828d4f1501092697d7b87f38aae/file" download=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>다운로드</a>
@@ -741,7 +742,7 @@
                         <td><span class="nv-badge  nv-badge--info">연결</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2017년 향후 지원이 필요한 특수교육 관련서비스 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2017년 향후 지원이 필요한 특수교육 관련서비스 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-시계열-시각화-통계표-원본-원본-상세-bc10b8.html?kit-same=%2Fconsole-9f3a%2Fsvc%2Fsedis%2Fts%2Fsources%2FSRec01d45481325e128cf6c83864505409"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-file" data-kit-href="/api/console-9f3a/v1/svc/sedis/ts/sources/SRec01d45481325e128cf6c83864505409/file" download=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>다운로드</a>
@@ -763,7 +764,7 @@
                         <td><span class="nv-badge  nv-badge--info">연결</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2020년 향후 지원이 필요한 특수교육 관련서비스 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2020년 향후 지원이 필요한 특수교육 관련서비스 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-시계열-시각화-통계표-원본-원본-상세-bc10b8.html?kit-same=%2Fconsole-9f3a%2Fsvc%2Fsedis%2Fts%2Fsources%2FSRf9becd86dbd452918ddf5b3fcf112262"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-file" data-kit-href="/api/console-9f3a/v1/svc/sedis/ts/sources/SRf9becd86dbd452918ddf5b3fcf112262/file" download=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>다운로드</a>
@@ -785,7 +786,7 @@
                         <td><span class="nv-badge  nv-badge--info">연결</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2023년 지원이 필요한 특수교육 관련서비스 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2023년 지원이 필요한 특수교육 관련서비스 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-시계열-시각화-통계표-원본-원본-상세-bc10b8.html?kit-same=%2Fconsole-9f3a%2Fsvc%2Fsedis%2Fts%2Fsources%2FSRf85a722a4c4c5a0abf3c98a11c49b26d"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-file" data-kit-href="/api/console-9f3a/v1/svc/sedis/ts/sources/SRf85a722a4c4c5a0abf3c98a11c49b26d/file" download=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>다운로드</a>
@@ -807,7 +808,7 @@
                         <td><span class="nv-badge  nv-badge--info">연결</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2014년 교수 역량 강화를 위해 장려하는 장학 형태 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2014년 교수 역량 강화를 위해 장려하는 장학 형태 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-시계열-시각화-통계표-원본-원본-상세-bc10b8.html?kit-same=%2Fconsole-9f3a%2Fsvc%2Fsedis%2Fts%2Fsources%2FSR26148bd2d8235e2fac2c5343ac97c71c"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-file" data-kit-href="/api/console-9f3a/v1/svc/sedis/ts/sources/SR26148bd2d8235e2fac2c5343ac97c71c/file" download=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>다운로드</a>
@@ -829,7 +830,7 @@
                         <td><span class="nv-badge  nv-badge--info">연결</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2017년 특수교사의 교수 역량 강화를 위해 관리자가 장려하는 장학 형태 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2017년 특수교사의 교수 역량 강화를 위해 관리자가 장려하는 장학 형태 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-시계열-시각화-통계표-원본-원본-상세-bc10b8.html?kit-same=%2Fconsole-9f3a%2Fsvc%2Fsedis%2Fts%2Fsources%2FSR3f808f6070025bffb9a50fe2be93ee6a"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-file" data-kit-href="/api/console-9f3a/v1/svc/sedis/ts/sources/SR3f808f6070025bffb9a50fe2be93ee6a/file" download=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>다운로드</a>
@@ -851,7 +852,7 @@
                         <td><span class="nv-badge  nv-badge--info">연결</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2020년 특수교사의 교수 역량 강화를 위해 관리자가 장려하는 장학 형태 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2020년 특수교사의 교수 역량 강화를 위해 관리자가 장려하는 장학 형태 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-시계열-시각화-통계표-원본-원본-상세-bc10b8.html?kit-same=%2Fconsole-9f3a%2Fsvc%2Fsedis%2Fts%2Fsources%2FSR5c2c2de0f76c5b3d8e30e47d69748561"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-file" data-kit-href="/api/console-9f3a/v1/svc/sedis/ts/sources/SR5c2c2de0f76c5b3d8e30e47d69748561/file" download=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>다운로드</a>
@@ -873,7 +874,7 @@
                         <td><span class="nv-badge  nv-badge--info">연결</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2023년 특수교사의 교수 역량 강화를 위해 관리자가 장려하는 장학 형태 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2023년 특수교사의 교수 역량 강화를 위해 관리자가 장려하는 장학 형태 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-시계열-시각화-통계표-원본-원본-상세-bc10b8.html?kit-same=%2Fconsole-9f3a%2Fsvc%2Fsedis%2Fts%2Fsources%2FSR40b05a75ff2553419519eaf2c7d21273"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-file" data-kit-href="/api/console-9f3a/v1/svc/sedis/ts/sources/SR40b05a75ff2553419519eaf2c7d21273/file" download=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>다운로드</a>
@@ -895,7 +896,7 @@
                         <td><span class="nv-badge  nv-badge--info">연결</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2014년 일반학급의 교내 교원연수 실시 형태 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2014년 일반학급의 교내 교원연수 실시 형태 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-시계열-시각화-통계표-원본-원본-상세-bc10b8.html?kit-same=%2Fconsole-9f3a%2Fsvc%2Fsedis%2Fts%2Fsources%2FSR4da90e844d41598f83e94cbbb4ba71d0"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-file" data-kit-href="/api/console-9f3a/v1/svc/sedis/ts/sources/SR4da90e844d41598f83e94cbbb4ba71d0/file" download=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>다운로드</a>
@@ -917,7 +918,7 @@
                         <td><span class="nv-badge  nv-badge--info">연결</span></td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2017년 일반학교의 교내 교원연수 실시 형태 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="2017년 일반학교의 교내 교원연수 실시 형태 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-시계열-시각화-통계표-원본-원본-상세-bc10b8.html?kit-same=%2Fconsole-9f3a%2Fsvc%2Fsedis%2Fts%2Fsources%2FSR81b43686760a56178d894486282f7bb5"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <a class="nv-dropmenu__item" role="menuitem" href="#kit-file" data-kit-href="/api/console-9f3a/v1/svc/sedis/ts/sources/SR81b43686760a56178d894486282f7bb5/file" download=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>다운로드</a>

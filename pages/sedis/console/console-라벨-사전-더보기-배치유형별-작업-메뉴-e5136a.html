@@ -34,6 +34,8 @@
 <link rel="stylesheet" href="../../../static/admin-ui/v2/admin-parts.css">
 <!-- 연결 서비스 조각의 css (계약 v1 §4 — 자산 접두 아래 같은 출처 경로만, 호출기가 검사한 값) -->
 <link rel="stylesheet" href="../../../static/sedis/assets/admin/ts.css" data-svc-asset="">
+<link rel="stylesheet" href="../../../static/shared/nuri-components.css">
+<link rel="stylesheet" href="../../../static/shared/nuri-icons.css">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
   <symbol id="nv-i-activity" viewBox="0 0 256 256"><g fill="currentColor" stroke="none"><path d="M224,200h-8V40a8,8,0,0,0-8-8H152a8,8,0,0,0-8,8V80H96a8,8,0,0,0-8,8v40H48a8,8,0,0,0-8,8v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16ZM160,48h40V200H160ZM104,96h40V200H104ZM56,144H88v56H56Z"/></g></symbol>
   <symbol id="nv-i-alert" viewBox="0 0 256 256"><g fill="currentColor" stroke="none"><path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM222.93,203.8a8.5,8.5,0,0,1-7.48,4.2H40.55a8.5,8.5,0,0,1-7.48-4.2,7.59,7.59,0,0,1,0-7.72L120.52,44.21a8.75,8.75,0,0,1,15,0l87.45,151.87A7.59,7.59,0,0,1,222.93,203.8ZM120,144V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z"/></g></symbol>
@@ -574,9 +576,8 @@
                 <div class="nv-input-wrap">
                     <label class="nv-sr-only" for="sd-ts-label-q">검색어(원본 라벨·표준 라벨)</label>
                     <input type="search" id="sd-ts-label-q" name="q" class="nv-input nv-input--sm nv-input--search" value="" maxlength="100" placeholder="원본·표준 라벨 검색" style="">
-                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-search"></use></svg>
+                    <button type="submit" class="nv-input-wrap__btn" aria-label="검색"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-search"></use></svg></button>
                 </div>
-                <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline">검색</button>
             </div>
         </form>
 
@@ -611,7 +612,7 @@
                         <td class="sd-ts-dim">데이터 전문 연구진 협의 확정</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="남자 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="남자 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-라벨-사전-라벨-수정-e9aded.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-label-delete="" data-id="LBoo6zmb" data-name="남 → 남자"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -630,7 +631,7 @@
                         <td class="sd-ts-dim">데이터 전문 연구진 협의 확정</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="여자 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="여자 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-라벨-사전-라벨-수정-b300b7.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-label-delete="" data-id="LBb8e9dj" data-name="여 → 여자"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -649,7 +650,7 @@
                         <td class="sd-ts-dim">데이터 전문 연구진 협의 확정</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="유 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="유 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-라벨-사전-라벨-수정-27be89.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-label-delete="" data-id="LBkcbgv1" data-name="유치원 → 유"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -668,7 +669,7 @@
                         <td class="sd-ts-dim">데이터 전문 연구진 협의 확정</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="초 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="초 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-라벨-사전-라벨-수정-018cdf.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-label-delete="" data-id="LBt8hccr" data-name="초등학교 → 초"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -687,7 +688,7 @@
                         <td class="sd-ts-dim">데이터 전문 연구진 협의 확정</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="중 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="중 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-라벨-사전-라벨-수정-112748.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-label-delete="" data-id="LBb0lgdn" data-name="중학교 → 중"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -706,7 +707,7 @@
                         <td class="sd-ts-dim">데이터 전문 연구진 협의 확정</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="고 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="고 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-라벨-사전-라벨-수정-a63fe3.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-label-delete="" data-id="LBgz55is" data-name="고등학교 → 고"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -725,7 +726,7 @@
                         <td class="sd-ts-dim">데이터 전문 연구진 협의 확정</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="배치유형별 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="배치유형별 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="" style="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-라벨-사전-라벨-수정-87f028.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-label-delete="" data-id="LBd3k12r" data-name="학교유형별 → 배치유형별"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -744,7 +745,7 @@
                         <td class="sd-ts-dim">데이터 전문 연구진 협의 확정</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="지적장애 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="지적장애 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-라벨-사전-라벨-수정-91afef.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-label-delete="" data-id="LBs2afqy" data-name="정신지체 → 지적장애"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -763,7 +764,7 @@
                         <td class="sd-ts-dim">데이터 전문 연구진 협의 확정</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수학교 교사 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수학교 교사 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-라벨-사전-라벨-수정-8266b8.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-label-delete="" data-id="LBc0sufg" data-name="특수학교 → 특수학교 교사"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -782,7 +783,7 @@
                         <td class="sd-ts-dim">데이터 전문 연구진 협의 확정</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수교육지원센터 교사 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="특수교육지원센터 교사 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-라벨-사전-라벨-수정-c156c0.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-label-delete="" data-id="LB41aio4" data-name="특수교육지원센터 → 특수교육지원센터 교사"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -801,7 +802,7 @@
                         <td class="sd-ts-dim">데이터 전문 연구진 협의 확정</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="조부모(할아버지 할머니) 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="조부모(할아버지 할머니) 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-라벨-사전-라벨-수정-48218b.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-label-delete="" data-id="LBuvywl6" data-name="조부모 → 조부모(할아버지 할머니)"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -820,7 +821,7 @@
                         <td class="sd-ts-dim">데이터 전문 연구진 협의 확정</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="조부모(할아버지 할머니) 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="조부모(할아버지 할머니) 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-라벨-사전-라벨-수정-e6e907.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-label-delete="" data-id="LBw14ksk" data-name="할아버지 할머니 → 조부모(할아버지 할머니)"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -839,7 +840,7 @@
                         <td class="sd-ts-dim">데이터 전문 연구진 협의 확정</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="일반학교 교육활동에 특수교육대상자가 참여하는 통합 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="일반학교 교육활동에 특수교육대상자가 참여하는 통합 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-라벨-사전-라벨-수정-244f28.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-label-delete="" data-id="LBz5734y" data-name="일반학교 교육활동에 특수교육대상학생이 참여하는 통합 → 일반학교 교육활동에 특수교육대상자가 참여하는 통합"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -858,7 +859,7 @@
                         <td class="sd-ts-dim">데이터 전문 연구진 협의 확정</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="수업시간의 교수･학습활동 지원 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="수업시간의 교수･학습활동 지원 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-라벨-사전-라벨-수정-dafaaa.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-label-delete="" data-id="LB9qgmgi" data-name="수업시간의 교수학습활동 보조 → 수업시간의 교수･학습활동 지원"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
@@ -877,7 +878,7 @@
                         <td class="sd-ts-dim">데이터 전문 연구진 협의 확정</td>
                         <td class="col-actions">
                             <span class="nv-dropmenu">
-                                <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="학생의 신변처리 등 일상생활 지원 작업 메뉴"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-more"></use></svg></button>
+                                <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" aria-label="학생의 신변처리 등 일상생활 지원 작업 메뉴"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
                                 <div class="nv-dropmenu__menu" role="menu" hidden="">
                                     <a class="nv-dropmenu__item" role="menuitem" href="console-라벨-사전-라벨-수정-121cfb.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>수정하기</a>
                                     <button type="button" class="nv-dropmenu__item nv-dropmenu__item--danger" role="menuitem" data-ts-label-delete="" data-id="LBnaxvp2" data-name="신변처리 등 일상생활 → 학생의 신변처리 등 일상생활 지원"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>삭제하기</button>
