@@ -144,6 +144,9 @@
 .bd-proc__write { display: flex; flex-direction: column; gap: var(--cms-sp-3); }
 .bd-proc__answer-title { font-size: var(--cms-fs-lg); font-weight: var(--cms-fw-bold); }
 .bd-proc__write .nv-editor__body { min-height: 24rem; }
+/* 답변 편집기는 콘텐츠 편집기(.ct-editor) 도구 줄 · 칸 모양을 쓰되, 카드 안이라 .nv-editor 카드 모양 없이 배치만 같게
+   — 세로 쌓기 · 간격 16(도구 줄 margin-bottom -16 과 맞물려 편집 칸에 틈 없이 붙음) · 바깥 여백 0 */
+.bd-proc__write .ct-editor { display: flex; flex-direction: column; gap: var(--cms-sp-4); padding: 0; }
 .bd-proc__side { gap: var(--cms-sp-6); }
 .bd-proc__card { display: flex; flex-direction: column; gap: var(--cms-sp-3); }
 .bd-proc__card .nv-btn--block { width: 100%; justify-content: center; }

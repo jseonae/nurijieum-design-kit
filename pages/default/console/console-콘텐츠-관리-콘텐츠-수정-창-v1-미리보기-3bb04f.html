@@ -445,7 +445,8 @@
 
                 <div class="nv-editor-page__grid">
                     <!-- 본문 카드: 제목 + 서식 툴바 + 본문 편집기 (content-editor.js 훅) -->
-                    <div class="nv-editor cms-admin-editor ct-editor" data-view="edit" data-wysiwyg="" data-wysiwyg-bar="" data-preview-url="/console-9f3a/content/preview-body">
+                    <div class="nv-stack">
+        <div class="nv-editor cms-admin-editor ct-editor" data-view="edit" data-wysiwyg="" data-wysiwyg-bar="" data-preview-url="/console-9f3a/content/preview-body">
                         <div class="nv-field">
                             <label class="nv-field__label" for="ctTitle">제목</label>
                             <input id="ctTitle" class="nv-input" name="title" form="ct-save-form" required="" value="관련 포털 바로가기" placeholder="제목을 입력하세요." style="">
@@ -558,28 +559,7 @@
                         <!-- 메뉴 수정 「소스 수정」: 아래 줄 단추. 위 막대 「소스 저장」 = 게시 여부대로 저장, 여기 「임시저장」 = 비공개로만 저장 -->
                         
                     </div>
-
-                    <!-- 우측 설정 컬럼 (시안 순서: 게시 여부 설정 → 버전 이력 → Content ID, 그 아래에 썸네일 · 첨부 · SEO) -->
-                    <aside class="nv-editor-page__side">
-                        <!-- ① 게시 여부 설정: [수정하기]가 고른 방식을 수행한다(저장 폼으로 함께 간다). 전환 = content-editor.js -->
-                        <div class="nv-form-group" data-publish-setting="">
-                            <span class="nv-form-group__title">게시 여부 설정</span>
-                            <div class="nv-choice-list" role="radiogroup" aria-label="게시 여부">
-                                <label class="nv-radio" title="[수정하기]로 저장하고 바로 게시합니다. 사유가 필요합니다"><input type="radio" name="publishMode" form="ct-save-form" value="publish" data-publish-mode="" checked="" style="">게시중 (즉시 배포)</label>
-                                <label class="nv-radio" title="[수정하기]로 비공개 임시저장본만 저장합니다. 공개 화면은 그대로입니다"><input type="radio" name="publishMode" form="ct-save-form" value="draft" data-publish-mode="" style="">임시저장 (비공개)</label>
-                                <label class="nv-radio" title="[수정하기]로 새 버전을 저장하고 정한 시각에 게시합니다. 사유가 필요합니다"><input type="radio" name="publishMode" form="ct-save-form" value="schedule" data-publish-mode="" style="">예약 게시</label>
-                            </div>
-                            <div class="ct-publish-action nv-stack" data-publish-action="schedule" style="gap:.8rem" hidden="">
-                                <div class="nv-field">
-                                    <label class="nv-field__label" for="ct-sched">발행 예약 시각</label>
-                                    <input type="datetime-local" id="ct-sched" class="nv-input" name="publishAt" form="ct-save-form" value="" style="">
-                                </div>
-                                
-                            </div>
-                            
-                                
-                            
-                        </div>
+        <!-- 2026-11-25 우측에서 옮김: 버전 이력 · 콘텐츠 정보 · 요약 · SEO 메타 (우측에는 게시 여부 설정 · 대표 썸네일 · 첨부파일) -->
 
                         <!-- 버전 이력: 상태 필터(select[name=versionState] — 소스 수정 탭에서는 returnMenu 로 그 탭에 돌아온다) + 표. 「새 버전 만들기」는 없다 — 작업 초안은 하나(임시저장본), 번호는 게시할 때 -->
                         <details class="nv-form-group nv-details" open="">
@@ -636,7 +616,11 @@
                                     </tbody>
                                 </table>
                             </div>
-                            
+                            <!-- 콘텐츠 정보: 2026-11-25 카드 밖에서 버전 이력 카드 맨 아래로 옮김 -->
+                            <dl class="ct-kv">
+                            <dt>Content ID</dt><dd class="nv-mono">CT1f5ecd75ceb54fb5aa65a11e9047394f</dd>
+                            <dt>발행 버전</dt><dd>v1 · 2026-10-24 15:31</dd>
+                        </dl>
                         </details>
                         <!-- 메뉴 수정 「소스 수정」 탭(embedded): 버전 이력 = 카드 목록(키트 .ver-list · .ver). 카드 = 버전 번호 · 상태 · 시각 · 작성자, 작업은 카드 안 ⋮ 메뉴(versionCard).
                              상태 필터 · 작업은 표와 같다(콘텐츠 관리 화면은 위 표 그대로) -->
@@ -645,44 +629,6 @@
                         <div class="nv-field" hidden="">
                             <label class="nv-field__label" for="ctSummary">요약</label>
                             <textarea id="ctSummary" class="nv-textarea" name="summary" form="ct-save-form" rows="3" placeholder="목록·검색에 노출되는 요약" style="">외부 연계 포털 4곳(배너 링크)</textarea>
-                        </div>
-                        
-                        <dl class="ct-kv">
-                            <dt>Content ID</dt><dd class="nv-mono">CT1f5ecd75ceb54fb5aa65a11e9047394f</dd>
-                            <dt>발행 버전</dt><dd>v1 · 2026-10-24 15:31</dd>
-                        </dl>
-
-                        <!-- 대표 썸네일 · 첨부파일(시안 820:50441): 고르거나 끌어놓으면 바로 올린다 — 콘솔 미디어 업로드(사용처 CONTENT,
-                             admin-v2.js data-media-upload data-upload-auto). 첨부는 공개 화면 콘텐츠 아래 「첨부파일」로 나간다 -->
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="CONTENT" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/content/ST54cf79b1bff2434a896cd1bcf54bb4c3/CT1f5ecd75ceb54fb5aa65a11e9047394f/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="CT1f5ecd75ceb54fb5aa65a11e9047394f">
-                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
-                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
-                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
-                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)" style=""></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880" style="">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                        </div>
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="CONTENT" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/content/ST54cf79b1bff2434a896cd1bcf54bb4c3/CT1f5ecd75ceb54fb5aa65a11e9047394f/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="CT1f5ecd75ceb54fb5aa65a11e9047394f">
-                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
-                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
-                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택" style=""></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" style="">
-                            <p class="nv-field__hint">첨부는 버전이 아니라 콘텐츠에 붙습니다 — 올리거나 빼면 [게시하기] 없이 공개 화면(게시 중인 콘텐츠)에 바로 반영됩니다.</p>
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                            <div data-media-list="">
-                                
-                            </div>
-                            <template data-media-row="">
-                                <div class="nv-file" data-media-item="">
-                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                    <a class="nv-grow" data-media-name="" href="#"></a>
-                                    <span class="nv-file__size" data-media-size=""></span>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 콘텐츠에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
-                                </div>
-                            </template>
                         </div>
 
                         <!-- SEO 메타 -->
@@ -706,7 +652,61 @@
                                 <div class="nv-row nv-row--end"><button type="submit" class="nv-btn nv-btn--soft">SEO 저장</button></div>
                             </form>
                         </details>
-                    </aside>
+    </div>
+
+                    <!-- 우측 설정 컬럼 (시안 순서: 게시 여부 설정 → 버전 이력 → Content ID, 그 아래에 썸네일 · 첨부 · SEO) -->
+                    <aside class="nv-editor-page__side">
+                        <!-- ① 게시 여부 설정: [수정하기]가 고른 방식을 수행한다(저장 폼으로 함께 간다). 전환 = content-editor.js -->
+                        <div class="nv-form-group" data-publish-setting="">
+                            <span class="nv-form-group__title">게시 여부 설정</span>
+                            <div class="nv-choice-list" role="radiogroup" aria-label="게시 여부">
+                                <label class="nv-radio" title="[수정하기]로 저장하고 바로 게시합니다. 사유가 필요합니다"><input type="radio" name="publishMode" form="ct-save-form" value="publish" data-publish-mode="" checked="" style="">게시중 (즉시 배포)</label>
+                                <label class="nv-radio" title="[수정하기]로 비공개 임시저장본만 저장합니다. 공개 화면은 그대로입니다"><input type="radio" name="publishMode" form="ct-save-form" value="draft" data-publish-mode="" style="">임시저장 (비공개)</label>
+                                <label class="nv-radio" title="[수정하기]로 새 버전을 저장하고 정한 시각에 게시합니다. 사유가 필요합니다"><input type="radio" name="publishMode" form="ct-save-form" value="schedule" data-publish-mode="" style="">예약 게시</label>
+                            </div>
+                            <div class="ct-publish-action nv-stack" data-publish-action="schedule" style="gap:.8rem" hidden="">
+                                <div class="nv-field">
+                                    <label class="nv-field__label" for="ct-sched">발행 예약 시각</label>
+                                    <input type="datetime-local" id="ct-sched" class="nv-input" name="publishAt" form="ct-save-form" value="" style="">
+                                </div>
+                                
+                            </div>
+                            
+                                
+                            
+                        </div>
+        <!-- 대표 썸네일 · 첨부파일(시안 820:50441): 고르거나 끌어놓으면 바로 올린다 — 콘솔 미디어 업로드(사용처 CONTENT,
+                             admin-v2.js data-media-upload data-upload-auto). 첨부는 공개 화면 콘텐츠 아래 「첨부파일」로 나간다 -->
+                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="CONTENT" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/content/ST54cf79b1bff2434a896cd1bcf54bb4c3/CT1f5ecd75ceb54fb5aa65a11e9047394f/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="CT1f5ecd75ceb54fb5aa65a11e9047394f">
+                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
+                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
+                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
+                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)" style=""></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880" style="">
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                        </div><div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="CONTENT" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/content/ST54cf79b1bff2434a896cd1bcf54bb4c3/CT1f5ecd75ceb54fb5aa65a11e9047394f/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="CT1f5ecd75ceb54fb5aa65a11e9047394f">
+                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
+                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
+                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택" style=""></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" style="">
+                            <p class="nv-field__hint">첨부는 버전이 아니라 콘텐츠에 붙습니다 — 올리거나 빼면 [게시하기] 없이 공개 화면(게시 중인 콘텐츠)에 바로 반영됩니다.</p>
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                            <div data-media-list="">
+                                
+                            </div>
+                            <template data-media-row="">
+                                <div class="nv-file" data-media-item="">
+                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                    <a class="nv-grow" data-media-name="" href="#"></a>
+                                    <span class="nv-file__size" data-media-size=""></span>
+                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 콘텐츠에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                </div>
+                            </template>
+                        </div>
+    </aside>
                 </div>
                 <!-- 버전 미리보기(버전 표의 눈 단추, content-editor.js 가 주소를 넣는다) -->
                 <div class="nv-modal-backdrop" id="ct-version-preview">
