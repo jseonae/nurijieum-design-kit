@@ -704,7 +704,7 @@
         inp.value = r.n ? Number(r.n).toLocaleString('ko-KR') : '';
         inp.addEventListener('input', function () { r.n = inp.value.replace(/[^\d]/g, ''); popSync(); });
         var unit = el('span', 'sd-kd-dim', (r.u || '명') + (r.t ? ' ' + r.t : ''));
-        var del = el('button', 'nv-btn nv-btn--icon nv-btn--sm', '✕');
+        var del = el('button', 'nv-btn nv-btn--icon nv-btn--xs', '✕');
         del.type = 'button';
         del.setAttribute('aria-label', '모집단 ' + (i + 1) + ' 줄 삭제');
         del.addEventListener('click', function () {

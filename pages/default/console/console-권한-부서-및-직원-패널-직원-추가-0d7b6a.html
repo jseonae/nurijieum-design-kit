@@ -27,6 +27,8 @@
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/admin-inline-detail.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-v2.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-parts.js -->
+    <link rel="stylesheet" href="../../../static/admin-ui/v2/cms-button.css">
+    <link rel="stylesheet" href="../../../static/admin-ui/v2/sedis-sg.css">
 </head>
 <body class="nv-lock">
 <link rel="stylesheet" href="../../../static/admin-ui/v2/pages/organization.css">
@@ -384,7 +386,7 @@
                 </div>
             </div>
             <div class="nv-modal__foot">
-                <button type="button" class="nv-btn nv-btn--lg nv-btn--outline-strong" onclick="cmsA11y.reset()">초기화</button>
+                <button type="button" class="nv-btn nv-btn--lg nv-btn--outline" onclick="cmsA11y.reset()">초기화</button>
                 <button type="button" class="nv-btn nv-btn--lg nv-btn--primary" data-modal-close="" data-modal-initial="">확인</button>
             </div>
         </div>
@@ -501,9 +503,9 @@
                                 <!-- 삭제 · 조직 이동(부서-2, 조직도에서 고른 부서로) · 엑셀다운로드(부서-2: 고른 직원만, 고르지 않으면 지금 조건
                                      — 선택 부서 · 하위 포함 · 검색어 — 전부. 개인정보라 사유 창을 거친다. 감사 기록은 서버가 남긴다) -->
                                 <span class="nv-btn-group">
-                                    <button type="submit" class="nv-btn nv-btn--sm nv-btn--muted" form="bulk-emp-form" data-needs-selection="" disabled="">삭제</button>
-                                    <button type="button" class="nv-btn nv-btn--sm nv-btn--muted" data-org-move="employees" data-needs-selection="" disabled="">조직 이동</button>
-                                    <button type="button" class="nv-btn nv-btn--sm nv-btn--muted" aria-haspopup="dialog" data-modal-open="#employee-export-panel" aria-controls="employee-export-panel">엑셀다운로드</button>
+                                    <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" form="bulk-emp-form" data-needs-selection="" disabled="">삭제</button>
+                                    <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-org-move="employees" data-needs-selection="" disabled="">조직 이동</button>
+                                    <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" aria-haspopup="dialog" data-modal-open="#employee-export-panel" aria-controls="employee-export-panel">엑셀다운로드</button>
                                 </span>
                             </div>
                             <div class="nv-filter__right">
@@ -833,7 +835,7 @@
                         <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
                         <span data-file-name="">파일명</span>
                         <span class="nv-file__size" data-file-size=""></span>
-                        <button type="button" class="nv-btn nv-btn--icon nv-btn--sm" data-file-clear="" aria-label="선택 해제"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                        <button type="button" class="nv-btn nv-btn--icon nv-btn--xs" data-file-clear="" aria-label="선택 해제"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
                     </div>
                     <span class="nv-field__hint">* 사이트에 없는 부서는 새로 만듭니다. </span>                    
                 </div></div>
@@ -890,7 +892,7 @@
                                 <option value="ST614909399d6b49b5aa1c5b1cf373cb11">디자인팀</option>
                                 <option value="STf4e2fda7ac6d44a58a76e927e9c894cb">공공개발1부</option>
                             </select>
-                            <button type="button" class="nv-btn nv-btn--muted" data-panel-open="#dept-create-panel" aria-controls="dept-create-panel">부서 관리</button>
+                            <button type="button" class="nv-btn nv-btn--outline" data-panel-open="#dept-create-panel" aria-controls="dept-create-panel">부서 관리</button>
                         </span></div>
                     <div class="nv-field nv-field--row"><label class="nv-field__label" for="empPosition">직위 <span class="req" aria-hidden="true">*</span></label><input id="empPosition" class="nv-input" name="position" required="" maxlength="100" placeholder="직위를 입력하세요" value=""></div>
                     <div class="nv-field nv-field--row">
@@ -1191,7 +1193,7 @@
                     </label>
                     <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="3145728">
                     <p class="nv-field__hint">프로필 사진은 3MB까지 선택할 수 있습니다.</p>
-                    <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">사진 삭제</button>
+                    <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">사진 삭제</button>
                     <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                 </div>
                 <div class="nv-form-group">
@@ -1216,7 +1218,7 @@
                                 <option value="ST614909399d6b49b5aa1c5b1cf373cb11" selected="">디자인팀</option>
                                 <option value="STf4e2fda7ac6d44a58a76e927e9c894cb">공공개발1부</option>
                             </select>
-                            <button type="button" class="nv-btn nv-btn--muted" data-panel-open="#dept-create-panel" aria-controls="dept-create-panel">부서 관리</button>
+                            <button type="button" class="nv-btn nv-btn--outline" data-panel-open="#dept-create-panel" aria-controls="dept-create-panel">부서 관리</button>
                         </span></div>
                     <div class="nv-field nv-field--row"><label class="nv-field__label" for="e-empPosition-STde7a42e89c8c4101a3e2bc83f3e30a2c">직위 <span class="req" aria-hidden="true">*</span></label><input id="e-empPosition-STde7a42e89c8c4101a3e2bc83f3e30a2c" class="nv-input" name="position" value="대리" required="" maxlength="100"></div>
                     <div class="nv-field nv-field--row">
@@ -1279,7 +1281,7 @@
                     </label>
                     <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="3145728">
                     <p class="nv-field__hint">프로필 사진은 3MB까지 선택할 수 있습니다.</p>
-                    <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">사진 삭제</button>
+                    <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">사진 삭제</button>
                     <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                 </div>
                 <div class="nv-form-group">
@@ -1304,7 +1306,7 @@
                                 <option value="ST614909399d6b49b5aa1c5b1cf373cb11" selected="">디자인팀</option>
                                 <option value="STf4e2fda7ac6d44a58a76e927e9c894cb">공공개발1부</option>
                             </select>
-                            <button type="button" class="nv-btn nv-btn--muted" data-panel-open="#dept-create-panel" aria-controls="dept-create-panel">부서 관리</button>
+                            <button type="button" class="nv-btn nv-btn--outline" data-panel-open="#dept-create-panel" aria-controls="dept-create-panel">부서 관리</button>
                         </span></div>
                     <div class="nv-field nv-field--row"><label class="nv-field__label" for="e-empPosition-ST9b2a1edc6071400d9640084f432f4955">직위 <span class="req" aria-hidden="true">*</span></label><input id="e-empPosition-ST9b2a1edc6071400d9640084f432f4955" class="nv-input" name="position" value="df" required="" maxlength="100"></div>
                     <div class="nv-field nv-field--row">
@@ -1367,7 +1369,7 @@
                     </label>
                     <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="3145728">
                     <p class="nv-field__hint">프로필 사진은 3MB까지 선택할 수 있습니다.</p>
-                    <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">사진 삭제</button>
+                    <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">사진 삭제</button>
                     <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                 </div>
                 <div class="nv-form-group">
@@ -1392,7 +1394,7 @@
                                 <option value="ST614909399d6b49b5aa1c5b1cf373cb11" selected="">디자인팀</option>
                                 <option value="STf4e2fda7ac6d44a58a76e927e9c894cb">공공개발1부</option>
                             </select>
-                            <button type="button" class="nv-btn nv-btn--muted" data-panel-open="#dept-create-panel" aria-controls="dept-create-panel">부서 관리</button>
+                            <button type="button" class="nv-btn nv-btn--outline" data-panel-open="#dept-create-panel" aria-controls="dept-create-panel">부서 관리</button>
                         </span></div>
                     <div class="nv-field nv-field--row"><label class="nv-field__label" for="e-empPosition-STa8e981776e9f4f228d351cccfb4c6f97">직위 <span class="req" aria-hidden="true">*</span></label><input id="e-empPosition-STa8e981776e9f4f228d351cccfb4c6f97" class="nv-input" name="position" value="대리" required="" maxlength="100"></div>
                     <div class="nv-field nv-field--row">
@@ -1455,7 +1457,7 @@
                     </label>
                     <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="3145728">
                     <p class="nv-field__hint">프로필 사진은 3MB까지 선택할 수 있습니다.</p>
-                    <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">사진 삭제</button>
+                    <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">사진 삭제</button>
                     <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                 </div>
                 <div class="nv-form-group">
@@ -1480,7 +1482,7 @@
                                 <option value="ST614909399d6b49b5aa1c5b1cf373cb11" selected="">디자인팀</option>
                                 <option value="STf4e2fda7ac6d44a58a76e927e9c894cb">공공개발1부</option>
                             </select>
-                            <button type="button" class="nv-btn nv-btn--muted" data-panel-open="#dept-create-panel" aria-controls="dept-create-panel">부서 관리</button>
+                            <button type="button" class="nv-btn nv-btn--outline" data-panel-open="#dept-create-panel" aria-controls="dept-create-panel">부서 관리</button>
                         </span></div>
                     <div class="nv-field nv-field--row"><label class="nv-field__label" for="e-empPosition-ST49373035f05c4b83a041056470902843">직위 <span class="req" aria-hidden="true">*</span></label><input id="e-empPosition-ST49373035f05c4b83a041056470902843" class="nv-input" name="position" value="사원" required="" maxlength="100"></div>
                     <div class="nv-field nv-field--row">
@@ -1543,7 +1545,7 @@
                     </label>
                     <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="3145728">
                     <p class="nv-field__hint">프로필 사진은 3MB까지 선택할 수 있습니다.</p>
-                    <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">사진 삭제</button>
+                    <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">사진 삭제</button>
                     <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                 </div>
                 <div class="nv-form-group">
@@ -1568,7 +1570,7 @@
                                 <option value="ST614909399d6b49b5aa1c5b1cf373cb11" selected="">디자인팀</option>
                                 <option value="STf4e2fda7ac6d44a58a76e927e9c894cb">공공개발1부</option>
                             </select>
-                            <button type="button" class="nv-btn nv-btn--muted" data-panel-open="#dept-create-panel" aria-controls="dept-create-panel">부서 관리</button>
+                            <button type="button" class="nv-btn nv-btn--outline" data-panel-open="#dept-create-panel" aria-controls="dept-create-panel">부서 관리</button>
                         </span></div>
                     <div class="nv-field nv-field--row"><label class="nv-field__label" for="e-empPosition-ST0b15bd48ef0446179bc7df61b1f3240a">직위 <span class="req" aria-hidden="true">*</span></label><input id="e-empPosition-ST0b15bd48ef0446179bc7df61b1f3240a" class="nv-input" name="position" value="사원" required="" maxlength="100"></div>
                     <div class="nv-field nv-field--row">
@@ -1631,7 +1633,7 @@
                     </label>
                     <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="3145728">
                     <p class="nv-field__hint">프로필 사진은 3MB까지 선택할 수 있습니다.</p>
-                    <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">사진 삭제</button>
+                    <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">사진 삭제</button>
                     <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                 </div>
                 <div class="nv-form-group">
@@ -1656,7 +1658,7 @@
                                 <option value="ST614909399d6b49b5aa1c5b1cf373cb11">디자인팀</option>
                                 <option value="STf4e2fda7ac6d44a58a76e927e9c894cb" selected="">공공개발1부</option>
                             </select>
-                            <button type="button" class="nv-btn nv-btn--muted" data-panel-open="#dept-create-panel" aria-controls="dept-create-panel">부서 관리</button>
+                            <button type="button" class="nv-btn nv-btn--outline" data-panel-open="#dept-create-panel" aria-controls="dept-create-panel">부서 관리</button>
                         </span></div>
                     <div class="nv-field nv-field--row"><label class="nv-field__label" for="e-empPosition-STfef590b468aa4599bd864a535f55ab76">직위 <span class="req" aria-hidden="true">*</span></label><input id="e-empPosition-STfef590b468aa4599bd864a535f55ab76" class="nv-input" name="position" value="사원" required="" maxlength="100"></div>
                     <div class="nv-field nv-field--row">
@@ -1719,7 +1721,7 @@
                     </label>
                     <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="3145728">
                     <p class="nv-field__hint">프로필 사진은 3MB까지 선택할 수 있습니다.</p>
-                    <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">사진 삭제</button>
+                    <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">사진 삭제</button>
                     <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                 </div>
                 <div class="nv-form-group">
@@ -1744,7 +1746,7 @@
                                 <option value="ST614909399d6b49b5aa1c5b1cf373cb11">디자인팀</option>
                                 <option value="STf4e2fda7ac6d44a58a76e927e9c894cb" selected="">공공개발1부</option>
                             </select>
-                            <button type="button" class="nv-btn nv-btn--muted" data-panel-open="#dept-create-panel" aria-controls="dept-create-panel">부서 관리</button>
+                            <button type="button" class="nv-btn nv-btn--outline" data-panel-open="#dept-create-panel" aria-controls="dept-create-panel">부서 관리</button>
                         </span></div>
                     <div class="nv-field nv-field--row"><label class="nv-field__label" for="e-empPosition-STa65f422069064019bd131b75f0e0067f">직위 <span class="req" aria-hidden="true">*</span></label><input id="e-empPosition-STa65f422069064019bd131b75f0e0067f" class="nv-input" name="position" value="사원" required="" maxlength="100"></div>
                     <div class="nv-field nv-field--row">

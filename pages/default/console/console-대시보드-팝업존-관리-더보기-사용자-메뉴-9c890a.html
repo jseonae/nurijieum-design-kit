@@ -27,6 +27,8 @@
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/admin-inline-detail.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-v2.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-parts.js -->
+    <link rel="stylesheet" href="../../../static/admin-ui/v2/cms-button.css">
+    <link rel="stylesheet" href="../../../static/admin-ui/v2/sedis-sg.css">
 </head>
 <body>
 <link rel="stylesheet" href="../../../static/admin-ui/v2/pages/popup.css">
@@ -390,7 +392,7 @@
                 </div>
             </div>
             <div class="nv-modal__foot">
-                <button type="button" class="nv-btn nv-btn--lg nv-btn--outline-strong" onclick="cmsA11y.reset()">초기화</button>
+                <button type="button" class="nv-btn nv-btn--lg nv-btn--outline" onclick="cmsA11y.reset()">초기화</button>
                 <button type="button" class="nv-btn nv-btn--lg nv-btn--primary" data-modal-close="" data-modal-initial="">확인</button>
             </div>
         </div>
@@ -425,7 +427,7 @@
         <h2 id="popup-new-title">팝업존 등록</h2>
         <span class="pp-form__head-desc">노출=ON 이고 현재 시각이 기간 안일 때만 공개 화면에 표시됩니다. 시각 미입력 시 해당 경계는 제한이 없습니다.</span>
         <div class="pp-form__head-actions">
-            <button type="button" class="nv-btn nv-btn--muted" data-reveal-cancel="">취소</button>
+            <button type="button" class="nv-btn nv-btn--outline" data-reveal-cancel="">취소</button>
             <button type="submit" class="nv-btn nv-btn--primary" form="popup-create-form">등록하기</button>
         </div>
     </div>
@@ -438,7 +440,7 @@
             <div class="nv-field">
                 <div class="nv-row nv-row--between">
                     <label class="nv-field__label" for="create-body">내용</label>
-                    <button type="button" class="nv-btn nv-btn--sm nv-btn--ghost" data-image-picker="" aria-haspopup="dialog" data-target="create-body" data-image-folder="dev/popup" title="">
+                    <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-image-picker="" aria-haspopup="dialog" data-target="create-body" data-image-folder="dev/popup" title="">
                         <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>이미지 삽입
                     </button>
                 </div>
@@ -457,7 +459,7 @@
             <div class="nv-field">
                 <div class="nv-row nv-row--between">
                     <span class="nv-field__label" id="create-images-label">이미지</span>
-                    <button type="button" class="nv-btn nv-btn--sm nv-btn--soft" data-popup-media-picker="" aria-haspopup="dialog" aria-label="이미지 폴더에서 팝업 이미지 추가" data-target-form="popup-create-form"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>이미지에서 추가</button>
+                    <button type="button" class="nv-btn nv-btn--sm nv-btn--primary nv-btn--outline" data-popup-media-picker="" aria-haspopup="dialog" aria-label="이미지 폴더에서 팝업 이미지 추가" data-target-form="popup-create-form"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>이미지에서 추가</button>
                 </div>
                 <ul class="cms-admin-popup-image-strip" id="create-image-strip" aria-labelledby="create-images-label" aria-live="polite">
                     <li class="cms-admin-popup-image-strip__add">
@@ -547,12 +549,12 @@
                             </select>
                         </label>
                         <span class="nv-filter__divider" aria-hidden="true"></span>
-                        <span class="nv-filter__selected">선택 <span data-selected-count="">0</span>개</span><button type="submit" class="nv-btn nv-btn--sm nv-btn--danger" form="bulk-popup-form" data-needs-selection="" disabled=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>선택 삭제</button>
+                        <span class="nv-filter__selected">선택 <span data-selected-count="">0</span>개</span><button type="submit" class="nv-btn nv-btn--sm nv-btn--danger nv-btn--outline-fill" form="bulk-popup-form" data-needs-selection="" disabled=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>선택 삭제</button>
                         <span class="nv-filter__divider" aria-hidden="true"></span>
                         <!-- 상태변경(Figma 팝업존목록-1): 같은 숨은 폼을 formaction 으로 나눠 쓴다 — 노출 여부만 바꾸고 나머지는 그대로(bulk-enabled).
                              관리자메뉴관리에서 「보기」만 받은 서브관리자(menuEditable=false)에게는 쓰기 단추를 그리지 않는다(엑셀다운로드는 보기로 된다) -->
                         <span class="nv-btn-group"><span class="nv-dropmenu">
-                            <button type="button" class="nv-btn nv-btn--sm nv-btn--muted" data-dropmenu="" data-needs-selection="" disabled="" aria-expanded="false" aria-haspopup="menu"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-swap"></use></svg>상태변경</button>
+                            <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-dropmenu="" data-needs-selection="" disabled="" aria-expanded="false" aria-haspopup="menu"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-swap"></use></svg>상태변경</button>
                             <div class="nv-dropmenu__menu" role="menu" hidden="">
                                 <button type="submit" class="nv-dropmenu__item" role="menuitem" form="bulk-popup-form" formaction="/console-9f3a/popup/SITE-DEV/bulk-enabled" name="enabled" value="true" data-bulk-status="ENABLE" data-confirm="선택한 팝업을 사용으로 바꿀까요? 노출 기간 안의 팝업은 공개 화면에 바로 보입니다.">
                                     <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-check-circle"></use></svg>사용</button>
@@ -561,7 +563,7 @@
                             </div>
                         </span>
                         <!-- 엑셀다운로드(팝업존목록-2): 고른 팝업만, 고르지 않으면 지금 조건 전부 — 바로 받는다(감사 기록은 서버가 남긴다) -->
-                        <button type="submit" class="nv-btn nv-btn--sm nv-btn--excel" form="bulk-popup-form" data-confirm="" data-selection-optional="" data-confirm-title="대량 내려받기" data-confirm-verb="내려받기" formaction="/console-9f3a/popup/SITE-DEV/export.xlsx?keyword=&amp;enabled=&amp;position=&amp;from=&amp;to=" data-export-total="0" data-export-threshold="1000"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>엑셀다운로드</button></span>
+                        <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" form="bulk-popup-form" data-confirm="" data-selection-optional="" data-confirm-title="대량 내려받기" data-confirm-verb="내려받기" formaction="/console-9f3a/popup/SITE-DEV/export.xlsx?keyword=&amp;enabled=&amp;position=&amp;from=&amp;to=" data-export-total="0" data-export-threshold="1000"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>엑셀다운로드</button></span>
                         <span class="nv-text-sm nv-text-subtle">정렬순서 오름차순</span>
                     </div>
                     <div class="nv-filter__right">
@@ -648,7 +650,7 @@
     <div class="cms-admin-mediapicker__dialog nv-modal cms-imgpick__dialog">
         <div class="cms-admin-mediapicker__header nv-modal__head nv-row nv-row--between">
             <h2 id="cms-popup-mediapicker-title" class="cms-admin-mediapicker__title nv-modal__title">팝업 이미지 선택</h2>
-            <button type="button" class="cms-admin-mediapicker__close nv-btn nv-btn--icon" aria-label="닫기"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+            <button type="button" class="cms-admin-mediapicker__close nv-btn nv-btn--icon nv-btn--sm" aria-label="닫기"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
         </div>
         <div class="nv-modal__body cms-imgpick__body">
             <p class="nv-text-sm nv-text-muted">그림을 누르면 팝업 이미지로 추가됩니다. 이 창에서 바로 올린 그림은 올리자마자 추가됩니다.</p>

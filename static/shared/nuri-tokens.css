@@ -587,6 +587,11 @@
   --nuri-color-table-row-hover: var(--nuri-gray-5);
   --nuri-color-table-row-selected: var(--nuri-secondary-5);
   --nuri-color-table-row-changed: var(--nuri-warning-5);
+  /* 메뉴 단계 번호(1→4) — 2026-11-25 사용자 지정 색 */
+  --nuri-color-depth-1-surface: #18378c; --nuri-color-depth-1-text: #ffffff;
+  --nuri-color-depth-2-surface: #3a6cec; --nuri-color-depth-2-text: #ffffff;
+  --nuri-color-depth-3-surface: #d3def5; --nuri-color-depth-3-text: #234fc8;
+  --nuri-color-depth-4-surface: #eff2f6; --nuri-color-depth-4-text: #364153;
   --nuri-color-table-row-error: var(--nuri-danger-5);
   --nuri-color-table-card-border: var(--nuri-gray-10);
   --nuri-color-table-card-border-hover: var(--nuri-gray-20);

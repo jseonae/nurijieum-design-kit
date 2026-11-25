@@ -151,15 +151,25 @@
 .nuri-select__control:invalid, .nuri-select__control.is-placeholder { color: var(--nuri-color-text-placeholder); }
 .nuri-input.is-disabled > .nuri-icon, .nuri-select.is-disabled > .nuri-icon { color: var(--nuri-color-icon-disabled); }
 
-/* 글자형 셀렉트 (cms/select-text) */
+/* 글자형 셀렉트 (cms/select-text) — 모양은 글자 버튼, 기능은 셀렉트(2026-11-25)
+   <span class="nuri-select-text"><select class="nuri-select-text__control">…</select><span class="nuri-icon i-caret-down"></span></span>
+   꺾쇠는 select 위에 겹쳐(select 오른쪽 여백만큼) 누르면 select 가 열린다 */
 .nuri-select-text {
-  display: inline-flex; align-items: center; gap: var(--nuri-gap-2); padding: 0; border: 0; background: none;
-  font-size: var(--nuri-font-size-label-small); color: var(--nuri-color-text-bolder); cursor: pointer; --nuri-icon-size: 1.6rem;
+  position: relative; display: inline-flex; align-items: center; gap: var(--nuri-gap-2);
+  font-size: var(--nuri-font-size-label-small); color: var(--nuri-color-text-bolder); --nuri-icon-size: 1.6rem;
 }
+.nuri-select-text__control {
+  appearance: none; -webkit-appearance: none; height: auto; padding: 0 calc(1.6rem + var(--nuri-gap-2)) 0 0;
+  margin-right: calc(-1 * (1.6rem + var(--nuri-gap-2))); border: 0; background: none;
+  font: inherit; color: inherit; line-height: var(--nuri-line-height); cursor: pointer;
+}
+.nuri-select-text > .nuri-icon { pointer-events: none; }
 .nuri-select-text--l { font-size: var(--nuri-font-size-label-medium); }
 .nuri-select-text:hover, .nuri-select-text.is-hover { color: var(--nuri-color-text-primary); }
 .nuri-select-text:active { color: var(--nuri-color-link-pressed); }
-.nuri-select-text:disabled { color: var(--nuri-color-text-disabled); cursor: not-allowed; }
+.nuri-select-text:has(.nuri-select-text__control:disabled), .nuri-select-text.is-disabled { color: var(--nuri-color-text-disabled); }
+.nuri-select-text__control:disabled { cursor: not-allowed; }
+.nuri-select-text__control option { color: var(--nuri-color-text-bolder); }
 
 /* 체크박스 · 라디오 · 토글 (S 16/20 · M 20/24) */
 .nuri-check, .nuri-radio, .nuri-toggle {
@@ -582,16 +592,16 @@
    디자인모음에서 올린 컴포넌트 (피그마 「00 디자인모음 컴포넌트」 → cms/*)
    ========================================================================== */
 
-/* cms/depth-badge — 메뉴 단계 번호 20×20. 단계마다 다른 색: 1 secondary/80 · 2 secondary/60 · 3 secondary/50 · 4 gray/50 */
+/* cms/depth-badge — 메뉴 단계 번호 20×20. 단계마다 다른 색: --nuri-color-depth-1~4-surface · -text (2026-11-25 변경: 1 남색 · 2 파랑 · 3 연파랑+파랑 글자 · 4 연회색+진회색 글자) */
 .nuri-depth-badge {
   display: inline-flex; align-items: center; justify-content: center; flex: none;
   width: var(--nuri-size-height-2); height: var(--nuri-size-height-2); border-radius: var(--nuri-radius-max);
-  background: var(--nuri-secondary-80); color: var(--nuri-color-text-bolder-inverse);
+  background: var(--nuri-color-depth-1-surface); color: var(--nuri-color-depth-1-text);
   font-size: var(--nuri-font-size-label-xsmall); font-weight: var(--nuri-font-weight-semibold); line-height: 1;
 }
-.nuri-depth-badge--2 { background: var(--nuri-secondary-60); }
-.nuri-depth-badge--3 { background: var(--nuri-secondary-50); }
-.nuri-depth-badge--4 { background: var(--nuri-gray-50); }
+.nuri-depth-badge--2 { background: var(--nuri-color-depth-2-surface); color: var(--nuri-color-depth-2-text); }
+.nuri-depth-badge--3 { background: var(--nuri-color-depth-3-surface); color: var(--nuri-color-depth-3-text); }
+.nuri-depth-badge--4 { background: var(--nuri-color-depth-4-surface); color: var(--nuri-color-depth-4-text); }
 
 /* cms/summary-card — 이름 · 큰 숫자 · 그래픽 아이콘 */
 .nuri-summary-card {

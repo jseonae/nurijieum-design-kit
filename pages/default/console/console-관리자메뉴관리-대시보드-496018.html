@@ -27,6 +27,8 @@
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/admin-inline-detail.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-v2.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-parts.js -->
+    <link rel="stylesheet" href="../../../static/admin-ui/v2/cms-button.css">
+    <link rel="stylesheet" href="../../../static/admin-ui/v2/sedis-sg.css">
 </head>
 <body>
 <link rel="stylesheet" href="../../../static/admin-ui/v2/pages/navigation.css">
@@ -383,7 +385,7 @@
                 </div>
             </div>
             <div class="nv-modal__foot">
-                <button type="button" class="nv-btn nv-btn--lg nv-btn--outline-strong" onclick="cmsA11y.reset()">초기화</button>
+                <button type="button" class="nv-btn nv-btn--lg nv-btn--outline" onclick="cmsA11y.reset()">초기화</button>
                 <button type="button" class="nv-btn nv-btn--lg nv-btn--primary" data-modal-close="" data-modal-initial="">확인</button>
             </div>
         </div>
@@ -446,7 +448,7 @@
                     </div>
                     <div class="savebar" data-clean="true" data-am-savebar="perm">
     <span class="savebar__count" data-am-count="">저장된 상태입니다</span>
-    <button type="button" class="nv-btn nv-btn--sm nv-btn--ghost" data-am-toggle="" aria-expanded="false" hidden="">무엇이 바뀌나</button>
+    <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-am-toggle="" aria-expanded="false" hidden="">무엇이 바뀌나</button>
     <span class="savebar__who" data-am-dirty="" hidden="" title="수행자 — 로그인한 관리자로 자동">수행자 <b>전체관리자</b></span>
     <label class="savebar__reason" data-am-dirty="" hidden=""><span title="사유 — 수정 이력과 접속기록에 남습니다">사유 <span class="req" aria-hidden="true">*</span></span>
         <input class="nv-input nv-input--sm" id="am-reason-perm" name="reason" maxlength="500" autocomplete="off" placeholder="예: 담당 부서 변경" data-am-reason="" value=""></label>

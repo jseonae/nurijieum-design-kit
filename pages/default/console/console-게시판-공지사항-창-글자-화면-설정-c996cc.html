@@ -27,6 +27,8 @@
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/admin-inline-detail.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-v2.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-parts.js -->
+    <link rel="stylesheet" href="../../../static/admin-ui/v2/cms-button.css">
+    <link rel="stylesheet" href="../../../static/admin-ui/v2/sedis-sg.css">
 </head>
 <body class="nv-lock">
 <link rel="stylesheet" href="../../../static/admin-ui/v2/pages/board.css">
@@ -389,7 +391,7 @@
                 </div>
             </div>
             <div class="nv-modal__foot">
-                <button type="button" class="nv-btn nv-btn--lg nv-btn--outline-strong" onclick="cmsA11y.reset()">초기화</button>
+                <button type="button" class="nv-btn nv-btn--lg nv-btn--outline" onclick="cmsA11y.reset()">초기화</button>
                 <button type="button" class="nv-btn nv-btn--lg nv-btn--primary" data-modal-close="" data-modal-initial="">확인</button>
             </div>
         </div>
@@ -444,9 +446,9 @@
                 <span class="nv-filter__divider" aria-hidden="true"></span>
                 <!-- 상태변경(게시글관리-2): 고른 글의 상태만 바꾼다(board.post.state 건별). 보관은 삭제 권한 -->
                 <!-- 상태변경(게시글관리-2 · 게시판 스킨 「일괄 상태 변경」 창): 고른 글의 상태만 바꾼다(board.post.state 건별). 보관은 삭제 권한 -->
-                <span class="nv-btn-group"><button type="button" class="nv-btn nv-btn--sm nv-btn--muted" data-modal-open="#bulk-state-modal" data-needs-selection="" disabled=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-swap"></use></svg>상태변경</button>
+                <span class="nv-btn-group"><button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-modal-open="#bulk-state-modal" data-needs-selection="" disabled=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-swap"></use></svg>상태변경</button>
                 <!-- 엑셀다운로드(게시글관리-3): 고른 글만, 고르지 않으면 지금 조건(검색어 · 작성일 · 상태 — 숨은 폼의 listKeep) 전부 — 바로 받는다 -->
-                <button type="submit" class="nv-btn nv-btn--sm nv-btn--excel" form="bulk-post-form" data-confirm="" data-selection-optional="" data-confirm-title="대량 내려받기" data-confirm-verb="내려받기" formaction="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/export.xlsx" data-export-total="9" data-export-threshold="1000"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>엑셀다운로드</button></span>
+                <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" form="bulk-post-form" data-confirm="" data-selection-optional="" data-confirm-title="대량 내려받기" data-confirm-verb="내려받기" formaction="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/export.xlsx" data-export-total="9" data-export-threshold="1000"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>엑셀다운로드</button></span>
             </div>
             <div class="nv-filter__right">
                 <input type="hidden" name="offsetPost" value="0">
@@ -1014,8 +1016,8 @@
             <!-- 시안(게시글 등록): [미리보기(새 창 — 고치던 칸을 공개 상세 모양으로, 저장하지 않음 · data-post-preview, admin-interactions.js)][임시저장][등록하기](게시판 스킨 「게시글 등록」 — 취소는 ← 단추). 임시저장 = 게시 여부와 상관없이 임시저장(saveAs=DRAFT, Enter 제출도 이 단추),
                  게시하기 = 「게시 여부 설정」대로. 고른 대표 썸네일 · 첨부는 저장하면서 함께 올리고, 저장 뒤 그 글의 수정 화면이 열린다 -->
             <div class="nv-editor-header__actions">
-                <button type="button" class="nv-btn nv-btn--primary-outline" data-post-preview="" data-preview-fields="title body notice videoUrl biblioAuthor biblioPublisher biblioYear koglType koglYear koglRestriction" data-preview-action="/public/board/BD39855ec310ca4598a50f183983c518e1/posts/preview?previewSite=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기</button>
-                <button type="submit" class="nv-btn nv-btn--primary-outline" name="saveAs" value="DRAFT">임시저장</button>
+                <button type="button" class="nv-btn nv-btn--primary nv-btn--outline" data-post-preview="" data-preview-fields="title body notice videoUrl biblioAuthor biblioPublisher biblioYear koglType koglYear koglRestriction" data-preview-action="/public/board/BD39855ec310ca4598a50f183983c518e1/posts/preview?previewSite=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기</button>
+                <button type="submit" class="nv-btn nv-btn--primary nv-btn--outline" name="saveAs" value="DRAFT">임시저장</button>
                 <button type="submit" class="nv-btn nv-btn--primary">등록하기</button>
             </div>
         </div>
@@ -1028,7 +1030,7 @@
                     <div class="cms-admin-editor__toolbar nv-editor__toolbar" role="toolbar" aria-label="본문 형식·보기">
                         <!-- 본문 형식은 고르지 않는다 — 게시글은 HTML -->
                         <input type="hidden" id="pFmt" class="cms-admin-editor__format" name="bodyFormat" value="HTML">
-                        <button type="button" class="nv-btn nv-btn--sm nv-btn--ghost" data-image-picker="" data-target="pBody" data-format-target="pFmt" aria-haspopup="dialog" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
+                        <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-image-picker="" data-target="pBody" data-format-target="pFmt" aria-haspopup="dialog" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
                             <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>이미지 삽입
                         </button>
                         <span class="cms-admin-editor__live nv-text-sm nv-text-subtle nv-sr-only" aria-live="polite"></span>
@@ -1060,7 +1062,7 @@
                         <div class="nv-file" hidden="">
                             <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>
                             <span class="nv-grow" data-file-name="">파일명</span><span class="nv-file__size" data-file-size=""></span>
-                            <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-file-clear="" aria-label="썸네일 선택 해제"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                            <button type="button" class="nv-btn nv-btn--outline nv-btn--sm" data-file-clear="" aria-label="썸네일 선택 해제"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
                         </div>
                     </div>
                     <div class="nv-form-group nv-attach">
@@ -1071,7 +1073,7 @@
                         <div class="nv-file" hidden="">
                             <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
                             <span class="nv-grow" data-file-name="">파일명</span><span class="nv-file__size" data-file-size=""></span>
-                            <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-file-clear="" aria-label="첨부 선택 해제"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                            <button type="button" class="nv-btn nv-btn--outline nv-btn--sm" data-file-clear="" aria-label="첨부 선택 해제"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
                         </div>
                     </div>
             </div>
@@ -1146,7 +1148,7 @@
                 <span class="nv-editor-header__status">작성일 2026-10-24 · 게시중</span>
                 <div class="nv-editor-header__actions">
                     <!-- 공개 상세는 게시중인 글만 연다 — 임시저장 · 예약 · 보관 글은 고치던 내용 그대로 새 창 미리보기(data-post-preview) -->
-                    <a class="nv-btn nv-btn--primary-outline" href="../public/공개-화면-public-board-BD39855ec310ca4598a50f183983c518e1-posts-BP9b7ef49a-63b6d9.html" target="_blank" rel="noopener noreferrer">미리보기</a>
+                    <a class="nv-btn nv-btn--primary nv-btn--outline" href="../public/공개-화면-public-board-BD39855ec310ca4598a50f183983c518e1-posts-BP9b7ef49a-63b6d9.html" target="_blank" rel="noopener noreferrer">미리보기</a>
                     
                     <!-- 시안(게시글 수정): 보관하기 단추 없음 — 보관은 「게시 여부 설정」 · 목록 「상태변경」 -->
                     <button type="submit" class="nv-btn nv-btn--primary">수정하기</button>
@@ -1162,7 +1164,7 @@
                     <div class="cms-admin-editor" data-view="edit" data-wysiwyg="" data-preview-url="/console-9f3a/content/preview-body">
                         <div class="cms-admin-editor__toolbar nv-editor__toolbar" role="toolbar" aria-label="본문 보기">
                             <input type="hidden" class="cms-admin-editor__format" value="HTML">
-                            <button type="button" class="nv-btn nv-btn--sm nv-btn--ghost" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BP9b7ef49ae4bb4ad5a7169166a317ac30" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
+                            <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BP9b7ef49ae4bb4ad5a7169166a317ac30" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
                                 <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>이미지 삽입
                             </button>
                             <span class="cms-admin-editor__live nv-text-sm nv-text-subtle nv-sr-only" aria-live="polite"></span>
@@ -1197,7 +1199,7 @@
                                 <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
                                 <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
                             <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
                             <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                         </div>
                         
@@ -1220,8 +1222,8 @@
                                     <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
                                     <a class="nv-grow" data-media-name="" href="#"></a>
                                     <span class="nv-file__size" data-media-size=""></span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                    <a class="nv-btn nv-btn--outline nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
+                                    <button type="button" class="nv-btn nv-btn--outline nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
                                 </div>
                             </template>
                         </div>
@@ -1299,7 +1301,7 @@
                 <h2 class="nv-editor-header__title">게시글 상세</h2>
                 <span class="nv-editor-header__status"></span>
                 <div class="nv-editor-header__actions">
-                    <button type="submit" class="nv-btn nv-btn--danger" data-confirm="이 게시글을 보관(비노출)합니까?" form="post-archive-form-BP9b7ef49ae4bb4ad5a7169166a317ac30">보관하기</button>
+                    <button type="submit" class="nv-btn nv-btn--danger nv-btn--outline" data-confirm="이 게시글을 보관(비노출)합니까?" form="post-archive-form-BP9b7ef49ae4bb4ad5a7169166a317ac30">보관하기</button>
                     
                     <button type="button" class="nv-btn nv-btn--primary" data-reveal="#post-edit-panel-BP9b7ef49ae4bb4ad5a7169166a317ac30" aria-controls="post-edit-panel-BP9b7ef49ae4bb4ad5a7169166a317ac30" aria-expanded="false">수정하기</button>
                 </div>
@@ -1352,7 +1354,7 @@
                 <div class="nv-editor-header__actions">
                     <!-- 공개 상세는 게시중인 글만 연다 — 임시저장 · 예약 · 보관 글은 고치던 내용 그대로 새 창 미리보기(data-post-preview) -->
                     
-                    <button type="button" class="nv-btn nv-btn--primary-outline" data-post-preview="" data-preview-fields="title body notice videoUrl biblioAuthor biblioPublisher biblioYear koglType koglYear koglRestriction" data-preview-action="/public/board/BD39855ec310ca4598a50f183983c518e1/posts/preview?previewSite=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기</button>
+                    <button type="button" class="nv-btn nv-btn--primary nv-btn--outline" data-post-preview="" data-preview-fields="title body notice videoUrl biblioAuthor biblioPublisher biblioYear koglType koglYear koglRestriction" data-preview-action="/public/board/BD39855ec310ca4598a50f183983c518e1/posts/preview?previewSite=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기</button>
                     <!-- 시안(게시글 수정): 보관하기 단추 없음 — 보관은 「게시 여부 설정」 · 목록 「상태변경」 -->
                     <button type="submit" class="nv-btn nv-btn--primary">수정하기</button>
                 </div>
@@ -1367,7 +1369,7 @@
                     <div class="cms-admin-editor" data-view="edit" data-wysiwyg="" data-preview-url="/console-9f3a/content/preview-body">
                         <div class="cms-admin-editor__toolbar nv-editor__toolbar" role="toolbar" aria-label="본문 보기">
                             <input type="hidden" class="cms-admin-editor__format" value="HTML">
-                            <button type="button" class="nv-btn nv-btn--sm nv-btn--ghost" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BP67aa262c8dc841eeb474b8264569c9a8" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
+                            <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BP67aa262c8dc841eeb474b8264569c9a8" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
                                 <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>이미지 삽입
                             </button>
                             <span class="cms-admin-editor__live nv-text-sm nv-text-subtle nv-sr-only" aria-live="polite"></span>
@@ -1402,7 +1404,7 @@
                                 <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
                                 <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
                             <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
                             <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                         </div>
                         
@@ -1422,8 +1424,8 @@
                                     <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
                                     <a class="nv-grow" data-media-name="" href="#kit-file" data-kit-href="/api/console-9f3a/v1/media/MD481c1887feea4d6f8c7b3d60e614e6c2:download?siteId=ST54cf79b1bff2434a896cd1bcf54bb4c3" download="e2e-attach.pdf">e2e-attach.pdf</a>
                                     <span class="nv-file__size" data-media-size="">593 B</span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" target="_blank" rel="noopener" title="새 창 열림" href="#kit-file" data-kit-href="/api/console-9f3a/v1/media/MD481c1887feea4d6f8c7b3d60e614e6c2:download?siteId=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기<span class="nv-sr-only"> : e2e-attach.pdf</span></a>
-                                    <button type="submit" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)" data-media-id="MD481c1887feea4d6f8c7b3d60e614e6c2" form="pm-rel-ATTACHMENT-BP67aa262c8dc841eeb474b8264569c9a8-MD481c1887feea4d6f8c7b3d60e614e6c2" aria-label="e2e-attach.pdf 빼기"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                    <a class="nv-btn nv-btn--outline nv-btn--sm" target="_blank" rel="noopener" title="새 창 열림" href="#kit-file" data-kit-href="/api/console-9f3a/v1/media/MD481c1887feea4d6f8c7b3d60e614e6c2:download?siteId=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기<span class="nv-sr-only"> : e2e-attach.pdf</span></a>
+                                    <button type="submit" class="nv-btn nv-btn--outline nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)" data-media-id="MD481c1887feea4d6f8c7b3d60e614e6c2" form="pm-rel-ATTACHMENT-BP67aa262c8dc841eeb474b8264569c9a8-MD481c1887feea4d6f8c7b3d60e614e6c2" aria-label="e2e-attach.pdf 빼기"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
                                 </div>
                             </div>
                             <template data-media-row="">
@@ -1431,8 +1433,8 @@
                                     <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
                                     <a class="nv-grow" data-media-name="" href="#"></a>
                                     <span class="nv-file__size" data-media-size=""></span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                    <a class="nv-btn nv-btn--outline nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
+                                    <button type="button" class="nv-btn nv-btn--outline nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
                                 </div>
                             </template>
                         </div>
@@ -1538,7 +1540,7 @@
                 <span class="nv-editor-header__status"></span>
                 <div class="nv-editor-header__actions">
                     
-                    <button type="submit" class="nv-btn nv-btn--primary-outline" form="post-publish-form-BP67aa262c8dc841eeb474b8264569c9a8">발행</button>
+                    <button type="submit" class="nv-btn nv-btn--primary nv-btn--outline" form="post-publish-form-BP67aa262c8dc841eeb474b8264569c9a8">발행</button>
                     <button type="button" class="nv-btn nv-btn--primary" data-reveal="#post-edit-panel-BP67aa262c8dc841eeb474b8264569c9a8" aria-controls="post-edit-panel-BP67aa262c8dc841eeb474b8264569c9a8" aria-expanded="false">수정하기</button>
                 </div>
             </div>
@@ -1590,7 +1592,7 @@
                 <div class="nv-editor-header__actions">
                     <!-- 공개 상세는 게시중인 글만 연다 — 임시저장 · 예약 · 보관 글은 고치던 내용 그대로 새 창 미리보기(data-post-preview) -->
                     
-                    <button type="button" class="nv-btn nv-btn--primary-outline" data-post-preview="" data-preview-fields="title body notice videoUrl biblioAuthor biblioPublisher biblioYear koglType koglYear koglRestriction" data-preview-action="/public/board/BD39855ec310ca4598a50f183983c518e1/posts/preview?previewSite=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기</button>
+                    <button type="button" class="nv-btn nv-btn--primary nv-btn--outline" data-post-preview="" data-preview-fields="title body notice videoUrl biblioAuthor biblioPublisher biblioYear koglType koglYear koglRestriction" data-preview-action="/public/board/BD39855ec310ca4598a50f183983c518e1/posts/preview?previewSite=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기</button>
                     <!-- 시안(게시글 수정): 보관하기 단추 없음 — 보관은 「게시 여부 설정」 · 목록 「상태변경」 -->
                     <button type="submit" class="nv-btn nv-btn--primary">수정하기</button>
                 </div>
@@ -1605,7 +1607,7 @@
                     <div class="cms-admin-editor" data-view="edit" data-wysiwyg="" data-preview-url="/console-9f3a/content/preview-body">
                         <div class="cms-admin-editor__toolbar nv-editor__toolbar" role="toolbar" aria-label="본문 보기">
                             <input type="hidden" class="cms-admin-editor__format" value="HTML">
-                            <button type="button" class="nv-btn nv-btn--sm nv-btn--ghost" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BP73ec03507aab4a8cb766353ca4f53674" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
+                            <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BP73ec03507aab4a8cb766353ca4f53674" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
                                 <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>이미지 삽입
                             </button>
                             <span class="cms-admin-editor__live nv-text-sm nv-text-subtle nv-sr-only" aria-live="polite"></span>
@@ -1640,7 +1642,7 @@
                                 <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
                                 <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
                             <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
                             <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                         </div>
                         
@@ -1663,8 +1665,8 @@
                                     <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
                                     <a class="nv-grow" data-media-name="" href="#"></a>
                                     <span class="nv-file__size" data-media-size=""></span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                    <a class="nv-btn nv-btn--outline nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
+                                    <button type="button" class="nv-btn nv-btn--outline nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
                                 </div>
                             </template>
                         </div>
@@ -1743,7 +1745,7 @@
                 <span class="nv-editor-header__status"></span>
                 <div class="nv-editor-header__actions">
                     
-                    <button type="submit" class="nv-btn nv-btn--primary-outline" form="post-publish-form-BP73ec03507aab4a8cb766353ca4f53674">발행</button>
+                    <button type="submit" class="nv-btn nv-btn--primary nv-btn--outline" form="post-publish-form-BP73ec03507aab4a8cb766353ca4f53674">발행</button>
                     <button type="button" class="nv-btn nv-btn--primary" data-reveal="#post-edit-panel-BP73ec03507aab4a8cb766353ca4f53674" aria-controls="post-edit-panel-BP73ec03507aab4a8cb766353ca4f53674" aria-expanded="false">수정하기</button>
                 </div>
             </div>
@@ -1795,7 +1797,7 @@
                 <div class="nv-editor-header__actions">
                     <!-- 공개 상세는 게시중인 글만 연다 — 임시저장 · 예약 · 보관 글은 고치던 내용 그대로 새 창 미리보기(data-post-preview) -->
                     
-                    <button type="button" class="nv-btn nv-btn--primary-outline" data-post-preview="" data-preview-fields="title body notice videoUrl biblioAuthor biblioPublisher biblioYear koglType koglYear koglRestriction" data-preview-action="/public/board/BD39855ec310ca4598a50f183983c518e1/posts/preview?previewSite=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기</button>
+                    <button type="button" class="nv-btn nv-btn--primary nv-btn--outline" data-post-preview="" data-preview-fields="title body notice videoUrl biblioAuthor biblioPublisher biblioYear koglType koglYear koglRestriction" data-preview-action="/public/board/BD39855ec310ca4598a50f183983c518e1/posts/preview?previewSite=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기</button>
                     <!-- 시안(게시글 수정): 보관하기 단추 없음 — 보관은 「게시 여부 설정」 · 목록 「상태변경」 -->
                     <button type="submit" class="nv-btn nv-btn--primary">수정하기</button>
                 </div>
@@ -1810,7 +1812,7 @@
                     <div class="cms-admin-editor" data-view="edit" data-wysiwyg="" data-preview-url="/console-9f3a/content/preview-body">
                         <div class="cms-admin-editor__toolbar nv-editor__toolbar" role="toolbar" aria-label="본문 보기">
                             <input type="hidden" class="cms-admin-editor__format" value="HTML">
-                            <button type="button" class="nv-btn nv-btn--sm nv-btn--ghost" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
+                            <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
                                 <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>이미지 삽입
                             </button>
                             <span class="cms-admin-editor__live nv-text-sm nv-text-subtle nv-sr-only" aria-live="polite"></span>
@@ -1845,7 +1847,7 @@
                                 <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
                                 <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
                             <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
                             <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                         </div>
                         
@@ -1868,8 +1870,8 @@
                                     <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
                                     <a class="nv-grow" data-media-name="" href="#"></a>
                                     <span class="nv-file__size" data-media-size=""></span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                    <a class="nv-btn nv-btn--outline nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
+                                    <button type="button" class="nv-btn nv-btn--outline nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
                                 </div>
                             </template>
                         </div>
@@ -1948,7 +1950,7 @@
                 <span class="nv-editor-header__status"></span>
                 <div class="nv-editor-header__actions">
                     
-                    <button type="submit" class="nv-btn nv-btn--primary-outline" form="post-publish-form-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e">발행</button>
+                    <button type="submit" class="nv-btn nv-btn--primary nv-btn--outline" form="post-publish-form-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e">발행</button>
                     <button type="button" class="nv-btn nv-btn--primary" data-reveal="#post-edit-panel-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e" aria-controls="post-edit-panel-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e" aria-expanded="false">수정하기</button>
                 </div>
             </div>
@@ -2000,7 +2002,7 @@
                 <div class="nv-editor-header__actions">
                     <!-- 공개 상세는 게시중인 글만 연다 — 임시저장 · 예약 · 보관 글은 고치던 내용 그대로 새 창 미리보기(data-post-preview) -->
                     
-                    <button type="button" class="nv-btn nv-btn--primary-outline" data-post-preview="" data-preview-fields="title body notice videoUrl biblioAuthor biblioPublisher biblioYear koglType koglYear koglRestriction" data-preview-action="/public/board/BD39855ec310ca4598a50f183983c518e1/posts/preview?previewSite=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기</button>
+                    <button type="button" class="nv-btn nv-btn--primary nv-btn--outline" data-post-preview="" data-preview-fields="title body notice videoUrl biblioAuthor biblioPublisher biblioYear koglType koglYear koglRestriction" data-preview-action="/public/board/BD39855ec310ca4598a50f183983c518e1/posts/preview?previewSite=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기</button>
                     <!-- 시안(게시글 수정): 보관하기 단추 없음 — 보관은 「게시 여부 설정」 · 목록 「상태변경」 -->
                     <button type="submit" class="nv-btn nv-btn--primary">수정하기</button>
                 </div>
@@ -2015,7 +2017,7 @@
                     <div class="cms-admin-editor" data-view="edit" data-wysiwyg="" data-preview-url="/console-9f3a/content/preview-body">
                         <div class="cms-admin-editor__toolbar nv-editor__toolbar" role="toolbar" aria-label="본문 보기">
                             <input type="hidden" class="cms-admin-editor__format" value="HTML">
-                            <button type="button" class="nv-btn nv-btn--sm nv-btn--ghost" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BP1c274023962f4fe394de871dc6971011" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
+                            <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BP1c274023962f4fe394de871dc6971011" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
                                 <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>이미지 삽입
                             </button>
                             <span class="cms-admin-editor__live nv-text-sm nv-text-subtle nv-sr-only" aria-live="polite"></span>
@@ -2050,7 +2052,7 @@
                                 <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
                                 <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
                             <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
                             <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                         </div>
                         
@@ -2073,8 +2075,8 @@
                                     <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
                                     <a class="nv-grow" data-media-name="" href="#"></a>
                                     <span class="nv-file__size" data-media-size=""></span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                    <a class="nv-btn nv-btn--outline nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
+                                    <button type="button" class="nv-btn nv-btn--outline nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
                                 </div>
                             </template>
                         </div>
@@ -2153,7 +2155,7 @@
                 <span class="nv-editor-header__status"></span>
                 <div class="nv-editor-header__actions">
                     
-                    <button type="submit" class="nv-btn nv-btn--primary-outline" form="post-publish-form-BP1c274023962f4fe394de871dc6971011">발행</button>
+                    <button type="submit" class="nv-btn nv-btn--primary nv-btn--outline" form="post-publish-form-BP1c274023962f4fe394de871dc6971011">발행</button>
                     <button type="button" class="nv-btn nv-btn--primary" data-reveal="#post-edit-panel-BP1c274023962f4fe394de871dc6971011" aria-controls="post-edit-panel-BP1c274023962f4fe394de871dc6971011" aria-expanded="false">수정하기</button>
                 </div>
             </div>
@@ -2205,7 +2207,7 @@
                 <div class="nv-editor-header__actions">
                     <!-- 공개 상세는 게시중인 글만 연다 — 임시저장 · 예약 · 보관 글은 고치던 내용 그대로 새 창 미리보기(data-post-preview) -->
                     
-                    <button type="button" class="nv-btn nv-btn--primary-outline" data-post-preview="" data-preview-fields="title body notice videoUrl biblioAuthor biblioPublisher biblioYear koglType koglYear koglRestriction" data-preview-action="/public/board/BD39855ec310ca4598a50f183983c518e1/posts/preview?previewSite=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기</button>
+                    <button type="button" class="nv-btn nv-btn--primary nv-btn--outline" data-post-preview="" data-preview-fields="title body notice videoUrl biblioAuthor biblioPublisher biblioYear koglType koglYear koglRestriction" data-preview-action="/public/board/BD39855ec310ca4598a50f183983c518e1/posts/preview?previewSite=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기</button>
                     <!-- 시안(게시글 수정): 보관하기 단추 없음 — 보관은 「게시 여부 설정」 · 목록 「상태변경」 -->
                     <button type="submit" class="nv-btn nv-btn--primary">수정하기</button>
                 </div>
@@ -2220,7 +2222,7 @@
                     <div class="cms-admin-editor" data-view="edit" data-wysiwyg="" data-preview-url="/console-9f3a/content/preview-body">
                         <div class="cms-admin-editor__toolbar nv-editor__toolbar" role="toolbar" aria-label="본문 보기">
                             <input type="hidden" class="cms-admin-editor__format" value="HTML">
-                            <button type="button" class="nv-btn nv-btn--sm nv-btn--ghost" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BP3bed8ceee8144bf0b27c1096d43e6043" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
+                            <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BP3bed8ceee8144bf0b27c1096d43e6043" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
                                 <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>이미지 삽입
                             </button>
                             <span class="cms-admin-editor__live nv-text-sm nv-text-subtle nv-sr-only" aria-live="polite"></span>
@@ -2255,7 +2257,7 @@
                                 <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
                                 <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
                             <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
                             <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                         </div>
                         
@@ -2278,8 +2280,8 @@
                                     <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
                                     <a class="nv-grow" data-media-name="" href="#"></a>
                                     <span class="nv-file__size" data-media-size=""></span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                    <a class="nv-btn nv-btn--outline nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
+                                    <button type="button" class="nv-btn nv-btn--outline nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
                                 </div>
                             </template>
                         </div>
@@ -2358,7 +2360,7 @@
                 <span class="nv-editor-header__status"></span>
                 <div class="nv-editor-header__actions">
                     
-                    <button type="submit" class="nv-btn nv-btn--primary-outline" form="post-publish-form-BP3bed8ceee8144bf0b27c1096d43e6043">발행</button>
+                    <button type="submit" class="nv-btn nv-btn--primary nv-btn--outline" form="post-publish-form-BP3bed8ceee8144bf0b27c1096d43e6043">발행</button>
                     <button type="button" class="nv-btn nv-btn--primary" data-reveal="#post-edit-panel-BP3bed8ceee8144bf0b27c1096d43e6043" aria-controls="post-edit-panel-BP3bed8ceee8144bf0b27c1096d43e6043" aria-expanded="false">수정하기</button>
                 </div>
             </div>
@@ -2410,7 +2412,7 @@
                 <div class="nv-editor-header__actions">
                     <!-- 공개 상세는 게시중인 글만 연다 — 임시저장 · 예약 · 보관 글은 고치던 내용 그대로 새 창 미리보기(data-post-preview) -->
                     
-                    <button type="button" class="nv-btn nv-btn--primary-outline" data-post-preview="" data-preview-fields="title body notice videoUrl biblioAuthor biblioPublisher biblioYear koglType koglYear koglRestriction" data-preview-action="/public/board/BD39855ec310ca4598a50f183983c518e1/posts/preview?previewSite=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기</button>
+                    <button type="button" class="nv-btn nv-btn--primary nv-btn--outline" data-post-preview="" data-preview-fields="title body notice videoUrl biblioAuthor biblioPublisher biblioYear koglType koglYear koglRestriction" data-preview-action="/public/board/BD39855ec310ca4598a50f183983c518e1/posts/preview?previewSite=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기</button>
                     <!-- 시안(게시글 수정): 보관하기 단추 없음 — 보관은 「게시 여부 설정」 · 목록 「상태변경」 -->
                     <button type="submit" class="nv-btn nv-btn--primary">수정하기</button>
                 </div>
@@ -2425,7 +2427,7 @@
                     <div class="cms-admin-editor" data-view="edit" data-wysiwyg="" data-preview-url="/console-9f3a/content/preview-body">
                         <div class="cms-admin-editor__toolbar nv-editor__toolbar" role="toolbar" aria-label="본문 보기">
                             <input type="hidden" class="cms-admin-editor__format" value="HTML">
-                            <button type="button" class="nv-btn nv-btn--sm nv-btn--ghost" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BPb848a80c69f74ce2ac117269b3ee8e36" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
+                            <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BPb848a80c69f74ce2ac117269b3ee8e36" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
                                 <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>이미지 삽입
                             </button>
                             <span class="cms-admin-editor__live nv-text-sm nv-text-subtle nv-sr-only" aria-live="polite"></span>
@@ -2460,7 +2462,7 @@
                                 <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
                                 <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
                             <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
                             <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                         </div>
                         
@@ -2483,8 +2485,8 @@
                                     <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
                                     <a class="nv-grow" data-media-name="" href="#"></a>
                                     <span class="nv-file__size" data-media-size=""></span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                    <a class="nv-btn nv-btn--outline nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
+                                    <button type="button" class="nv-btn nv-btn--outline nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
                                 </div>
                             </template>
                         </div>
@@ -2563,7 +2565,7 @@
                 <span class="nv-editor-header__status"></span>
                 <div class="nv-editor-header__actions">
                     
-                    <button type="submit" class="nv-btn nv-btn--primary-outline" form="post-publish-form-BPb848a80c69f74ce2ac117269b3ee8e36">발행</button>
+                    <button type="submit" class="nv-btn nv-btn--primary nv-btn--outline" form="post-publish-form-BPb848a80c69f74ce2ac117269b3ee8e36">발행</button>
                     <button type="button" class="nv-btn nv-btn--primary" data-reveal="#post-edit-panel-BPb848a80c69f74ce2ac117269b3ee8e36" aria-controls="post-edit-panel-BPb848a80c69f74ce2ac117269b3ee8e36" aria-expanded="false">수정하기</button>
                 </div>
             </div>
@@ -2614,7 +2616,7 @@
                 <span class="nv-editor-header__status">작성일 2026-10-24 · 게시중</span>
                 <div class="nv-editor-header__actions">
                     <!-- 공개 상세는 게시중인 글만 연다 — 임시저장 · 예약 · 보관 글은 고치던 내용 그대로 새 창 미리보기(data-post-preview) -->
-                    <a class="nv-btn nv-btn--primary-outline" href="../public/공개-화면-연구원-이용-신청-안내-551e1d.html" target="_blank" rel="noopener noreferrer">미리보기</a>
+                    <a class="nv-btn nv-btn--primary nv-btn--outline" href="../public/공개-화면-연구원-이용-신청-안내-551e1d.html" target="_blank" rel="noopener noreferrer">미리보기</a>
                     
                     <!-- 시안(게시글 수정): 보관하기 단추 없음 — 보관은 「게시 여부 설정」 · 목록 「상태변경」 -->
                     <button type="submit" class="nv-btn nv-btn--primary">수정하기</button>
@@ -2630,7 +2632,7 @@
                     <div class="cms-admin-editor" data-view="edit" data-wysiwyg="" data-preview-url="/console-9f3a/content/preview-body">
                         <div class="cms-admin-editor__toolbar nv-editor__toolbar" role="toolbar" aria-label="본문 보기">
                             <input type="hidden" class="cms-admin-editor__format" value="HTML">
-                            <button type="button" class="nv-btn nv-btn--sm nv-btn--ghost" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BP1da7f87f2b0f4e3ba975d7cfd8027fca" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
+                            <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BP1da7f87f2b0f4e3ba975d7cfd8027fca" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
                                 <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>이미지 삽입
                             </button>
                             <span class="cms-admin-editor__live nv-text-sm nv-text-subtle nv-sr-only" aria-live="polite"></span>
@@ -2665,7 +2667,7 @@
                                 <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
                                 <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
                             <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
                             <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                         </div>
                         
@@ -2688,8 +2690,8 @@
                                     <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
                                     <a class="nv-grow" data-media-name="" href="#"></a>
                                     <span class="nv-file__size" data-media-size=""></span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                    <a class="nv-btn nv-btn--outline nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
+                                    <button type="button" class="nv-btn nv-btn--outline nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
                                 </div>
                             </template>
                         </div>
@@ -2767,7 +2769,7 @@
                 <h2 class="nv-editor-header__title">게시글 상세</h2>
                 <span class="nv-editor-header__status"></span>
                 <div class="nv-editor-header__actions">
-                    <button type="submit" class="nv-btn nv-btn--danger" data-confirm="이 게시글을 보관(비노출)합니까?" form="post-archive-form-BP1da7f87f2b0f4e3ba975d7cfd8027fca">보관하기</button>
+                    <button type="submit" class="nv-btn nv-btn--danger nv-btn--outline" data-confirm="이 게시글을 보관(비노출)합니까?" form="post-archive-form-BP1da7f87f2b0f4e3ba975d7cfd8027fca">보관하기</button>
                     
                     <button type="button" class="nv-btn nv-btn--primary" data-reveal="#post-edit-panel-BP1da7f87f2b0f4e3ba975d7cfd8027fca" aria-controls="post-edit-panel-BP1da7f87f2b0f4e3ba975d7cfd8027fca" aria-expanded="false">수정하기</button>
                 </div>
@@ -2819,7 +2821,7 @@
                 <span class="nv-editor-header__status">작성일 2026-10-24 · 게시중</span>
                 <div class="nv-editor-header__actions">
                     <!-- 공개 상세는 게시중인 글만 연다 — 임시저장 · 예약 · 보관 글은 고치던 내용 그대로 새 창 미리보기(data-post-preview) -->
-                    <a class="nv-btn nv-btn--primary-outline" href="../public/공개-화면-메뉴-구성-확정-안내-통계정보-데이터-분석-알림마당-e07450.html" target="_blank" rel="noopener noreferrer">미리보기</a>
+                    <a class="nv-btn nv-btn--primary nv-btn--outline" href="../public/공개-화면-메뉴-구성-확정-안내-통계정보-데이터-분석-알림마당-e07450.html" target="_blank" rel="noopener noreferrer">미리보기</a>
                     
                     <!-- 시안(게시글 수정): 보관하기 단추 없음 — 보관은 「게시 여부 설정」 · 목록 「상태변경」 -->
                     <button type="submit" class="nv-btn nv-btn--primary">수정하기</button>
@@ -2835,7 +2837,7 @@
                     <div class="cms-admin-editor" data-view="edit" data-wysiwyg="" data-preview-url="/console-9f3a/content/preview-body">
                         <div class="cms-admin-editor__toolbar nv-editor__toolbar" role="toolbar" aria-label="본문 보기">
                             <input type="hidden" class="cms-admin-editor__format" value="HTML">
-                            <button type="button" class="nv-btn nv-btn--sm nv-btn--ghost" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BPf107d5dac6c045cb903f18a8ad6f2c38" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
+                            <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-image-picker="" aria-haspopup="dialog" data-target="pe-body-BPf107d5dac6c045cb903f18a8ad6f2c38" data-folder-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/image-folder" title="">
                                 <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>이미지 삽입
                             </button>
                             <span class="cms-admin-editor__live nv-text-sm nv-text-subtle nv-sr-only" aria-live="polite"></span>
@@ -2870,7 +2872,7 @@
                                 <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
                                 <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
                             <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
                             <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                         </div>
                         
@@ -2893,8 +2895,8 @@
                                     <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
                                     <a class="nv-grow" data-media-name="" href="#"></a>
                                     <span class="nv-file__size" data-media-size=""></span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                    <a class="nv-btn nv-btn--outline nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
+                                    <button type="button" class="nv-btn nv-btn--outline nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
                                 </div>
                             </template>
                         </div>
@@ -2972,7 +2974,7 @@
                 <h2 class="nv-editor-header__title">게시글 상세</h2>
                 <span class="nv-editor-header__status"></span>
                 <div class="nv-editor-header__actions">
-                    <button type="submit" class="nv-btn nv-btn--danger" data-confirm="이 게시글을 보관(비노출)합니까?" form="post-archive-form-BPf107d5dac6c045cb903f18a8ad6f2c38">보관하기</button>
+                    <button type="submit" class="nv-btn nv-btn--danger nv-btn--outline" data-confirm="이 게시글을 보관(비노출)합니까?" form="post-archive-form-BPf107d5dac6c045cb903f18a8ad6f2c38">보관하기</button>
                     
                     <button type="button" class="nv-btn nv-btn--primary" data-reveal="#post-edit-panel-BPf107d5dac6c045cb903f18a8ad6f2c38" aria-controls="post-edit-panel-BPf107d5dac6c045cb903f18a8ad6f2c38" aria-expanded="false">수정하기</button>
                 </div>

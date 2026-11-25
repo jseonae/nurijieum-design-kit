@@ -27,6 +27,8 @@
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/admin-inline-detail.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-v2.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-parts.js -->
+    <link rel="stylesheet" href="../../../static/admin-ui/v2/cms-button.css">
+    <link rel="stylesheet" href="../../../static/admin-ui/v2/sedis-sg.css">
 </head>
 <body class="nv-lock">
 <link rel="stylesheet" href="../../../static/admin-ui/v2/pages/member.css">
@@ -385,7 +387,7 @@
                 </div>
             </div>
             <div class="nv-modal__foot">
-                <button type="button" class="nv-btn nv-btn--lg nv-btn--outline-strong" onclick="cmsA11y.reset()">초기화</button>
+                <button type="button" class="nv-btn nv-btn--lg nv-btn--outline" onclick="cmsA11y.reset()">초기화</button>
                 <button type="button" class="nv-btn nv-btn--lg nv-btn--primary" data-modal-close="" data-modal-initial="">확인</button>
             </div>
         </div>
@@ -428,7 +430,7 @@
                             </select>
                         </label>
                         <span class="nv-filter__divider" aria-hidden="true"></span>
-                        <span class="nv-filter__selected">선택 <span data-selected-count="">0</span>개</span><button type="submit" class="nv-btn nv-btn--sm nv-btn--danger" form="bulk-member-form" data-needs-selection="" disabled=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>선택 삭제</button><button type="button" class="nv-btn nv-btn--sm nv-btn--excel" data-export-csv="" aria-haspopup="dialog" data-modal-open="#member-export-panel" aria-controls="member-export-panel">
+                        <span class="nv-filter__selected">선택 <span data-selected-count="">0</span>개</span><button type="submit" class="nv-btn nv-btn--sm nv-btn--danger nv-btn--outline-fill" form="bulk-member-form" data-needs-selection="" disabled=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>선택 삭제</button><button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-export-csv="" aria-haspopup="dialog" data-modal-open="#member-export-panel" aria-controls="member-export-panel">
     <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>CSV 내려받기
 </button>
                     </div>

@@ -492,68 +492,7 @@ html[data-cms-fontscale="xl"] { font-size: calc(var(--krds-font-size-base, 62.5%
   .nv-editor-header__actions { flex-wrap: wrap; justify-content: flex-end; }
 }
 
-/* ---------- 3. 버튼 ---------- */
-.nv-btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
-  height: var(--cms-button-h-md); padding: 0 1.6rem; border-radius: var(--cms-radius-sm);
-  border: 1px solid transparent; background: var(--cms-surface); color: var(--cms-text);
-  font-size: var(--cms-fs-base); font-weight: var(--cms-fw-semibold); line-height: 1; white-space: nowrap;
-  cursor: pointer; transition: background-color .12s, border-color .12s, color .12s;
-  text-decoration: none;
-}
-.nv-btn .nv-icon { width: 1.6rem; height: 1.6rem; }
-.nv-btn--primary { background: var(--cms-primary); color: var(--cms-on-primary); }
-.nv-btn--primary:hover:not(:disabled) { background: var(--cms-primary-hover); color: var(--cms-on-primary); }   /* <a> 단추: KRDS common.css 의 a:hover { color: inherit } 가 글자색을 덮지 않게 */
-.nv-btn--soft { background: var(--cms-primary-soft); color: var(--cms-primary-strong); border-color: var(--cms-primary); }
-.nv-btn--soft:hover:not(:disabled) { background: var(--cms-primary-tint); }
-/* 파랑 테두리(스타일가이드 cms/button primary · outline) — 채움 단추(.nv-btn--primary)와 함께 쓰는 보조 동작 전용. 2026-11-23 */
-.nv-btn--primary-outline { background: var(--nuri-color-button-outline-surface); border-color: var(--nuri-color-button-primary-border); color: var(--nuri-color-button-primary-text); }
-.nv-btn--primary-outline:hover:not(:disabled) { background: var(--nuri-color-button-primary-light); color: var(--nuri-color-button-primary-text); }
-.nv-btn--primary-outline:active:not(:disabled) { background: var(--nuri-color-button-primary-light-hover); }
-.nv-btn--outline { background: var(--cms-surface); border-color: var(--cms-border); color: var(--cms-text); }
-.nv-btn--outline:hover:not(:disabled) { background: var(--cms-surface-muted); }
-.nv-btn--outline-strong { background: transparent; border-color: var(--cms-border-strong); color: var(--cms-muted); }
-.nv-btn--outline-strong:hover:not(:disabled) { background: var(--cms-surface-muted); }
-.nv-btn--ghost { background: transparent; color: var(--cms-muted); }
-.nv-btn--ghost:hover:not(:disabled) { background: var(--cms-surface-muted); color: var(--cms-text); }
-.nv-btn--muted { background: var(--cms-surface-muted); border-color: var(--cms-border); color: var(--cms-muted); }
-.nv-btn--muted:hover:not(:disabled) { color: var(--cms-text); border-color: var(--cms-border-strong); }
-.nv-btn--danger { background: var(--cms-err-bg); border-color: var(--cms-err-border); color: var(--cms-err-fg); }
-.nv-btn--warn { background: var(--cms-warn-bg); border-color: var(--cms-warn-border); color: var(--cms-warn-fg); }   /* 2026-11-23 개발 서버에서 가져옴 */
-.nv-btn--warn:hover:not(:disabled) { border-color: var(--cms-warn-fg); }
-a.nv-btn--warn:is(:link, :visited, :hover, :focus, :focus-visible, :active) { color: var(--cms-warn-fg); }
-.nv-btn--danger:hover:not(:disabled) { background: var(--cms-err-fg); color: var(--cms-on-primary); }
-.nv-btn--danger-solid { background: var(--cms-err-fg); color: var(--cms-on-primary); }
-.nv-btn--excel { background: var(--cms-surface-muted); border-color: var(--cms-border); color: var(--cms-muted); }   /* 목록 툴바 시안: 회색 */
-.nv-btn--excel:hover:not(:disabled) { color: var(--cms-text); border-color: var(--cms-border-strong); }
-.nv-btn--sm { height: var(--cms-button-h); padding: 0 1.2rem; font-size: var(--cms-fs-sm); font-weight: var(--cms-fw-semibold); }
-.nv-btn--sm .nv-icon { width: 1.4rem; height: 1.4rem; }
-.nv-btn--lg { height: var(--cms-button-h-lg); padding: 0 1.6rem; font-size: var(--cms-fs-lg); font-weight: var(--cms-fw-regular); min-width: 7.8rem; }
-.nv-btn--icon { width: 3.2rem; padding: 0; border-color: var(--cms-border); color: var(--cms-subtle); }
-.nv-btn--icon:hover:not(:disabled) { color: var(--cms-primary-text); border-color: var(--cms-primary); background: var(--cms-primary-soft); }
-/* a 로 만든 버튼(<a class="nv-btn …">): KRDS common.css 의 a, a:hover, a:active, a:focus { color: inherit } 는 선택자 무게가 (0,1,1) 이라
-   .nv-btn--* (0,1,0) 의 글자색을 덮는다 → 마우스를 올리거나 포커스하면 글자가 부모 글자색(--cms-text)이 되어 파랑 버튼 위 2.36:1 로 안 보였다.
-   a.nv-btn--*:is(상태) (0,2,1) 로 버튼 정의 글자색을 다시 준다. hover 에서 글자색이 바뀌는 변형은 그 뒤에 hover 색. */
-a.nv-btn:is(:link, :visited, :hover, :focus, :focus-visible, :active) { color: var(--cms-text); }
-a.nv-btn--primary:is(:link, :visited, :hover, :focus, :focus-visible, :active) { color: var(--cms-on-primary); }
-a.nv-btn--soft:is(:link, :visited, :hover, :focus, :focus-visible, :active) { color: var(--cms-primary-strong); }
-a.nv-btn--outline:is(:link, :visited, :hover, :focus, :focus-visible, :active) { color: var(--cms-text); }
-a.nv-btn--outline-strong:is(:link, :visited, :hover, :focus, :focus-visible, :active) { color: var(--cms-muted); }
-a.nv-btn--ghost:is(:link, :visited, :hover, :focus, :focus-visible, :active) { color: var(--cms-muted); }
-a.nv-btn--ghost:hover { color: var(--cms-text); }
-a.nv-btn--muted:is(:link, :visited, :hover, :focus, :focus-visible, :active) { color: var(--cms-muted); }
-a.nv-btn--muted:hover { color: var(--cms-text); }
-a.nv-btn--danger:is(:link, :visited, :hover, :focus, :focus-visible, :active) { color: var(--cms-err-fg); }
-a.nv-btn--danger:hover { color: var(--cms-on-primary); }
-a.nv-btn--danger-solid:is(:link, :visited, :hover, :focus, :focus-visible, :active) { color: var(--cms-on-primary); }
-a.nv-btn--excel:is(:link, :visited, :hover, :focus, :focus-visible, :active) { color: var(--cms-muted); }
-a.nv-btn--icon:is(:link, :visited, :hover, :focus, :focus-visible, :active) { color: var(--cms-subtle); }
-a.nv-btn--icon:hover { color: var(--cms-primary-text); }
-.nv-btn--icon.nv-btn--sm { width: var(--cms-button-h); }
-.nv-btn:disabled, .nv-btn[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
-.nv-btn[aria-disabled="true"] { pointer-events: none; }   /* a 단추는 눌리지 않게. button:disabled 는 포인터를 받아 말풍선이 뜬다 */
-.nv-btn--block { width: 100%; }
-.nv-btn-group { display: inline-flex; gap: .5rem; }
+/* ---------- 3. 버튼 → cms-button.css 로 옮김 (2026-11-25) ---------- */
 
 /* ---------- 4. 폼 컨트롤 ---------- */
 .nv-input, .nv-select, .nv-textarea {
@@ -813,8 +752,6 @@ a.nv-kpi:is(:link, :visited, :hover, :focus, :focus-visible, :active) { color: v
 .nv-table td.is-code { font-family: var(--cms-font-mono); font-size: var(--cms-fs-md); color: var(--cms-muted); }
 .nv-table--compact tbody td { height: 4rem; }
 .nv-table .nv-check input { vertical-align: middle; }
-.nv-row-actions { display: inline-flex; gap: .4rem; }
-.nv-row-actions .nv-btn--icon { width: 2.8rem; height: 2.8rem; }
 .nv-empty { display: flex; flex-direction: column; align-items: center; gap: 1.2rem; padding: 6rem var(--cms-sp-6); color: var(--cms-muted); text-align: center; }
 .nv-empty > .nv-icon { width: 4.8rem; height: 4.8rem; color: var(--cms-border-strong); }
 .nv-empty__title { font-size: var(--cms-fs-base); font-weight: var(--cms-fw-semibold); color: var(--cms-text); }
@@ -1086,7 +1023,6 @@ td > .nv-empty, .nv-panel .nv-empty, li.nv-empty { padding: var(--nuri-padding-9
 [data-krds-mode="high-contrast"] .nv-section-band { background: var(--cms-surface-alt); border: 1px solid var(--cms-border); }
 [data-krds-mode="high-contrast"] .nv-stat-tile, [data-krds-mode="high-contrast"] .nv-summary__item { border: 1px solid var(--cms-border); }
 [data-krds-mode="high-contrast"] .nv-tip { background: var(--cms-surface); color: var(--cms-text); border: 1px solid var(--cms-border); }
-[data-krds-mode="high-contrast"] .nv-btn--primary { border-color: var(--cms-on-dark); }
 [data-krds-mode="high-contrast"] .nv-tabs [role="tab"][aria-selected="true"] { border-color: var(--cms-on-dark); }
 
 /* ---------- 14. 썸네일 ---------- */

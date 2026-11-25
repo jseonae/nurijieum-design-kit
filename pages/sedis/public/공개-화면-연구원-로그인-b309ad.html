@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="krds-sedis" data-krds-mode="light"><head>
+<!-- [키트] SEDIS 판 · 공개 화면 · 연구원 로그인 — 누리집에서 보기 (public/crosstab)
+     원래 주소: /public/crosstab
+     스크립트(원래 순서): ../../../static/public-ui/themes/krds-sedis/pub/_common/resources/js/krds-display.js , ../../../static/public-ui/themes/krds-sedis/pub/kr/js/login.js -->
+
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>연구원 로그인 | 특수교육 실태조사 데이터 활용 시스템</title>
+    <link rel="icon" type="image/svg+xml" href="../../../static/vendor/krds/img/component/favicon/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../static/vendor/krds/img/component/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="../../../static/vendor/krds/img/component/favicon/favicon-192x192.png">
+    <link rel="stylesheet" href="../../../static/vendor/krds/css/plugin/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../../../static/vendor/krds/css/component/output.css">
+    <link rel="stylesheet" href="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/css/krds-base.css">
+    <link rel="stylesheet" href="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/css/krds-custom.css">
+    
+    <link rel="stylesheet" href="../../../static/public-ui/themes/krds-sedis/theme.css">
+    <!-- 글자·화면 표시 설정 : 깜빡임 방지를 위해 head 에서(퍼블리싱과 같음) -->
+    <!-- [키트] 스크립트 뺌: ../../../static/public-ui/themes/krds-sedis/pub/_common/resources/js/krds-display.js -->
+    
+    
+
+
+    <link rel="stylesheet" href="../../../static/public-ui/themes/krds-sedis/pub/kr/css/login.css">
+</head>
+<body>
+<div class="cm-login-page">
+    <header class="cm-login-top">
+        <a href="공개-화면-public-preview-74f074.html" class="cm-login-logo">
+            <img class="cm-logo-symbol" src="../../../static/public-ui/themes/krds-sedis/img/logo-symbol.svg" alt="" width="35" height="35">
+            <span class="cm-logo-name">특수교육 실태조사 데이터 활용 시스템</span>
+        </a>
+        <a href="공개-화면-연구원-로그인-b309ad.html" class="cm-login-back">
+            <img src="../../../static/public-ui/themes/krds-sedis/pub/kr/img/login/ico_arrow_left.svg" width="24" height="24" alt="">
+            <span class="txt">이전 페이지로 돌아가기</span>
+        </a>
+    </header>
+
+    <main id="container" class="cm-login-main">
+        <div class="cm-login-box">
+            <div class="cm-login cm-login-card">
+                <div class="cm-login-head">
+                    <h1 class="tit">로그인</h1>
+                    <p class="desc">데이터 분석 서비스 접근 권한이 부여된 사용자만<br>로그인 후 이용하실 수 있습니다.</p>
+                </div>
+
+                
+                
+
+                <form class="cm-login-form" method="post" action="../login/로그인-public-login-5bdc89.html" novalidate=""><input type="hidden" name="_csrf" value="HD6LuPKoaaxwyBaC0ilG-Ous85aWlKXQULsOYF1_AOY">
+                    <input type="hidden" name="next" value="/public/crosstab">
+                    <div class="cm-login-fields">
+                        <div class="cm-login-field">
+                            <label for="login_id" class="sr-only">아이디</label>
+                            <input type="text" id="login_id" name="loginId" class="krds-input" value="" autocomplete="username" required="" aria-required="true" placeholder="아이디를 입력해주세요" aria-invalid="false">
+                        </div>
+                        <div class="cm-login-field cm-login-field-pw">
+                            <label for="login_pw" class="sr-only">비밀번호</label>
+                            <input type="password" id="login_pw" name="password" class="krds-input" autocomplete="current-password" required="" aria-required="true" placeholder="비밀번호를 입력해주세요" aria-invalid="false">
+                            <button type="button" class="cm-login-pw-toggle" aria-controls="login_pw" aria-pressed="false" data-login-pw-toggle="">
+                                <i class="ico" aria-hidden="true"></i><span class="sr-only">비밀번호 보기</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="krds-btn large primary cm-login-submit">로그인</button>
+                </form>
+
+                
+                <div class="cm-login-quick" data-dev-quick-login="">
+                    <p class="cm-login-msg" role="note">개발 서버 전용 빠른 로그인 — 운영에서는 켜지 않습니다</p>
+                    <div class="cm-login-quick-list">
+                        <form method="post" action="../login/로그인-public-login-5bdc89.html" data-dev-quick-login-form=""><input type="hidden" name="_csrf" value="HD6LuPKoaaxwyBaC0ilG-Ous85aWlKXQULsOYF1_AOY">
+                            <input type="hidden" name="next" value="/public/crosstab">
+                            <input type="hidden" name="loginId" value="researcher">
+                            <input type="hidden" name="password" value="(개발 서버 비밀번호)">
+                            <button type="submit" class="krds-btn small secondary" aria-label="연구원(researcher)로 로그인">연구원</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <footer class="cm-login-foot">
+                <p>Copyright ⓒ 2026 국립특수교육원. All rights reserved.</p>
+            </footer>
+        </div>
+    </main>
+</div>
+<!-- [키트] 스크립트 뺌: ../../../static/public-ui/themes/krds-sedis/pub/kr/js/login.js -->
+
+
+<script src="../../../static/_kit/kit.js"></script></body></html>

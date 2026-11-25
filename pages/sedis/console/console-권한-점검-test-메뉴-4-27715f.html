@@ -27,6 +27,7 @@
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/admin-inline-detail.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-v2.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-parts.js -->
+<link rel="stylesheet" href="../../../static/admin-ui/v2/cms-button.css">
 <link rel="stylesheet" href="../../../static/admin-ui/v2/sedis-sg.css">
 </head>
 <body>
@@ -862,7 +863,7 @@
                                     <option value="TEXT">TEXT</option>
                                 </select>
                             </span>
-                            <button type="button" class="nv-btn nv-btn--sm nv-btn--ghost cms-admin-mediapicker-trigger" data-image-picker="" data-target="ctBody" data-format-target="ctFormat" aria-haspopup="dialog" aria-label="이미지 삽입" title="이미지 삽입" data-content-id="CTd44d95752c0d4a179921917b955bb3b5" data-picker-title="이미지 삽입">
+                            <button type="button" class="nv-btn nv-btn--sm nv-btn--outline cms-admin-mediapicker-trigger" data-image-picker="" data-target="ctBody" data-format-target="ctFormat" aria-haspopup="dialog" aria-label="이미지 삽입" title="이미지 삽입" data-content-id="CTd44d95752c0d4a179921917b955bb3b5" data-picker-title="이미지 삽입">
                                 <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>
                             </button>
                             <span class="cms-admin-editor__live nv-text-sm nv-text-subtle nv-sr-only" aria-live="polite"></span>
@@ -1023,7 +1024,7 @@
                                 <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
                                 <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
                             <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
                             <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                         </div>
                         <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="CONTENT" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/content/SITE-DEV/CTd44d95752c0d4a179921917b955bb3b5/media/" data-site-id="SITE-DEV" data-owner-id="CTd44d95752c0d4a179921917b955bb3b5">
@@ -1042,7 +1043,7 @@
                                     <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
                                     <a class="nv-grow" data-media-name="" href="#"></a>
                                     <span class="nv-file__size" data-media-size=""></span>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 콘텐츠에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                    <button type="button" class="nv-btn nv-btn--outline nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 콘텐츠에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
                                 </div>
                             </template>
                         </div>
@@ -1065,7 +1066,7 @@
                                 <div class="nv-field"><label class="nv-field__label" for="seo-canonical">Canonical URL</label>
                                     <div class="nv-row"><input id="seo-canonical" type="url" class="nv-input" name="canonicalUrl" maxlength="1000" value="" placeholder="https://대표도메인/경로">
                                         <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-url-open="#seo-canonical">열기</button></div></div>
-                                <div class="nv-row nv-row--end"><button type="submit" class="nv-btn nv-btn--primary-outline">SEO 저장</button></div>
+                                <div class="nv-row nv-row--end"><button type="submit" class="nv-btn nv-btn--primary nv-btn--outline">SEO 저장</button></div>
                             <input type="hidden" name="returnMenu" value="MN8eb898fca5b3403c894962d5afcd7d3d"></form>
                         </details>
                     </aside>

@@ -28,6 +28,7 @@
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/admin-inline-detail.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-v2.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-parts.js -->
+<link rel="stylesheet" href="../../../static/admin-ui/v2/cms-button.css">
 <link rel="stylesheet" href="../../../static/admin-ui/v2/sedis-sg.css">
 </head>
 <body>
@@ -547,7 +548,7 @@
     </select>
 </label>
                 <span class="nv-filter__divider" aria-hidden="true"></span>
-                <span class="nv-filter__selected">선택 <span data-selected-count="">0</span>개</span><button type="button" class="nv-btn nv-btn--sm nv-btn--danger" data-needs-selection="" data-ts-intg-delete-selected="" disabled=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>선택 삭제</button>
+                <span class="nv-filter__selected">선택 <span data-selected-count="">0</span>개</span><button type="button" class="nv-btn nv-btn--sm nv-btn--danger nv-btn--outline-fill" data-needs-selection="" data-ts-intg-delete-selected="" disabled=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>선택 삭제</button>
                 <span class="nv-filter__divider" aria-hidden="true"></span>
                 <a class="nv-btn nv-btn--sm nv-btn--outline" href="#kit-file" data-kit-href="/api/console-9f3a/v1/svc/sedis/ts/graphs/export.xlsx" data-export-xlsx=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>엑셀 다운로드</a>
             </div>
@@ -658,7 +659,7 @@
                         <td><span class="nv-badge nv-badge--ok">게시</span></td>
                         <td class="is-title">특수교육대상자 최초 선정·배치 시기</td>
                         <td class="sd-ts-yrline">2011 · 2014 · 2017 · 2020 · 2023</td>
-                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST003">불일치 4건</a></td>
+                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger nv-btn--outline" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST003">불일치 4건</a></td>
                         <td class="sd-ts-ig-center">
                             <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST003/graph" aria-label="특수교육대상자 최초 선정·배치 시기 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
@@ -686,7 +687,7 @@
                         <td><span class="nv-badge nv-badge--ok">게시</span></td>
                         <td class="is-title">취학유예·유예 경험 유무 및 시기</td>
                         <td class="sd-ts-yrline">2014 · 2017 · 2020 · 2023</td>
-                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--warn" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST004">재실행 필요</a></td>
+                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--warning nv-btn--outline-fill" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST004">재실행 필요</a></td>
                         <td class="sd-ts-ig-center">
                             <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST004/graph" aria-label="취학유예·유예 경험 유무 및 시기 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
@@ -742,7 +743,7 @@
                         <td><span class="nv-badge nv-badge--ok">게시</span></td>
                         <td class="is-title">전학 경험 유무 및 시기</td>
                         <td class="sd-ts-yrline">2014 · 2017 · 2020 · 2023</td>
-                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--warn" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST006">재실행 필요</a></td>
+                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--warning nv-btn--outline-fill" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST006">재실행 필요</a></td>
                         <td class="sd-ts-ig-center">
                             <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST006/graph" aria-label="전학 경험 유무 및 시기 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
@@ -770,7 +771,7 @@
                         <td><span class="nv-badge nv-badge--ok">게시</span></td>
                         <td class="is-title">혼자 통학 가능 여부</td>
                         <td class="sd-ts-yrline">2011 · 2014 · 2017 · 2020 · 2023</td>
-                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST010">불일치 2건</a></td>
+                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger nv-btn--outline" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST010">불일치 2건</a></td>
                         <td class="sd-ts-ig-center">
                             <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST010/graph" aria-label="혼자 통학 가능 여부 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
@@ -798,7 +799,7 @@
                         <td><span class="nv-badge nv-badge--ok">게시</span></td>
                         <td class="is-title">등·하교 주 보조자</td>
                         <td class="sd-ts-yrline">2011 · 2014 · 2017 · 2020 · 2023</td>
-                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST011">불일치 1건</a></td>
+                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger nv-btn--outline" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST011">불일치 1건</a></td>
                         <td class="sd-ts-ig-center">
                             <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST011/graph" aria-label="등·하교 주 보조자 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
@@ -854,7 +855,7 @@
                         <td><span class="nv-badge nv-badge--ok">게시</span></td>
                         <td class="is-title">참여하는 사교육의 종류</td>
                         <td class="sd-ts-yrline">2011 · 2017 · 2020 · 2023</td>
-                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST013">불일치 4건</a></td>
+                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger nv-btn--outline" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST013">불일치 4건</a></td>
                         <td class="sd-ts-ig-center">
                             <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST013/graph" aria-label="참여하는 사교육의 종류 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
@@ -882,7 +883,7 @@
                         <td><span class="nv-badge nv-badge--ok">게시</span></td>
                         <td class="is-title">사교육을 받는 장소</td>
                         <td class="sd-ts-yrline">2014 · 2017 · 2020 · 2023</td>
-                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--warn" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST014">재실행 필요</a></td>
+                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--warning nv-btn--outline-fill" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST014">재실행 필요</a></td>
                         <td class="sd-ts-ig-center">
                             <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST014/graph" aria-label="사교육을 받는 장소 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
@@ -910,7 +911,7 @@
                         <td><span class="nv-badge nv-badge--ok">게시</span></td>
                         <td class="is-title">월평균 사교육비</td>
                         <td class="sd-ts-yrline">2011 · 2014 · 2017 · 2020 · 2023</td>
-                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST015">불일치 5건</a></td>
+                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger nv-btn--outline" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST015">불일치 5건</a></td>
                         <td class="sd-ts-ig-center">
                             <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST015/graph" aria-label="월평균 사교육비 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
@@ -938,7 +939,7 @@
                         <td><span class="nv-badge nv-badge--ok">게시</span></td>
                         <td class="is-title">고등학교 졸업 후 진로 방향</td>
                         <td class="sd-ts-yrline">2011 · 2014 · 2017 · 2020 · 2023</td>
-                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST016">불일치 6건</a></td>
+                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger nv-btn--outline" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST016">불일치 6건</a></td>
                         <td class="sd-ts-ig-center">
                             <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST016/graph" aria-label="고등학교 졸업 후 진로 방향 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
@@ -966,7 +967,7 @@
                         <td><span class="nv-badge nv-badge--ok">게시</span></td>
                         <td class="is-title">취업을 위해 개선·강화해야 할 사항</td>
                         <td class="sd-ts-yrline">2011 · 2014 · 2017 · 2020 · 2023</td>
-                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--warn" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST017">재실행 필요</a></td>
+                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--warning nv-btn--outline-fill" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST017">재실행 필요</a></td>
                         <td class="sd-ts-ig-center">
                             <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST017/graph" aria-label="취업을 위해 개선·강화해야 할 사항 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>
@@ -994,7 +995,7 @@
                         <td><span class="nv-badge nv-badge--ok">게시</span></td>
                         <td class="is-title">장애 발견(의심) 시기</td>
                         <td class="sd-ts-yrline">2011 · 2014 · 2017 · 2020 · 2023</td>
-                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST018">불일치 5건</a></td>
+                        <td class="sd-ts-ig-center"><a class="nv-btn nv-btn--sm sd-ts-intg nv-btn--danger nv-btn--outline" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST018">불일치 5건</a></td>
                         <td class="sd-ts-ig-center">
                             <a class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" href="#kit-missing" data-kit-href="/console-9f3a/svc/sedis/ts/intg-graphs/ST018/graph" aria-label="장애 발견(의심) 시기 그래프 시각화"><i class="sd-ts-ico-chart" aria-hidden="true"></i></a>
                         </td>

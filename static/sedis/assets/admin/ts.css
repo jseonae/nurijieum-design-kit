@@ -51,7 +51,6 @@
 .sd-ts-preview-table { border-collapse: collapse; font-size: var(--cms-fs-md); white-space: nowrap; }
 .sd-ts-preview-table td { border: 1px solid var(--cms-border, #e5e7eb); padding: .4rem .8rem; }
 .sd-ts-preview-table tr.is-head td { background: var(--cms-surface-2, #f3f4f6); font-weight: 600; }
-.nv-filter__left .nv-btn { margin-left: var(--cms-sp-2, .8rem); }
 /* 등록·수정·상세(adm_0102·0202·0302·0303) — 콘솔 전체 화면 편집 머리(nv-editor-header) + 왼쪽 본문·오른쪽 곁 카드(화면설계서 배치) */
 .sd-ts--editor .nv-editor-header__title { margin: 0; }
 /* 순서 화살표: 위·아래 같은 꺾쇠(콘솔 nv-i-chevron-up 은 채운 삼각형이라 아래 꺾쇠를 뒤집는다 — 설계서 adm_0502-02) */
