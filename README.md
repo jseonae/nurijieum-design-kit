@@ -104,28 +104,69 @@
 4. 검토 뒤 병합 요청이 있으면 `main` 에 병합하고, 작업 브랜치를 정리합니다.
 
 기록 한 건의 형식: 제목 · 날짜 · PR · 커밋 · 상태(검토 중 / 병합됨) → **작업 폴더별 변경**(폴더 · 파일 · 내용 표) → **왜** → **확인** → **개발팀 참고**
-- 2026-11-25 토스트(nv-toast · ntoast): 마크업은 그대로 두고 피그마 디자인스타일 「cms/toast」 모양으로 바꿈(sedis-sg.css 17-1). 진한 바탕 · 모서리 8 · 안쪽 12/16 · 유형 아이콘 20 · 글자 14 · 링크 14 굵게. 유형 수식어 --error · --warning · --info 추가(없으면 성공). 스타일가이드 「알림」에 유형별 견본.
-- 2026-11-25 아코디언(details.nv-form-group.nv-details): 마크업은 그대로 두고 피그마 디자인스타일 「cms/accordion」 Size=M 모양으로 바꿈(sedis-sg.css 19). 닫힘 바탕 없음 · 머리 44 · 제목 14 굵게 · 캐럿 20 / 마우스 accordion-surface-hover / 펼침 accordion-surface-open + 제목 primary + 내용 흰 상자(::before). 단추형 --inline · --block 은 제외. 스타일가이드 「아코디언」에 마우스 상태 견본 추가.
-- 2026-11-25 트리 item(cms/tree-item): 2단 펼침 표시를 피그마대로 ⊖(펼침) · ⊕(접힘) 으로 그림(마크업 svg 는 숨김), 3단 옮기기 아이콘은 마우스 · 선택 때만, ⋮ 는 선택 줄에도 보이게(sedis-sg.css 16). 스타일가이드 「아코디언」에 조직도(피그마 cms/tree 내용)와 item 단계 · 상태별 견본 7종 추가.
-- 2026-11-25 트리 ⋮ 단추(.nv-tree .nv-dropmenu 안): 피그마대로 바탕 · 테두리 없앰, 마우스 올림 · 열림 때 검정 5%(alpha-black5) 바탕(sedis-sg.css 16).
-- 2026-11-25 메뉴 트리(menu-tree-row): 스타일가이드 「35. 메뉴 트리」 견본 마크업을 개발 콘솔 메뉴관리와 같은 nv-nav-table · nv-nav-menu--dN(__grip · __depth · __name) · mtree__lock · mtree__tag--own/--dirty · list-legend · nv-dropmenu 로 바꿈. 모양은 피그마 pattern/menu-tree-row 유지(sedis-sg.css 20): 단계 번호 원 색 · 24 들여쓰기 · 「개별」은 사슬 아이콘 · 「변경」이 보이면 줄 배경 row-changed · 노출 배지가 primary 가 아니면 미노출(흐리게) · 손잡이는 줄 hover 때만.
-- 2026-11-25 접근 권한 표(access-row): 스타일가이드 「38. 접근 권한 표」 견본을 개발 마크업 .ptable.acc-table(ptable__who · who__name/meta · cellcheck(.is-implied · .is-changed) · tr.is-unsaved · .tag-new · xbtn, 읽기 전용 --ro)으로 바꾸고, 모양은 피그마 pattern/access-row(머리 44 · 줄 60 · 열 112 · 체크 16 · 바꾼 줄 warning-subtler · 빼기 Ghost XS)로 맞춤(sedis-sg.css 21).
-- 2026-11-25 담당자 칸(Manager select): 스타일가이드 「37. 담당자 선택」 견본을 개발 마크업 section.edx-sec[data-owner](field-2 · owner-name/ro-val · 찾기/변경 · owner-x · owner-search > pick__list · edx-hint)로 바꾸고, 모양은 피그마 디자인모음 「02-B6a 담당자 찾기 · 검색창」 담당자 섹션으로 맞춤(sedis-sg.css 22). 미지정 · 지정됨 · 검색창 열림 3가지 견본.
-- 2026-11-25 담당자 칸 견본: 값 칸 span(.ro-val) → input.nv-input.ro-val 로 바꿈(담당자명 readonly = 피그마 cms/input View, 부서 · 연락처 · 이메일 disabled = Disabled). 개발 스크립트용 data-* · 숨은 입력값 · owner-note 는 견본에서 뺌. sedis-sg.css 22 범위를 .edx-sec:has(.owner-name) 로 바꿔 개발(span) · 견본(input) 둘 다 맞음.
-- 2026-11-25 요약 영역(Summary): 스타일가이드 「34. Summary」 견본을 개발 마크업 .nv-summary(bd-summary 4장 · st-summary · ops-summary 3장, __item · __label · __value · __icon--img)로 바꾸고, 모양은 피그마 「누리지음/summary」(카드 120 · 안쪽 24 32 · 모서리 12 · shadow1 · 이름 16 · 숫자 24 Bold · 사이 4 · 카드 사이 24)로 맞춤(sedis-sg.css 23). board.css · site.css 의 줄인 높이 · 여백도 피그마 값으로 덮음.
-- 2026-11-25 메뉴 편집 머리(Menu edit header): 스타일가이드 「36. Menu edit header」 제목 줄을 개발 마크업 .edx-card__head(edx-card__title · lvl · edx-card__name · nv-badge · edx-site · edx-steps)로 바꾸고, 모양은 피그마 「누리지음/menu-edit-header」 제목 줄로 맞춤(sedis-sg.css 24). 탭 줄은 그대로.
-- 2026-11-25 메뉴 단계 번호 색: 1 #18378c/흰 · 2 #3a6cec/흰 · 3 #d3def5/#234fc8 · 4 #eff2f6/#364153 으로 바꿈. nuri-tokens.css 에 --nuri-color-depth-1~4-surface · -text 추가, 메뉴 트리(nv-nav-menu__depth)와 메뉴 편집 머리(.lvl)가 같이 씀.
-- 2026-11-25 스타일가이드 「26. Depth badge」(nuri-depth-badge)도 같은 --nuri-color-depth-1~4 색으로 바꿈(nuri-components.css) · 설명 글 갱신.
-- 2026-11-25 상위 설정 따르기(Inherit bar): 스타일가이드 「41. Inherit bar」 견본을 개발 마크업 .acc-same(label.nv-check + #inherit-hint)로 바꾸고, 모양은 피그마 「누리지음/inherit-bar」(안쪽 12 16 · 모서리 8 · gray-subtler · 체크 16 · 제목 14 SemiBold · 설명 13 subtle)로 맞춤(sedis-sg.css 25).
-- 2026-11-25 고르기 목록 항목(List item): 스타일가이드 「30. List item」 견본을 개발 마크업 .pick__list(pick__search · listbox > button.pick__row · pick__id · pick__meta · pick__sep · pick__foot)로 바꾸고, 모양은 피그마 「누리지음/picker-item」(줄 40 · 안쪽 0 14 · 사이 8 · 이름 14 · 코드 · 정보 13 disabled · Hover gray-subtle + SemiBold · Disabled subtle-inverse · Action text/basic)으로 맞춤(sedis-sg.css 26). 담당자 칸(.owner-search) 목록은 제외. 피그마 Person(아바타 · 추가 단추) 모양은 개발 마크업에 없어 견본에서 뺌.
-- 2026-11-25 권한 항목(Permission item): 스타일가이드 「40. Permission item」 견본을 개발 마크업 ul.mgrcards > li.mgr(mgr__icon · mgr__who · nv-badge · xbtn)로 바꾸고, 모양은 피그마 「누리지음/permission-item」(안쪽 12 8 12 16 · 모서리 8 · 아이콘 칸 36 원 · 이름 14 SemiBold · 코드 13 disabled · 설명 13 subtle · 빼기 28 ghost)으로 맞춤(sedis-sg.css 27).
-- 2026-11-25 사이드 메뉴 · 상단 바(nv-sidebar · nv-header): 스타일가이드 「8. Layout」 사이드 메뉴 · 상단 바 견본과 「33. Side nav」 견본을 개발 마크업 aside.nv-sidebar(nv-sidebar__top · __rail · nv-nav__home · nv-nav__group · nv-help-card) · header.nv-header(nv-header__site · __search · __action · nv-user)로 바꿈. 모양은 cms-admin-v2.css 의 피그마 값 그대로. 견본 칸 안에서만 sticky · 100vh 를 풀어 둠(.sg-shell, 스타일가이드 전용 CSS). 검색 창(cmdk) · 설치 판 전환 · data-* 는 견본에서 뺌.
-- 2026-11-25 스타일가이드 「코드」 보기 정리: 견본 배치용 코드(sg-row · sg-grid 래퍼, sg-is-hover, 견본에서만 쓴 style — side-nav 높이 · summary 칸 수 · dropmenu 펼침)를 코드 칸에서 뺌. 개발에서 온 style(nv-details font-weight · nv-editor min-height)은 그대로.
-- 2026-11-25 스타일가이드 「코드」 줄 맞춤: 마크업 코드 칸 72곳을 들여쓰기 2칸으로 정렬(블록 요소는 한 줄씩, 짧은 글자 요소는 한 줄 유지). 태그 · 속성 · 글자는 그대로(공백만 바뀜). CSS 코드 칸은 손대지 않음.
 
 ## 8. 작업 기록
 
 최신 기록이 위에 옵니다.
+
+### 2026-11-25 · 스타일가이드 견본을 개발 화면 마크업으로 — 2차 (모양은 피그마)
+- **브랜치:** `design/jseonae` · **상태:** 검토 대기 · **파일:** `static/admin-ui/v2/sedis-sg.css` 16 · 17-1 · 19 · 20 · 21 · 24 · 25 · 26 · 27, `styleguide/index.html`
+- **방식:** 마크업은 개발 콘솔 화면 그대로(스타일가이드 견본에서는 개발 스크립트용 `data-*` · 숨은 값만 뺌), 모양은 피그마 디자인스타일 · 디자인모음 값
+- **작업 폴더별 변경**
+
+  | 견본 · 컴포넌트 | 개발 마크업 | sedis-sg.css | 피그마 기준 |
+  |---|---|---|---|
+  | 토스트 | `.nv-toast` · `.ntoast`(+ `--error` · `--warning` · `--info`) | 17-1 | 디자인스타일 cms/toast |
+  | 아코디언 | `details.nv-form-group.nv-details` | 19 | 디자인스타일 cms/accordion Size=M |
+  | 트리 item · 트리 ⋮ 단추 | `.nv-tree__row` · `.nv-tree__toggle` · `.nv-tree .nv-dropmenu` | 16 | 디자인스타일 cms/tree-item |
+  | 메뉴 트리 | `.nv-table.nv-nav-table` · `.nv-nav-menu--d1~d4`(`__grip` · `__depth` · `__name`) · `.mtree__lock` · `.mtree__tag` · `.list-legend` | 20 | 디자인모음 menu-tree-row |
+  | 접근 권한 표 | `.ptable.acc-table`(`ptable__who` · `cellcheck` · `tr.is-unsaved` · `tag-new` · `xbtn`) | 21 | 디자인모음 access-row |
+  | 메뉴 편집 머리 | `.edx-card__head`(`edx-card__title` · `lvl` · `edx-card__name` · `edx-site` · `edx-steps`) | 24 | 디자인모음 누리지음/menu-edit-header (2552:40143) |
+  | 상위 설정 따르기 | `.acc-same`(`label.nv-check` + `#inherit-hint`) | 25 | 디자인모음 누리지음/inherit-bar (2549:38413) |
+  | 고르기 목록 항목 | `.pick__list`(`pick__search` · `pick__row` · `pick__id` · `pick__meta` · `pick__sep` · `pick__foot`) | 26 | 디자인모음 누리지음/picker-item (2550:38541) |
+  | 권한 항목 | `ul.mgrcards > li.mgr`(`mgr__icon` · `mgr__who` · `nv-badge` · `xbtn`) | 27 | 디자인모음 누리지음/permission-item (2549:38396) |
+  | 사이드 메뉴 · 상단 바 | `aside.nv-sidebar` · `header.nv-header` | (cms-admin-v2.css 그대로) | 디자인스타일 Layout |
+
+- **주요 값**
+  - 메뉴 편집 머리: 안쪽 24 28 8 · 메뉴명 24 Bold · 유형 배지 Tertiary Outline · 노출 배지 Primary Solid-light · 이전/다음 34 상자(가운데 구분선 1 × 16)
+  - 상위 설정 따르기: 안쪽 12 16 · 모서리 8 · surface/gray-subtler · 체크 16 · 제목 14 SemiBold · 설명 13 subtle
+  - 고르기 목록 항목: 줄 40 · 안쪽 0 14 · 이름 14 · 코드 · 정보 13 disabled · 마우스 올림 gray-subtle + 이름 SemiBold · 비활성 subtle-inverse · 맨 아래 줄(Action) text/basic
+  - 권한 항목: 안쪽 12 8 12 16 · 모서리 8 · 아이콘 칸 36 원 · 이름 14 SemiBold · 코드 13 disabled · 설명 13 subtle · 빼기 28(바탕 없음, 마우스 올림 검정 5%)
+- **왜:** 스타일가이드 견본과 개발 화면의 마크업이 달라 견본을 그대로 옮겨 쓸 수 없었음. 클래스를 개발과 같게 하고 모양만 피그마로 맞춤
+- **확인:** 스타일가이드 각 섹션과 개발 콘솔 화면(메뉴 수정 · 접근권한 탭)을 그려 피그마 값(높이 · 여백 · 모서리 · 글자)과 계산 스타일 비교
+- **개발팀 참고**
+  - `admin-parts.css` · `navigation.css` 가 `sedis-sg.css` 뒤에 읽혀서, 같은 클래스를 덮는 규칙은 선택자를 한 단계 높였음(`.edx-card__head.edx-card__head` · `.acc-same.acc-same` · `.mgrcards.mgrcards` · `.pick__list:not(.owner-search .pick__list)` 등)
+  - 고르기 목록의 맨 아래 줄(`.pick__foot`, 예: 「새 권한그룹 만들기」 · 「권한그룹관리」) 글자가 파란 링크색에서 피그마 Action 의 text/basic 으로 바뀜
+  - 메뉴 편집 머리 이전/다음 화살표는 개발 마크업(chevron-right)을 그대로 써서 피그마 삼각 화살표와 모양이 조금 다름
+  - 사이드 메뉴 · 상단 바는 개발 화면이 이미 피그마 값이라 CSS 를 바꾸지 않음(상단 바 알림 · 사용자 IP 줄은 개발 마크업에 없어 피그마와 다름)
+- **스타일가이드만:** 코드 칸에서 견본 배치용 코드(`sg-*` 감싸개 · 견본에서만 쓴 style)를 빼고 들여쓰기 2칸으로 정렬
+
+### 2026-11-25 · 메뉴 단계 번호 색 변경
+- **브랜치:** `design/jseonae` · **상태:** 검토 대기
+- **작업 폴더별 변경**
+
+  | 폴더 · 파일 | 내용 |
+  |---|---|
+  | `static/shared/nuri-tokens.css` | 새 토큰 `--nuri-color-depth-1~4-surface` · `-text` |
+  | `static/admin-ui/v2/sedis-sg.css` 20 · 24 | 메뉴 트리 `.nv-nav-menu__depth`, 메뉴 편집 머리 `.lvl` 이 새 토큰을 씀 |
+  | `static/shared/nuri-components.css` | `.nuri-depth-badge` 가 새 토큰을 씀 |
+
+- **값:** 1단계 `#18378c` 바탕 · 흰 숫자 / 2단계 `#3a6cec` · 흰 숫자 / 3단계 `#d3def5` · `#234fc8` 숫자 / 4단계 `#eff2f6` · `#364153` 숫자 (예전 secondary-80 · 60 · 50 · gray-50 은 쓰지 않음)
+- **왜:** 단계가 깊어질수록 연해지는 색을 디자인에서 새로 정함(캡처 기준). 3 · 4단계는 바탕이 연해 숫자를 진한 색으로
+- **확인:** 스타일가이드 메뉴 트리 · 단계 번호 · 메뉴 편집 머리에서 1~4단계 계산 색 확인
+- **개발팀 참고:** 단계 번호 색은 이제 토큰 4쌍으로만 바꿈. 새 토큰은 기본(밝은) 테마에만 있음
+
+### 2026-11-25 · 메뉴 수정 화면 탭 · 본문 구분선 정리
+- **브랜치:** `design/jseonae` · **상태:** 검토 대기
+- **작업 폴더별 변경**
+
+  | 폴더 · 파일 | 내용 |
+  |---|---|
+  | `static/admin-ui/v2/admin-parts.css` | `.edx-body` 위 구분선(`border-top: 1px solid var(--cms-border)`) 주석 처리 |
+  | `static/admin-ui/v2/sedis-sg.css` | `.nv-tabs { gap }` · `.gtabs { gap; border-bottom }` 규칙 삭제 — 탭 간격 · 밑줄은 `cms-admin-v2.css` 규칙을 따름 |
+
+- **왜:** 메뉴 수정 화면에서 탭 줄 아래와 본문 위에 선이 겹쳐 보여 하나로 정리
+- **개발팀 참고:** `.gtabs` 를 쓰는 다른 화면에서도 탭 줄 아래 선 · 간격이 `cms-admin-v2.css` 값으로 돌아감
 
 ### 2026-11-25 · 쪽 번호(nv-pagination)를 피그마 cms/pagination 모양으로
 - **브랜치:** `design/jseonae` · **상태:** 검토 대기 · **파일:** `static/admin-ui/v2/sedis-sg.css` 「10. 쪽 번호」(마크업은 KRDS 그대로)
