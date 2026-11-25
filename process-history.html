@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>처리 히스토리</title>
+<style>
+:root{--line:#e2e5ea;--muted:#6b7385;--text:#1d2433}
+body{font:15px/1.6 "Pretendard GOV","Pretendard",system-ui,sans-serif;margin:0;color:var(--text);background:#f6f7f9}
+main{max-width:1180px;margin:0 auto;padding:32px 20px 80px}
+h1{font-size:26px;margin:0 0 6px}h2{margin:40px 0 10px;font-size:21px}h3{margin:28px 0 8px;font-size:17px}
+small{color:var(--muted);font-weight:400;font-size:13px}a{color:#2556c4}
+code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:#334155;word-break:break-all}
+.lead{color:#4a5468}nav.toc{display:flex;flex-wrap:wrap;gap:6px 14px;margin:12px 0 0;font-size:14px}
+table{width:100%;table-layout:fixed;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:14px}
+th,td{padding:8px 10px;border-bottom:1px solid #eceef2;text-align:left;vertical-align:top;overflow-wrap:anywhere}th{background:#f0f2f5;font-weight:600}
+td ul{margin:0;padding-left:18px}
+.round{margin:16px 0;padding:20px 22px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.round>h2{margin:0 0 4px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}
+.stat{padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fafbfc}.stat b{display:block;font-size:22px}
+.st{display:inline-block;padding:0 7px;border-radius:4px;font-size:12px;font-weight:600;white-space:nowrap}
+.st.done{background:#eaf6ec;color:#267444}.st.part{background:#ecf2fe;color:#0b50d0}.st.wait{background:#fff3db;color:#8a5c00}.st.skip{background:#eef2f7;color:#475569}
+.num{white-space:normal}.num s{color:var(--muted)}
+.note{padding:12px 16px;border:1px solid #d3ebfd;border-radius:8px;background:#f6fbff;color:#0b5691;font-size:14px}
+@media (max-width:800px){.stats{grid-template-columns:1fr 1fr}}
+</style></head><body><main>
+<h1>처리 히스토리 <small>마크업 점검 · 수정 기록</small></h1>
+<p class="lead">마크업 점검에서 나온 문제를 언제 · 무엇을 · 어떻게 고쳤는지 차수별로 남깁니다. 새 차수는 위에 추가합니다.</p>
+<nav class="toc"><a href="#r2">2차 (2026-11-25)</a><a href="#r1">1차 (2026-11-25)</a><a href="#r0">이전 작업 (2026-11-24)</a><a href="index_process.html" target="_blank" rel="noopener">화면 목록 점검판</a><a href="markup-check.html" target="_blank" rel="noopener">마크업 점검 결과</a><a href="markup-types.html" target="_blank" rel="noopener">화면 마크업 유형</a></nav>
+
+<!-- ========================= 2차 ========================= -->
+<section class="round" id="r2">
+<h2>2차 <small>2026-11-25 · 처리자 주민영 · 브랜치 design/minyoung · 진행 중</small></h2>
+<p>주제: <b>화면 마크업 유형에 따른 화면 정리</b> — <a href="markup-types.html" target="_blank" rel="noopener">화면 마크업 유형</a>의 유형별로 화면 구성을 정리합니다. 첫 대상은 11번 「등록 · 수정(편집 머리 + 2단 본문/설정)」의 오른쪽 설정 열입니다.</p>
+<p class="note"><b>기준</b>: 오른쪽 설정 열에는 「게시 여부 설정」처럼 저장 방식을 정하는 카드와 파일(대표 썸네일 · 첨부파일)만 두고, 나머지(버전 이력 · 콘텐츠 정보 · SEO 메타 등)는 왼쪽 본문 아래로 옮깁니다. <b>화면 구성 변경이라 서버 템플릿에도 같은 변경이 필요합니다.</b></p>
+
+<h3>유형 11 「등록 · 수정」 오른쪽 열 현황</h3>
+<table>
+<colgroup><col style="width:22%"><col style="width:10%"><col style="width:36%"><col style="width:14%"><col style="width:18%"></colgroup>
+<thead><tr><th>화면 (오른쪽 열)</th><th>화면 수<br><small>기본 · 전체</small></th><th>오른쪽 카드</th><th>상태</th><th>예시</th></tr></thead>
+<tbody>
+<tr><td><b>콘텐츠 수정</b><br><small><code>aside.nv-editor-page__side</code></small></td><td class="num">37 · 55</td><td>게시 여부 설정(발행 예약 시각 포함) · 버전 이력 · 콘텐츠 정보 · 요약(숨김) · 대표 썸네일 · 첨부파일 · SEO 메타</td><td><span class="st done">키트 처리완료</span><br><span class="st part">서버 반영 필요</span></td><td><a href="pages/default/console/console-대시보드-콘텐츠-수정-8541d6.html" target="_blank" rel="noopener">콘텐츠 수정</a></td></tr>
+<tr><td>게시글 작성<br><small><code>aside.nv-stack.bd-page__side</code></small></td><td class="num">44 · 133</td><td>공지 설정 · (기본정보) · 게시 여부 설정 · 공공누리 유형 · 게시판</td><td><span class="st wait">확인 중</span></td><td><small>게시판 목록 화면 안의 숨은 등록 폼(<code>form#post-create-panel</code>) — 열린 상태 페이지 없음</small></td></tr>
+<tr><td>민원 처리<br><small><code>aside.nv-stack.bd-page__side</code></small></td><td class="num">· 9</td><td>처리 상태 · 담당자 · 처리 이력</td><td><span class="st wait">확인 중</span></td><td><a href="pages/default/console/console-게시판-디자인키트-묻고-답하기-민원-처리-521a6a.html" target="_blank" rel="noopener">민원 처리</a></td></tr>
+<tr><td>메뉴 수정 · 표시 설정<br><small><code>aside.edx-side</code></small></td><td class="num">· 135</td><td>표시 설정(노출여부 · 사용여부 · 출력순서 · 이용자 만족도 조사 · 탭메뉴 · 나만의메뉴)</td><td><span class="st done">유지</span><br><small>지금 구성 그대로 감(결정 2026-11-25)</small></td><td><a href="pages/default/console/console-권한-게시판1-d69600.html" target="_blank" rel="noopener">메뉴관리 › 게시판1</a></td></tr>
+<tr><td>게시판 설정<br><small><code>aside.edx-side</code></small></td><td class="num">· 63</td><td>게시판 설정(사용여부 · 답변 사용 · 공지 사용 · 첨부파일 허용 …)</td><td><span class="st wait">확인 중</span></td><td><a href="pages/default/console/console-게시판-관리-공지사항-920cfa.html" target="_blank" rel="noopener">게시판 관리 › 공지사항</a></td></tr>
+<tr><td>콘텐츠 등록<br><small><code>aside.nv-editor-page__side</code>(게시 여부 카드 형태 다름)</small></td><td class="num">7 · 65</td><td>게시 여부 설정 · 대표 썸네일 · 첨부파일 · 대상 사이트</td><td><span class="st wait">확인 중</span></td><td><small>콘텐츠 관리 목록 화면 안</small></td></tr>
+<tr><td>관리자 메뉴 편집<br><small><code>div.ed-page</code> 오른쪽 <code>div.nv-stack</code></small></td><td class="num">40</td><td>출력순서 카드 1장(나머지 75개 화면은 오른쪽 열 없음)</td><td><span class="st done">유지</span><br><small>출력순서만 오른쪽 — 그대로 감(결정 2026-11-25)</small></td><td><a href="pages/default/console/console-관리자메뉴관리-대시보드-11322d.html" target="_blank" rel="noopener">관리자메뉴관리 › 대시보드</a></td></tr>
+</tbody></table>
+<p><small>화면 수: 「전체」는 같은 화면의 상태 페이지(패널 · 창 · 더보기)를 포함한 수. 게시 여부 카드가 「데이터 속성 <code>data-publish-setting</code>」으로 표시된 것만 콘텐츠 수정으로 셈.</small></p>
+
+<h3>처리 내역</h3>
+<table>
+<colgroup><col style="width:22%"><col style="width:12%"><col style="width:66%"></colgroup>
+<thead><tr><th>작업</th><th>화면 수</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td><b>콘텐츠 수정 오른쪽 열 정리</b><br><span class="st done">키트 처리완료</span> <span class="st part">서버 반영 필요</span></td><td class="num">55<br><small>기본 37 + 상태 18, 두 판</small></td><td>
+<ul>
+<li><b>오른쪽</b>(<code>aside.nv-editor-page__side</code>): 게시 여부 설정(발행 예약 시각은 카드 안이라 함께) → 대표 썸네일 이미지 → 첨부파일 — 원래 순서</li>
+<li><b>왼쪽</b>: 편집기 카드와 옮긴 블록을 기존 세로 쌓기 <code>div.nv-stack</code>으로 묶음 — 편집기 → 버전 이력 → 콘텐츠 정보(Content ID · 발행 버전) → 요약(숨김) → SEO 메타</li>
+<li>블록 안 마크업 · 클래스 · <code>data-*</code> · 폼 연결(<code>form="ct-save-form"</code>) 그대로 — 저장 동작 변화 없음. 스크립트는 오른쪽 열 위치에 의존하지 않음(확인). 새 CSS 없음</li>
+<li>옮긴 자리 주석: 「2026-11-25 우측에서 옮김: 버전 이력 · 콘텐츠 정보 · 요약 · SEO 메타 (우측에는 게시 여부 설정 · 대표 썸네일 · 첨부파일)」</li>
+<li>경과: 처음엔 썸네일 · 첨부파일도 왼쪽으로 옮겼다가, 원래대로 오른쪽에 두기로 해 되돌림</li>
+</ul></td></tr>
+<tr><td><b>민원 처리 답변 편집기를 콘텐츠 편집기와 같게</b><br><span class="st done">키트 처리완료</span> <span class="st part">서버 반영 필요</span></td><td class="num">8<br><small>답변 편집기가 있는 민원 처리 화면, 두 판</small></td><td>
+<p>편집기 조사: 키트의 편집기(<code>.cms-admin-editor</code>) 중 <b>화면에 보이는데 SunEditor가 없는 것은 민원 처리 답변 편집기뿐</b>(콘텐츠 수정 55 · 메뉴 소스 수정 5는 정상). 게시글 등록 · 수정 패널, 콘텐츠 등록 패널, 메뉴 수정 숨은 탭의 편집기는 닫힌 상태로 캡처돼 키트로는 판단 불가 — 개발 서버에서 패널을 열어 확인 필요.</p>
+<ul>
+<li><b>서버 반영 마크업</b>(콘텐츠 수정 · 메뉴 소스 수정 편집기와 같은 구조):
+ <ul>
+ <li>루트 <code>div.cms-admin-editor</code> → <code>class="cms-admin-editor ct-editor" data-wysiwyg data-wysiwyg-bar</code></li>
+ <li>도구 줄 <code>.cms-admin-editor__toolbar</code> 안에 보기 전환 <code>div.nv-segment.cms-admin-editor__viewtoggle</code>(<code>button[data-view-set=edit|split|preview]</code> 편집 · 분할 · 미리보기) — 스크립트가 SunEditor 도구 모음 안으로 옮김</li>
+ <li>편집 칸 뒤 미리보기 칸 <code>.cms-admin-editor__pane--preview &gt; .cms-admin-editor__preview</code>(1차 5번) · 편집기 CSS 3개(1차 5번)</li>
+ </ul></li>
+<li><b>CSS</b>: <code>board.css</code>에 <code>.bd-proc__write .ct-editor { display: flex; flex-direction: column; gap: var(--cms-sp-4); padding: 0; }</code> 1줄 — 콘텐츠 편집기 모양(<code>.ct-editor</code>)을 쓰되, 카드 안이라 <code>.nv-editor</code> 카드 모양(여백 · 배경 · 테두리) 없이 배치만 같게. 처음엔 <code>padding: 0</code>만 넣어 도구 줄의 <code>margin-bottom: -16px</code>이 편집 칸에 16px 덮여 잘렸음 → 세로 쌓기 · 간격 16 추가로 해결(1440 · 1920 확인)</li>
+<li><b>키트 전용</b>: 스크립트가 없어 SunEditor가 그려지지 않으므로, 콘텐츠 수정 화면에 캡처된 SunEditor 마크업(도구 모음 · 편집 영역)을 빈 본문 + 자리표시 「답변 내용을 입력해 주세요.」로 끼우고 원래 <code>textarea</code>는 <code>hidden</code>(붙은 뒤 모습). 주석 <code>[키트 전용]</code>으로 표시 — 서버 템플릿에는 넣지 않음</li>
+<li>처리 끝난 민원(<code>9599db</code>)은 답변 편집기가 없어 해당 없음</li>
+</ul></td></tr>
+<tr><td><b>콘텐츠 정보를 버전 이력 카드 안으로</b><br><span class="st done">키트 처리완료</span> <span class="st part">서버 반영 필요</span></td><td class="num">55</td><td><ul><li>카드 밖에 있던 <code>dl.ct-kv</code>(Content ID · 발행 버전)를 버전 이력 <code>details</code> 맨 아래로 옮김</li><li>간격: <code>details</code>는 제목 밖 내용을 한 상자로 묶어 카드 <code>gap</code>이 내용 사이에 안 들어감(필터 줄 · 표 · 정보가 0px로 붙음) → <code>content.css</code>에 <code>.nv-details &gt; form + .nv-table-scroll { margin-top: 1.2rem; }</code> · <code>.nv-details &gt; .ct-kv { margin-top: 1.6rem; gap: .6rem 1.6rem; }</code></li></ul></td></tr><tr><td><b>권한 화면 표 감싸기</b><br><span class="st done">키트 처리완료</span> <span class="st part">서버 반영 필요</span></td><td class="num">122 화면 · 449곳</td><td><ul><li>점검: 전체 <code>nv-table-scroll</code> 3,589곳 중 <code>nv-table-wrap</code> 없이 <b>목록 카드에 바로 놓인 것은 권한 네 탭뿐</b>(나머지는 이미 여백 있는 카드 안 — 표와 카드 테두리 25~49px, 정상)</li><li>마크업: 권한그룹관리 · 권한그룹명단관리 · 서브관리자관리 · 관리자접속IP관리 표를 <code>div.nv-table-wrap</code>으로 감쌈</li><li>CSS: <code>identity.css</code>의 <code>.id-tabpanel &gt; .nv-table-wrap { padding: 0; }</code> 제거(「표는 카드 끝까지」 의도) — 표와 카드 테두리 1px → 다른 목록과 같은 여백</li><li><b>확인 필요</b>: 여백이 생긴 만큼 열이 많은 표가 표 안에서 가로 스크롤 — 1440: 권한그룹명단 47px · 서브관리자 45px, 1280: 권한그룹 105 · 명단 207 · 서브관리자 205px (1920은 0). 열 폭 조정 또는 그대로 둘지 결정</li></ul></td></tr><tr><td><b>편집 머리 넓은 창 전체 폭</b><br><span class="st done">키트 처리완료</span> <span class="st part">서버 반영 필요</span></td><td class="num">편집 머리 쓰는 화면 전체</td><td><ul><li>문제: 본문 최대 폭(1680)보다 넓은 창(1920 초과)에서 편집 머리(<code>nv-editor-header</code>)가 가운데 본문 폭 안에만 그려져 양끝이 잘리고, 뒤로 · 제목 · 버튼도 안쪽에 몰림 — 화면별 마크업이 아니라 공통 CSS 문제(콘텐츠 수정도 같음)</li><li>CSS만으로 처리(마크업 위치 변경 없음) — <code>cms-admin-v2.css</code>: <code>.nv-main { container-type: inline-size; }</code>, <code>.nv-editor-header</code> 좌우 음수 여백에 「본문이 가운데로 모이며 생긴 빈 폭」 <code>max(0px, (100cqw - 100% - 본문 좌우 여백) / 2)</code>을 더함. 1680 이하에서는 0이라 예전과 같음</li><li>확인: 1440 · 1920 · 2200에서 편집 머리 = <code>nv-main</code> 전체 폭, 뒤로 버튼 왼쪽 · 마지막 버튼 오른쪽이 영역 끝에서 38px, 가로 스크롤 0(통계표 통합 · 콘텐츠 수정)</li><li>경과: 처음엔 배경만 양옆으로 늘렸다가(내용은 안쪽에 남음) 머리 자체를 넓히는 방식으로 바꾸고 앞 방식은 되돌림</li><li>게시판 · 메뉴 편집 화면: 편집 머리를 감싼 고정 막대 <code>div.edx-top</code>이 펼쳐지는 구조라, <code>admin-parts.css</code>의 <code>.edx-top</code>에 같은 계산(<code>--edx-top-bleed</code>)을 넣어 맞춤 — 편집 머리 · 사유 입력 줄(<code>reasonbar</code>)이 함께 넓어짐. 1440 · 1920 · 2200에서 첫 요소 · 마지막 버튼이 영역 끝에서 38px, 가로 스크롤 0(게시판 편집 · 메뉴 수정)</li></ul></td></tr><tr><td><b>메뉴 수정 오른쪽 「표시 설정」</b><br><span class="st done">유지</span></td><td class="num">135</td><td>지금 구성 그대로 둠(결정 2026-11-25)</td></tr>
+<tr><td><b>링크 새 창</b></td><td class="num">2,171</td><td><code>markup-types.html</code>의 화면 · 문서 링크를 새 창으로(페이지 안 목차 25개는 그대로)</td></tr>
+</tbody></table>
+
+<h3>확인 필요</h3>
+<ul>
+<li>왼쪽 카드 사이 간격: <code>nv-stack</code> 기본 16px — 오른쪽 열(<code>nv-editor-page__side</code>)은 24px. 맞추려면 CSS 규칙 1줄 필요</li>
+</ul>
+
+<h3>다음 할 일</h3>
+<ul>
+<li>나머지 오른쪽 열(게시글 작성 · 민원 처리 · 게시판 설정 · 콘텐츠 등록) 화면 확인 후 정리 방침 결정 — 메뉴 표시 설정 · 관리자 메뉴 출력순서는 유지로 결정</li>
+<li>개발 서버에서 게시글 등록 · 수정 패널, 콘텐츠 등록 패널의 편집기가 SunEditor로 뜨는지 확인</li>
+<li>서버 반영 전달: 콘텐츠 수정 화면 오른쪽 열 정리 · 민원 처리 답변 편집기 마크업(+ <code>board.css</code> 1줄)</li>
+<li>브라우저 검사(가로 넘침 · 겹침 · 잘림) 결과 정리 — 콘텐츠 수정 화면은 배치를 바꿨으니 다시 측정</li>
+</ul>
+</section>
+
+<!-- ========================= 1차 ========================= -->
+<section class="round" id="r1">
+<h2>1차 <small>2026-11-25 · 처리자 주민영 · 브랜치 design/minyoung</small></h2>
+<p>점검 범위: 콘솔 · 로그인 · 매뉴얼 화면 3,167개(공개 화면 <code>public</code> · <code>board-skins</code> 제외). 점검 방법: 코드 검사(화면 CSS 미연결 · 캡처 좌표/폭 고정 · HTML 문법).</p>
+<div class="stats">
+ <div class="stat"><small>점검 화면</small><b>3,167</b></div>
+ <div class="stat"><small>확인 필요 — 처리 전</small><b>614</b></div>
+ <div class="stat"><small>확인 필요 — 처리 후</small><b>0</b></div>
+ <div class="stat"><small>HTML 문법 오류</small><b>0</b></div>
+</div>
+<p class="note"><b>분류 기준 — 키트 전용(서버 반영 불필요)</b>: 키트는 화면을 캡처해 스크립트를 뺀 정적 HTML이라, 스크립트가 그리는 부분(차트 ECharts · 슬라이드 swiper · 툴팁 · 열린 메뉴)은 캡처 순간의 px 값이 굳어 있습니다. 개발 서버에서는 스크립트가 창 폭에 맞춰 매번 다시 그리므로 <b>서버의 문제가 아닙니다</b>. 이런 항목은 키트에서 보기 좋게만 보정하고, 그래프 크기 · 반응형 동작은 개발 서버에서 판단합니다. 아래 표의 <span class="st skip">키트 전용</span> 표시가 이 경우이고, 그 외 처리는 <span class="st part">서버 반영</span> 대상입니다.</p>
+
+<h3>원인별 처리</h3>
+<table>
+<colgroup><col style="width:4%"><col style="width:20%"><col style="width:10%"><col style="width:12%"><col style="width:34%"><col style="width:20%"></colgroup>
+<thead><tr><th>#</th><th>공통 원인</th><th>상태</th><th>화면 수<br><small>처리 전 → 후</small></th><th>처리 내용</th><th>확인 화면</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><b>캡처 때 열려 있던 상태가 박힘</b><br><small>툴팁 · 메뉴 좌표(px)</small></td><td><span class="st done">처리완료</span><br><span class="st skip">키트 전용</span></td>
+<td class="num">툴팁 147 → 0<br>사용자 메뉴 89 → 0<br>위치 옮기기 16 → 0<br>조건 메뉴 4 → 0</td>
+<td><ul>
+<li>보이는 툴팁 <code>#nv-tip</code> 147곳: <code>hidden</code> 추가(다른 300곳과 같게)</li>
+<li>사용자 메뉴 <code>#nv-user-menu</code> 89곳 · 게시판 조건 메뉴 <code>#bd-cond-menu</code> 4곳: <code>nv-dropmenu__menu--fixed</code> · <code>left/top</code> 제거 → 버튼 기준 기본 위치</li>
+<li>메뉴관리 위치 옮기기 메뉴 16곳: 페이지 아래 따로 있던 메뉴를 해당 줄 끌기 손잡이 뒤로 옮기고 <code>&lt;span class="nv-dropmenu"&gt;</code>로 감쌈(손잡이 왼쪽 맞춤)</li>
+</ul><small>1700 · 1920 폭에서 버튼 · 손잡이에 붙는 것 확인</small></td>
+<td><a href="pages/default/console/console-권한-게시판1-d69600.html" target="_blank" rel="noopener">메뉴관리 › 게시판1</a> (툴팁)<br>
+<a href="pages/default/console/console-게시판-게시판1-더보기-사용자-메뉴-b82f2b.html" target="_blank" rel="noopener">게시판1 · 사용자 메뉴</a><br>
+<a href="pages/default/console/console-메뉴관리-패널-조사-변천사-위치-옮기기-246343.html" target="_blank" rel="noopener">메뉴관리 · 위치 옮기기</a><br>
+<a href="pages/default/console/console-게시판-관리-더보기-조건-013d53.html" target="_blank" rel="noopener">게시판 관리 · 조건</a></td></tr>
+
+<tr><td>2</td><td><b>SEDIS 미리보기 묶음</b><br><small>차트 px 고정 + 사용자 화면용 클래스</small></td><td><span class="st done">키트 처리완료</span><br><span class="st part">서버 반영 필요</span><br><small>(용어해설 표 · 출처)</small></td>
+<td class="num">차트 px 298 → 키트 전용<br>미리보기 CSS 235 → 0<br><small>마크업 수정 44 해소 → 남은 191 중 <code>cm-term-sub</code> 134 오탐 · <code>cm-chart-area · box</code> 54 오탐 · 콘텐츠 미리보기 3 제외</small></td>
+<td><ul>
+<li><span class="st skip">키트 전용</span> 차트(ECharts SVG) 403개 · 271개 화면: 캡처 폭 고정(<code>width: 630px</code> 등) → <code>viewBox</code> 추가, 폭 <code>100%</code> · 최대 원래 폭. 키트에서 좁은 화면일 때 비율대로 줄어들게 한 보정 — 서버 반영 불필요</li>
+<li><span class="st part">서버 반영</span> 통계표 그래프 미리보기 178곳: 용어해설 표 <code>krds-table-wrap cm-term-table &gt; table.tbl.col.data</code> → 위 통계표와 같은 <code>nv-table-scroll &gt; table.nv-table.nv-table--compact</code>, 출처 <code>p.cm-source</code> → <code>p.sd-ts-pv__src</code>(서버도 같은 조각을 씀)</li>
+</ul>
+<b>남은 것</b><ul>
+<li><span class="st skip">오탐</span> <span class="st done">종결</span> <code>cm-term-sub</code> 134곳: 용어해설 정의 안 번호 목록(예: 「정서행동장애」의 가. 나. 다. …). 사용자 화면 CSS의 <code>.cm-term-table .cm-term-sub { margin-top: 0; }</code> 하나가 빠졌다고 걸렸으나, <b>1440 실측 결과 차이 없음</b> — 관리자 화면의 KRDS 초기화로 이미 <code>margin-top 0</code> · 앞 문단과 간격 0 · 들여쓰기 0. 점검에서 제외</li>
+<li><span class="st skip">키트 전용</span> <span class="st done">종결</span> <span class="st skip">오탐</span> <code>cm-chart-area · cm-chart-box</code> 54곳(핵심데이터 — 감싸는 상자 클래스는 서버도 같은 CSS로 정상이라 점검에서 제외): 키트를 좁은 폭으로 열면 차트 아래 빈 공간. <b>개발 서버 같은 폭에서 확인 — 키트에서만 나옴</b>. 원인: 차트 칸 높이 고정 <code>.cm-chart-plot { width:100%; height:400px }</code>(<code>kd.css</code> 109행 · <code>ts.css</code> 172행) — 서버는 ECharts가 이 칸을 채우게 다시 그리지만, 키트는 굳은 SVG가 비율대로 줄어 아래가 빔. 서버 CSS는 의도된 값이라 수정 불필요</li>
+<li><span class="st skip">키트 전용</span> 콘텐츠 미리보기의 차트 px · 슬라이드(swiper) 폭: 스크립트가 계산하는 값 — 서버 반영 불필요</li>
+<li>시계열 미리보기 용어해설 25곳: 전용 CSS(<code>trd-preview.css</code>, <code>.sd-trd-user</code> 범위)로 사용자 화면과 같은 모양이 의도됨 — 수정 불필요</li>
+</ul></td>
+<td><a href="pages/sedis/console/console-그래프-시각화-그래프-시각화-02055b.html" target="_blank" rel="noopener">그래프 시각화 편집</a><br>
+<a href="pages/sedis/console/console-그래프-시각화-사용자-화면-미리보기-003461.html" target="_blank" rel="noopener">그래프 사용자 화면 미리보기</a><br>
+<a href="pages/sedis/console/console-통계표-사용자-화면-미리보기-0c254e.html" target="_blank" rel="noopener">핵심데이터 통계표 미리보기</a></td></tr>
+
+<tr><td>3</td><td><b>게시판 관리가 메뉴 트리 표 클래스를 씀</b><br><small><code>nv-nav-table</code> · <code>navigation.css</code> 미연결</small></td><td><span class="st skip">오탐</span><br><span class="st done">수정 불필요</span></td>
+<td class="num">66 → 0<br><small>점검에서 제외</small></td>
+<td><b>의도된 구조, 수정 불필요.</b> 게시판 목록 표(<code>table.nv-table.cms-admin-table.nv-nav-table.bd-table</code>)가 메뉴관리 표 마크업을 빌려 쓰지만 <code>navigation.css</code>는 일부러 읽지 않음 — <code>board.css</code> 102행 주석: 「목록 표(.nv-nav-table)를 메뉴 목록과 같이 쓰지만 navigation.css 는 읽지 않는다 — 작업 · 체크 칸 너비만 맞춘다」. 표 배치 · 작업 칸 · 체크 칸 너비는 <code>.bd-table</code>로 같게 주고, 끌어서 옮기기 규칙은 게시판에 필요 없음</td>
+<td><a href="pages/default/console/console-게시판-관리-7be6b9.html" target="_blank" rel="noopener">게시판 관리</a><br><a href="pages/default/console/console-대시보드-게시판-관리-a7a21b.html" target="_blank" rel="noopener">대시보드 › 게시판 관리</a></td></tr>
+
+<tr><td>4</td><td><b>스타일가이드 토스트 CSS 미연결</b><br><small><code>ntoast</code> · <code>admin-parts.css</code></small></td><td><span class="st skip">키트 전용</span><br><span class="st done">종결</span></td>
+<td class="num">14 → 0<br><small>키트 전용으로 분류</small></td><td>스타일가이드 화면 맨 아래 「저장했습니다…」 토스트는 캡처 순간 떠 있던 알림(<code>admin-v2.js</code> 162행이 잠깐 띄웠다 지움)이 남은 것. 토스트 모양 <code>.ntoast</code>는 <code>admin-parts.css</code>에 있는데 스타일가이드 화면은 이 파일을 읽지 않아 키트에서 맨 글자로 보임. <b>스타일가이드는 내부 견본 페이지라 서버 CSS 연결은 따지지 않고, 캡처 흔적(키트 전용)으로 정리</b></td>
+<td><a href="pages/default/console/console-스타일가이드-d5b9ca.html" target="_blank" rel="noopener">스타일가이드</a></td></tr>
+
+<tr><td>5</td><td><b>게시판 민원 처리 편집기 CSS 미연결</b><br><small><code>cms-admin-editor__*</code> · <code>content.css</code></small></td><td><span class="st done">키트 처리완료</span><br><span class="st part">서버 반영 필요</span></td>
+<td class="num">8 → 0</td><td><b>개발 서버에서도 깨짐 확인</b>(<code>192.168.0.187:8081/console-9f3a/board/SITE-DEV/BDff28e7…/posts/BP101c47…/process</code>) — 답변 작성 편집기가 위지윅으로 뜨지 않고 빈 도구 막대 + 맨 입력칸만 보임.
+<br><b>원인: 미리보기 칸 누락으로 편집기 스크립트가 시작하지 않음.</b> <code>content-editor.js</code> 58~71행 <code>initEditor</code>는 <code>.cms-admin-editor__preview</code>가 없으면 「필수 요소 없으면 조용히 종료」로 끝나 SunEditor를 붙이지 않음. 콘텐츠 수정 편집기에는 이 칸이 있고, 민원 처리 답변 편집기(<code>div.cms-admin-editor[data-wysiwyg]</code>)에는 빠져 있음. 함께 편집기 CSS도 하나도 읽지 않음.
+<ul>
+<li>키트 마크업: 민원 처리 화면 8개(두 판 · 상태 화면, 답변 편집기가 있는 화면)의 <code>.cms-admin-editor__split</code> 안 편집 칸 뒤에 <code>&lt;div class="cms-admin-editor__pane cms-admin-editor__pane--preview"&gt;&lt;span class="cms-admin-editor__pane-label"&gt;미리보기&lt;/span&gt;&lt;div class="cms-admin-editor__preview"&gt;&lt;/div&gt;&lt;/div&gt;</code> 추가. <code>data-view="edit"</code>라 <code>content.css</code> 126행으로 화면에는 숨김. 처리 끝난 민원(<code>9599db</code> 「자료 이용 문의드립니다」)은 답변 편집기가 없어 해당 없음</li>
+<li>키트 CSS: 민원 처리 화면 9개에 콘텐츠 수정 화면과 같은 순서로 연결 — <code>board.css</code> 뒤 <code>pages/content.css</code>(편집 영역 · 도구 막대 배치), <code>admin-parts.css</code> 뒤 <code>vendor/suneditor/3.3.3/suneditor.min.css</code> · <code>editor.css</code>(위지윅 모양)</li>
+<li><b>서버 반영: 마크업(미리보기 칸) + CSS 3개</b> — 민원 처리 템플릿(<code>/board/…/posts/…/process</code>)</li>
+<li>키트는 스크립트를 뺐으므로 고친 뒤에도 키트 화면은 그대로(빈 도구 막대 + 입력칸). 위지윅 모양은 서버 반영 후 서버에서 확인</li>
+</ul></td>
+<td><a href="pages/default/console/console-게시판-디자인키트-묻고-답하기-민원-처리-521a6a.html" target="_blank" rel="noopener">민원 처리</a></td></tr>
+
+<tr><td>–</td><td>콘텐츠 미리보기의 공개 누리집 CSS 미연결<br><small><code>main.css</code> · <code>login.css</code> · <code>ts-list.css</code> · suneditor</small></td><td><span class="st skip">제외</span><br><span class="st done">종결</span></td>
+<td class="num">14 → 0</td><td><ul>
+<li>콘솔 주소지만 공개 누리집 틀(<code>div.cms-public-shell</code> · <code>div.modal-wrap</code>)로 그려지는 콘텐츠 미리보기 화면 — 공개 화면과 같이 점검에서 제외</li>
+<li>콘텐츠 수정 화면에서 걸린 것은 위지윅 편집 영역(<code>.sun-editor-editable</code>) 안의 <b>편집 중인 콘텐츠 본문</b>(사용자 화면 마크업 <code>cm-stat-cards</code> 등) — 관리자 마크업이 아니라 점검에서 제외</li>
+</ul></td><td></td></tr>
+</tbody></table>
+
+<h3>참고(작업필요로 표시하지 않음)</h3>
+<ul>
+<li>옛 <code>cms-admin.css</code>에만 있는 클래스: 콘솔 2,940곳이 같은 두 클래스 <code>cms-admin-shell</code> · <code>cms-admin-side-nav__item</code>. 화면은 <code>nv-shell</code> 스타일로 정상 — 지울지 한 번만 결정</li>
+<li>어떤 CSS에도 없는 클래스 · 편집기 런타임 흔적: 화면 영향 없음</li>
+</ul>
+
+<h3>점검 기준 조정</h3>
+<ul>
+<li>숨은 요소(<code>hidden</code> · 닫힌 창)의 클래스, 인쇄 전용(<code>@media print</code>) 규칙, 선택자에서 조상 조건으로만 쓰인 클래스는 오탐이라 제외</li>
+<li>공개 화면(<code>public</code> · <code>board-skins</code>) 제외</li>
+<li>스크립트가 그리는 부분(차트 px · 슬라이드 폭 · 툴팁 · 열린 메뉴 좌표)은 「키트 전용」으로 따로 분류 — 작업필요 자동 표시에서 뺌(확인 필요 295 → 283, 키트 전용 12)</li>
+<li>3번 게시판 <code>nv-nav-table</code>(<code>navigation.css</code> 미연결) 오탐 정리 — 점검에서 제외(확인 필요 283 → 217)</li>
+<li>4번 스타일가이드 토스트를 「키트 전용」으로 분류(확인 필요 217 → 203, 키트 전용 12 → 26)</li>
+<li>5번 민원 처리 편집기 CSS 연결로 해소(203 → 195)</li>
+<li><code>cm-term-sub</code> 오탐 정리 — 실측 차이 없음, 점검에서 제외(195 → 61)</li>
+<li><code>cm-chart-area · cm-chart-box</code> 오탐, 공개 누리집 틀로 그려진 콘솔 미리보기 제외, 위지윅 편집 영역 안 콘텐츠 본문 제외(61 → <b>0</b>, 키트 전용 26 → 22)</li>
+</ul>
+
+<h3>다음 할 일</h3>
+<ul>
+<li><b>서버 반영 전달</b>: 5번 민원 처리 답변 편집기(미리보기 칸 마크업 + CSS 3개 연결) · 2번 통계표 미리보기 용어해설 표 · 출처 마크업</li>
+<li>브라우저 검사(가로 넘침 · 겹침 · 잘림) 추가</li>
+</ul>
+</section>
+
+<!-- ========================= 이전 작업 ========================= -->
+<section class="round" id="r0">
+<h2>이전 작업 <small>2026-11-24 · PR #8 · #9 머지</small></h2>
+<table>
+<colgroup><col style="width:28%"><col style="width:12%"><col style="width:60%"></colgroup>
+<thead><tr><th>작업</th><th>규모</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td>⋮ 작업 버튼 스타일가이드 적용</td><td class="num">9,981개</td><td><code>nv-btn</code> → <code>nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs</code> + <code>i-dots-three-vertical</code>. <code>data-dropmenu</code> · <code>aria-*</code> 유지</td></tr>
+<tr><td>그래프 시각화 링크 버튼</td><td class="num">15개</td><td>같은 스타일, 그래프 아이콘 유지</td></tr>
+<tr><td>표 머리 일괄 작업 ⋮ → 「작업」</td><td class="num">44개 화면</td><td>메뉴관리 · 게시판 관리 기본 화면과 상태 화면</td></tr>
+<tr><td>열린 줄 작업 메뉴 위치</td><td class="num">149곳</td><td>캡처 좌표 제거 → 버튼 오른쪽 아래 4. <code>cms-admin-v2.css</code>에 스크롤 영역 잘림 방지 규칙</td></tr>
+<tr><td>검색창</td><td class="num">283곳</td><td>장식 돋보기 + 별도 「검색」 → 입력칸 안 돋보기 검색 버튼(<code>nv-input-wrap__btn</code>)</td></tr>
+<tr><td>화면 목록 점검판</td><td class="num">1</td><td><code>index_process.html</code>: 열리지 않는 링크 287 표시, 처리 · 처리자 선택</td></tr>
+</tbody></table>
+</section>
+
+<p class="note">이 페이지는 직접 고쳐도 됩니다. 새 차수는 <code>&lt;section class="round"&gt;</code> 하나를 복사해 맨 위(1차 위)에 붙이고 날짜 · 처리 내용 · 수치를 바꾸면 됩니다.</p>
+</main></body></html>
