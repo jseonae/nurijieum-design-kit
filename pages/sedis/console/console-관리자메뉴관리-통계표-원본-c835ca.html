@@ -512,30 +512,27 @@
             
             
             <div class="ed-page" data-admin-menu-edit="svc:sedis:ts-source">
-                <div class="nv-editor-header edh">
-                    <div class="edh__row">
-                        <a class="nv-btn nv-btn--sm nv-btn--outline edh__back" href="console-관리자메뉴관리-c742c2.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-arrow-left"></use></svg>목록으로</a>
-                        <span class="edh__nav">
-                            <a class="nv-btn nv-btn--sm nv-btn--outline edh__step" href="console-관리자메뉴관리-데이터-주제-5295a8.html">이전: 데이터 주제</a>
-                            <a class="nv-btn nv-btn--sm nv-btn--outline edh__step" href="console-관리자메뉴관리-통계표-통합-5978a7.html">다음: 통계표 통합</a>
-                        </span>
-                    </div>
-                    <div class="edh__row edh__row--title">
-                        <span class="edh__kind">관리자 메뉴 수정</span>
-                        <h1 class="edh__name" id="cms-page-title">통계표 원본</h1>
-                        <span class="edh__badges">
-                            <span class="nv-badge nv-badge--info" title="연결 서비스 메뉴 — sedis 서비스가 매니페스트로 알려 준 메뉴입니다">연결 서비스 메뉴</span>
-                            
-                            
-                        </span>
+                <!-- 2026-11-25 머리를 메뉴관리 메뉴 수정(edx) 모양으로: 위 막대(뒤로 · 종류) + 카드 머리(제목 · 배지 · 이전/다음) + 탭 -->
+                <div class="edx-top">
+                    <div class="nv-editor-header">
+                        <a class="edx-back" href="console-관리자메뉴관리-c742c2.html" aria-label="관리자 메뉴 목록으로" title="관리자 메뉴 목록으로"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-arrow-left"></use></svg></a>
+                        <p class="edx-kind">관리자 메뉴 수정</p>
                     </div>
                 </div>
-
-                <nav class="nv-tabs nv-tabs--auto gtabs ed-tabs" aria-label="설정">
-                    <a class="am-tab" href="console-관리자메뉴관리-통계표-원본-64ad94.html" title="콘솔 메뉴의 출력순서를 고칩니다. 이름과 링크URL은 누리지음 제품과 연결 서비스가 정합니다.">메뉴 정보</a>
-                    <a class="am-tab" href="console-관리자메뉴관리-통계표-원본-9bbcc1.html" title="이 콘솔 메뉴를 어느 권한그룹이 보고 고칠 수 있는지 정합니다. 「저장」하면 사유와 함께 수정 이력에 남습니다.">접근권한</a>
-                    <a class="am-tab" href="console-관리자메뉴관리-통계표-원본-c835ca.html" title="이 메뉴를 언제, 누가, 왜 고쳤는지 봅니다. 기록은 고치거나 지울 수 없습니다." aria-current="page">수정 이력</a>
-                </nav>
+                <section class="edx-card" aria-labelledby="cms-page-title">
+                    <div class="edx-card__head">
+                        <div class="edx-card__id"><div class="edx-card__title">
+                            <h1 class="edx-card__name" id="cms-page-title">통계표 원본</h1>
+                            <span class="nv-badge nv-badge--info" title="연결 서비스 메뉴 — sedis 서비스가 매니페스트로 알려 준 메뉴입니다">연결 서비스 메뉴</span>
+                        </div></div>
+                        <div class="edx-card__tools"><span class="edx-steps"><a data-menu-near="previous" href="console-관리자메뉴관리-데이터-주제-5295a8.html" title="이전: 데이터 주제"><svg class="nv-icon flip" aria-hidden="true"><use href="#nv-i-chevron-right"></use></svg><span>이전: 데이터 주제</span></a><a data-menu-near="next" href="console-관리자메뉴관리-통계표-통합-5978a7.html" title="다음: 통계표 통합"><span>다음: 통계표 통합</span><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-chevron-right"></use></svg></a></span></div>
+                    </div>
+                    <nav class="nv-tabs nv-tabs--auto gtabs ed-tabs" aria-label="설정">
+                        <a class="am-tab" href="console-관리자메뉴관리-통계표-원본-64ad94.html" title="콘솔 메뉴의 출력순서를 고칩니다. 이름과 링크URL은 누리지음 제품과 연결 서비스가 정합니다.">메뉴 정보</a>
+                        <a class="am-tab" href="console-관리자메뉴관리-통계표-원본-9bbcc1.html" title="이 콘솔 메뉴를 어느 권한그룹이 보고 고칠 수 있는지 정합니다. 「저장」하면 사유와 함께 수정 이력에 남습니다.">접근권한</a>
+                        <a class="am-tab" href="console-관리자메뉴관리-통계표-원본-c835ca.html" title="이 메뉴를 언제, 누가, 왜 고쳤는지 봅니다. 기록은 고치거나 지울 수 없습니다." aria-current="page">수정 이력</a>
+                        </nav>
+                </section>
 
                 <!-- 메뉴 정보(시안 infoAdmin): 이름 · 링크URL은 읽기만, 출력순서만 고친다 -->
                 

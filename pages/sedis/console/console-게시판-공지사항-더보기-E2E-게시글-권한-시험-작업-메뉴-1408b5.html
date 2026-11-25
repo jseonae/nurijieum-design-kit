@@ -1139,7 +1139,8 @@
             </div>
         </div>
         <div class="bd-page__grid">
-            <div class="nv-editor bd-page__main">
+            <div class="nv-stack">
+                <div class="nv-editor bd-page__main">
                 <label class="nv-field__hint" for="pTitle">제목</label>
                 <input id="pTitle" class="nv-editor__title" name="title" required="" placeholder="제목을 입력하세요." value="">
                 
@@ -1170,29 +1171,28 @@
                 </div>
                     <!-- 대표 썸네일 · 첨부파일(시안 820:50870 · 게시판 스킨 「게시글 등록」은 본문 아래): 고른 파일은 저장하면서 함께 올린다(사용처 BOARD_POST, 수정 화면과 같은 카드).
                          첨부를 받지 않는 게시판은 첨부 카드를 숨기고, 최대 개수가 있으면 그 수까지만 고르게 한다(서버가 다시 본다) -->
-                    <div class="nv-form-group nv-attach">
-                        <span class="nv-form-group__title">대표 썸네일 이미지</span>
-                        <img class="nv-attach__cover" alt="고른 썸네일 미리보기" data-file-preview="" hidden="">
-                        <label class="nv-dropzone" data-file-drop=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
-                            <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
-                            <input type="file" class="nv-sr-only" name="cover" accept="image/png,image/jpeg" data-max-bytes="5242880" data-limit-message="대표 썸네일은 5MB 까지입니다." aria-label="대표 썸네일 이미지 선택 (PNG · JPG, 5MB까지)"></label>
-                        <div class="nv-file" hidden="">
-                            <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>
-                            <span class="nv-grow" data-file-name="">파일명</span><span class="nv-file__size" data-file-size=""></span>
-                            <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-file-clear="" aria-label="썸네일 선택 해제"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
-                        </div>
-                    </div>
-                    <div class="nv-form-group nv-attach">
-                        <span class="nv-form-group__title">첨부파일 (0)</span>
-                        <label class="nv-dropzone" data-file-drop=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                            <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>10개 · 합계 25MB 까지</small>
-                            <input type="file" class="nv-sr-only" name="attachments" multiple="" data-max-bytes="26214400" data-max-files="10" data-limit-message="첨부는 10개 · 합계 25MB 까지입니다." aria-label="첨부파일 선택 (여러 개, 10개 · 합계 25MB까지)"></label>
-                        <div class="nv-file" hidden="">
-                            <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                            <span class="nv-grow" data-file-name="">파일명</span><span class="nv-file__size" data-file-size=""></span>
-                            <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-file-clear="" aria-label="첨부 선택 해제"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
-                        </div>
-                    </div>
+</div>
+                <!-- 2026-11-25 우측에서 옮김: 공공누리 유형 · 게시판 — 본문 카드 아래 별도 카드(우측에는 대표 썸네일 · 첨부파일) -->
+                    <div class="nv-form-group bd-kogl" data-kogl-group="">
+                    <label class="nv-form-group__title" for="pKogl">공공누리 유형</label>
+                    <select id="pKogl" class="nv-select" name="koglType" data-kogl-type="">
+                        <option value="1" selected="">제1유형</option>
+                        <option value="2">제2유형</option>
+                        <option value="3">제3유형</option>
+                        <option value="4">제4유형</option>
+                        <option value="0">적용 안 함</option>
+                    </select>
+                    <label class="nv-field__hint" for="pKoglYear">작성연도</label>
+                    <input id="pKoglYear" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" required="">
+                    <label class="nv-field__hint" for="pKoglRestr">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
+                    <input id="pKoglRestr" class="nv-input" name="koglRestriction" maxlength="500" placeholder="예: 외부 연구진 저작물로 개방 대상이 아닙니다." data-kogl-closed="" disabled="" value="">
+                    <span class="nv-field__hint">게시글마다 지정합니다. 저작물명은 제목을 씁니다.</span>
+                </div>
+                    <div class="nv-form-group">
+                    <span class="nv-form-group__title">게시판</span>
+                    <span class="nv-text-base">공지사항</span>
+                    <span class="nv-text-sm nv-text-subtle nv-mono">NOTICE</span>
+                </div>
             </div>
             <aside class="nv-stack bd-page__side">
                 <!-- 시안 「카테고리 분류」 자리 = 공지사항으로 등록할지(토글). 게시판별 분류 목록은 쓰지 않는다 -->
@@ -1218,27 +1218,31 @@
                     </div>
                     <span class="nv-field__hint">예약 게시는 정한 일시가 되면 자동으로 게시됩니다(그 전에는 공개 화면에 나오지 않습니다). 일시가 없으면 저장되지 않습니다.</span>
                 </div>
-                <div class="nv-form-group bd-kogl" data-kogl-group="">
-                    <label class="nv-form-group__title" for="pKogl">공공누리 유형</label>
-                    <select id="pKogl" class="nv-select" name="koglType" data-kogl-type="">
-                        <option value="1" selected="">제1유형</option>
-                        <option value="2">제2유형</option>
-                        <option value="3">제3유형</option>
-                        <option value="4">제4유형</option>
-                        <option value="0">적용 안 함</option>
-                    </select>
-                    <label class="nv-field__hint" for="pKoglYear">작성연도</label>
-                    <input id="pKoglYear" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" required="">
-                    <label class="nv-field__hint" for="pKoglRestr">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
-                    <input id="pKoglRestr" class="nv-input" name="koglRestriction" maxlength="500" placeholder="예: 외부 연구진 저작물로 개방 대상이 아닙니다." data-kogl-closed="" disabled="" value="">
-                    <span class="nv-field__hint">게시글마다 지정합니다. 저작물명은 제목을 씁니다.</span>
-                </div>
-                <div class="nv-form-group">
-                    <span class="nv-form-group__title">게시판</span>
-                    <span class="nv-text-base">공지사항</span>
-                    <span class="nv-text-sm nv-text-subtle nv-mono">NOTICE</span>
-                </div>
-            </aside>
+                <!-- 2026-11-25 좌측에서 옮김: 대표 썸네일 · 첨부파일 -->
+                <div class="nv-form-group nv-attach">
+                        <span class="nv-form-group__title">대표 썸네일 이미지</span>
+                        <img class="nv-attach__cover" alt="고른 썸네일 미리보기" data-file-preview="" hidden="">
+                        <label class="nv-dropzone" data-file-drop=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
+                            <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
+                            <input type="file" class="nv-sr-only" name="cover" accept="image/png,image/jpeg" data-max-bytes="5242880" data-limit-message="대표 썸네일은 5MB 까지입니다." aria-label="대표 썸네일 이미지 선택 (PNG · JPG, 5MB까지)"></label>
+                        <div class="nv-file" hidden="">
+                            <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>
+                            <span class="nv-grow" data-file-name="">파일명</span><span class="nv-file__size" data-file-size=""></span>
+                            <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-file-clear="" aria-label="썸네일 선택 해제"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                        </div>
+                    </div>
+                <div class="nv-form-group nv-attach">
+                        <span class="nv-form-group__title">첨부파일 (0)</span>
+                        <label class="nv-dropzone" data-file-drop=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                            <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>10개 · 합계 25MB 까지</small>
+                            <input type="file" class="nv-sr-only" name="attachments" multiple="" data-max-bytes="26214400" data-max-files="10" data-limit-message="첨부는 10개 · 합계 25MB 까지입니다." aria-label="첨부파일 선택 (여러 개, 10개 · 합계 25MB까지)"></label>
+                        <div class="nv-file" hidden="">
+                            <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                            <span class="nv-grow" data-file-name="">파일명</span><span class="nv-file__size" data-file-size=""></span>
+                            <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-file-clear="" aria-label="첨부 선택 해제"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                        </div>
+                    </div>
+</aside>
         </div>
     </form>
 
@@ -1272,7 +1276,8 @@
                 </div>
             </div>
             <div class="bd-page__grid">
-                <div class="nv-editor bd-page__main">
+                <div class="nv-stack">
+                    <div class="nv-editor bd-page__main">
                     <label class="nv-field__hint" for="pe-title-BP9b7ef49ae4bb4ad5a7169166a317ac30">제목</label>
                     <input id="pe-title-BP9b7ef49ae4bb4ad5a7169166a317ac30" class="nv-editor__title" name="title" required="" value="특수교육 실태조사 데이터 활용 시스템 구축 사업 착수 안내" placeholder="제목을 입력하세요.">
                     
@@ -1307,45 +1312,24 @@
                          콘솔 미디어 업로드(/media-uploads, 사용처 BOARD_POST, admin-v2.js data-media-upload data-upload-auto). 빼기 = 아래 숨은 폼(form 속성).
                          게시판 첨부 설정(#59): 받지 않는 게시판은 첨부 카드를 올리지 않고(이미 붙은 첨부는 그대로), 최대 개수에 닿으면 올리기를 막는다.
                          서버(콘솔 업로드 /media-uploads, data-board-id)도 다시 검사한다 -->
-                    
-                        
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP9b7ef49ae4bb4ad5a7169166a317ac30/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP9b7ef49ae4bb4ad5a7169166a317ac30">
-                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
-                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
-                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
-                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                        </div>
                         
                         <!-- att 는 감싼 th:block 에서 — 한 태그 안에서는 th:if 가 th:with 보다 먼저라 att 가 아직 없다 -->
-                        
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP9b7ef49ae4bb4ad5a7169166a317ac30/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP9b7ef49ae4bb4ad5a7169166a317ac30" data-board-id="BD39855ec310ca4598a50f183983c518e1">
-                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
-                            <label class="nv-dropzone" data-media-gate=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
-                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택"></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" data-max-bytes="26214400">
-                            
-                            
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                            <div data-media-list="">
-                                
-                            </div>
-                            <template data-media-row="">
-                                <div class="nv-file" data-media-item="">
-                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                    <a class="nv-grow" data-media-name="" href="#"></a>
-                                    <span class="nv-file__size" data-media-size=""></span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
-                                </div>
-                            </template>
-                        </div>
-                        
-                    
+</div>
+                    <!-- 2026-11-25 우측에서 옮김: 공공누리 유형 · 게시판 — 본문 카드 아래 별도 카드(우측에는 대표 썸네일 · 첨부파일) -->
+                        <div class="nv-form-group bd-kogl" data-kogl-group="">
+                        <label class="nv-form-group__title" for="pe-kogl-BP9b7ef49ae4bb4ad5a7169166a317ac30">공공누리 유형</label>
+                        <select id="pe-kogl-BP9b7ef49ae4bb4ad5a7169166a317ac30" class="nv-select" name="koglType" data-kogl-type="">
+                            <option value="1">제1유형</option>
+                            <option value="2">제2유형</option>
+                            <option value="3">제3유형</option>
+                            <option value="4">제4유형</option>
+                            <option value="0" selected="">적용 안 함</option>
+                        </select>
+                        <label class="nv-field__hint" for="pe-kogl-year-BP9b7ef49ae4bb4ad5a7169166a317ac30">작성연도</label>
+                        <input id="pe-kogl-year-BP9b7ef49ae4bb4ad5a7169166a317ac30" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" disabled="">
+                        <label class="nv-field__hint" for="pe-kogl-restr-BP9b7ef49ae4bb4ad5a7169166a317ac30">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
+                        <input id="pe-kogl-restr-BP9b7ef49ae4bb4ad5a7169166a317ac30" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="">
+                    </div>
                 </div>
                 <aside class="nv-stack bd-page__side">
                     <!-- 시안 「카테고리 분류」 자리 = 공지사항으로 등록할지(토글). 예전에 넣은 분류 값은 그대로 돌려보낸다(수정은 교체) -->
@@ -1370,25 +1354,44 @@
                         <!-- 예약 게시(adm_1504-04) — 임시저장 글만. 버튼은 아래 숨은 폼을 form 속성으로 제출 -->
                         
                     </div>
-                    <div class="nv-form-group bd-kogl" data-kogl-group="">
-                        <label class="nv-form-group__title" for="pe-kogl-BP9b7ef49ae4bb4ad5a7169166a317ac30">공공누리 유형</label>
-                        <select id="pe-kogl-BP9b7ef49ae4bb4ad5a7169166a317ac30" class="nv-select" name="koglType" data-kogl-type="">
-                            <option value="1">제1유형</option>
-                            <option value="2">제2유형</option>
-                            <option value="3">제3유형</option>
-                            <option value="4">제4유형</option>
-                            <option value="0" selected="">적용 안 함</option>
-                        </select>
-                        <label class="nv-field__hint" for="pe-kogl-year-BP9b7ef49ae4bb4ad5a7169166a317ac30">작성연도</label>
-                        <input id="pe-kogl-year-BP9b7ef49ae4bb4ad5a7169166a317ac30" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" disabled="">
-                        <label class="nv-field__hint" for="pe-kogl-restr-BP9b7ef49ae4bb4ad5a7169166a317ac30">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
-                        <input id="pe-kogl-restr-BP9b7ef49ae4bb4ad5a7169166a317ac30" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="">
-                    </div>
                     <div class="nv-form-group">
                         <span class="nv-form-group__title">게시글 정보</span>
                         <dl class="bd-meta"><dt>게시판</dt><dd>공지사항</dd><dt>작성일</dt><dd>2026-10-24</dd><dt>상태</dt><dd><span class="nv-badge nv-badge--ok">게시중</span></dd></dl>
                     </div>
-                </aside>
+                    <!-- 2026-11-25 좌측에서 옮김: 대표 썸네일 · 첨부파일 -->
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP9b7ef49ae4bb4ad5a7169166a317ac30/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP9b7ef49ae4bb4ad5a7169166a317ac30">
+                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
+                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
+                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
+                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                        </div>
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP9b7ef49ae4bb4ad5a7169166a317ac30/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP9b7ef49ae4bb4ad5a7169166a317ac30" data-board-id="BD39855ec310ca4598a50f183983c518e1">
+                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
+                            <label class="nv-dropzone" data-media-gate=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
+                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택"></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" data-max-bytes="26214400">
+                            
+                            
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                            <div data-media-list="">
+                                
+                            </div>
+                            <template data-media-row="">
+                                <div class="nv-file" data-media-item="">
+                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                    <a class="nv-grow" data-media-name="" href="#"></a>
+                                    <span class="nv-file__size" data-media-size=""></span>
+                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
+                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                </div>
+                            </template>
+                        </div>
+</aside>
             </div>
         </form>
         <!-- 상태 전환 폼(수정 화면 라디오·보관하기 버튼이 제출) -->
@@ -1477,7 +1480,8 @@
                 </div>
             </div>
             <div class="bd-page__grid">
-                <div class="nv-editor bd-page__main">
+                <div class="nv-stack">
+                    <div class="nv-editor bd-page__main">
                     <label class="nv-field__hint" for="pe-title-BP67aa262c8dc841eeb474b8264569c9a8">제목</label>
                     <input id="pe-title-BP67aa262c8dc841eeb474b8264569c9a8" class="nv-editor__title" name="title" required="" value="[E2E] 담당자 시험 741622 수정" placeholder="제목을 입력하세요.">
                     
@@ -1512,9 +1516,54 @@
                          콘솔 미디어 업로드(/media-uploads, 사용처 BOARD_POST, admin-v2.js data-media-upload data-upload-auto). 빼기 = 아래 숨은 폼(form 속성).
                          게시판 첨부 설정(#59): 받지 않는 게시판은 첨부 카드를 올리지 않고(이미 붙은 첨부는 그대로), 최대 개수에 닿으면 올리기를 막는다.
                          서버(콘솔 업로드 /media-uploads, data-board-id)도 다시 검사한다 -->
-                    
                         
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP67aa262c8dc841eeb474b8264569c9a8/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP67aa262c8dc841eeb474b8264569c9a8">
+                        <!-- att 는 감싼 th:block 에서 — 한 태그 안에서는 th:if 가 th:with 보다 먼저라 att 가 아직 없다 -->
+</div>
+                    <!-- 2026-11-25 우측에서 옮김: 공공누리 유형 · 게시판 — 본문 카드 아래 별도 카드(우측에는 대표 썸네일 · 첨부파일) -->
+                        <div class="nv-form-group bd-kogl" data-kogl-group="">
+                        <label class="nv-form-group__title" for="pe-kogl-BP67aa262c8dc841eeb474b8264569c9a8">공공누리 유형</label>
+                        <select id="pe-kogl-BP67aa262c8dc841eeb474b8264569c9a8" class="nv-select" name="koglType" data-kogl-type="">
+                            <option value="1" selected="">제1유형</option>
+                            <option value="2">제2유형</option>
+                            <option value="3">제3유형</option>
+                            <option value="4">제4유형</option>
+                            <option value="0">적용 안 함</option>
+                        </select>
+                        <label class="nv-field__hint" for="pe-kogl-year-BP67aa262c8dc841eeb474b8264569c9a8">작성연도</label>
+                        <input id="pe-kogl-year-BP67aa262c8dc841eeb474b8264569c9a8" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" required="">
+                        <label class="nv-field__hint" for="pe-kogl-restr-BP67aa262c8dc841eeb474b8264569c9a8">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
+                        <input id="pe-kogl-restr-BP67aa262c8dc841eeb474b8264569c9a8" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="" disabled="">
+                    </div>
+                </div>
+                <aside class="nv-stack bd-page__side">
+                    <!-- 시안 「카테고리 분류」 자리 = 공지사항으로 등록할지(토글). 예전에 넣은 분류 값은 그대로 돌려보낸다(수정은 교체) -->
+                    
+                    <div class="nv-form-group">
+                        <span class="nv-form-group__title">공지 설정</span>
+                        <label class="nv-switch cms-admin-switch">
+                            <input id="pe-notice-BP67aa262c8dc841eeb474b8264569c9a8" type="checkbox" name="notice" value="on" role="switch">
+                            <span>공지사항으로 등록</span>
+                        </label>
+                    </div>
+                    <!-- 기본정보(adm_1504-03, 자료실형 게시판만): 저자(필수)·발행기관·발행연도(필수, 4자리). 공개 상세 「연구자 · 발행일」 -->
+                    
+                    <div class="nv-form-group">
+                        <span class="nv-form-group__title">게시 여부 설정</span>
+                        <div class="nv-choice-list">
+                            <label class="nv-radio"><input type="radio" name="pstate-BP67aa262c8dc841eeb474b8264569c9a8" value="PUBLISHED" data-post-state-form="post-publish-form-BP67aa262c8dc841eeb474b8264569c9a8">게시중 (즉시 배포)</label>
+                            <label class="nv-radio"><input type="radio" name="pstate-BP67aa262c8dc841eeb474b8264569c9a8" value="DRAFT" disabled="disabled">임시저장 (비공개)</label>
+                            <label class="nv-radio"><input type="radio" name="pstate-BP67aa262c8dc841eeb474b8264569c9a8" value="ARCHIVED" checked="" disabled="disabled">보관 (노출 종료)</label>
+                        </div>
+                        <span class="nv-field__hint">선택하면 즉시 반영됩니다. 임시저장 → 게시중, 게시중 → 보관 순서로만 바꿀 수 있습니다.</span>
+                        <!-- 예약 게시(adm_1504-04) — 임시저장 글만. 버튼은 아래 숨은 폼을 form 속성으로 제출 -->
+                        
+                    </div>
+                    <div class="nv-form-group">
+                        <span class="nv-form-group__title">게시글 정보</span>
+                        <dl class="bd-meta"><dt>게시판</dt><dd>공지사항</dd><dt>작성일</dt><dd>2026-10-26</dd><dt>상태</dt><dd><span class="nv-badge">보관</span></dd></dl>
+                    </div>
+                    <!-- 2026-11-25 좌측에서 옮김: 대표 썸네일 · 첨부파일 -->
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP67aa262c8dc841eeb474b8264569c9a8/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP67aa262c8dc841eeb474b8264569c9a8">
                             <span class="nv-form-group__title">대표 썸네일 이미지</span>
                             <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
                             <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
@@ -1524,10 +1573,7 @@
                             <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
                             <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                         </div>
-                        
-                        <!-- att 는 감싼 th:block 에서 — 한 태그 안에서는 th:if 가 th:with 보다 먼저라 att 가 아직 없다 -->
-                        
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP67aa262c8dc841eeb474b8264569c9a8/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP67aa262c8dc841eeb474b8264569c9a8" data-board-id="BD39855ec310ca4598a50f183983c518e1">
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP67aa262c8dc841eeb474b8264569c9a8/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP67aa262c8dc841eeb474b8264569c9a8" data-board-id="BD39855ec310ca4598a50f183983c518e1">
                             <span class="nv-form-group__title" data-media-count="">첨부파일 (1)</span>
                             <label class="nv-dropzone" data-media-gate=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
                                 <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
@@ -1555,51 +1601,7 @@
                                 </div>
                             </template>
                         </div>
-                        
-                    
-                </div>
-                <aside class="nv-stack bd-page__side">
-                    <!-- 시안 「카테고리 분류」 자리 = 공지사항으로 등록할지(토글). 예전에 넣은 분류 값은 그대로 돌려보낸다(수정은 교체) -->
-                    
-                    <div class="nv-form-group">
-                        <span class="nv-form-group__title">공지 설정</span>
-                        <label class="nv-switch cms-admin-switch">
-                            <input id="pe-notice-BP67aa262c8dc841eeb474b8264569c9a8" type="checkbox" name="notice" value="on" role="switch">
-                            <span>공지사항으로 등록</span>
-                        </label>
-                    </div>
-                    <!-- 기본정보(adm_1504-03, 자료실형 게시판만): 저자(필수)·발행기관·발행연도(필수, 4자리). 공개 상세 「연구자 · 발행일」 -->
-                    
-                    <div class="nv-form-group">
-                        <span class="nv-form-group__title">게시 여부 설정</span>
-                        <div class="nv-choice-list">
-                            <label class="nv-radio"><input type="radio" name="pstate-BP67aa262c8dc841eeb474b8264569c9a8" value="PUBLISHED" data-post-state-form="post-publish-form-BP67aa262c8dc841eeb474b8264569c9a8">게시중 (즉시 배포)</label>
-                            <label class="nv-radio"><input type="radio" name="pstate-BP67aa262c8dc841eeb474b8264569c9a8" value="DRAFT" disabled="disabled">임시저장 (비공개)</label>
-                            <label class="nv-radio"><input type="radio" name="pstate-BP67aa262c8dc841eeb474b8264569c9a8" value="ARCHIVED" checked="" disabled="disabled">보관 (노출 종료)</label>
-                        </div>
-                        <span class="nv-field__hint">선택하면 즉시 반영됩니다. 임시저장 → 게시중, 게시중 → 보관 순서로만 바꿀 수 있습니다.</span>
-                        <!-- 예약 게시(adm_1504-04) — 임시저장 글만. 버튼은 아래 숨은 폼을 form 속성으로 제출 -->
-                        
-                    </div>
-                    <div class="nv-form-group bd-kogl" data-kogl-group="">
-                        <label class="nv-form-group__title" for="pe-kogl-BP67aa262c8dc841eeb474b8264569c9a8">공공누리 유형</label>
-                        <select id="pe-kogl-BP67aa262c8dc841eeb474b8264569c9a8" class="nv-select" name="koglType" data-kogl-type="">
-                            <option value="1" selected="">제1유형</option>
-                            <option value="2">제2유형</option>
-                            <option value="3">제3유형</option>
-                            <option value="4">제4유형</option>
-                            <option value="0">적용 안 함</option>
-                        </select>
-                        <label class="nv-field__hint" for="pe-kogl-year-BP67aa262c8dc841eeb474b8264569c9a8">작성연도</label>
-                        <input id="pe-kogl-year-BP67aa262c8dc841eeb474b8264569c9a8" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" required="">
-                        <label class="nv-field__hint" for="pe-kogl-restr-BP67aa262c8dc841eeb474b8264569c9a8">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
-                        <input id="pe-kogl-restr-BP67aa262c8dc841eeb474b8264569c9a8" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="" disabled="">
-                    </div>
-                    <div class="nv-form-group">
-                        <span class="nv-form-group__title">게시글 정보</span>
-                        <dl class="bd-meta"><dt>게시판</dt><dd>공지사항</dd><dt>작성일</dt><dd>2026-10-26</dd><dt>상태</dt><dd><span class="nv-badge">보관</span></dd></dl>
-                    </div>
-                </aside>
+</aside>
             </div>
         </form>
         <!-- 상태 전환 폼(수정 화면 라디오·보관하기 버튼이 제출) -->
@@ -1715,7 +1717,8 @@
                 </div>
             </div>
             <div class="bd-page__grid">
-                <div class="nv-editor bd-page__main">
+                <div class="nv-stack">
+                    <div class="nv-editor bd-page__main">
                     <label class="nv-field__hint" for="pe-title-BP73ec03507aab4a8cb766353ca4f53674">제목</label>
                     <input id="pe-title-BP73ec03507aab4a8cb766353ca4f53674" class="nv-editor__title" name="title" required="" value="[E2E] 게시글 권한 시험(편집자 수정)" placeholder="제목을 입력하세요.">
                     
@@ -1750,45 +1753,24 @@
                          콘솔 미디어 업로드(/media-uploads, 사용처 BOARD_POST, admin-v2.js data-media-upload data-upload-auto). 빼기 = 아래 숨은 폼(form 속성).
                          게시판 첨부 설정(#59): 받지 않는 게시판은 첨부 카드를 올리지 않고(이미 붙은 첨부는 그대로), 최대 개수에 닿으면 올리기를 막는다.
                          서버(콘솔 업로드 /media-uploads, data-board-id)도 다시 검사한다 -->
-                    
-                        
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP73ec03507aab4a8cb766353ca4f53674/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP73ec03507aab4a8cb766353ca4f53674">
-                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
-                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
-                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
-                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                        </div>
                         
                         <!-- att 는 감싼 th:block 에서 — 한 태그 안에서는 th:if 가 th:with 보다 먼저라 att 가 아직 없다 -->
-                        
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP73ec03507aab4a8cb766353ca4f53674/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP73ec03507aab4a8cb766353ca4f53674" data-board-id="BD39855ec310ca4598a50f183983c518e1">
-                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
-                            <label class="nv-dropzone" data-media-gate=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
-                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택"></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" data-max-bytes="26214400">
-                            
-                            
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                            <div data-media-list="">
-                                
-                            </div>
-                            <template data-media-row="">
-                                <div class="nv-file" data-media-item="">
-                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                    <a class="nv-grow" data-media-name="" href="#"></a>
-                                    <span class="nv-file__size" data-media-size=""></span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
-                                </div>
-                            </template>
-                        </div>
-                        
-                    
+</div>
+                    <!-- 2026-11-25 우측에서 옮김: 공공누리 유형 · 게시판 — 본문 카드 아래 별도 카드(우측에는 대표 썸네일 · 첨부파일) -->
+                        <div class="nv-form-group bd-kogl" data-kogl-group="">
+                        <label class="nv-form-group__title" for="pe-kogl-BP73ec03507aab4a8cb766353ca4f53674">공공누리 유형</label>
+                        <select id="pe-kogl-BP73ec03507aab4a8cb766353ca4f53674" class="nv-select" name="koglType" data-kogl-type="">
+                            <option value="1">제1유형</option>
+                            <option value="2">제2유형</option>
+                            <option value="3">제3유형</option>
+                            <option value="4">제4유형</option>
+                            <option value="0" selected="">적용 안 함</option>
+                        </select>
+                        <label class="nv-field__hint" for="pe-kogl-year-BP73ec03507aab4a8cb766353ca4f53674">작성연도</label>
+                        <input id="pe-kogl-year-BP73ec03507aab4a8cb766353ca4f53674" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" disabled="">
+                        <label class="nv-field__hint" for="pe-kogl-restr-BP73ec03507aab4a8cb766353ca4f53674">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
+                        <input id="pe-kogl-restr-BP73ec03507aab4a8cb766353ca4f53674" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="">
+                    </div>
                 </div>
                 <aside class="nv-stack bd-page__side">
                     <!-- 시안 「카테고리 분류」 자리 = 공지사항으로 등록할지(토글). 예전에 넣은 분류 값은 그대로 돌려보낸다(수정은 교체) -->
@@ -1813,25 +1795,44 @@
                         <!-- 예약 게시(adm_1504-04) — 임시저장 글만. 버튼은 아래 숨은 폼을 form 속성으로 제출 -->
                         
                     </div>
-                    <div class="nv-form-group bd-kogl" data-kogl-group="">
-                        <label class="nv-form-group__title" for="pe-kogl-BP73ec03507aab4a8cb766353ca4f53674">공공누리 유형</label>
-                        <select id="pe-kogl-BP73ec03507aab4a8cb766353ca4f53674" class="nv-select" name="koglType" data-kogl-type="">
-                            <option value="1">제1유형</option>
-                            <option value="2">제2유형</option>
-                            <option value="3">제3유형</option>
-                            <option value="4">제4유형</option>
-                            <option value="0" selected="">적용 안 함</option>
-                        </select>
-                        <label class="nv-field__hint" for="pe-kogl-year-BP73ec03507aab4a8cb766353ca4f53674">작성연도</label>
-                        <input id="pe-kogl-year-BP73ec03507aab4a8cb766353ca4f53674" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" disabled="">
-                        <label class="nv-field__hint" for="pe-kogl-restr-BP73ec03507aab4a8cb766353ca4f53674">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
-                        <input id="pe-kogl-restr-BP73ec03507aab4a8cb766353ca4f53674" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="">
-                    </div>
                     <div class="nv-form-group">
                         <span class="nv-form-group__title">게시글 정보</span>
                         <dl class="bd-meta"><dt>게시판</dt><dd>공지사항</dd><dt>작성일</dt><dd>2026-10-26</dd><dt>상태</dt><dd><span class="nv-badge">보관</span></dd></dl>
                     </div>
-                </aside>
+                    <!-- 2026-11-25 좌측에서 옮김: 대표 썸네일 · 첨부파일 -->
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP73ec03507aab4a8cb766353ca4f53674/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP73ec03507aab4a8cb766353ca4f53674">
+                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
+                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
+                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
+                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                        </div>
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP73ec03507aab4a8cb766353ca4f53674/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP73ec03507aab4a8cb766353ca4f53674" data-board-id="BD39855ec310ca4598a50f183983c518e1">
+                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
+                            <label class="nv-dropzone" data-media-gate=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
+                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택"></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" data-max-bytes="26214400">
+                            
+                            
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                            <div data-media-list="">
+                                
+                            </div>
+                            <template data-media-row="">
+                                <div class="nv-file" data-media-item="">
+                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                    <a class="nv-grow" data-media-name="" href="#"></a>
+                                    <span class="nv-file__size" data-media-size=""></span>
+                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
+                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                </div>
+                            </template>
+                        </div>
+</aside>
             </div>
         </form>
         <!-- 상태 전환 폼(수정 화면 라디오·보관하기 버튼이 제출) -->
@@ -1920,7 +1921,8 @@
                 </div>
             </div>
             <div class="bd-page__grid">
-                <div class="nv-editor bd-page__main">
+                <div class="nv-stack">
+                    <div class="nv-editor bd-page__main">
                     <label class="nv-field__hint" for="pe-title-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e">제목</label>
                     <input id="pe-title-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e" class="nv-editor__title" name="title" required="" value="[E2E] 게시글 권한 시험(편집자 수정)" placeholder="제목을 입력하세요.">
                     
@@ -1955,45 +1957,24 @@
                          콘솔 미디어 업로드(/media-uploads, 사용처 BOARD_POST, admin-v2.js data-media-upload data-upload-auto). 빼기 = 아래 숨은 폼(form 속성).
                          게시판 첨부 설정(#59): 받지 않는 게시판은 첨부 카드를 올리지 않고(이미 붙은 첨부는 그대로), 최대 개수에 닿으면 올리기를 막는다.
                          서버(콘솔 업로드 /media-uploads, data-board-id)도 다시 검사한다 -->
-                    
-                        
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP0d7e83ce29fc43a5ba8ffbc644dc6c9e/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP0d7e83ce29fc43a5ba8ffbc644dc6c9e">
-                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
-                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
-                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
-                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                        </div>
                         
                         <!-- att 는 감싼 th:block 에서 — 한 태그 안에서는 th:if 가 th:with 보다 먼저라 att 가 아직 없다 -->
-                        
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP0d7e83ce29fc43a5ba8ffbc644dc6c9e/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP0d7e83ce29fc43a5ba8ffbc644dc6c9e" data-board-id="BD39855ec310ca4598a50f183983c518e1">
-                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
-                            <label class="nv-dropzone" data-media-gate=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
-                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택"></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" data-max-bytes="26214400">
-                            
-                            
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                            <div data-media-list="">
-                                
-                            </div>
-                            <template data-media-row="">
-                                <div class="nv-file" data-media-item="">
-                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                    <a class="nv-grow" data-media-name="" href="#"></a>
-                                    <span class="nv-file__size" data-media-size=""></span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
-                                </div>
-                            </template>
-                        </div>
-                        
-                    
+</div>
+                    <!-- 2026-11-25 우측에서 옮김: 공공누리 유형 · 게시판 — 본문 카드 아래 별도 카드(우측에는 대표 썸네일 · 첨부파일) -->
+                        <div class="nv-form-group bd-kogl" data-kogl-group="">
+                        <label class="nv-form-group__title" for="pe-kogl-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e">공공누리 유형</label>
+                        <select id="pe-kogl-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e" class="nv-select" name="koglType" data-kogl-type="">
+                            <option value="1">제1유형</option>
+                            <option value="2">제2유형</option>
+                            <option value="3">제3유형</option>
+                            <option value="4">제4유형</option>
+                            <option value="0" selected="">적용 안 함</option>
+                        </select>
+                        <label class="nv-field__hint" for="pe-kogl-year-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e">작성연도</label>
+                        <input id="pe-kogl-year-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" disabled="">
+                        <label class="nv-field__hint" for="pe-kogl-restr-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
+                        <input id="pe-kogl-restr-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="">
+                    </div>
                 </div>
                 <aside class="nv-stack bd-page__side">
                     <!-- 시안 「카테고리 분류」 자리 = 공지사항으로 등록할지(토글). 예전에 넣은 분류 값은 그대로 돌려보낸다(수정은 교체) -->
@@ -2018,25 +1999,44 @@
                         <!-- 예약 게시(adm_1504-04) — 임시저장 글만. 버튼은 아래 숨은 폼을 form 속성으로 제출 -->
                         
                     </div>
-                    <div class="nv-form-group bd-kogl" data-kogl-group="">
-                        <label class="nv-form-group__title" for="pe-kogl-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e">공공누리 유형</label>
-                        <select id="pe-kogl-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e" class="nv-select" name="koglType" data-kogl-type="">
-                            <option value="1">제1유형</option>
-                            <option value="2">제2유형</option>
-                            <option value="3">제3유형</option>
-                            <option value="4">제4유형</option>
-                            <option value="0" selected="">적용 안 함</option>
-                        </select>
-                        <label class="nv-field__hint" for="pe-kogl-year-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e">작성연도</label>
-                        <input id="pe-kogl-year-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" disabled="">
-                        <label class="nv-field__hint" for="pe-kogl-restr-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
-                        <input id="pe-kogl-restr-BP0d7e83ce29fc43a5ba8ffbc644dc6c9e" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="">
-                    </div>
                     <div class="nv-form-group">
                         <span class="nv-form-group__title">게시글 정보</span>
                         <dl class="bd-meta"><dt>게시판</dt><dd>공지사항</dd><dt>작성일</dt><dd>2026-10-26</dd><dt>상태</dt><dd><span class="nv-badge">보관</span></dd></dl>
                     </div>
-                </aside>
+                    <!-- 2026-11-25 좌측에서 옮김: 대표 썸네일 · 첨부파일 -->
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP0d7e83ce29fc43a5ba8ffbc644dc6c9e/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP0d7e83ce29fc43a5ba8ffbc644dc6c9e">
+                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
+                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
+                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
+                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                        </div>
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP0d7e83ce29fc43a5ba8ffbc644dc6c9e/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP0d7e83ce29fc43a5ba8ffbc644dc6c9e" data-board-id="BD39855ec310ca4598a50f183983c518e1">
+                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
+                            <label class="nv-dropzone" data-media-gate=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
+                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택"></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" data-max-bytes="26214400">
+                            
+                            
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                            <div data-media-list="">
+                                
+                            </div>
+                            <template data-media-row="">
+                                <div class="nv-file" data-media-item="">
+                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                    <a class="nv-grow" data-media-name="" href="#"></a>
+                                    <span class="nv-file__size" data-media-size=""></span>
+                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
+                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                </div>
+                            </template>
+                        </div>
+</aside>
             </div>
         </form>
         <!-- 상태 전환 폼(수정 화면 라디오·보관하기 버튼이 제출) -->
@@ -2125,7 +2125,8 @@
                 </div>
             </div>
             <div class="bd-page__grid">
-                <div class="nv-editor bd-page__main">
+                <div class="nv-stack">
+                    <div class="nv-editor bd-page__main">
                     <label class="nv-field__hint" for="pe-title-BP1c274023962f4fe394de871dc6971011">제목</label>
                     <input id="pe-title-BP1c274023962f4fe394de871dc6971011" class="nv-editor__title" name="title" required="" value="[E2E] 게시글 권한 시험" placeholder="제목을 입력하세요.">
                     
@@ -2160,45 +2161,24 @@
                          콘솔 미디어 업로드(/media-uploads, 사용처 BOARD_POST, admin-v2.js data-media-upload data-upload-auto). 빼기 = 아래 숨은 폼(form 속성).
                          게시판 첨부 설정(#59): 받지 않는 게시판은 첨부 카드를 올리지 않고(이미 붙은 첨부는 그대로), 최대 개수에 닿으면 올리기를 막는다.
                          서버(콘솔 업로드 /media-uploads, data-board-id)도 다시 검사한다 -->
-                    
-                        
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP1c274023962f4fe394de871dc6971011/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP1c274023962f4fe394de871dc6971011">
-                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
-                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
-                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
-                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                        </div>
                         
                         <!-- att 는 감싼 th:block 에서 — 한 태그 안에서는 th:if 가 th:with 보다 먼저라 att 가 아직 없다 -->
-                        
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP1c274023962f4fe394de871dc6971011/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP1c274023962f4fe394de871dc6971011" data-board-id="BD39855ec310ca4598a50f183983c518e1">
-                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
-                            <label class="nv-dropzone" data-media-gate=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
-                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택"></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" data-max-bytes="26214400">
-                            
-                            
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                            <div data-media-list="">
-                                
-                            </div>
-                            <template data-media-row="">
-                                <div class="nv-file" data-media-item="">
-                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                    <a class="nv-grow" data-media-name="" href="#"></a>
-                                    <span class="nv-file__size" data-media-size=""></span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
-                                </div>
-                            </template>
-                        </div>
-                        
-                    
+</div>
+                    <!-- 2026-11-25 우측에서 옮김: 공공누리 유형 · 게시판 — 본문 카드 아래 별도 카드(우측에는 대표 썸네일 · 첨부파일) -->
+                        <div class="nv-form-group bd-kogl" data-kogl-group="">
+                        <label class="nv-form-group__title" for="pe-kogl-BP1c274023962f4fe394de871dc6971011">공공누리 유형</label>
+                        <select id="pe-kogl-BP1c274023962f4fe394de871dc6971011" class="nv-select" name="koglType" data-kogl-type="">
+                            <option value="1">제1유형</option>
+                            <option value="2">제2유형</option>
+                            <option value="3">제3유형</option>
+                            <option value="4">제4유형</option>
+                            <option value="0" selected="">적용 안 함</option>
+                        </select>
+                        <label class="nv-field__hint" for="pe-kogl-year-BP1c274023962f4fe394de871dc6971011">작성연도</label>
+                        <input id="pe-kogl-year-BP1c274023962f4fe394de871dc6971011" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" disabled="">
+                        <label class="nv-field__hint" for="pe-kogl-restr-BP1c274023962f4fe394de871dc6971011">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
+                        <input id="pe-kogl-restr-BP1c274023962f4fe394de871dc6971011" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="">
+                    </div>
                 </div>
                 <aside class="nv-stack bd-page__side">
                     <!-- 시안 「카테고리 분류」 자리 = 공지사항으로 등록할지(토글). 예전에 넣은 분류 값은 그대로 돌려보낸다(수정은 교체) -->
@@ -2223,25 +2203,44 @@
                         <!-- 예약 게시(adm_1504-04) — 임시저장 글만. 버튼은 아래 숨은 폼을 form 속성으로 제출 -->
                         
                     </div>
-                    <div class="nv-form-group bd-kogl" data-kogl-group="">
-                        <label class="nv-form-group__title" for="pe-kogl-BP1c274023962f4fe394de871dc6971011">공공누리 유형</label>
-                        <select id="pe-kogl-BP1c274023962f4fe394de871dc6971011" class="nv-select" name="koglType" data-kogl-type="">
-                            <option value="1">제1유형</option>
-                            <option value="2">제2유형</option>
-                            <option value="3">제3유형</option>
-                            <option value="4">제4유형</option>
-                            <option value="0" selected="">적용 안 함</option>
-                        </select>
-                        <label class="nv-field__hint" for="pe-kogl-year-BP1c274023962f4fe394de871dc6971011">작성연도</label>
-                        <input id="pe-kogl-year-BP1c274023962f4fe394de871dc6971011" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" disabled="">
-                        <label class="nv-field__hint" for="pe-kogl-restr-BP1c274023962f4fe394de871dc6971011">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
-                        <input id="pe-kogl-restr-BP1c274023962f4fe394de871dc6971011" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="">
-                    </div>
                     <div class="nv-form-group">
                         <span class="nv-form-group__title">게시글 정보</span>
                         <dl class="bd-meta"><dt>게시판</dt><dd>공지사항</dd><dt>작성일</dt><dd>2026-10-26</dd><dt>상태</dt><dd><span class="nv-badge">보관</span></dd></dl>
                     </div>
-                </aside>
+                    <!-- 2026-11-25 좌측에서 옮김: 대표 썸네일 · 첨부파일 -->
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP1c274023962f4fe394de871dc6971011/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP1c274023962f4fe394de871dc6971011">
+                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
+                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
+                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
+                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                        </div>
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP1c274023962f4fe394de871dc6971011/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP1c274023962f4fe394de871dc6971011" data-board-id="BD39855ec310ca4598a50f183983c518e1">
+                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
+                            <label class="nv-dropzone" data-media-gate=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
+                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택"></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" data-max-bytes="26214400">
+                            
+                            
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                            <div data-media-list="">
+                                
+                            </div>
+                            <template data-media-row="">
+                                <div class="nv-file" data-media-item="">
+                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                    <a class="nv-grow" data-media-name="" href="#"></a>
+                                    <span class="nv-file__size" data-media-size=""></span>
+                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
+                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                </div>
+                            </template>
+                        </div>
+</aside>
             </div>
         </form>
         <!-- 상태 전환 폼(수정 화면 라디오·보관하기 버튼이 제출) -->
@@ -2330,7 +2329,8 @@
                 </div>
             </div>
             <div class="bd-page__grid">
-                <div class="nv-editor bd-page__main">
+                <div class="nv-stack">
+                    <div class="nv-editor bd-page__main">
                     <label class="nv-field__hint" for="pe-title-BP3bed8ceee8144bf0b27c1096d43e6043">제목</label>
                     <input id="pe-title-BP3bed8ceee8144bf0b27c1096d43e6043" class="nv-editor__title" name="title" required="" value="[E2E] 게시글 권한 시험(편집자 수정)" placeholder="제목을 입력하세요.">
                     
@@ -2365,45 +2365,24 @@
                          콘솔 미디어 업로드(/media-uploads, 사용처 BOARD_POST, admin-v2.js data-media-upload data-upload-auto). 빼기 = 아래 숨은 폼(form 속성).
                          게시판 첨부 설정(#59): 받지 않는 게시판은 첨부 카드를 올리지 않고(이미 붙은 첨부는 그대로), 최대 개수에 닿으면 올리기를 막는다.
                          서버(콘솔 업로드 /media-uploads, data-board-id)도 다시 검사한다 -->
-                    
-                        
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP3bed8ceee8144bf0b27c1096d43e6043/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP3bed8ceee8144bf0b27c1096d43e6043">
-                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
-                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
-                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
-                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                        </div>
                         
                         <!-- att 는 감싼 th:block 에서 — 한 태그 안에서는 th:if 가 th:with 보다 먼저라 att 가 아직 없다 -->
-                        
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP3bed8ceee8144bf0b27c1096d43e6043/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP3bed8ceee8144bf0b27c1096d43e6043" data-board-id="BD39855ec310ca4598a50f183983c518e1">
-                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
-                            <label class="nv-dropzone" data-media-gate=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
-                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택"></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" data-max-bytes="26214400">
-                            
-                            
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                            <div data-media-list="">
-                                
-                            </div>
-                            <template data-media-row="">
-                                <div class="nv-file" data-media-item="">
-                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                    <a class="nv-grow" data-media-name="" href="#"></a>
-                                    <span class="nv-file__size" data-media-size=""></span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
-                                </div>
-                            </template>
-                        </div>
-                        
-                    
+</div>
+                    <!-- 2026-11-25 우측에서 옮김: 공공누리 유형 · 게시판 — 본문 카드 아래 별도 카드(우측에는 대표 썸네일 · 첨부파일) -->
+                        <div class="nv-form-group bd-kogl" data-kogl-group="">
+                        <label class="nv-form-group__title" for="pe-kogl-BP3bed8ceee8144bf0b27c1096d43e6043">공공누리 유형</label>
+                        <select id="pe-kogl-BP3bed8ceee8144bf0b27c1096d43e6043" class="nv-select" name="koglType" data-kogl-type="">
+                            <option value="1">제1유형</option>
+                            <option value="2">제2유형</option>
+                            <option value="3">제3유형</option>
+                            <option value="4">제4유형</option>
+                            <option value="0" selected="">적용 안 함</option>
+                        </select>
+                        <label class="nv-field__hint" for="pe-kogl-year-BP3bed8ceee8144bf0b27c1096d43e6043">작성연도</label>
+                        <input id="pe-kogl-year-BP3bed8ceee8144bf0b27c1096d43e6043" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" disabled="">
+                        <label class="nv-field__hint" for="pe-kogl-restr-BP3bed8ceee8144bf0b27c1096d43e6043">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
+                        <input id="pe-kogl-restr-BP3bed8ceee8144bf0b27c1096d43e6043" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="">
+                    </div>
                 </div>
                 <aside class="nv-stack bd-page__side">
                     <!-- 시안 「카테고리 분류」 자리 = 공지사항으로 등록할지(토글). 예전에 넣은 분류 값은 그대로 돌려보낸다(수정은 교체) -->
@@ -2428,25 +2407,44 @@
                         <!-- 예약 게시(adm_1504-04) — 임시저장 글만. 버튼은 아래 숨은 폼을 form 속성으로 제출 -->
                         
                     </div>
-                    <div class="nv-form-group bd-kogl" data-kogl-group="">
-                        <label class="nv-form-group__title" for="pe-kogl-BP3bed8ceee8144bf0b27c1096d43e6043">공공누리 유형</label>
-                        <select id="pe-kogl-BP3bed8ceee8144bf0b27c1096d43e6043" class="nv-select" name="koglType" data-kogl-type="">
-                            <option value="1">제1유형</option>
-                            <option value="2">제2유형</option>
-                            <option value="3">제3유형</option>
-                            <option value="4">제4유형</option>
-                            <option value="0" selected="">적용 안 함</option>
-                        </select>
-                        <label class="nv-field__hint" for="pe-kogl-year-BP3bed8ceee8144bf0b27c1096d43e6043">작성연도</label>
-                        <input id="pe-kogl-year-BP3bed8ceee8144bf0b27c1096d43e6043" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" disabled="">
-                        <label class="nv-field__hint" for="pe-kogl-restr-BP3bed8ceee8144bf0b27c1096d43e6043">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
-                        <input id="pe-kogl-restr-BP3bed8ceee8144bf0b27c1096d43e6043" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="">
-                    </div>
                     <div class="nv-form-group">
                         <span class="nv-form-group__title">게시글 정보</span>
                         <dl class="bd-meta"><dt>게시판</dt><dd>공지사항</dd><dt>작성일</dt><dd>2026-10-26</dd><dt>상태</dt><dd><span class="nv-badge">보관</span></dd></dl>
                     </div>
-                </aside>
+                    <!-- 2026-11-25 좌측에서 옮김: 대표 썸네일 · 첨부파일 -->
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP3bed8ceee8144bf0b27c1096d43e6043/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP3bed8ceee8144bf0b27c1096d43e6043">
+                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
+                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
+                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
+                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                        </div>
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP3bed8ceee8144bf0b27c1096d43e6043/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP3bed8ceee8144bf0b27c1096d43e6043" data-board-id="BD39855ec310ca4598a50f183983c518e1">
+                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
+                            <label class="nv-dropzone" data-media-gate=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
+                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택"></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" data-max-bytes="26214400">
+                            
+                            
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                            <div data-media-list="">
+                                
+                            </div>
+                            <template data-media-row="">
+                                <div class="nv-file" data-media-item="">
+                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                    <a class="nv-grow" data-media-name="" href="#"></a>
+                                    <span class="nv-file__size" data-media-size=""></span>
+                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
+                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                </div>
+                            </template>
+                        </div>
+</aside>
             </div>
         </form>
         <!-- 상태 전환 폼(수정 화면 라디오·보관하기 버튼이 제출) -->
@@ -2535,7 +2533,8 @@
                 </div>
             </div>
             <div class="bd-page__grid">
-                <div class="nv-editor bd-page__main">
+                <div class="nv-stack">
+                    <div class="nv-editor bd-page__main">
                     <label class="nv-field__hint" for="pe-title-BPb848a80c69f74ce2ac117269b3ee8e36">제목</label>
                     <input id="pe-title-BPb848a80c69f74ce2ac117269b3ee8e36" class="nv-editor__title" name="title" required="" value="[E2E] 게시글 권한 시험" placeholder="제목을 입력하세요.">
                     
@@ -2570,45 +2569,24 @@
                          콘솔 미디어 업로드(/media-uploads, 사용처 BOARD_POST, admin-v2.js data-media-upload data-upload-auto). 빼기 = 아래 숨은 폼(form 속성).
                          게시판 첨부 설정(#59): 받지 않는 게시판은 첨부 카드를 올리지 않고(이미 붙은 첨부는 그대로), 최대 개수에 닿으면 올리기를 막는다.
                          서버(콘솔 업로드 /media-uploads, data-board-id)도 다시 검사한다 -->
-                    
-                        
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BPb848a80c69f74ce2ac117269b3ee8e36/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BPb848a80c69f74ce2ac117269b3ee8e36">
-                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
-                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
-                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
-                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                        </div>
                         
                         <!-- att 는 감싼 th:block 에서 — 한 태그 안에서는 th:if 가 th:with 보다 먼저라 att 가 아직 없다 -->
-                        
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BPb848a80c69f74ce2ac117269b3ee8e36/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BPb848a80c69f74ce2ac117269b3ee8e36" data-board-id="BD39855ec310ca4598a50f183983c518e1">
-                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
-                            <label class="nv-dropzone" data-media-gate=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
-                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택"></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" data-max-bytes="26214400">
-                            
-                            
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                            <div data-media-list="">
-                                
-                            </div>
-                            <template data-media-row="">
-                                <div class="nv-file" data-media-item="">
-                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                    <a class="nv-grow" data-media-name="" href="#"></a>
-                                    <span class="nv-file__size" data-media-size=""></span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
-                                </div>
-                            </template>
-                        </div>
-                        
-                    
+</div>
+                    <!-- 2026-11-25 우측에서 옮김: 공공누리 유형 · 게시판 — 본문 카드 아래 별도 카드(우측에는 대표 썸네일 · 첨부파일) -->
+                        <div class="nv-form-group bd-kogl" data-kogl-group="">
+                        <label class="nv-form-group__title" for="pe-kogl-BPb848a80c69f74ce2ac117269b3ee8e36">공공누리 유형</label>
+                        <select id="pe-kogl-BPb848a80c69f74ce2ac117269b3ee8e36" class="nv-select" name="koglType" data-kogl-type="">
+                            <option value="1">제1유형</option>
+                            <option value="2">제2유형</option>
+                            <option value="3">제3유형</option>
+                            <option value="4">제4유형</option>
+                            <option value="0" selected="">적용 안 함</option>
+                        </select>
+                        <label class="nv-field__hint" for="pe-kogl-year-BPb848a80c69f74ce2ac117269b3ee8e36">작성연도</label>
+                        <input id="pe-kogl-year-BPb848a80c69f74ce2ac117269b3ee8e36" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" disabled="">
+                        <label class="nv-field__hint" for="pe-kogl-restr-BPb848a80c69f74ce2ac117269b3ee8e36">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
+                        <input id="pe-kogl-restr-BPb848a80c69f74ce2ac117269b3ee8e36" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="">
+                    </div>
                 </div>
                 <aside class="nv-stack bd-page__side">
                     <!-- 시안 「카테고리 분류」 자리 = 공지사항으로 등록할지(토글). 예전에 넣은 분류 값은 그대로 돌려보낸다(수정은 교체) -->
@@ -2633,25 +2611,44 @@
                         <!-- 예약 게시(adm_1504-04) — 임시저장 글만. 버튼은 아래 숨은 폼을 form 속성으로 제출 -->
                         
                     </div>
-                    <div class="nv-form-group bd-kogl" data-kogl-group="">
-                        <label class="nv-form-group__title" for="pe-kogl-BPb848a80c69f74ce2ac117269b3ee8e36">공공누리 유형</label>
-                        <select id="pe-kogl-BPb848a80c69f74ce2ac117269b3ee8e36" class="nv-select" name="koglType" data-kogl-type="">
-                            <option value="1">제1유형</option>
-                            <option value="2">제2유형</option>
-                            <option value="3">제3유형</option>
-                            <option value="4">제4유형</option>
-                            <option value="0" selected="">적용 안 함</option>
-                        </select>
-                        <label class="nv-field__hint" for="pe-kogl-year-BPb848a80c69f74ce2ac117269b3ee8e36">작성연도</label>
-                        <input id="pe-kogl-year-BPb848a80c69f74ce2ac117269b3ee8e36" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" disabled="">
-                        <label class="nv-field__hint" for="pe-kogl-restr-BPb848a80c69f74ce2ac117269b3ee8e36">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
-                        <input id="pe-kogl-restr-BPb848a80c69f74ce2ac117269b3ee8e36" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="">
-                    </div>
                     <div class="nv-form-group">
                         <span class="nv-form-group__title">게시글 정보</span>
                         <dl class="bd-meta"><dt>게시판</dt><dd>공지사항</dd><dt>작성일</dt><dd>2026-10-26</dd><dt>상태</dt><dd><span class="nv-badge">보관</span></dd></dl>
                     </div>
-                </aside>
+                    <!-- 2026-11-25 좌측에서 옮김: 대표 썸네일 · 첨부파일 -->
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BPb848a80c69f74ce2ac117269b3ee8e36/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BPb848a80c69f74ce2ac117269b3ee8e36">
+                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
+                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
+                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
+                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                        </div>
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BPb848a80c69f74ce2ac117269b3ee8e36/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BPb848a80c69f74ce2ac117269b3ee8e36" data-board-id="BD39855ec310ca4598a50f183983c518e1">
+                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
+                            <label class="nv-dropzone" data-media-gate=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
+                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택"></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" data-max-bytes="26214400">
+                            
+                            
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                            <div data-media-list="">
+                                
+                            </div>
+                            <template data-media-row="">
+                                <div class="nv-file" data-media-item="">
+                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                    <a class="nv-grow" data-media-name="" href="#"></a>
+                                    <span class="nv-file__size" data-media-size=""></span>
+                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
+                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                </div>
+                            </template>
+                        </div>
+</aside>
             </div>
         </form>
         <!-- 상태 전환 폼(수정 화면 라디오·보관하기 버튼이 제출) -->
@@ -2740,7 +2737,8 @@
                 </div>
             </div>
             <div class="bd-page__grid">
-                <div class="nv-editor bd-page__main">
+                <div class="nv-stack">
+                    <div class="nv-editor bd-page__main">
                     <label class="nv-field__hint" for="pe-title-BP1da7f87f2b0f4e3ba975d7cfd8027fca">제목</label>
                     <input id="pe-title-BP1da7f87f2b0f4e3ba975d7cfd8027fca" class="nv-editor__title" name="title" required="" value="연구원 이용 신청 안내" placeholder="제목을 입력하세요.">
                     
@@ -2775,45 +2773,24 @@
                          콘솔 미디어 업로드(/media-uploads, 사용처 BOARD_POST, admin-v2.js data-media-upload data-upload-auto). 빼기 = 아래 숨은 폼(form 속성).
                          게시판 첨부 설정(#59): 받지 않는 게시판은 첨부 카드를 올리지 않고(이미 붙은 첨부는 그대로), 최대 개수에 닿으면 올리기를 막는다.
                          서버(콘솔 업로드 /media-uploads, data-board-id)도 다시 검사한다 -->
-                    
-                        
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP1da7f87f2b0f4e3ba975d7cfd8027fca/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP1da7f87f2b0f4e3ba975d7cfd8027fca">
-                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
-                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
-                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
-                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                        </div>
                         
                         <!-- att 는 감싼 th:block 에서 — 한 태그 안에서는 th:if 가 th:with 보다 먼저라 att 가 아직 없다 -->
-                        
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP1da7f87f2b0f4e3ba975d7cfd8027fca/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP1da7f87f2b0f4e3ba975d7cfd8027fca" data-board-id="BD39855ec310ca4598a50f183983c518e1">
-                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
-                            <label class="nv-dropzone" data-media-gate=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
-                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택"></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" data-max-bytes="26214400">
-                            
-                            
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                            <div data-media-list="">
-                                
-                            </div>
-                            <template data-media-row="">
-                                <div class="nv-file" data-media-item="">
-                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                    <a class="nv-grow" data-media-name="" href="#"></a>
-                                    <span class="nv-file__size" data-media-size=""></span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
-                                </div>
-                            </template>
-                        </div>
-                        
-                    
+</div>
+                    <!-- 2026-11-25 우측에서 옮김: 공공누리 유형 · 게시판 — 본문 카드 아래 별도 카드(우측에는 대표 썸네일 · 첨부파일) -->
+                        <div class="nv-form-group bd-kogl" data-kogl-group="">
+                        <label class="nv-form-group__title" for="pe-kogl-BP1da7f87f2b0f4e3ba975d7cfd8027fca">공공누리 유형</label>
+                        <select id="pe-kogl-BP1da7f87f2b0f4e3ba975d7cfd8027fca" class="nv-select" name="koglType" data-kogl-type="">
+                            <option value="1">제1유형</option>
+                            <option value="2">제2유형</option>
+                            <option value="3">제3유형</option>
+                            <option value="4">제4유형</option>
+                            <option value="0" selected="">적용 안 함</option>
+                        </select>
+                        <label class="nv-field__hint" for="pe-kogl-year-BP1da7f87f2b0f4e3ba975d7cfd8027fca">작성연도</label>
+                        <input id="pe-kogl-year-BP1da7f87f2b0f4e3ba975d7cfd8027fca" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" disabled="">
+                        <label class="nv-field__hint" for="pe-kogl-restr-BP1da7f87f2b0f4e3ba975d7cfd8027fca">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
+                        <input id="pe-kogl-restr-BP1da7f87f2b0f4e3ba975d7cfd8027fca" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="">
+                    </div>
                 </div>
                 <aside class="nv-stack bd-page__side">
                     <!-- 시안 「카테고리 분류」 자리 = 공지사항으로 등록할지(토글). 예전에 넣은 분류 값은 그대로 돌려보낸다(수정은 교체) -->
@@ -2838,25 +2815,44 @@
                         <!-- 예약 게시(adm_1504-04) — 임시저장 글만. 버튼은 아래 숨은 폼을 form 속성으로 제출 -->
                         
                     </div>
-                    <div class="nv-form-group bd-kogl" data-kogl-group="">
-                        <label class="nv-form-group__title" for="pe-kogl-BP1da7f87f2b0f4e3ba975d7cfd8027fca">공공누리 유형</label>
-                        <select id="pe-kogl-BP1da7f87f2b0f4e3ba975d7cfd8027fca" class="nv-select" name="koglType" data-kogl-type="">
-                            <option value="1">제1유형</option>
-                            <option value="2">제2유형</option>
-                            <option value="3">제3유형</option>
-                            <option value="4">제4유형</option>
-                            <option value="0" selected="">적용 안 함</option>
-                        </select>
-                        <label class="nv-field__hint" for="pe-kogl-year-BP1da7f87f2b0f4e3ba975d7cfd8027fca">작성연도</label>
-                        <input id="pe-kogl-year-BP1da7f87f2b0f4e3ba975d7cfd8027fca" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" disabled="">
-                        <label class="nv-field__hint" for="pe-kogl-restr-BP1da7f87f2b0f4e3ba975d7cfd8027fca">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
-                        <input id="pe-kogl-restr-BP1da7f87f2b0f4e3ba975d7cfd8027fca" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="">
-                    </div>
                     <div class="nv-form-group">
                         <span class="nv-form-group__title">게시글 정보</span>
                         <dl class="bd-meta"><dt>게시판</dt><dd>공지사항</dd><dt>작성일</dt><dd>2026-10-24</dd><dt>상태</dt><dd><span class="nv-badge nv-badge--ok">게시중</span></dd></dl>
                     </div>
-                </aside>
+                    <!-- 2026-11-25 좌측에서 옮김: 대표 썸네일 · 첨부파일 -->
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP1da7f87f2b0f4e3ba975d7cfd8027fca/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP1da7f87f2b0f4e3ba975d7cfd8027fca">
+                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
+                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
+                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
+                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                        </div>
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BP1da7f87f2b0f4e3ba975d7cfd8027fca/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BP1da7f87f2b0f4e3ba975d7cfd8027fca" data-board-id="BD39855ec310ca4598a50f183983c518e1">
+                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
+                            <label class="nv-dropzone" data-media-gate=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
+                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택"></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" data-max-bytes="26214400">
+                            
+                            
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                            <div data-media-list="">
+                                
+                            </div>
+                            <template data-media-row="">
+                                <div class="nv-file" data-media-item="">
+                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                    <a class="nv-grow" data-media-name="" href="#"></a>
+                                    <span class="nv-file__size" data-media-size=""></span>
+                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
+                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                </div>
+                            </template>
+                        </div>
+</aside>
             </div>
         </form>
         <!-- 상태 전환 폼(수정 화면 라디오·보관하기 버튼이 제출) -->
@@ -2945,7 +2941,8 @@
                 </div>
             </div>
             <div class="bd-page__grid">
-                <div class="nv-editor bd-page__main">
+                <div class="nv-stack">
+                    <div class="nv-editor bd-page__main">
                     <label class="nv-field__hint" for="pe-title-BPf107d5dac6c045cb903f18a8ad6f2c38">제목</label>
                     <input id="pe-title-BPf107d5dac6c045cb903f18a8ad6f2c38" class="nv-editor__title" name="title" required="" value="메뉴 구성 확정 안내 (통계정보 · 데이터 분석 · 알림마당)" placeholder="제목을 입력하세요.">
                     
@@ -2980,45 +2977,24 @@
                          콘솔 미디어 업로드(/media-uploads, 사용처 BOARD_POST, admin-v2.js data-media-upload data-upload-auto). 빼기 = 아래 숨은 폼(form 속성).
                          게시판 첨부 설정(#59): 받지 않는 게시판은 첨부 카드를 올리지 않고(이미 붙은 첨부는 그대로), 최대 개수에 닿으면 올리기를 막는다.
                          서버(콘솔 업로드 /media-uploads, data-board-id)도 다시 검사한다 -->
-                    
-                        
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BPf107d5dac6c045cb903f18a8ad6f2c38/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BPf107d5dac6c045cb903f18a8ad6f2c38">
-                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
-                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
-                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
-                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                        </div>
                         
                         <!-- att 는 감싼 th:block 에서 — 한 태그 안에서는 th:if 가 th:with 보다 먼저라 att 가 아직 없다 -->
-                        
-                        <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BPf107d5dac6c045cb903f18a8ad6f2c38/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BPf107d5dac6c045cb903f18a8ad6f2c38" data-board-id="BD39855ec310ca4598a50f183983c518e1">
-                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
-                            <label class="nv-dropzone" data-media-gate=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
-                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택"></label>
-                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" data-max-bytes="26214400">
-                            
-                            
-                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
-                            <div data-media-list="">
-                                
-                            </div>
-                            <template data-media-row="">
-                                <div class="nv-file" data-media-item="">
-                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
-                                    <a class="nv-grow" data-media-name="" href="#"></a>
-                                    <span class="nv-file__size" data-media-size=""></span>
-                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
-                                </div>
-                            </template>
-                        </div>
-                        
-                    
+</div>
+                    <!-- 2026-11-25 우측에서 옮김: 공공누리 유형 · 게시판 — 본문 카드 아래 별도 카드(우측에는 대표 썸네일 · 첨부파일) -->
+                        <div class="nv-form-group bd-kogl" data-kogl-group="">
+                        <label class="nv-form-group__title" for="pe-kogl-BPf107d5dac6c045cb903f18a8ad6f2c38">공공누리 유형</label>
+                        <select id="pe-kogl-BPf107d5dac6c045cb903f18a8ad6f2c38" class="nv-select" name="koglType" data-kogl-type="">
+                            <option value="1">제1유형</option>
+                            <option value="2">제2유형</option>
+                            <option value="3">제3유형</option>
+                            <option value="4">제4유형</option>
+                            <option value="0" selected="">적용 안 함</option>
+                        </select>
+                        <label class="nv-field__hint" for="pe-kogl-year-BPf107d5dac6c045cb903f18a8ad6f2c38">작성연도</label>
+                        <input id="pe-kogl-year-BPf107d5dac6c045cb903f18a8ad6f2c38" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" disabled="">
+                        <label class="nv-field__hint" for="pe-kogl-restr-BPf107d5dac6c045cb903f18a8ad6f2c38">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
+                        <input id="pe-kogl-restr-BPf107d5dac6c045cb903f18a8ad6f2c38" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="">
+                    </div>
                 </div>
                 <aside class="nv-stack bd-page__side">
                     <!-- 시안 「카테고리 분류」 자리 = 공지사항으로 등록할지(토글). 예전에 넣은 분류 값은 그대로 돌려보낸다(수정은 교체) -->
@@ -3043,25 +3019,44 @@
                         <!-- 예약 게시(adm_1504-04) — 임시저장 글만. 버튼은 아래 숨은 폼을 form 속성으로 제출 -->
                         
                     </div>
-                    <div class="nv-form-group bd-kogl" data-kogl-group="">
-                        <label class="nv-form-group__title" for="pe-kogl-BPf107d5dac6c045cb903f18a8ad6f2c38">공공누리 유형</label>
-                        <select id="pe-kogl-BPf107d5dac6c045cb903f18a8ad6f2c38" class="nv-select" name="koglType" data-kogl-type="">
-                            <option value="1">제1유형</option>
-                            <option value="2">제2유형</option>
-                            <option value="3">제3유형</option>
-                            <option value="4">제4유형</option>
-                            <option value="0" selected="">적용 안 함</option>
-                        </select>
-                        <label class="nv-field__hint" for="pe-kogl-year-BPf107d5dac6c045cb903f18a8ad6f2c38">작성연도</label>
-                        <input id="pe-kogl-year-BPf107d5dac6c045cb903f18a8ad6f2c38" class="nv-input" name="koglYear" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" value="2026" data-kogl-open="" disabled="">
-                        <label class="nv-field__hint" for="pe-kogl-restr-BPf107d5dac6c045cb903f18a8ad6f2c38">이용 제한 사유 (적용 안 함일 때 공개 화면에 한 줄로 안내)</label>
-                        <input id="pe-kogl-restr-BPf107d5dac6c045cb903f18a8ad6f2c38" class="nv-input" name="koglRestriction" maxlength="500" value="" data-kogl-closed="">
-                    </div>
                     <div class="nv-form-group">
                         <span class="nv-form-group__title">게시글 정보</span>
                         <dl class="bd-meta"><dt>게시판</dt><dd>공지사항</dd><dt>작성일</dt><dd>2026-10-24</dd><dt>상태</dt><dd><span class="nv-badge nv-badge--ok">게시중</span></dd></dl>
                     </div>
-                </aside>
+                    <!-- 2026-11-25 좌측에서 옮김: 대표 썸네일 · 첨부파일 -->
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BPf107d5dac6c045cb903f18a8ad6f2c38/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BPf107d5dac6c045cb903f18a8ad6f2c38">
+                            <span class="nv-form-group__title">대표 썸네일 이미지</span>
+                            <img class="nv-attach__cover" alt="대표 썸네일" data-media-preview="" hidden="hidden">
+                            <label class="nv-dropzone"><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-image"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
+                                <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                        </div>
+                    <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="BOARD_POST" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/BD39855ec310ca4598a50f183983c518e1/posts/BPf107d5dac6c045cb903f18a8ad6f2c38/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="BPf107d5dac6c045cb903f18a8ad6f2c38" data-board-id="BD39855ec310ca4598a50f183983c518e1">
+                            <span class="nv-form-group__title" data-media-count="">첨부파일 (0)</span>
+                            <label class="nv-dropzone" data-media-gate=""><svg class="nv-icon nv-icon--xl" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>최대 25MB</small>
+                                <input type="file" class="nv-sr-only" form="none" data-upload-file="" aria-label="첨부파일 선택"></label>
+                            <input type="hidden" form="none" data-upload-usage="" value="ATTACHMENT" data-max-bytes="26214400">
+                            
+                            
+                            <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
+                            <div data-media-list="">
+                                
+                            </div>
+                            <template data-media-row="">
+                                <div class="nv-file" data-media-item="">
+                                    <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
+                                    <a class="nv-grow" data-media-name="" href="#"></a>
+                                    <span class="nv-file__size" data-media-size=""></span>
+                                    <a class="nv-btn nv-btn--ghost nv-btn--sm" data-media-view="" hidden="" target="_blank" rel="noopener" title="새 창 열림">미리보기</a>
+                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 게시글에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                </div>
+                            </template>
+                        </div>
+</aside>
             </div>
         </form>
         <!-- 상태 전환 폼(수정 화면 라디오·보관하기 버튼이 제출) -->

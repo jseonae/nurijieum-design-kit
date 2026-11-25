@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>숨은 폼 열어 보기</title>
+<style>
+html, body { margin: 0; height: 100%; }
+body { display: flex; flex-direction: column; font: 14px/1.5 "Pretendard GOV", "Pretendard", system-ui, sans-serif; color: #1d2433; }
+.bar { display: flex; align-items: center; gap: 12px; padding: 8px 16px; background: #1e293b; color: #fff; }
+.bar b { font-weight: 600; }
+.bar small { color: #cbd5e1; }
+.bar a { color: #afcaf9; }
+iframe { flex: 1; width: 100%; border: 0; }
+</style></head><body>
+<!-- [키트 전용] 화면 파일을 그대로 불러와, 평소 숨어 있는 폼(id)을 펼쳐 보여 준다. 화면 파일은 바꾸지 않는다.
+     사용: kit-open.html?src=pages/…/화면.html&open=폼id&label=이름 -->
+<div class="bar"><b id="label">숨은 폼 열어 보기</b><small id="info"></small><a id="orig" target="_blank" rel="noopener">원본 화면 열기</a></div>
+<iframe id="f" title="화면"></iframe>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search), src = q.get('src') || '', id = q.get('open') || '';
+  document.getElementById('label').textContent = q.get('label') || '숨은 폼 열어 보기';
+  document.getElementById('info').textContent = src.split('/').pop() + (id ? '  ·  #' + id + ' 펼침' : '');
+  var url = src.split('/').map(encodeURIComponent).join('/');
+  document.getElementById('orig').href = url;
+  var f = document.getElementById('f');
+  f.onload = function () {
+    var d = f.contentDocument, el = id && d.getElementById(id);
+    if (!el) { document.getElementById('info').textContent += '  ·  폼을 찾지 못함'; return; }
+    for (var a = el; a && a !== d.body; a = a.parentElement) { a.hidden = false; a.removeAttribute('hidden'); }
+    // 같은 자리의 목록 · 요약은 감춰 폼이 화면 맨 위에 오게
+    [].forEach.call(d.querySelectorAll('main .nv-list, main .nv-summary, main > .nv-page-header'), function (x) { if (!x.contains(el)) x.style.display = 'none'; });
+    el.scrollIntoView();
+  };
+  f.src = url;
+})();
+</script>
+</body></html>

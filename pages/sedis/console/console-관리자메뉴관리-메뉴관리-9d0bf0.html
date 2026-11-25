@@ -512,30 +512,29 @@
             
             
             <div class="ed-page" data-admin-menu-edit="navigation">
-                <div class="nv-editor-header edh">
-                    <div class="edh__row">
-                        <a class="nv-btn nv-btn--sm nv-btn--outline edh__back" href="console-관리자메뉴관리-c742c2.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-arrow-left"></use></svg>목록으로</a>
-                        <span class="edh__nav">
-                            <a class="nv-btn nv-btn--sm nv-btn--outline edh__step" href="console-관리자메뉴관리-사이트-관리-52cbf5.html">이전: 사이트 관리</a>
-                            <a class="nv-btn nv-btn--sm nv-btn--outline edh__step" href="console-관리자메뉴관리-내-담당-메뉴-c921da.html">다음: 내 담당 메뉴</a>
-                        </span>
-                    </div>
-                    <div class="edh__row edh__row--title">
-                        <span class="edh__kind">관리자 메뉴 수정</span>
-                        <h1 class="edh__name" id="cms-page-title">메뉴관리</h1>
-                        <span class="edh__badges">
-                            <span class="nv-badge nv-badge--info" title="기본 메뉴 — 누리지음 제품에 들어 있는 메뉴입니다">기본 메뉴</span>
-                            
-                            
-                        </span>
+                <!-- 2026-11-25 머리를 메뉴관리 메뉴 수정(edx) 모양으로: 위 막대(뒤로 · 종류) + 카드 머리(제목 · 배지 · 이전/다음) + 탭 -->
+                <div class="edx-top">
+                    <div class="nv-editor-header">
+                        <a class="edx-back" href="console-관리자메뉴관리-c742c2.html" aria-label="관리자 메뉴 목록으로" title="관리자 메뉴 목록으로"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-arrow-left"></use></svg></a>
+                        <p class="edx-kind">관리자 메뉴 수정</p>
+                        <!-- 2026-11-25 저장 막대(본문 아래)를 위 막대 오른쪽으로 — 메뉴 수정(edx) savehead 와 같은 자리. 입력 · 저장 단추는 form="am-info-form" 로 같은 폼에 묶음 -->
+                        <div class="savehead" data-clean="true" data-am-savebar="info"> <span class="savehead__status" data-am-count="">저장된 상태입니다</span>  <span class="savebar__who" data-am-dirty="" hidden="" title="수행자 — 로그인한 관리자로 자동">수행자 <b>전체관리자</b></span> <label class="savebar__reason" data-am-dirty="" hidden=""><span title="사유 — 수정 이력과 접속기록에 남습니다">사유 <span class="req" aria-hidden="true">*</span></span> <input form="am-info-form" class="nv-input nv-input--sm" id="am-reason-info" name="reason" maxlength="500" autocomplete="off" placeholder="예: 담당 부서 변경" data-am-reason="" value=""></label>  <div class="savebar__actions"> <a class="nv-btn nv-btn--outline is-disabled" href="console-관리자메뉴관리-메뉴관리-9d0bf0.html" data-am-cancel="" aria-disabled="true">취소</a> <button type="submit" form="am-info-form" class="nv-btn nv-btn--primary" data-am-save="" disabled="">수정하기</button> </div> <ul class="savebar__list" data-am-list="" hidden=""></ul> </div>
                     </div>
                 </div>
-
-                <nav class="nv-tabs nv-tabs--auto gtabs ed-tabs" aria-label="설정">
-                    <a class="am-tab" href="console-관리자메뉴관리-메뉴관리-9d0bf0.html" title="콘솔 메뉴의 출력순서를 고칩니다. 이름과 링크URL은 누리지음 제품과 연결 서비스가 정합니다." aria-current="page">메뉴 정보</a>
-                    <a class="am-tab" href="console-관리자메뉴관리-메뉴관리-d016ef.html" title="이 콘솔 메뉴를 어느 권한그룹이 보고 고칠 수 있는지 정합니다. 「저장」하면 사유와 함께 수정 이력에 남습니다.">접근권한</a>
-                    <a class="am-tab" href="console-관리자메뉴관리-메뉴관리-63803d.html" title="이 메뉴를 언제, 누가, 왜 고쳤는지 봅니다. 기록은 고치거나 지울 수 없습니다.">수정 이력</a>
-                </nav>
+                <section class="edx-card" aria-labelledby="cms-page-title">
+                    <div class="edx-card__head">
+                        <div class="edx-card__id"><div class="edx-card__title">
+                            <h1 class="edx-card__name" id="cms-page-title">메뉴관리</h1>
+                            <span class="nv-badge nv-badge--info" title="기본 메뉴 — 누리지음 제품에 들어 있는 메뉴입니다">기본 메뉴</span>
+                        </div></div>
+                        <div class="edx-card__tools"><span class="edx-steps"><a data-menu-near="previous" href="console-관리자메뉴관리-사이트-관리-52cbf5.html" title="이전: 사이트 관리"><svg class="nv-icon flip" aria-hidden="true"><use href="#nv-i-chevron-right"></use></svg><span>이전: 사이트 관리</span></a><a data-menu-near="next" href="console-관리자메뉴관리-내-담당-메뉴-c921da.html" title="다음: 내 담당 메뉴"><span>다음: 내 담당 메뉴</span><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-chevron-right"></use></svg></a></span></div>
+                    </div>
+                    <nav class="nv-tabs nv-tabs--auto gtabs ed-tabs" aria-label="설정">
+                        <a class="am-tab" href="console-관리자메뉴관리-메뉴관리-9d0bf0.html" title="콘솔 메뉴의 출력순서를 고칩니다. 이름과 링크URL은 누리지음 제품과 연결 서비스가 정합니다." aria-current="page">메뉴 정보</a>
+                        <a class="am-tab" href="console-관리자메뉴관리-메뉴관리-d016ef.html" title="이 콘솔 메뉴를 어느 권한그룹이 보고 고칠 수 있는지 정합니다. 「저장」하면 사유와 함께 수정 이력에 남습니다.">접근권한</a>
+                        <a class="am-tab" href="console-관리자메뉴관리-메뉴관리-63803d.html" title="이 메뉴를 언제, 누가, 왜 고쳤는지 봅니다. 기록은 고치거나 지울 수 없습니다.">수정 이력</a>
+                        </nav>
+                </section>
 
                 <!-- 메뉴 정보(시안 infoAdmin): 이름 · 링크URL은 읽기만, 출력순서만 고친다 -->
                 <form id="am-info-form" method="post" class="nv-nav-form__grid info-grid" novalidate="" action="#kit-missing" data-kit-href="/console-9f3a/admin-menus/navigation/info" data-am-form="info"><input type="hidden" name="_csrf" value="L288jMOfkEsvB_RL5vzCTWQNMeKXDZdf0lzTIh7InO4">
@@ -556,19 +555,6 @@
                         </div></div>
                         <p class="nv-text-sm nv-text-subtle info-perm-hint">지금 보고 고칠 수 있는 권한그룹: <b>가나다라마바사</b></p>
                     </div>
-                    <div class="savebar" data-clean="true" data-am-savebar="info">
-    <span class="savebar__count" data-am-count="">저장된 상태입니다</span>
-    
-    <span class="savebar__who" data-am-dirty="" hidden="" title="수행자 — 로그인한 관리자로 자동">수행자 <b>전체관리자</b></span>
-    <label class="savebar__reason" data-am-dirty="" hidden=""><span title="사유 — 수정 이력과 접속기록에 남습니다">사유 <span class="req" aria-hidden="true">*</span></span>
-        <input class="nv-input nv-input--sm" id="am-reason-info" name="reason" maxlength="500" autocomplete="off" placeholder="예: 담당 부서 변경" data-am-reason="" value=""></label>
-    
-    <div class="savebar__actions">
-        <a class="nv-btn nv-btn--outline is-disabled" href="console-관리자메뉴관리-메뉴관리-9d0bf0.html" data-am-cancel="" aria-disabled="true">취소</a>
-        <button type="submit" class="nv-btn nv-btn--primary" data-am-save="" disabled="">수정하기</button>
-    </div>
-    <ul class="savebar__list" data-am-list="" hidden=""></ul>
-</div>
                 </form>
 
                 <!-- 접근권한(시안 permHtml): 상위 메뉴와 같게 · 권한그룹별 보기 · 고치기 · (게시판 · 콘텐츠 관리) 자동 관리자 -->
