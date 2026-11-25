@@ -876,7 +876,12 @@
                                         <td class="is-title">
                                             <span class="nv-nav-menu  nv-nav-menu--d2">
                                                 <!-- 위치 옮기기(navigation.js): 끌기 · 방향키 · 눌러서 메뉴. 시안에 없는 요소다. 스크립트가 켠다 -->
-                                                <span class="nv-nav-menu__grip" role="button" tabindex="0" draggable="true" aria-haspopup="menu" data-menu-grip="" aria-label="조사 변천사 위치 옮기기" data-nv-tip="끌어서 옮깁니다. 방향키나 눌러서 나오는 메뉴로도 옮길 수 있습니다." aria-describedby="nv-tip"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-more"></use></svg></span>
+                                                <span class="nv-dropmenu"><span class="nv-nav-menu__grip" role="button" tabindex="0" draggable="true" aria-haspopup="menu" data-menu-grip="" aria-label="조사 변천사 위치 옮기기" data-nv-tip="끌어서 옮깁니다. 방향키나 눌러서 나오는 메뉴로도 옮길 수 있습니다." aria-describedby="nv-tip"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-more"></use></svg></span><div class="nv-dropmenu__menu" role="menu" aria-label="위치 옮기기" data-reorder-menu="" style="left: 0; right: auto;">
+                            <button type="button" class="nv-dropmenu__item" role="menuitem" data-reorder-move="up" disabled="" title="맨 앞입니다.">위로</button>
+                            <button type="button" class="nv-dropmenu__item" role="menuitem" data-reorder-move="down" title="">아래로</button>
+                            <button type="button" class="nv-dropmenu__item" role="menuitem" data-reorder-move="in" disabled="" title="앞에 있는 메뉴가 없어 안으로 넣을 수 없습니다.">안으로</button>
+                            <button type="button" class="nv-dropmenu__item" role="menuitem" data-reorder-move="out" title="">밖으로</button>
+                        </div></span>
                                                 <span class="nv-nav-menu__depth" aria-hidden="true" title="2단계 메뉴 — 상위: 통계정보">2</span>
                                                 <a class="nv-nav-menu__name menu-link" href="console-메뉴관리-조사-변천사-3488fc.html">조사 변천사</a>
                                                 
@@ -1679,12 +1684,7 @@
                             </div>
                         </div>
                         <div class="nv-sr-only" aria-live="polite" data-reorder-live=""></div>
-                        <div class="nv-dropmenu__menu nv-dropmenu__menu--fixed" role="menu" aria-label="위치 옮기기" data-reorder-menu="" style="top: 461.5px; left: 395px;">
-                            <button type="button" class="nv-dropmenu__item" role="menuitem" data-reorder-move="up" disabled="" title="맨 앞입니다.">위로</button>
-                            <button type="button" class="nv-dropmenu__item" role="menuitem" data-reorder-move="down" title="">아래로</button>
-                            <button type="button" class="nv-dropmenu__item" role="menuitem" data-reorder-move="in" disabled="" title="앞에 있는 메뉴가 없어 안으로 넣을 수 없습니다.">안으로</button>
-                            <button type="button" class="nv-dropmenu__item" role="menuitem" data-reorder-move="out" title="">밖으로</button>
-                        </div>
+                        
                         <!-- 아래 줄(시안 .list-foot): 범례 · 쪽 번호(admin-tables.js 가 쪽을 나누고 그린다) -->
                         <div class="list-foot">
                         <div class="legend list-legend">
@@ -2036,4 +2036,4 @@
 <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/pages/navigation.js -->
 
 
-<div id="nv-tip" class="nv-tip" role="tooltip" style="left: 245px; top: 372.5px;">끌어서 옮깁니다. 방향키나 눌러서 나오는 메뉴로도 옮길 수 있습니다.</div><script src="../../../static/_kit/kit.js"></script></body></html>
+<div id="nv-tip" class="nv-tip" role="tooltip" style="left: 245px; top: 372.5px;" hidden="">끌어서 옮깁니다. 방향키나 눌러서 나오는 메뉴로도 옮길 수 있습니다.</div><script src="../../../static/_kit/kit.js"></script></body></html>

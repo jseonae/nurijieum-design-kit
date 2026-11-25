@@ -175,7 +175,7 @@ html[data-cms-fontscale="xl"] { font-size: calc(var(--krds-font-size-base, 62.5%
   display: inline-flex; align-items: center; justify-content: center;
 }
 
-.nv-main { display: flex; flex-direction: column; min-width: 0; min-height: 100vh; }
+.nv-main { display: flex; flex-direction: column; min-width: 0; min-height: 100vh; container-type: inline-size; }   /* container: 편집 머리가 넓은 창에서 이 폭(100cqw)까지 펼쳐지는 기준 */
 .nv-header {
   position: sticky; top: 0; z-index: 30;
   display: flex; align-items: center; gap: var(--cms-sp-8);
@@ -476,6 +476,11 @@ html[data-cms-fontscale="xl"] { font-size: calc(var(--krds-font-size-base, 62.5%
   display: flex; align-items: center; gap: var(--cms-sp-3);
   margin: calc(var(--cms-content-py) * -1) calc(var(--cms-content-px) * -1) 0;
   padding: 1.6rem var(--cms-content-px); background: var(--cms-surface); border-bottom: 1px solid var(--cms-border);
+  /* 넓은 창(본문 최대 폭 초과)에서도 편집 머리는 본문 바깥 영역(.nv-main) 끝까지 — 본문이 가운데로 모이며 생긴 양옆 빈 폭만큼 더 넓힌다.
+     100cqw = .nv-main 폭(container), 100% = 본문 안쪽 폭. 본문 최대 폭 이하에서는 0 이라 예전과 같다 */
+  --nv-editor-header-bleed: max(0px, (100cqw - 100% - var(--cms-content-px) * 2) / 2);
+  margin-left: calc(var(--cms-content-px) * -1 - var(--nv-editor-header-bleed));
+  margin-right: calc(var(--cms-content-px) * -1 - var(--nv-editor-header-bleed));
 }
 .nv-editor-header__back {
   width: 3.2rem; height: 3.2rem; border-radius: var(--cms-radius-sm); border: 1px solid var(--cms-border);

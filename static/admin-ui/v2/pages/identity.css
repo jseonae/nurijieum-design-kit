@@ -1,8 +1,7 @@
 /* 권한 관리 v2 페이지 전용 (토큰만 참조) — 공통은 cms-admin-v2.css, 키트 개선 부품은 admin-parts.css(이 파일 다음에 읽는다) */
-/* 탭 아래 칸들: 16 간격으로 쌓고 표는 카드 끝까지(가로 여백 없음). 좁으면 표만 가로 스크롤 */
+/* 탭 아래 칸들: 16 간격으로 쌓는다. 표는 다른 목록과 같이 .nv-table-wrap 여백 안(2026-11-25: 카드 끝까지 붙이던 여백 0 규칙 제거). 좁으면 표만 가로 스크롤 */
 .id-tabpanel { display: flex; flex-direction: column; gap: 1.6rem; padding-bottom: 1.6rem; }
 .id-tabpanel[hidden] { display: none !important; }
-.id-tabpanel > .nv-table-wrap { padding: 0; }
 .id-subview { padding: 1.6rem 1.6rem 0; }
 .id-nowrap { white-space: nowrap; }
 .id-switch-form, .id-inline-form { display: inline-flex; align-items: center; margin: 0; }

@@ -513,30 +513,29 @@
             
             
             <div class="ed-page" data-admin-menu-edit="svc:sedis:ts-group">
-                <div class="nv-editor-header edh">
-                    <div class="edh__row">
-                        <a class="nv-btn nv-btn--sm nv-btn--outline edh__back" href="console-관리자메뉴관리-c742c2.html"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-arrow-left"></use></svg>목록으로</a>
-                        <span class="edh__nav">
-                            <a class="nv-btn nv-btn--sm nv-btn--outline edh__step" href="console-관리자메뉴관리-시계열-시각화-ed5d73.html">이전: 시계열 시각화</a>
-                            <a class="nv-btn nv-btn--sm nv-btn--outline edh__step" href="console-관리자메뉴관리-데이터-주제-318697.html">다음: 데이터 주제</a>
-                        </span>
-                    </div>
-                    <div class="edh__row edh__row--title">
-                        <span class="edh__kind">관리자 메뉴 수정</span>
-                        <h1 class="edh__name" id="cms-page-title">데이터 그룹</h1>
-                        <span class="edh__badges">
-                            <span class="nv-badge nv-badge--info" title="연결 서비스 메뉴 — sedis 서비스가 매니페스트로 알려 준 메뉴입니다">연결 서비스 메뉴</span>
-                            
-                            
-                        </span>
+                <!-- 2026-11-25 머리를 메뉴관리 메뉴 수정(edx) 모양으로: 위 막대(뒤로 · 종류) + 카드 머리(제목 · 배지 · 이전/다음) + 탭 -->
+                <div class="edx-top">
+                    <div class="nv-editor-header">
+                        <a class="edx-back" href="console-관리자메뉴관리-c742c2.html" aria-label="관리자 메뉴 목록으로" title="관리자 메뉴 목록으로"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-arrow-left"></use></svg></a>
+                        <p class="edx-kind">관리자 메뉴 수정</p>
+                        <!-- 2026-11-25 저장 막대(본문 아래)를 위 막대 오른쪽으로 — 메뉴 수정(edx) savehead 와 같은 자리. 입력 · 저장 단추는 form="am-access-form" 로 같은 폼에 묶음 -->
+                        <div class="savehead" data-clean="true" data-am-savebar="perm"> <span class="savehead__status" data-am-count="">저장된 상태입니다</span> <button type="button" class="nv-btn nv-btn--sm nv-btn--ghost" data-am-toggle="" aria-expanded="false" hidden="">무엇이 바뀌나</button> <span class="savebar__who" data-am-dirty="" hidden="" title="수행자 — 로그인한 관리자로 자동">수행자 <b>전체관리자</b></span> <label class="savebar__reason" data-am-dirty="" hidden=""><span title="사유 — 수정 이력과 접속기록에 남습니다">사유 <span class="req" aria-hidden="true">*</span></span> <input form="am-access-form" class="nv-input nv-input--sm" id="am-reason-perm" name="reason" maxlength="500" autocomplete="off" placeholder="예: 담당 부서 변경" data-am-reason="" value=""></label>  <div class="savebar__actions"> <a class="nv-btn nv-btn--outline is-disabled" href="console-관리자메뉴관리-데이터-그룹-f62cf7.html" data-am-cancel="" aria-disabled="true">되돌리기</a> <button type="submit" form="am-access-form" class="nv-btn nv-btn--primary" data-am-save="" disabled="">저장</button> </div> <ul class="savebar__list" data-am-list="" hidden=""></ul> </div>
                     </div>
                 </div>
-
-                <nav class="nv-tabs nv-tabs--auto gtabs ed-tabs" aria-label="설정">
-                    <a class="am-tab" href="console-관리자메뉴관리-데이터-그룹-2c3518.html" title="콘솔 메뉴의 출력순서를 고칩니다. 이름과 링크URL은 누리지음 제품과 연결 서비스가 정합니다.">메뉴 정보</a>
-                    <a class="am-tab" href="console-관리자메뉴관리-데이터-그룹-f62cf7.html" title="이 콘솔 메뉴를 어느 권한그룹이 보고 고칠 수 있는지 정합니다. 「저장」하면 사유와 함께 수정 이력에 남습니다." aria-current="page">접근권한</a>
-                    <a class="am-tab" href="console-관리자메뉴관리-데이터-그룹-ff031d.html" title="이 메뉴를 언제, 누가, 왜 고쳤는지 봅니다. 기록은 고치거나 지울 수 없습니다.">수정 이력</a>
-                </nav>
+                <section class="edx-card" aria-labelledby="cms-page-title">
+                    <div class="edx-card__head">
+                        <div class="edx-card__id"><div class="edx-card__title">
+                            <h1 class="edx-card__name" id="cms-page-title">데이터 그룹</h1>
+                            <span class="nv-badge nv-badge--info" title="연결 서비스 메뉴 — sedis 서비스가 매니페스트로 알려 준 메뉴입니다">연결 서비스 메뉴</span>
+                        </div></div>
+                        <div class="edx-card__tools"><span class="edx-steps"><a data-menu-near="previous" href="console-관리자메뉴관리-시계열-시각화-ed5d73.html" title="이전: 시계열 시각화"><svg class="nv-icon flip" aria-hidden="true"><use href="#nv-i-chevron-right"></use></svg><span>이전: 시계열 시각화</span></a><a data-menu-near="next" href="console-관리자메뉴관리-데이터-주제-318697.html" title="다음: 데이터 주제"><span>다음: 데이터 주제</span><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-chevron-right"></use></svg></a></span></div>
+                    </div>
+                    <nav class="nv-tabs nv-tabs--auto gtabs ed-tabs" aria-label="설정">
+                        <a class="am-tab" href="console-관리자메뉴관리-데이터-그룹-2c3518.html" title="콘솔 메뉴의 출력순서를 고칩니다. 이름과 링크URL은 누리지음 제품과 연결 서비스가 정합니다.">메뉴 정보</a>
+                        <a class="am-tab" href="console-관리자메뉴관리-데이터-그룹-f62cf7.html" title="이 콘솔 메뉴를 어느 권한그룹이 보고 고칠 수 있는지 정합니다. 「저장」하면 사유와 함께 수정 이력에 남습니다." aria-current="page">접근권한</a>
+                        <a class="am-tab" href="console-관리자메뉴관리-데이터-그룹-ff031d.html" title="이 메뉴를 언제, 누가, 왜 고쳤는지 봅니다. 기록은 고치거나 지울 수 없습니다.">수정 이력</a>
+                        </nav>
+                </section>
 
                 <!-- 메뉴 정보(시안 infoAdmin): 이름 · 링크URL은 읽기만, 출력순서만 고친다 -->
                 
@@ -553,7 +552,7 @@
                         </div>
                         <div class="pbox__sec">
                             <div class="pbox__title">누가 보고 고칠 수 있나 — 권한그룹별</div>
-                            <div data-am-table=""><div class="ptable-wrap"><table class="ptable"><thead><tr><th class="ptable__who" scope="col"><span>권한그룹</span></th><th scope="col"><span class="th-tip" title="보기 — 콘솔 왼쪽 메뉴에 보이고 화면을 열 수 있음">보기</span></th><th scope="col"><span class="th-tip" title="고치기 — 이 화면에서 등록 · 수정 · 삭제">고치기</span></th><th scope="col"><span class="nv-sr-only">줄 빼기</span></th></tr></thead><tbody><tr class="is-base"><td class="ptable__who"><div class="who"><div><div class="who__name">최고관리자 [G900]</div><div class="who__meta" title="누리지음 사이트 관리자 등급 이상 — 모든 관리자 메뉴를 항상 보고 고칩니다">등급 · 항상 전부 허용</div></div></div></td><td><label class="cellcheck is-implied" title="최고관리자 · 보기 — 항상 허용"><input type="checkbox" disabled="" aria-label="최고관리자 보기 (항상 허용)"></label></td><td><label class="cellcheck is-implied" title="최고관리자 · 고치기 — 항상 허용"><input type="checkbox" disabled="" aria-label="최고관리자 고치기 (항상 허용)"></label></td><td></td></tr><tr data-am-row="ID1e11c19e0e224645a1329857d993cf80"><td class="ptable__who"><div class="who"><div><div><button type="button" class="fixlink" style="font-weight:600;text-decoration:none" data-opengroup="G1000">점검-그룹 [G1000]</button></div><div class="who__meta">관리자 권한그룹 · 1명</div></div></div></td><td><label class="cellcheck" title="점검-그룹 · 보기 — 직접 허용. 누르면 끕니다"><input type="checkbox" name="cell" value="ID1e11c19e0e224645a1329857d993cf80|VIEW" data-am-cell="VIEW" checked="" aria-label="점검-그룹 [G1000] 보기"></label></td><td><label class="cellcheck" title="점검-그룹 · 고치기 — 직접 허용. 누르면 끕니다"><input type="checkbox" name="cell" value="ID1e11c19e0e224645a1329857d993cf80|EDIT" data-am-cell="EDIT" checked="" aria-label="점검-그룹 [G1000] 고치기"></label></td><td style="width:4.8rem"><button type="button" class="nv-btn nv-btn--icon nv-btn--sm nv-btn--outline" data-am-remove="ID1e11c19e0e224645a1329857d993cf80" aria-label="점검-그룹 [G1000] 줄 빼기" title="이 권한그룹 줄을 표에서 뺍니다(저장해야 반영)"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-minus-circle"></use></svg></button></td></tr></tbody></table></div></div>
+                            <div data-am-table=""><div class="ptable-wrap"><table class="ptable"><thead><tr><th class="ptable__who" scope="col"><span>권한그룹</span></th><th scope="col"><span class="th-tip" title="보기 — 콘솔 왼쪽 메뉴에 보이고 화면을 열 수 있음">보기</span></th><th scope="col"><span class="th-tip" title="고치기 — 이 화면에서 등록 · 수정 · 삭제">고치기</span></th><th scope="col"><span class="nv-sr-only">줄 빼기</span></th></tr></thead><tbody><tr class="is-base"><td class="ptable__who"><div class="who"><div><div class="who__name">최고관리자 [G900]</div><div class="who__meta" title="누리지음 사이트 관리자 등급 이상 — 모든 관리자 메뉴를 항상 보고 고칩니다">등급 · 항상 전부 허용</div></div></div></td><td><label class="cellcheck is-implied" title="최고관리자 · 보기 — 항상 허용"><input type="checkbox" disabled="" aria-label="최고관리자 보기 (항상 허용)"></label></td><td><label class="cellcheck is-implied" title="최고관리자 · 고치기 — 항상 허용"><input type="checkbox" disabled="" aria-label="최고관리자 고치기 (항상 허용)"></label></td><td></td></tr><tr data-am-row="ID1e11c19e0e224645a1329857d993cf80"><td class="ptable__who"><div class="who"><div><div><button type="button" class="fixlink" style="font-weight:600;text-decoration:none" data-opengroup="G1000">점검-그룹 [G1000]</button></div><div class="who__meta">관리자 권한그룹 · 1명</div></div></div></td><td><label class="cellcheck" title="점검-그룹 · 보기 — 직접 허용. 누르면 끕니다"><input type="checkbox" name="cell" value="ID1e11c19e0e224645a1329857d993cf80|VIEW" data-am-cell="VIEW" checked="" aria-label="점검-그룹 [G1000] 보기"></label></td><td><label class="cellcheck" title="점검-그룹 · 고치기 — 직접 허용. 누르면 끕니다"><input type="checkbox" name="cell" value="ID1e11c19e0e224645a1329857d993cf80|EDIT" data-am-cell="EDIT" checked="" aria-label="점검-그룹 [G1000] 고치기"></label></td><td style="width:4.8rem"><button type="button" class="nv-btn nv-btn--icon nv-btn--ghost" data-am-remove="ID1e11c19e0e224645a1329857d993cf80" aria-label="점검-그룹 [G1000] 줄 빼기" title="이 권한그룹 줄을 표에서 뺍니다(저장해야 반영)"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-minus-circle"></use></svg></button></td></tr></tbody></table></div></div>
                             <div class="keyhints">
                                 <span title="이 권한그룹에 직접 켠 칸"><i class="k-on"></i>직접 허용</span>
                                 <span title="최고관리자이거나 「고치기」에 포함된 「보기」"><i class="k-imp"></i>저절로 허용</span>
@@ -564,19 +563,6 @@
                         </div>
                         
                     </div>
-                    <div class="savebar" data-clean="true" data-am-savebar="perm">
-    <span class="savebar__count" data-am-count="">저장된 상태입니다</span>
-    <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-am-toggle="" aria-expanded="false" hidden="">무엇이 바뀌나</button>
-    <span class="savebar__who" data-am-dirty="" hidden="" title="수행자 — 로그인한 관리자로 자동">수행자 <b>전체관리자</b></span>
-    <label class="savebar__reason" data-am-dirty="" hidden=""><span title="사유 — 수정 이력과 접속기록에 남습니다">사유 <span class="req" aria-hidden="true">*</span></span>
-        <input class="nv-input nv-input--sm" id="am-reason-perm" name="reason" maxlength="500" autocomplete="off" placeholder="예: 담당 부서 변경" data-am-reason="" value=""></label>
-    
-    <div class="savebar__actions">
-        <a class="nv-btn nv-btn--outline is-disabled" href="console-관리자메뉴관리-데이터-그룹-f62cf7.html" data-am-cancel="" aria-disabled="true">되돌리기</a>
-        <button type="submit" class="nv-btn nv-btn--primary" data-am-save="" disabled="">저장</button>
-    </div>
-    <ul class="savebar__list" data-am-list="" hidden=""></ul>
-</div>
                 </form>
 
                 <!-- 수정 이력(시안 histHtml) -->

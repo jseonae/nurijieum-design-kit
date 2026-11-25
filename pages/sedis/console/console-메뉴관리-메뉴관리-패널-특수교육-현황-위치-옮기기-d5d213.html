@@ -928,7 +928,12 @@
                                         <td class="is-title">
                                             <span class="nv-nav-menu  nv-nav-menu--d2">
                                                 <!-- 위치 옮기기(navigation.js): 끌기 · 방향키 · 눌러서 메뉴. 시안에 없는 요소다. 스크립트가 켠다 -->
-                                                <span class="nv-nav-menu__grip" role="button" tabindex="0" draggable="true" aria-haspopup="menu" data-menu-grip="" title="끌어서 옮깁니다. 방향키나 눌러서 나오는 메뉴로도 옮길 수 있습니다." aria-label="특수교육 현황 위치 옮기기"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-more"></use></svg></span>
+                                                <span class="nv-dropmenu"><span class="nv-nav-menu__grip" role="button" tabindex="0" draggable="true" aria-haspopup="menu" data-menu-grip="" title="끌어서 옮깁니다. 방향키나 눌러서 나오는 메뉴로도 옮길 수 있습니다." aria-label="특수교육 현황 위치 옮기기"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-more"></use></svg></span><div class="nv-dropmenu__menu" role="menu" aria-label="위치 옮기기" data-reorder-menu="" style="left: 0; right: auto;">
+                            <button type="button" class="nv-dropmenu__item" role="menuitem" data-reorder-move="up" title="">위로</button>
+                            <button type="button" class="nv-dropmenu__item" role="menuitem" data-reorder-move="down" title="">아래로</button>
+                            <button type="button" class="nv-dropmenu__item" role="menuitem" data-reorder-move="in" title="">안으로</button>
+                            <button type="button" class="nv-dropmenu__item" role="menuitem" data-reorder-move="out" disabled="" title="1단계 탭에서는 1단계로 뺄 수 없습니다. 전체보기에서 옮기세요.">밖으로</button>
+                        </div></span>
                                                 <span class="nv-nav-menu__depth" aria-hidden="true" title="2단계 메뉴 — 상위: 통계정보">2</span>
                                                 <a class="nv-nav-menu__name menu-link" href="console-메뉴관리-특수교육-현황-582bfa.html">특수교육 현황</a>
                                                 
@@ -1103,12 +1108,7 @@
                             </div>
                         </div>
                         <div class="nv-sr-only" aria-live="polite" data-reorder-live=""></div>
-                        <div class="nv-dropmenu__menu nv-dropmenu__menu--fixed" role="menu" aria-label="위치 옮기기" data-reorder-menu="" style="top: 511.5px; left: 395px;">
-                            <button type="button" class="nv-dropmenu__item" role="menuitem" data-reorder-move="up" title="">위로</button>
-                            <button type="button" class="nv-dropmenu__item" role="menuitem" data-reorder-move="down" title="">아래로</button>
-                            <button type="button" class="nv-dropmenu__item" role="menuitem" data-reorder-move="in" title="">안으로</button>
-                            <button type="button" class="nv-dropmenu__item" role="menuitem" data-reorder-move="out" disabled="" title="1단계 탭에서는 1단계로 뺄 수 없습니다. 전체보기에서 옮기세요.">밖으로</button>
-                        </div>
+                        
                         <!-- 아래 줄(시안 .list-foot): 범례 · 쪽 번호(admin-tables.js 가 쪽을 나누고 그린다) -->
                         <div class="list-foot">
                         <div class="legend list-legend">

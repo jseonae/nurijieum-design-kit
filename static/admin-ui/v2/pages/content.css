@@ -59,13 +59,17 @@
 /* Content ID · 발행 버전: 카드 없이 */
 .ct-kv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .4rem 1.2rem; margin: 0; font-size: var(--cms-fs-sm); color: var(--cms-muted); }
 .ct-kv dd { margin: 0; overflow-wrap: anywhere; }
+/* 버전 이력 카드(2026-11-25): details 는 summary 밖 내용을 한 상자로 묶어 카드의 gap 이 내용 사이에 들지 않는다 —
+   필터 줄 ↔ 표 12, 표 ↔ 맨 아래 콘텐츠 정보 16 을 여백으로 준다 */
+.nv-details > form + .nv-table-scroll { margin-top: 1.2rem; }
+.nv-details > .ct-kv { margin-top: 1.6rem; gap: .6rem 1.6rem; }
 /* 버전 표: 시안은 고치는 줄에 배경이 없다(공통 .is-selected 를 덮는다) */
 .nv-table--versions tbody tr.is-selected td { background: none; }
 /* 버전 미리보기 창 */
 .ct-version-preview { width: min(96rem, 100%); }
 .ct-version-preview .nv-modal__title { font-size: var(--cms-fs-h3); line-height: var(--cms-lh); }
 .ct-version-preview iframe { display: block; width: 100%; height: min(70vh, 64rem); border: 1px solid var(--cms-border); border-radius: var(--cms-radius); background: var(--cms-surface); }
-.nv-editor-page__side { display: flex; flex-direction: column; gap: var(--cms-sp-6); }
+.nv-editor-page__side { display: flex; flex-direction: column; gap: var(--cms-sp-4); }   /* 2026-11-25: 24 → 16 — 왼쪽 열(nv-stack 16)과 카드 간격 맞춤 */
 .nv-editor-header--inline { position: static; margin: 0; border-radius: var(--cms-radius-lg); border: 1px solid var(--cms-border); flex-wrap: wrap; }
 .nv-editor-header--inline .nv-editor-header__actions { margin-left: auto; }
 .nv-editor-header--inline form { display: inline-flex; }

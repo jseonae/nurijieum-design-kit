@@ -130,7 +130,11 @@
    피그마 「추가기능」 01~05 섹션. 위 흰 막대(← 메뉴 수정 + 탭별 저장) → [사유 줄] → 흰 카드 한 장
    (위치 · 메뉴명 · 탭 · 본문 2단). 게시판 수정(3단계)도 이 틀을 그대로 쓴다. */
 .edx { display: flex; flex-direction: column; gap: 2.4rem; }
-.edx-top { position: sticky; top: var(--cms-header-h); z-index: 20; margin: calc(var(--cms-content-py) * -1) calc(var(--cms-content-px) * -1) 0; }
+.edx-top { position: sticky; top: var(--cms-header-h); z-index: 20; margin: calc(var(--cms-content-py) * -1) calc(var(--cms-content-px) * -1) 0;
+  /* 넓은 창에서도 본문 바깥 영역(.nv-main) 끝까지 — 편집 머리(cms-admin-v2.css .nv-editor-header)와 같은 계산 */
+  --edx-top-bleed: max(0px, (100cqw - 100% - var(--cms-content-px) * 2) / 2);
+  margin-left: calc(var(--cms-content-px) * -1 - var(--edx-top-bleed));
+  margin-right: calc(var(--cms-content-px) * -1 - var(--edx-top-bleed)); }
 .edx-top > .nv-editor-header { position: static; margin: 0; min-height: 7.2rem; padding-top: 1.2rem; padding-bottom: 1.2rem; }
 .edx-top > .reasonbar { box-shadow: var(--cms-shadow-sm); }
 .edx-back { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 3.2rem; height: 3.2rem; border: 1px solid var(--cms-border); border-radius: var(--cms-radius-sm); background: var(--cms-surface); color: var(--cms-text-strong); cursor: pointer; }
