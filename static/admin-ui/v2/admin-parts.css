@@ -167,7 +167,7 @@
 .lvl--4 { background: var(--cms-gray-bg); color: var(--cms-gray-fg); }
 
 /* 본문 2단 — 왼쪽 항목 묶음(구분선), 오른쪽 설정 열 */
-.edx-body { display: grid; grid-template-columns: minmax(0, 1fr) 34rem; border-top: 1px solid var(--cms-border); }
+.edx-body { display: grid; grid-template-columns: minmax(0, 1fr) 34rem; /* border-top: 1px solid var(--cms-border); */ }
 .edx-body--one { grid-template-columns: minmax(0, 1fr); }
 .edx-main { min-width: 0; padding: 2.8rem 2.4rem 3.2rem; display: flex; flex-direction: column; }
 .edx-side { min-width: 0; padding: 2.8rem 2.4rem 3.2rem; border-left: 1px solid var(--cms-border); display: flex; flex-direction: column; gap: 2.4rem; }

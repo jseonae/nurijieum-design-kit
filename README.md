@@ -109,6 +109,152 @@
 
 최신 기록이 위에 옵니다.
 
+### 2026-11-25 · 스타일가이드 견본을 개발 화면 마크업으로 — 2차 (모양은 피그마)
+- **브랜치:** `design/jseonae` · **상태:** 검토 대기 · **파일:** `static/admin-ui/v2/sedis-sg.css` 16 · 17-1 · 19 · 20 · 21 · 24 · 25 · 26 · 27, `styleguide/index.html`
+- **방식:** 마크업은 개발 콘솔 화면 그대로(스타일가이드 견본에서는 개발 스크립트용 `data-*` · 숨은 값만 뺌), 모양은 피그마 디자인스타일 · 디자인모음 값
+- **작업 폴더별 변경**
+
+  | 견본 · 컴포넌트 | 개발 마크업 | sedis-sg.css | 피그마 기준 |
+  |---|---|---|---|
+  | 토스트 | `.nv-toast` · `.ntoast`(+ `--error` · `--warning` · `--info`) | 17-1 | 디자인스타일 cms/toast |
+  | 아코디언 | `details.nv-form-group.nv-details` | 19 | 디자인스타일 cms/accordion Size=M |
+  | 트리 item · 트리 ⋮ 단추 | `.nv-tree__row` · `.nv-tree__toggle` · `.nv-tree .nv-dropmenu` | 16 | 디자인스타일 cms/tree-item |
+  | 메뉴 트리 | `.nv-table.nv-nav-table` · `.nv-nav-menu--d1~d4`(`__grip` · `__depth` · `__name`) · `.mtree__lock` · `.mtree__tag` · `.list-legend` | 20 | 디자인모음 menu-tree-row |
+  | 접근 권한 표 | `.ptable.acc-table`(`ptable__who` · `cellcheck` · `tr.is-unsaved` · `tag-new` · `xbtn`) | 21 | 디자인모음 access-row |
+  | 메뉴 편집 머리 | `.edx-card__head`(`edx-card__title` · `lvl` · `edx-card__name` · `edx-site` · `edx-steps`) | 24 | 디자인모음 누리지음/menu-edit-header (2552:40143) |
+  | 상위 설정 따르기 | `.acc-same`(`label.nv-check` + `#inherit-hint`) | 25 | 디자인모음 누리지음/inherit-bar (2549:38413) |
+  | 고르기 목록 항목 | `.pick__list`(`pick__search` · `pick__row` · `pick__id` · `pick__meta` · `pick__sep` · `pick__foot`) | 26 | 디자인모음 누리지음/picker-item (2550:38541) |
+  | 권한 항목 | `ul.mgrcards > li.mgr`(`mgr__icon` · `mgr__who` · `nv-badge` · `xbtn`) | 27 | 디자인모음 누리지음/permission-item (2549:38396) |
+  | 사이드 메뉴 · 상단 바 | `aside.nv-sidebar` · `header.nv-header` | (cms-admin-v2.css 그대로) | 디자인스타일 Layout |
+
+- **주요 값**
+  - 메뉴 편집 머리: 안쪽 24 28 8 · 메뉴명 24 Bold · 유형 배지 Tertiary Outline · 노출 배지 Primary Solid-light · 이전/다음 34 상자(가운데 구분선 1 × 16)
+  - 상위 설정 따르기: 안쪽 12 16 · 모서리 8 · surface/gray-subtler · 체크 16 · 제목 14 SemiBold · 설명 13 subtle
+  - 고르기 목록 항목: 줄 40 · 안쪽 0 14 · 이름 14 · 코드 · 정보 13 disabled · 마우스 올림 gray-subtle + 이름 SemiBold · 비활성 subtle-inverse · 맨 아래 줄(Action) text/basic
+  - 권한 항목: 안쪽 12 8 12 16 · 모서리 8 · 아이콘 칸 36 원 · 이름 14 SemiBold · 코드 13 disabled · 설명 13 subtle · 빼기 28(바탕 없음, 마우스 올림 검정 5%)
+- **왜:** 스타일가이드 견본과 개발 화면의 마크업이 달라 견본을 그대로 옮겨 쓸 수 없었음. 클래스를 개발과 같게 하고 모양만 피그마로 맞춤
+- **확인:** 스타일가이드 각 섹션과 개발 콘솔 화면(메뉴 수정 · 접근권한 탭)을 그려 피그마 값(높이 · 여백 · 모서리 · 글자)과 계산 스타일 비교
+- **개발팀 참고**
+  - `admin-parts.css` · `navigation.css` 가 `sedis-sg.css` 뒤에 읽혀서, 같은 클래스를 덮는 규칙은 선택자를 한 단계 높였음(`.edx-card__head.edx-card__head` · `.acc-same.acc-same` · `.mgrcards.mgrcards` · `.pick__list:not(.owner-search .pick__list)` 등)
+  - 고르기 목록의 맨 아래 줄(`.pick__foot`, 예: 「새 권한그룹 만들기」 · 「권한그룹관리」) 글자가 파란 링크색에서 피그마 Action 의 text/basic 으로 바뀜
+  - 메뉴 편집 머리 이전/다음 화살표는 개발 마크업(chevron-right)을 그대로 써서 피그마 삼각 화살표와 모양이 조금 다름
+  - 사이드 메뉴 · 상단 바는 개발 화면이 이미 피그마 값이라 CSS 를 바꾸지 않음(상단 바 알림 · 사용자 IP 줄은 개발 마크업에 없어 피그마와 다름)
+- **스타일가이드만:** 코드 칸에서 견본 배치용 코드(`sg-*` 감싸개 · 견본에서만 쓴 style)를 빼고 들여쓰기 2칸으로 정렬
+
+### 2026-11-25 · 메뉴 단계 번호 색 변경
+- **브랜치:** `design/jseonae` · **상태:** 검토 대기
+- **작업 폴더별 변경**
+
+  | 폴더 · 파일 | 내용 |
+  |---|---|
+  | `static/shared/nuri-tokens.css` | 새 토큰 `--nuri-color-depth-1~4-surface` · `-text` |
+  | `static/admin-ui/v2/sedis-sg.css` 20 · 24 | 메뉴 트리 `.nv-nav-menu__depth`, 메뉴 편집 머리 `.lvl` 이 새 토큰을 씀 |
+  | `static/shared/nuri-components.css` | `.nuri-depth-badge` 가 새 토큰을 씀 |
+
+- **값:** 1단계 `#18378c` 바탕 · 흰 숫자 / 2단계 `#3a6cec` · 흰 숫자 / 3단계 `#d3def5` · `#234fc8` 숫자 / 4단계 `#eff2f6` · `#364153` 숫자 (예전 secondary-80 · 60 · 50 · gray-50 은 쓰지 않음)
+- **왜:** 단계가 깊어질수록 연해지는 색을 디자인에서 새로 정함(캡처 기준). 3 · 4단계는 바탕이 연해 숫자를 진한 색으로
+- **확인:** 스타일가이드 메뉴 트리 · 단계 번호 · 메뉴 편집 머리에서 1~4단계 계산 색 확인
+- **개발팀 참고:** 단계 번호 색은 이제 토큰 4쌍으로만 바꿈. 새 토큰은 기본(밝은) 테마에만 있음
+
+### 2026-11-25 · 메뉴 수정 화면 탭 · 본문 구분선 정리
+- **브랜치:** `design/jseonae` · **상태:** 검토 대기
+- **작업 폴더별 변경**
+
+  | 폴더 · 파일 | 내용 |
+  |---|---|
+  | `static/admin-ui/v2/admin-parts.css` | `.edx-body` 위 구분선(`border-top: 1px solid var(--cms-border)`) 주석 처리 |
+  | `static/admin-ui/v2/sedis-sg.css` | `.nv-tabs { gap }` · `.gtabs { gap; border-bottom }` 규칙 삭제 — 탭 간격 · 밑줄은 `cms-admin-v2.css` 규칙을 따름 |
+
+- **왜:** 메뉴 수정 화면에서 탭 줄 아래와 본문 위에 선이 겹쳐 보여 하나로 정리
+- **개발팀 참고:** `.gtabs` 를 쓰는 다른 화면에서도 탭 줄 아래 선 · 간격이 `cms-admin-v2.css` 값으로 돌아감
+
+### 2026-11-25 · 쪽 번호(nv-pagination)를 피그마 cms/pagination 모양으로
+- **브랜치:** `design/jseonae` · **상태:** 검토 대기 · **파일:** `static/admin-ui/v2/sedis-sg.css` 「10. 쪽 번호」(마크업은 KRDS 그대로)
+- **기준:** 피그마 디자인스타일 14. Pagination 의 cms/pagination-item(2423:1195) · cms/pagination(2423:1196)
+- **값:** 칸 높이 24 · 최소 너비 24 · 좌우 4 · 모서리 4 · 글자 13 Regular · 칸 사이 4 · 가운데 정렬 / 마우스 올림 action/gray-hover · 누름 action/gray-pressed · 선택 pagination/selected + 흰 글자 SemiBold · 비활성(aria-disabled) 회색 글자 · 아이콘 / 이전 · 다음 꺾쇠 Phosphor caret-left · caret-right 16(KRDS 화살표 대신) / 생략(link-dot) text/subtle
+- KRDS CSS 를 안 읽는 스타일가이드에서도 같게 보이도록 배치(display · 정렬)도 이 규칙에 넣음. 쪽 번호가 가운데로 옴(예: 만족도 현황은 오른쪽 → 가운데)
+
+### 2026-11-25 · 트리(nv-tree)를 피그마 cms/tree · cms/tree-item 모양으로
+- **브랜치:** `design/jseonae` · **상태:** 검토 대기 · **파일:** `static/admin-ui/v2/sedis-sg.css` 「16. 상세 정보표 · 트리」의 트리 부분(마크업은 그대로)
+- **기준:** 피그마 디자인스타일 22. Accordion 의 cms/tree-item(2455:1712) · cms/tree(2455:1713)
+- **1단** `.nv-tree__row--root`: 높이 48 · 좌우 16 · tree/root-surface 바탕 · 16 Bold(선택돼도 같은 모양) / **2단** `details > summary.nv-tree__row`: 44 · 좌우 16 · 14 SemiBold · 펼침 표시 펼침 파랑 · 접힘 회색 / **3단** 그 밖의 `.nv-tree__row`: 36 · 14 Regular, 마우스 올림 tree/item-hover, 선택(`.is-active` · `aria-current`) tree/item-selected + 파랑 SemiBold
+- **연결선:** li 안의 ul(3단 목록)은 왼쪽 32 칸에 세로선 · 가지 8, 마지막 항목은 아래 선 없음. 예전 점선 세로선 · 들여쓰기는 없앰
+- 조직도 화면(organization.css 의 `.org-tree div.nv-tree__row` 색 · 여백)보다 앞서도록 선택자를 한 단계 높임
+
+### 2026-11-25 · 편집 도구 막대(nv-editor__toolbar)를 피그마 디자인모음 04-B 모양으로
+- **브랜치:** `design/jseonae` · **상태:** 검토 대기 · **파일:** `static/admin-ui/v2/sedis-sg.css` 「18. 편집 도구 막대」
+- **기준:** 피그마 디자인모음 「04-B 메뉴 수정 - 소스 수정 탭 (카드형)」의 editor-toolbar(노드 2473:3752). 마크업은 개발 그대로
+- **값:** 막대 높이 48 · 좌우 12 · 칸 사이 4 · 바탕 background/gray-subtler · 테두리 border/gray-light · 모서리 8 / 단추 32 · 모서리 4 · 아이콘 16 / 구분선 1 × 20 surface/secondary-subtler / 오른쪽 보기 전환(편집 · 분할 · 미리보기) 바탕 gray-subtle · 안 여백 3 · 칸 24 · 글자 13, 고른 칸 button/primary-light + 파랑 글자
+- **그대로:** nv-editor 의 제목 · 본문 등 나머지, SunEditor 가 그리는 도구 단추(.se-*), 콘텐츠 편집 화면의 막대 바탕(content.css `.ct-editor .cms-admin-editor__toolbar` 가 앞섬)
+
+### 2026-11-25 · 버튼 스타일을 cms-button.css 한 파일로
+- **브랜치:** `design/jseonae` · **상태:** 검토 대기 · **스크립트:** `_to_delete/mkbtn.py`
+- **새 파일:** `static/admin-ui/v2/cms-button.css` — 버튼(`nv-btn` 색 · 스타일 · 크기 · 상태 · 아이콘 단추), 묶음(`nv-btn-group` · `nv-row-actions`), 글자 단추(`nv-link--btn`), 행 ⋮ 아이콘 크기
+- **옮긴 것:** `sedis-sg.css` 「1. 버튼」 전부(최종 모양) + `cms-admin-v2.css` 에서 sedis-sg 가 덮지 않던 구조 값(display · 정렬 · 줄바꿈 없음 · 커서 · 전환 · `aria-disabled` 포인터 막기 · `--block` · `--lg` 최소 너비 78)
+- **지운 것(중복 · 덮이던 값):** `cms-admin-v2.css` 「3. 버튼」 전체(옛 색 · a 단추 글자색 보정 · opacity .45 등), `.nv-row-actions .nv-btn--icon` 28 규칙(마크업 `nv-btn--xs` 로 — 132곳), 고대비의 `.nv-btn--primary` 테두리(테두리를 안 써서 효과 없던 줄)
+- **영역 쪽에 남긴 것:** 목록 도구 막대 · 측면 패널 바닥(sedis-sg.css), 편집 도구 막대 · 조직도 바닥(cms-admin-v2.css) 안의 버튼 배치 규칙, 페이지 머리 제목 줄 높이(sedis-sg.css)
+- **연결:** 버튼을 쓰는 html 3,141장 — sedis-sg.css 를 쓰는 화면은 그 바로 앞(겹침 순서 그대로, 3,127장), 로그인 · 매뉴얼 14장은 cms-admin-v2.css 바로 뒤. 스타일가이드도 연결
+- **확인:** 기본 판 607장 + SEDIS 표본 66장(미리보기 6 포함) + 스타일가이드의 버튼 15,094개 계산 스타일을 옮기기 전후 비교 — 콘솔 · 스타일가이드는 행 아이콘 묶음(의도) 말고 같음. 로그인 · 매뉴얼은 sedis-sg 를 안 쓰던 화면이라 이번에 스타일가이드 버튼 모양으로 바뀜(로그인 큰 단추 48 → L 44 등)
+
+### 2026-11-25 · 버튼을 피그마 cms/button 규칙으로 (색 + 스타일 + 크기 두 클래스 체계 · Ghost 안 씀)
+- **브랜치:** `design/jseonae` · **상태:** 검토 대기
+- **규칙(피그마 디자인스타일 6. Button):** 색 8(primary · secondary · tertiary · point · danger · warning · success · info) × 스타일 4(Solid · Solid-light · Outline · Outline-fill) × 크기 5(XS 28 · S 32 · M 40 · L 44 · XL 48) × 상태 4. Ghost 는 쓰지 않음
+- **클래스:** `nv-btn` + `nv-btn--{색}` + `nv-btn--{light|outline|outline-fill}` + `nv-btn--{xs|sm|lg|xl}`. 스타일 없으면 Solid, 색 없으면 Tertiary, 둘 다 없으면 Tertiary Outline. 아이콘만 `nv-btn--icon`(XS 28 · S 32 · M 40). 글자 단추 `nv-link nv-link--btn`(+ `--neutral` · `--danger` · `--sm`)
+- **CSS:** `static/admin-ui/v2/sedis-sg.css` 「1. 버튼」 다시 씀 — 색은 팔레트 변수(--p-*), 스타일이 모양(--b-*)을 고름. 상태 규칙은 `.nv-btn[class]` 로 화면 CSS 보다 앞서게. 옛 이름은 별칭으로 남김(primary-outline · soft · danger-solid · warn · ghost · outline-strong · muted · excel)
+- **마크업 바꿈(스크립트 `_to_delete/btnmig.py`, 콘솔 · 매뉴얼 2,164장 + JS 6개, 사용자 화면 미리보기 제외):** primary-outline → primary outline 3,559 · ghost → outline 3,328 · danger(빨강 테두리) → danger outline 1,880 · 목록 도구 막대의 danger → danger outline-fill 419 · danger-solid → danger 53 · warn → warning outline-fill 4 · outline-strong → outline 8 · 아이콘 단추 크기 (32) → sm 533 · sm(28) → xs 1,690(크기는 그대로)
+  - `sedis-sg.css` 의 「목록 도구 막대 danger」 · 「아이콘 단추 danger/outline」 덧씌움 규칙은 마크업으로 옮겨 지움
+- **스타일가이드:** 9. Button 섹션을 피그마 규칙대로 — 색 × 스타일 × 상태 32줄, 크기 5, 아이콘 켜기, 아이콘 단추(색 × 스타일, Ghost 없음) · 크기, 계층(페이지 머리 · 하위 목록 · 수정 · 모달), 글자 단추. 다른 섹션 견본의 옛 버튼 이름도 새 이름으로
+- **행 작업 ⋮:** main PR #8 의 `nuri-button-icon`(Tertiary · Outline · XS) 그대로 — 모양은 `nv-btn nv-btn--icon nv-btn--xs` 와 같음
+- **보이는 변화:** Ghost 이던 단추(카드 더보기 꺾쇠, 파일 지우기, 버전 이력의 작은 단추 등)와 아이콘 단추(행 수정 · 삭제 등)에 회색 테두리가 생김. S 단추 안 아이콘 14 → 16(피그마 S)
+- **확인(1600 폭):** 기본 판 607장 + SEDIS 표본 40장 바꾸기 전후 — JS 오류 · 불러오기 실패 · 가로 넘침 · 줄바꿈된 단추 변화 0. 대표 화면(권한 · 부서 및 직원 · 콘텐츠 수정 · 게시글 관리) 비교
+- **되돌리기:** 바꾸기 전 묶음 `_to_delete/btn-before.tgz`
+
+### 2026-11-25 · 스타일가이드 견본을 개발 화면 마크업(.nv-*)으로 — 1차
+- **브랜치:** `design/jseonae` · **상태:** 검토 대기 · **파일:** `styleguide/index.html` (바꾼 스크립트 `_to_delete/sgnv.py`, 바꾸기 전 `_to_delete/styleguide-before-nv.html`)
+- **방향:** 스타일가이드를 개발 마크업에 맞춤. 견본 마크업 = 키트 화면과 같은 `.nv-*` 클래스, 모양 = `cms-admin-v2.css` + `sedis-sg.css`. 행 작업 ⋮ 는 main PR #8 의 `nuri-button-icon`(tertiary · outline · xs) 그대로
+- **기준 마크업:** 개발 쪽 견본 화면 `pages/default/console/console-스타일가이드-d5b9ca.html` + 실제 콘솔 화면
+- **바꾼 섹션(18 + 화면 틀 일부):** 9 Button(`nv-btn` 스타일 6 × 상태 4, 크기 sm 32 · 기본 40 · lg 44, 아이콘 · `nv-btn--icon` · ⋮, `nv-link`) · 10 Input(`nv-input` 상태 7 · 크기, `nv-select`, 글자형 셀렉트 `nv-filter__label`, `nv-check` · `nv-radio` · `nv-switch`) · 11 Form field(`nv-form-group` · `nv-field` · `--row` · `nv-textarea`) · 13 Modal · Panel · 14 Tab · Menu(`nv-tabs` · `--auto` · `gtabs` · `nv-dropmenu`) · 15 Table · 16 Pagination(`krds-pagination`) · 17 Badge · 18 Feedback(`nv-alert` · `nv-toast`) · 19 Empty(9종) · 20 Date(`type=date` · `nv-date-range`) · 21 File(`nv-dropzone` · `nv-file`) · 22 Tag · 23 Segmented · 24 Accordion · Tree(`nv-details` · `nv-tree`) · 25 정보 표(`nv-dl`) · 27 요약 카드(`nv-summary`) · 29 편집 도구 막대(`nv-editor`) · 8 Layout 의 page-header 3종(`nv-page-header` · `--sub` · `nv-editor-header`) · footer · top
+- **상태 견본:** 개발 클래스에 상태 클래스가 없어, 스타일가이드 전용 보조 `sg-is-hover` · `sg-is-pressed` · `sg-is-focus` 로 고정해 보여 줌(개발 마크업에는 넣지 않음). 모달 · 패널 · 토스트 · 맨 위로 · 펼친 더보기 메뉴는 견본 틀 안에 놓으려고 위치만 바꿈(설명에 적음)
+- **아이콘:** 스타일가이드 첫머리 스프라이트를 키트 화면의 `nv-i-*` 전체(97개)로 바꿈
+- **아직 스타일가이드 전용 마크업인 섹션:** 기초(1~7 색 · 글자 · 간격 · 그림자 · 아이콘 · 로고), 8 Layout 의 사이드 메뉴 · 머리 막대, 12 Select list, 26 단계 번호, 28 Key value, 30 List item, 31 Field card, 32 Inline notice, 33~43 패턴, 44 Breadcrumb — 개발 마크업과 대응을 정해야 함
+- **개발 마크업에 없어 견본에서 빠진 것:** 버튼 XS · XL 크기와 secondary · success 등 추가 색, 배지 크기 3단계 · 스타일 4종, 달력(브라우저 기본 달력 사용), 셀렉트 L 크기
+
+### 2026-11-25 · 스타일가이드 list-toolbar 견본을 개발 화면 마크업(nv-filter)으로
+- **브랜치:** `design/jseonae` · **상태:** 검토 대기 · **파일:** `styleguide/index.html`
+- **왜:** 견본이 스타일가이드 전용 클래스(`nuri-list-toolbar` · `nuri-button` · `nuri-select-text` …)라 개발 화면 마크업과 달랐음
+- **마크업:** SEDIS 「통계표 통합 · 시각화」(`console-통계표-통합-시각화-ff5106.html`)의 `form.nv-filter` 와 같은 클래스 · 구조 — `nv-filter__left/right` · `nv-filter__total`(`<b>` 숫자) · `label.nv-filter__label` 안 `select.nv-select` · `nv-filter__divider` · `nv-filter__selected`(`data-selected-count`) · `nv-btn nv-btn--sm nv-btn--danger`(`data-needs-selection`) · `a.nv-btn nv-btn--sm nv-btn--outline` · `nv-sr-only` 라벨 + `nv-select nv-select--sm` · `nv-input-wrap` + `nv-input nv-input--sm nv-input--search` + `svg.nv-icon`. 화면별 data-*(API 주소 등)와 id 는 견본용 이름으로
+- **모양:** 지금 디자인 그대로 — 스타일가이드에 `cms-admin-v2.css` · `sedis-sg.css` 를 `nuri-components.css` 앞에 연결, 아이콘 스프라이트(`nv-i-trash` · `download` · `search`)를 body 첫머리에 넣음. 두 줄 견본: 선택 0개(「선택 삭제」 꺼짐) · 선택 1개(켜짐)
+- **다른 섹션 영향:** 1600 폭 화면 비교 — 차이는 글자 가장자리 정도(밝기 차 16 이하)뿐. 화면 제목(KIMM_Bold)은 이제 `cms-admin-v2.css` 의 글꼴 선언으로 실제 KIMM 으로 그려짐(견본 설명의 「Pretendard 로 대신」 문구 삭제)
+
+### 2026-11-25 · 스타일가이드 글자형 셀렉트(cms/select-text)를 진짜 셀렉트로
+- **브랜치:** `design/jseonae` · **상태:** 검토 대기
+- **왜:** 「목록 표시 개수 15개 ∨」는 모양만 글자 버튼이고 기능은 셀렉트인데, 견본이 `<button>` 으로 되어 있었음
+- **마크업:** `<span class="nuri-select-text"><select class="nuri-select-text__control">…</select><span class="nuri-icon i-caret-down"></span></span>` — 꺾쇠를 select 오른쪽 여백 위에 겹쳐 꺾쇠를 눌러도 select 가 열림. 라벨은 `<label>` 로 묶거나 `aria-label`
+- **파일:** `static/shared/nuri-components.css` 「글자형 셀렉트」 · `styleguide/index.html` — 「Input › cms/select-text」 견본 6개와 「Layout › cms/list-toolbar」(라벨 「목록 표시 개수」와 `<label class="nuri-list-toolbar__group">` 로 묶음), 코드 보기도 같이
+- **확인:** 모양(크기 · 색 · 마우스 올림 · 비활성) 바꾸기 전과 같음. 키트 화면의 「목록 표시 개수」(`nv-filter__label` 안 `<select>`)는 이미 셀렉트라 그대로
+
+### 2026-11-25 · 목록 도구 막대(nv-filter)를 스타일가이드 cms/list-toolbar 값으로
+- **브랜치:** `design/jseonae` · **상태:** 검토 대기 · **파일:** `static/admin-ui/v2/sedis-sg.css` 「7. 목록 도구 막대」 (두 판 공통)
+- **높이 72:** 막대 안 단추를 모두 S(32 · 13 SemiBold)로 — 「새 게시글」 같은 40 단추가 막대를 81 로 키우던 것 정리. 아래 선은 inset 그림자로(높이에 더해지지 않게)
+- **간격:** 묶음 사이 16 · 묶음 안 8(「선택 0개」와 뒤 단추들, 단추 묶음 `nv-btn-group`). 세로 구분선 `nv-filter__divider` 는 스타일가이드에 없어 숨김(마크업은 그대로)
+- **「목록 표시 개수」 셀렉트:** 글자형 셀렉트(cms/select-text) — 테두리 없음 · 14 Regular · 꺾쇠 16 · 라벨과 사이 8
+- **총 개수:** 숫자 `<b>` 굵기 900(가짜 굵기) → 600. 숫자 파랑은 유지
+- **그대로 둔 것:** 입력 · 셀렉트 글자 13(스타일가이드 S 는 14 — 키우면 날짜 · 검색 칸이 넓어져 1600 폭에서 막대가 두 줄로 넘어감), 검색 단추가 오른쪽에 있는 키트 검색 칸 구조
+- **확인(1600 폭):** 기본 판 607장 + SEDIS 판 표본 40장 — JS 오류 · 가로 넘침 · 줄바꿈된 단추 변화 0. 막대 높이: 73 → 72(330곳) · 81 → 72(96곳) · 81 → 80(18곳), 높아진 곳 0
+
+### 2026-11-25 · 누리지음 기본 판 관리자 화면에도 스타일가이드 적용
+- **브랜치:** `design/jseonae` · **상태:** 검토 대기
+- **작업 폴더별 변경**
+  - `pages/default/console/` 607장: `</head>` 앞에 `static/admin-ui/v2/sedis-sg.css` 연결(SEDIS 판과 같은 파일)
+  - 버튼 클래스 정리(597장): `nv-btn--outline-strong` · `nv-btn--muted` · `nv-btn--excel` → `nv-btn--outline`, `nv-btn--soft` → `nv-btn--primary-outline`
+  - 행 ⋮ 단추는 main 의 PR #8(min3076, `nuri-button-icon` 으로 교체)을 따름 — 이 작업에서는 건드리지 않음
+  - `static/admin-ui/v2/pages/group-panel.js`: 스크립트가 만드는 「파일 올리기」 단추 `nv-btn--soft` → `nv-btn--primary-outline`
+  - `static/admin-ui/v2/sedis-sg.css`: 머리 주석을 두 판 공통으로 고침(파일 이름은 그대로)
+- **이미 기본 판에 들어가 있던 것:** 페이지 머리 버튼 계층 · 하위 목록 머리(`nv-page-header--sub`) · 브레드크럼 삭제 · Phosphor 아이콘 · 빈 상태 컴포넌트 · `main` tabindex 삭제
+- **그대로 둔 것:** 로그인 · 매뉴얼 · 게시판 스킨 · 공개 화면(SEDIS 판과 같은 범위)
+- **확인:** 기본 판 콘솔 607장 전부 1600 폭에서 바꾸기 전후 비교 — JS 오류 · 불러오기 실패 · 가로 넘침 · 줄바꿈된 단추 모두 0, 변화 없음. 대표 화면(공통코드 · 게시글 관리 · 권한 · 코드 관리) 화면 비교
+- **되돌리기:** `git checkout -- pages/default/console static/admin-ui/v2` (커밋 전). main 받기 전 작업은 `git stash list` 의 「jseonae 2026-11-25 …」에 보관
+
 ### 2026-11-23 · SEDIS 특수교육 현황(통계표 원본 · 통계표 통합 · 그래프) 스타일가이드 적용
 - **파일:** `static/sedis/assets/admin/trd-admin.css` 끝에 「스타일가이드 적용」 묶음 추가(마크업 그대로, `--nuri-*` 토큰)
 - **통계표 원본:** 「올린 파일은 바로 반영되지 않습니다」 안내를 표 위로(보이는 순서만) · 줄마다 반복되던 파란 「새 파일 올리기」를 보조(테두리) 단추로 · 파일명 열 넓힘(13 subtle) · 「이전 파일」 접기 표시를 caret 아이콘으로

@@ -102,7 +102,7 @@
     var uploadBtn = el('button', { type: 'button', className: 'nv-btn nv-btn--sm nv-btn--primary', disabled: !canWrite }, [icon('nv-i-upload'), el('span', { text: '올리기' })]);
     var newFolderBtn = el('button', { type: 'button', className: 'nv-btn nv-btn--sm nv-btn--outline', disabled: !canWrite }, [icon('nv-i-plus'), el('span', { text: '새 폴더' })]);
     var deleteBtn = mode === 'manage'
-      ? el('button', { type: 'button', className: 'nv-btn nv-btn--sm nv-btn--danger', disabled: true }, [icon('nv-i-trash'), el('span', { text: '선택 삭제' })])
+      ? el('button', { type: 'button', className: 'nv-btn nv-btn--sm nv-btn--danger nv-btn--outline-fill', disabled: true }, [icon('nv-i-trash'), el('span', { text: '선택 삭제' })])
       : null;
     var toolbar = el('div', { className: 'im-toolbar' }, [crumbs, el('div', { className: 'im-toolbar__actions' }, [newFolderBtn, uploadBtn, deleteBtn])]);
     var drop = el('div', { className: 'nv-dropzone im-drop', hidden: !canWrite }, [
@@ -246,9 +246,9 @@
         return el('li', {}, [pick]);
       }
       var check = el('input', { type: 'checkbox', className: 'im-tile__check', 'data-path': f.path, 'aria-label': f.name + ' 선택', disabled: !canWrite });
-      var copy = el('button', { type: 'button', className: 'nv-btn nv-btn--sm nv-btn--ghost', 'data-copy': f.url, title: '주소 복사: ' + f.url }, [icon('nv-i-link'), el('span', { text: '주소 복사' })]);
-      var uses = el('button', { type: 'button', className: 'nv-btn nv-btn--sm nv-btn--ghost', 'data-usage': f.path, 'aria-label': f.name + ' 쓰는 곳 보기' }, [icon('nv-i-search'), el('span', { text: '사용처' })]);
-      var dl = el('a', { className: 'nv-btn nv-btn--sm nv-btn--ghost', href: base + '/images/' + encodeURIComponent(siteId) + '/download?path=' + encodeURIComponent(f.path), download: f.name, 'aria-label': f.name + ' 내려받기' }, [icon('nv-i-download')]);
+      var copy = el('button', { type: 'button', className: 'nv-btn nv-btn--sm nv-btn--outline', 'data-copy': f.url, title: '주소 복사: ' + f.url }, [icon('nv-i-link'), el('span', { text: '주소 복사' })]);
+      var uses = el('button', { type: 'button', className: 'nv-btn nv-btn--sm nv-btn--outline', 'data-usage': f.path, 'aria-label': f.name + ' 쓰는 곳 보기' }, [icon('nv-i-search'), el('span', { text: '사용처' })]);
+      var dl = el('a', { className: 'nv-btn nv-btn--sm nv-btn--outline', href: base + '/images/' + encodeURIComponent(siteId) + '/download?path=' + encodeURIComponent(f.path), download: f.name, 'aria-label': f.name + ' 내려받기' }, [icon('nv-i-download')]);
       var view = el('a', { className: 'im-tile__view', href: f.url, target: '_blank', rel: 'noopener', 'aria-label': f.name + ' 새 창에서 보기' }, [thumb]);
       return el('li', {}, [el('div', { className: 'im-tile im-tile--file' }, [check, view, name, meta,
         el('span', { className: 'im-tile__url', text: readableUrl(f.url) }), el('span', { className: 'im-tile__actions' }, [copy, uses, dl])])]);

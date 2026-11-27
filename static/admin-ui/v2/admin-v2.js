@@ -138,7 +138,7 @@
     q('#nv-confirm-title', box).textContent = options.title || '확인';
     if (options.html) { body.innerHTML = options.html; } else { body.textContent = options.message || ''; }
     ok.textContent = options.verb || '확인';
-    ok.classList.toggle('nv-btn--danger-solid', !!options.danger);
+    ok.classList.toggle('nv-btn--danger', !!options.danger);
     ok.classList.toggle('nv-btn--primary', !options.danger);
     return new Promise(function (resolve) {
       var settled = false;

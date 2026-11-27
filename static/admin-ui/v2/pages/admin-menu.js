@@ -213,7 +213,7 @@
           : '관리자 권한그룹 · ' + (g ? g.count || 0 : 0) + '명';
         var name = g ? '<button type="button" class="fixlink" style="font-weight:600;text-decoration:none" data-opengroup="' + esc(g.roleCode || g.code) + '">' + esc(label(id)) + '</button>'
           : '<span class="who__name">' + esc(label(id)) + '</span>';
-        var del = ro ? '' : '<button type="button" class="nv-btn nv-btn--icon nv-btn--ghost" data-am-remove="' + esc(id) + '" aria-label="' + esc(label(id)) + ' 줄 빼기"'
+        var del = ro ? '' : '<button type="button" class="nv-btn nv-btn--icon nv-btn--sm nv-btn--outline" data-am-remove="' + esc(id) + '" aria-label="' + esc(label(id)) + ' 줄 빼기"'
           + ' title="이 권한그룹 줄을 표에서 뺍니다(저장해야 반영)">' + icon('minus-circle') + '</button>';
         body += '<tr data-am-row="' + esc(id) + '"' + (newRows[id] ? ' class="is-new"' : '') + '><td class="ptable__who"><div class="who"><div><div>' + name + '</div><div class="who__meta">' + meta + '</div></div></div></td>'
           + cells + '<td style="width:4.8rem">' + del + '</td></tr>';

@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="krds-sedis" data-krds-mode="light"><head>
+<!-- [키트] SEDIS 판 · 공개 화면 · 장애 진단 의뢰 계기
+     원래 주소: /public/keydata/KD2008005
+     스크립트(원래 순서): ../../../static/public-ui/themes/krds-sedis/pub/_common/resources/js/krds-display.js , ../../../static/public-ui/page-feedback.js , ../../../static/vendor/krds/js/plugin/swiper-bundle.min.js , ../../../static/vendor/krds/js/component/ui-script.js , ../../../static/public-ui/themes/krds-sedis/pub/_common/resources/js/krds-custom.js , ../../../static/public-ui/themes/krds-sedis/pub/_common/resources/js/krds-base.js , ../../../static/public-ui/themes/krds-sedis/theme.js , ../../../static/public-ui/menu-popup.js , ../../../static/sedis/assets/common/loading.js , ../../../static/sedis/assets/vendor/echarts/echarts.min.js , ../../../static/sedis/assets/chart/cm-chart.js , ../../../static/sedis/assets/kd/kd-detail.js , ../../../static/sedis/assets/ai/ai-helper.js -->
+
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>장애 진단 의뢰 계기 | 통계정보 | 특수교육 실태조사 데이터 활용 시스템</title>
+    <link rel="icon" type="image/svg+xml" href="../../../static/vendor/krds/img/component/favicon/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../static/vendor/krds/img/component/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="../../../static/vendor/krds/img/component/favicon/favicon-192x192.png">
+    <link rel="stylesheet" href="../../../static/vendor/krds/css/plugin/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../../../static/vendor/krds/css/component/output.css">
+    <link rel="stylesheet" href="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/css/krds-base.css">
+    <link rel="stylesheet" href="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/css/krds-custom.css">
+    
+    <link rel="stylesheet" href="../../../static/public-ui/themes/krds-sedis/theme.css">
+    <!-- 글자·화면 표시 설정 : 깜빡임 방지를 위해 head 에서(퍼블리싱과 같음) -->
+    <!-- [키트] 스크립트 뺌: ../../../static/public-ui/themes/krds-sedis/pub/_common/resources/js/krds-display.js -->
+    
+    
+
+
+    <!-- SEO (기본 테마와 동일 규칙) -->
+    
+    <meta property="og:title" content="장애 진단 의뢰 계기">
+    
+    
+    
+    <!-- 연결 서비스 화면: 화면 JS 가 부를 API 기준 + 서비스 스타일(본문 앞, 응답 순서대로) -->
+    
+        <meta name="cms-svc-api" content="/public/svc/sedis/api">
+        <link rel="stylesheet" href="../../../static/sedis/assets/ai/ai-helper.css">
+    
+</head>
+<body>
+<div id="wrap">
+
+<div id="krds-skip-link">
+    <a href="#container">본문 바로가기</a>
+</div>
+<!-- 공식 누리집 안내 띠(퍼블리싱·KRDS 와 같은 자리 — 헤더 앞). 랜드마크 밖이면 axe region 경고 → 이름 있는 region 랜드마크로(모양 그대로) -->
+<div id="krds-masthead" role="region" aria-label="공식 전자정부 누리집 안내">
+    <div class="toggle-wrap">
+        <div class="toggle-head">
+            <div class="inner">
+                <span class="nuri-txt">이 누리집은 대한민국 공식 전자정부 누리집입니다.</span>
+            </div>
+        </div>
+    </div>
+</div>
+<header id="krds-header">
+    <div class="header-in">
+        <div class="header-container">
+            <div class="inner">
+                <div class="header-utility">
+                    <ul class="utility-list">
+                        <li>
+                            <button type="button" class="krds-btn small text open-modal" data-target="modal_sitemap" aria-haspopup="dialog">전체메뉴 <i class="svg-icon ico-all"></i></button>
+                        </li>
+                        <li>
+                            <a href="https://www.mois.go.kr/frt/sub/popup/p_taegugki_banner/screen.do" class="krds-btn small text" target="_blank" rel="noopener noreferrer" title="새 창 열림">국가상징 알아보기 <i class="svg-icon ico-go"></i></a>
+                        </li>
+                        <li>
+                            <button type="button" class="krds-btn small text open-modal" data-target="modal_adjust_display"><i class="svg-icon ico-view-mode"></i> 글자·화면 설정</button>
+                        </li>
+                        <li>
+                            <a class="krds-btn small text" href="../login/로그인-public-login-5bdc89.html">로그인</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="header-branding">
+                    <h2 class="logo">
+                        <a href="공개-화면-public-preview-74f074.html">
+                            <img class="cm-logo-symbol" src="../../../static/public-ui/themes/krds-sedis/img/logo-symbol.svg" alt="" width="48" height="48">
+                            <span class="cm-logo-name">특수교육 실태조사 데이터 활용 시스템</span>
+                        </a>
+                    </h2>
+                    <!-- 1차 메뉴(아이콘) : CMS 메뉴 트리. 아이콘은 메뉴명으로 고른다(통계 · 분석 · 그 밖). 모바일은 통합검색 · 전체메뉴만 -->
+                    <div class="header-actions">
+                        <a href="공개-화면-public-history-c176dc.html" class="btn-navi pc-only cm-stat is-active" aria-current="true">통계정보</a><a href="공개-화면-public-survey-overview-2e9178.html" class="btn-navi pc-only cm-notice">알림마당</a>
+                        <button type="button" class="btn-navi sch" aria-expanded="false" aria-controls="cm_search_popup">통합검색</button>
+                        <button type="button" class="btn-navi all" aria-controls="mobile-nav">전체메뉴</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 통합검색 영역 : 공개 통합검색(/public/search)으로 보낸다. 추천 검색어·최소 글자 수는 설정(cms.admin-bff.public.search) -->
+            <div id="cm_search_popup" class="cm-search-popup" hidden="">
+                <div class="inner">
+                    <form class="cm-search-form" role="search" aria-label="통합검색" action="공개-화면-public-search-b37d12.html" method="get" data-min-length="2">
+                        <p class="cm-search-guide"><img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/common/cm_search_title.svg" alt="" width="49" height="44">궁금한 특수교육 데이터를 찾아보세요.</p>
+                        <div class="form-group">
+                            <div class="form-conts btn-ico-wrap cm-ac-wrap">
+                                
+                                <input type="text" name="q" id="cm_search_keyword" class="krds-input large" placeholder="검색어를 입력하세요." title="통합검색 검색어 입력" autocomplete="off" aria-describedby="cm_search_hint" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="cm_search_ac_list" data-ac-suggestions="특수교육대상자|통합교육|특수학급|장애유형|교원" value="">
+                                <div class="btn-group">
+                                    <button type="button" class="krds-btn medium icon cm-search-delete" hidden="">
+                                        <span class="sr-only">입력한 검색어 지우기</span>
+                                        <i class="svg-icon ico-delete-fill"></i>
+                                    </button>
+                                    <button type="submit" class="krds-btn medium icon">
+                                        <span class="sr-only">검색</span>
+                                        <i class="svg-icon ico-sch"></i>
+                                    </button>
+                                </div>
+                                <ul id="cm_search_ac_list" class="cm-ac-list" role="listbox" aria-label="검색어 자동 완성" hidden=""></ul>
+                            </div>
+                        </div>
+                        <p class="cm-search-hint" id="cm_search_hint" aria-live="polite"></p>
+                        <p class="sr-only" aria-live="polite" data-ac-status=""></p>
+                        <div class="cm-search-recommend">
+                            <p class="tit" id="cm_search_recommend_tit">추천 검색어</p>
+                            <ul class="cm-search-chips" aria-labelledby="cm_search_recommend_tit">
+                                <li><button type="button" class="cm-search-chip" data-keyword="특수교육대상자">#특수교육대상자</button></li>
+                                <li><button type="button" class="cm-search-chip" data-keyword="통합교육">#통합교육</button></li>
+                                <li><button type="button" class="cm-search-chip" data-keyword="특수학급">#특수학급</button></li>
+                                <li><button type="button" class="cm-search-chip" data-keyword="장애유형">#장애유형</button></li>
+                                <li><button type="button" class="cm-search-chip" data-keyword="교원">#교원</button></li>
+                            </ul>
+                        </div>
+                    </form>
+                    <button type="button" class="krds-btn medium icon cm-search-close">
+                        <span class="sr-only">통합검색 닫기</span>
+                        <i class="svg-icon ico-popup-close"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 메인메뉴(PC) : 현재 1차 메뉴의 2차를 1단 링크로 (현재 메뉴 .cm-current).
+             2차가 3차를 가지면 KRDS 메인메뉴 펼침(button.gnb-main-trigger + .gnb-toggle-wrap)으로 3차 링크를 보인다 -->
+        <nav class="krds-main-menu" aria-label="주 메뉴">
+            <div class="inner">
+                <ul class="gnb-menu" aria-label="메인 메뉴">
+                    <li>
+                        
+                        <a href="공개-화면-public-history-c176dc.html" class="gnb-main-trigger" data-trigger="gnb" aria-expanded="false">조사 변천사</a>
+                    </li>
+                    <li>
+                        
+                        <a href="공개-화면-public-status-a8717f.html" class="gnb-main-trigger" data-trigger="gnb" aria-expanded="false">특수교육 현황</a>
+                    </li>
+                    <li>
+                        
+                        <a href="공개-화면-public-timeseries-c00488.html" class="gnb-main-trigger" data-trigger="gnb" aria-expanded="false">시계열 시각화</a>
+                    </li>
+                    <li>
+                        
+                        <a href="공개-화면-public-keydata-709d8c.html" class="gnb-main-trigger cm-current is-active" data-trigger="gnb" aria-current="page" aria-expanded="false">핵심데이터 시각화</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- 메인메뉴(모바일) : 왼쪽 1차 + 오른쪽 2차 (KRDS main_menu_mobile, 전환은 krds-custom.js cmMobileMenu) -->
+    <div id="mobile-nav" class="krds-main-menu-mobile" style="display: none;">
+        <div class="gnb-wrap">
+            <div class="gnb-header">
+                <div class="gnb-utils">
+                    <ul class="utility-list">
+                        <li>
+                            <button type="button" class="krds-btn medium text open-modal" data-target="modal_adjust_display"><i class="svg-icon ico-view-mode"></i> 글자·화면 설정</button>
+                        </li>
+                        <li>
+                            <a class="krds-btn medium text" href="../login/로그인-public-login-5bdc89.html">로그인</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="gnb-body">
+                <div class="gnb-menu">
+                    <div class="menu-wrap">
+                        <ul role="tablist">
+                            <li role="none">
+                                <a href="#mGnb-anchor1" class="gnb-main-trigger active" role="tab" aria-selected="true" aria-controls="mGnb-anchor1" id="tab-0">통계정보</a>
+                            </li>
+                            <li role="none">
+                                <a href="#mGnb-anchor2" class="gnb-main-trigger" role="tab" aria-selected="false" aria-controls="mGnb-anchor2" id="tab-1">알림마당</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="submenu-wrap">
+                        <div class="gnb-sub-list" id="mGnb-anchor1" role="tabpanel" aria-labelledby="tab-0">
+                            <h2 class="sub-title">통계정보</h2>
+                            <!-- 2차 + 3차(.cm-gnb-third): 파일 일괄 등록으로 sub01_01_01 깊이가 생긴다. 헤더 GNB(PC)는 3차가 있는 2차만 펼침 -->
+                            <ul>
+                                <li>
+                                    <a href="공개-화면-public-history-c176dc.html" class="gnb-sub-trigger">조사 변천사</a>
+                                    
+                                </li>
+                                <li>
+                                    <a href="공개-화면-public-status-a8717f.html" class="gnb-sub-trigger">특수교육 현황</a>
+                                    
+                                </li>
+                                <li>
+                                    <a href="공개-화면-public-timeseries-c00488.html" class="gnb-sub-trigger">시계열 시각화</a>
+                                    
+                                </li>
+                                <li>
+                                    <a href="공개-화면-public-keydata-709d8c.html" class="gnb-sub-trigger selected" aria-current="page">핵심데이터 시각화</a>
+                                    
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="gnb-sub-list" id="mGnb-anchor2" role="tabpanel" aria-labelledby="tab-1" hidden="">
+                            <h2 class="sub-title">알림마당</h2>
+                            <!-- 2차 + 3차(.cm-gnb-third): 파일 일괄 등록으로 sub01_01_01 깊이가 생긴다. 헤더 GNB(PC)는 3차가 있는 2차만 펼침 -->
+                            <ul>
+                                <li>
+                                    <a href="공개-화면-public-survey-overview-2e9178.html" class="gnb-sub-trigger">조사개요</a>
+                                    
+                                </li>
+                                <li>
+                                    <a href="공개-화면-public-board-BD39855ec310ca4598a50f183983c518e1-6d674d.html" class="gnb-sub-trigger">공지사항</a>
+                                    
+                                </li>
+                                <li>
+                                    <a href="공개-화면-public-board-BD754da5fdb65e4af4a1cde426bb693dca-fcd911.html" class="gnb-sub-trigger">자료실</a>
+                                    <ul class="cm-gnb-third">
+                                        <li>
+                                            <a href="공개-화면-public-board-BD754da5fdb65e4af4a1cde426bb693dca-fcd911.html" class="gnb-sub-trigger cm-gnb-third-trigger">실태조사</a>
+                                        </li>
+                                        <li>
+                                            <a href="공개-화면-public-board-BDa3c3621e1837444da7b6139189889643-9394de.html" class="gnb-sub-trigger cm-gnb-third-trigger">종단연구</a>
+                                        </li>
+                                        <li>
+                                            <a href="공개-화면-public-board-BDf336c1a95c3a4f52997ce9efa429d692-534c6d.html" class="gnb-sub-trigger cm-gnb-third-trigger">특수교육통계</a>
+                                        </li>
+                                        <li>
+                                            <a href="공개-화면-public-board-BDa81fb37c708a44e194f00539da2607b1-56f18a.html" class="gnb-sub-trigger cm-gnb-third-trigger">기타</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="공개-화면-public-promo-video-379154.html" class="gnb-sub-trigger">홍보영상</a>
+                                    
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="krds-btn medium icon" id="close-nav">
+                <span class="sr-only">전체메뉴 닫기</span>
+                <i class="svg-icon ico-popup-close"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+
+<main id="container">
+
+    <!-- ================================================================ 메인 (퍼블리싱 kr/html/main.html) -->
+    
+
+    <!-- ================================================================ 서브 : 콘텐츠 · 연결 서비스 화면 · 기타 라우트 -->
+    
+        <!-- 게시판 라우트(/public/notice 등)는 서버가 게시판 화면(/public/board/{id})으로 302 로 보낸다 — 이 화면까지 오지 않는다.
+             메뉴는 처음부터 게시판 화면으로 링크한다(3차 메뉴면 그 3차의 게시판) -->
+        
+            <!-- 연결 서비스 상세(하위 경로) 화면은 큰 제목 없는 상세 머리(경로 끝 = 조각 title) — 본문 h1 은 조각이 갖는다(계약 v1 §4) -->
+            
+                <div class="cm-page-top cm-page-top-view">
+    <div class="inner">
+        <div class="cm-page-top-util">
+            <nav class="krds-breadcrumb-wrap" aria-label="현재 경로">
+                <ol class="breadcrumb">
+                    <li class="home"><a href="공개-화면-public-preview-74f074.html" class="txt">홈</a></li>
+                    <li><a href="공개-화면-public-history-c176dc.html" class="txt">통계정보</a></li>
+                    <li><a href="공개-화면-public-keydata-709d8c.html" class="txt">핵심데이터 시각화</a></li>
+                    
+                    <li><a href="공개-화면-장애-진단-의뢰-계기-060fac.html" class="txt" aria-current="page">장애 진단 의뢰 계기</a></li>
+                </ol>
+            </nav>
+            <div class="cm-btn-group">
+    <div class="krds-contextual-help bottom left cm-share">
+        <div class="tooltip-action">
+            <button type="button" class="krds-btn xlarge icon border tooltip-btn" aria-expanded="false">
+                <span class="sr-only">공유하기</span>
+                <i class="svg-icon ico-share"></i>
+            </button>
+            <div class="tooltip-popover" role="tooltip">
+                <h2 class="tooltip-title">공유하기</h2>
+                <ul class="tooltip-contents cm-share-list">
+                    <li><a href="#" class="cm-share-btn" data-share="facebook" target="_blank" rel="noopener noreferrer" title="새 창 열림"><img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/sns/cm_share_facebook.svg" alt="페이스북에 공유하기"></a></li>
+                    <li><a href="#" class="cm-share-btn" data-share="x" target="_blank" rel="noopener noreferrer" title="새 창 열림"><img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/sns/cm_share_x.svg" alt="X(트위터)에 공유하기"></a></li>
+                    <li><a href="#" class="cm-share-btn" data-share="band" target="_blank" rel="noopener noreferrer" title="새 창 열림"><img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/sns/cm_share_band.svg" alt="네이버 밴드에 공유하기"></a></li>
+                    <li><a href="#" class="cm-share-btn" data-share="naver_blog" target="_blank" rel="noopener noreferrer" title="새 창 열림"><img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/sns/cm_share_naver_blog.svg" alt="네이버 블로그에 공유하기"></a></li>
+                    <li><button type="button" class="cm-share-btn" data-share="url"><img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/sns/cm_share_url.svg" alt="페이지 주소 복사하기"></button></li>
+                </ul>
+                <button type="button" class="krds-btn xsmall icon tooltip-close">
+                    <span class="sr-only">닫기</span>
+                    <i class="svg-icon ico-modal-close"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="krds-btn xlarge icon border" data-cm-print="">
+        <span class="sr-only">인쇄하기</span>
+        <i class="svg-icon ico-print"></i>
+    </button>
+</div>
+        </div>
+    </div>
+</div>
+            
+            
+
+            <!-- 연결 서비스 화면 : 서비스 조각(정화된 HTML)은 퍼블리싱 본문(.inner.cm-contents …)을 스스로 가진다 → 테마는 감싸지 않는다.
+                 루트가 .inner 가 아닌 조각만 본문 틀(.inner.cm-contents) 안에. 점검 중이면 안내만(503) -->
+            <div class="cm-connected" data-cms-svc="sedis">
+                <div class="inner cm-contents cm-ts-view cm-kd-view" data-sedis-screen="kd-detail" data-api="/public/svc/sedis/api" data-kd-sttbl="KD2008005">
+  
+  <section id="section_01" class="cm-ts-graph">
+    <div class="cm-ts-head">
+      <div class="cm-ts-head-tit">
+        <div class="cm-ts-badges">
+          <span class="krds-badge small bg-gray"><span class="sr-only">주제 </span>대상자 현황·선정·진단</span>
+          <ul class="cm-ts-target" aria-label="조사대상">
+            <li><span class="krds-badge small outline-gray">보호자</span></li>
+          </ul>
+        </div>
+        <h1 class="tit">장애 진단 의뢰 계기</h1>
+      </div>
+    </div>
+    <h2 class="sr-only">그래프</h2>
+    
+    <div class="cm-ts-tool">
+      <dl class="cm-ts-year">
+        <dt>조회 연도</dt>
+        <dd>2008년</dd>
+      </dl>
+      <div class="cm-ts-tool-btns">
+        <div class="cm-ts-tool-group">
+          <div class="krds-form-toggle-switch medium">
+            <input type="checkbox" id="kd_pattern" data-chart-option="pattern" checked="">
+            <label for="kd_pattern"><span class="switch-toggle"><i></i></span>패턴 적용</label>
+          </div>
+          <div class="krds-form-toggle-switch medium">
+            <input type="checkbox" id="kd_label" data-chart-option="label" checked="">
+            <label for="kd_label"><span class="switch-toggle"><i></i></span>레이블 보기</label>
+          </div>
+        </div>
+        <div class="cm-ts-tool-group">
+          <button type="button" class="krds-btn small tertiary" data-chart-action="zoom">차트 확대</button>
+          
+          <div class="krds-drop-wrap">
+            <button type="button" class="krds-btn small tertiary drop-btn" aria-expanded="false">다운로드 <i class="svg-icon ico-angle"></i></button>
+            <div class="drop-menu">
+              <div class="drop-in">
+                <ul class="drop-list">
+                  <li><a href="#" class="item-link" data-chart-download="png">이미지로 저장(PNG)<span class="sr-only"></span></a></li>
+                  <li><a class="item-link" href="#kit-file" data-kit-href="/public/svc/sedis/api/kd/sttbls/KD2008005/csv" download="">데이터로 저장<span class="sr-only"></span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="krds-btn small tertiary" data-chart-action="print">인쇄</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="cm-chart-box">
+      <div class="cm-chart-area">
+        <p role="status" aria-live="polite" data-sedis-loading="" data-sedis-loading-error="그래프를 불러오지 못했습니다. 아래 통계표에서 값을 확인해 주세요." hidden="">그래프를 불러오는 중입니다.</p>
+        <div data-cm-chart="hbar" data-chart-table="#kd_table" data-chart-tools="#section_01" data-chart-source="#kd_source" aria-busy="false" data-chart-title="장애 진단 의뢰 계기" data-chart-unit="%" data-kd-render="hbar" class="cm-chart"><div class="cm-chart-legend" role="group" aria-label="그래프 범례" hidden=""></div><p class="sr-only" id="cm_chart_1_summary">장애 진단 의뢰 계기, 가로막대 그래프. 언어발달이 늦어서: 31.4%. 발육이 늦어서: 31.1%. 기타: 15.2%. 교사·이웃·친지의 권유로: 8.7%. 학습발달이 지체되어서: 7.5%. 자녀에게 장애가 있을 것을 미리 예상하여: 3.7%. 다른 사람에게 관심이 없고 잘 사귀지를 못해서: 2.4%. 자세한 값은 통계표를 참고하세요.</p><div class="cm-chart-body"><div class="cm-chart-plot" role="group" aria-label="장애 진단 의뢰 계기" aria-describedby="cm_chart_1_summary" _echarts_instance_="ec_1794903947714" data-chart-keyboard="true" style="position: relative;"><div style="position: relative; overflow: hidden; width: 1102px; height: 400px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="1102" height="400" style="position: absolute; left: 0px; top: 0px; user-select: none;"><rect width="1102" height="400" x="0" y="0" fill="none"></rect><g><path d="M214.5 8L214.5 371" fill="transparent" stroke="#cdd1d5"></path><path d="M333.5 8L333.5 371" fill="transparent" stroke="#cdd1d5"></path><path d="M452.5 8L452.5 371" fill="transparent" stroke="#cdd1d5"></path><path d="M570.5 8L570.5 371" fill="transparent" stroke="#cdd1d5"></path><path d="M689.5 8L689.5 371" fill="transparent" stroke="#cdd1d5"></path><path d="M808.5 8L808.5 371" fill="transparent" stroke="#cdd1d5"></path><path d="M927.5 8L927.5 371" fill="transparent" stroke="#cdd1d5"></path><path d="M1046.5 8L1046.5 371" fill="transparent" stroke="#cdd1d5"></path><path d="M214.5 8L214.5 371" fill="transparent" stroke="#58616a" stroke-linecap="round"></path><path d="M-92 -9l92 0l0 18l-92 0Z" transform="translate(206.0591 33.9286)" fill="transparent"></path><text dominant-baseline="central" text-anchor="end" xml:space="preserve" transform="translate(206.0591 33.9286)" fill="#1e2124" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;;">언어발달이 늦어서</text><path d="M-70 -9l70 0l0 18l-70 0Z" transform="translate(206.0591 85.7857)" fill="transparent"></path><text dominant-baseline="central" text-anchor="end" xml:space="preserve" transform="translate(206.0591 85.7857)" fill="#1e2124" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;;">발육이 늦어서</text><path d="M-22 -9l22 0l0 18l-22 0Z" transform="translate(206.0591 137.6429)" fill="transparent"></path><text dominant-baseline="central" text-anchor="end" transform="translate(206.0591 137.6429)" fill="#1e2124" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;;">기타</text><path d="M-120 -9l120 0l0 18l-120 0Z" transform="translate(206.0591 189.5)" fill="transparent"></path><text dominant-baseline="central" text-anchor="end" xml:space="preserve" transform="translate(206.0591 189.5)" fill="#1e2124" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;;">교사·이웃·친지의 권유로</text><path d="M-114 -9l114 0l0 18l-114 0Z" transform="translate(206.0591 241.3571)" fill="transparent"></path><text dominant-baseline="central" text-anchor="end" xml:space="preserve" transform="translate(206.0591 241.3571)" fill="#1e2124" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;;">학습발달이 지체되어서</text><path d="M-196 -18l196 0l0 36l-196 0Z" transform="translate(206.0591 293.2143)" fill="transparent"></path><text dominant-baseline="central" text-anchor="end" xml:space="preserve" y="-9" transform="translate(206.0591 293.2143)" fill="#1e2124" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;;">자녀에게 장애가 있을 것을 미리 예상하</text><text dominant-baseline="central" text-anchor="end" y="9" transform="translate(206.0591 293.2143)" fill="#1e2124" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;;">여</text><path d="M-200 -18l200 0l0 36l-200 0Z" transform="translate(206.0591 345.0714)" fill="transparent"></path><text dominant-baseline="central" text-anchor="end" xml:space="preserve" y="-9" transform="translate(206.0591 345.0714)" fill="#1e2124" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;;">다른 사람에게 관심이 없고 잘 사귀지를 </text><text dominant-baseline="central" text-anchor="end" y="9" transform="translate(206.0591 345.0714)" fill="#1e2124" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;;">못해서</text><text dominant-baseline="central" text-anchor="middle" y="6.5" transform="translate(214.0591 379)" fill="#464c53" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;;">0%</text><text dominant-baseline="central" text-anchor="middle" y="6.5" transform="translate(332.9078 379)" fill="#464c53" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;;">5%</text><text dominant-baseline="central" text-anchor="middle" y="6.5" transform="translate(451.7565 379)" fill="#464c53" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;;">10%</text><text dominant-baseline="central" text-anchor="middle" y="6.5" transform="translate(570.6052 379)" fill="#464c53" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;;">15%</text><text dominant-baseline="central" text-anchor="middle" y="6.5" transform="translate(689.4539 379)" fill="#464c53" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;;">20%</text><text dominant-baseline="central" text-anchor="middle" y="6.5" transform="translate(808.3026 379)" fill="#464c53" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;;">25%</text><text dominant-baseline="central" text-anchor="middle" y="6.5" transform="translate(927.1513 379)" fill="#464c53" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;;">30%</text><text dominant-baseline="central" text-anchor="middle" y="6.5" transform="translate(1046 379)" fill="#464c53" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;;">35%</text><path d="M214.0591 15.7786l746.3699 0l0 36.3l-746.3699 0Z" fill="#256EF4"></path><path d="M214.0591 67.6357l739.2389 0l0 36.3l-739.2389 0Z" fill="#256EF4"></path><path d="M214.0591 119.4929l361.3001 0l0 36.3l-361.3001 0Z" fill="#256EF4"></path><path d="M214.0591 171.35l206.7967 0l0 36.3l-206.7967 0Z" fill="#256EF4"></path><path d="M214.0591 223.2071l178.2731 0l0 36.3l-178.2731 0Z" fill="#256EF4"></path><path d="M214.0591 275.0643l87.948 0l0 36.3l-87.948 0Z" fill="#256EF4"></path><path d="M214.0591 326.9214l57.0474 0l0 36.3l-57.0474 0Z" fill="#256EF4"></path><text dominant-baseline="central" text-anchor="start" transform="translate(965.4289 33.9286)" fill="#1e2124" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;; font-weight: bold;">31.4%</text><text dominant-baseline="central" text-anchor="start" transform="translate(958.298 85.7857)" fill="#1e2124" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;; font-weight: bold;">31.1%</text><text dominant-baseline="central" text-anchor="start" transform="translate(580.3591 137.6429)" fill="#1e2124" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;; font-weight: bold;">15.2%</text><text dominant-baseline="central" text-anchor="start" transform="translate(425.8558 189.5)" fill="#1e2124" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;; font-weight: bold;">8.7%</text><text dominant-baseline="central" text-anchor="start" transform="translate(397.3321 241.3571)" fill="#1e2124" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;; font-weight: bold;">7.5%</text><text dominant-baseline="central" text-anchor="start" transform="translate(307.0071 293.2143)" fill="#1e2124" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;; font-weight: bold;">3.7%</text><text dominant-baseline="central" text-anchor="start" transform="translate(276.1065 345.0714)" fill="#1e2124" style="font-size: 13px; font-family: &quot;Pretendard GOV&quot;; font-weight: bold;">2.4%</text></g></svg></div><div class=""></div><div class="cm-chart-focus-grid" role="grid" aria-label="장애 진단 의뢰 계기. 방향키로 데이터를 탐색할 수 있습니다. 좌우: 이전·다음 항목, 상하: 계열 이동. Enter 또는 Space: 값 확인, Esc: 닫기." aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown Enter Space Escape" tabindex="-1"><div role="row"><div role="gridcell" class="cm-chart-focus-point" tabindex="0">언어발달이 늦어서, 비율(%): 31.4%</div><div role="gridcell" class="cm-chart-focus-point" tabindex="-1">발육이 늦어서, 비율(%): 31.1%</div><div role="gridcell" class="cm-chart-focus-point" tabindex="-1">기타, 비율(%): 15.2%</div><div role="gridcell" class="cm-chart-focus-point" tabindex="-1">교사·이웃·친지의 권유로, 비율(%): 8.7%</div><div role="gridcell" class="cm-chart-focus-point" tabindex="-1">학습발달이 지체되어서, 비율(%): 7.5%</div><div role="gridcell" class="cm-chart-focus-point" tabindex="-1">자녀에게 장애가 있을 것을 미리 예상하여, 비율(%): 3.7%</div><div role="gridcell" class="cm-chart-focus-point" tabindex="-1">다른 사람에게 관심이 없고 잘 사귀지를 못해서, 비율(%): 2.4%</div></div></div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="section_02" class="cm-ts-section">
+    <div class="cm-ts-section-top">
+      <h2 class="tit">통계표</h2>
+      <p class="unit">[단위 : %]</p>
+    </div>
+    <div class="krds-table-wrap cm-stat-table">
+      <table class="tbl col data" id="kd_table">
+        <caption>장애 진단 의뢰 계기 통계표로 구분, 비율(%) 열로 구성되어 있습니다.</caption>
+        <colgroup>
+          <col style="width: 51.5%;"><col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">구분</th>
+            <th scope="col">비율(%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">언어발달이 늦어서</th>
+            <td data-row="언어발달이 늦어서" data-col="비율(%)">31.4</td>
+          </tr>
+          <tr>
+            <th scope="row">발육이 늦어서</th>
+            <td data-row="발육이 늦어서" data-col="비율(%)">31.1</td>
+          </tr>
+          <tr>
+            <th scope="row">기타</th>
+            <td data-row="기타" data-col="비율(%)">15.2</td>
+          </tr>
+          <tr>
+            <th scope="row">교사·이웃·친지의 권유로</th>
+            <td data-row="교사·이웃·친지의 권유로" data-col="비율(%)">8.7</td>
+          </tr>
+          <tr>
+            <th scope="row">학습발달이 지체되어서</th>
+            <td data-row="학습발달이 지체되어서" data-col="비율(%)">7.5</td>
+          </tr>
+          <tr>
+            <th scope="row">자녀에게 장애가 있을 것을 미리 예상하여</th>
+            <td data-row="자녀에게 장애가 있을 것을 미리 예상하여" data-col="비율(%)">3.7</td>
+          </tr>
+          <tr>
+            <th scope="row">다른 사람에게 관심이 없고 잘 사귀지를 못해서</th>
+            <td data-row="다른 사람에게 관심이 없고 잘 사귀지를 못해서" data-col="비율(%)">2.4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  
+  <section id="section_03" class="cm-ts-section">
+    <h2 class="tit">데이터 설명</h2>
+    <p class="cm-kd-desc">특수교육대상학생의 장애 진단 계기는 '언어발달이 늦어서'(31.4%), '발육이 늦어서'(31.1%), '기타'(15.2%)의 순으로 나타났으며 '자녀에게 장애가 있을 것을 미리 예상하여'는 3.7%에 불과하여, 특수교육대상자 보호자는 자녀의 장애가 외부로 드러난 후 장애 진단을 의뢰하는 비율이 높은 것을 알 수 있음</p>
+  </section>
+
+  
+  <section id="section_04" class="cm-ts-section">
+    <h2 class="tit">지표정보</h2>
+    <dl class="cm-indicator">
+      <div>
+        <dt>조사대상</dt>
+        <dd>보호자</dd>
+      </div>
+      <div>
+        <dt>조사연도</dt>
+        <dd>2008년</dd>
+      </div>
+      <div>
+        <dt>모집단</dt>
+        <dd>6,912명</dd>
+      </div>
+      
+      <div>
+        <dt>원문 위치</dt>
+        <dd>원문 표2-Ⅳ-58</dd>
+      </div>
+    </dl>
+    <ul class="cm-refer-list">
+      <li>모집단 수치는 표본조사 결과에 가중치를 적용해 전체 규모로 추정한 값입니다.</li>
+      <li>가중치 적용으로 소수점에 의해 합계 등의 수치가 일치하지 않을 수 있습니다.</li>
+    </ul>
+    <p class="cm-source" id="kd_source"><strong>출처 -</strong> 교육과학기술부·국립특수교육원, 2008 특수교육 실태조사 (행정간행물등록번호 11-1341119-000004-01)</p>
+  </section>
+
+  
+  
+
+  
+  <div class="cm-ai" data-ai-api="/public/svc/sedis/api/ai-helper" data-ai-screen="topic_detail" data-ai-table="KD2008005">
+  <div class="cm-ai-launcher">
+    <div class="cm-ai-bubble">
+      <p class="tit">통계는 저에게 물어보세요!</p>
+      <p class="txt">이 화면의 표를 읽어 드려요.</p>
+      <button type="button" class="cm-ai-bubble-close">오늘 하루 열지 않기 <i class="svg-icon ico-popup-close" aria-hidden="true"></i></button>
+    </div>
+    <button type="button" class="cm-ai-open" aria-expanded="false" aria-controls="cm_ai_panel">
+      <span class="cm-ai-open-img" aria-hidden="true"></span><span class="sr-only">AI 해설 도우미 열기</span>
+    </button>
+  </div>
+  <section id="cm_ai_panel" class="cm-ai-panel" role="dialog" aria-modal="false" aria-labelledby="cm_ai_title" data-state="intro" hidden="">
+    <div class="cm-ai-head">
+      <h2 id="cm_ai_title" class="cm-ai-title" tabindex="-1">
+        <span class="logo logo-inverse" role="img" aria-label="특수교육 실태조사 데이터 활용 플랫폼"></span>
+        <span class="logo logo-basic" role="img" aria-label="특수교육 실태조사 데이터 활용 플랫폼"></span>
+        <span class="name">AI 해설 도우미</span>
+      </h2>
+      <div class="btns">
+        <button type="button" class="cm-ai-reset"><span class="sr-only">대화 처음으로</span><i class="svg-icon ico-reset" aria-hidden="true"></i></button>
+        <button type="button" class="cm-ai-close"><span class="sr-only">AI 해설 도우미 닫기</span><i class="svg-icon ico-popup-close" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <div class="cm-ai-intro">
+      <p class="hello">안녕하세요 <span aria-hidden="true">👋🏻</span><br>도움이 필요하신가요?</p>
+      <div class="desc">
+        <p>저는 특수교육 실태조사 데이터를 쉽게<br>읽어 드리는 AI 해설 도우미예요.<br>궁금하신 점을 아래와 같이 질문하시면 대답해 드릴게요!</p>
+        <p>참고로, 저는 화면에 없는 질문에는 답변드리지 못해요.</p>
+      </div>
+      <ul class="cm-ai-suggest" aria-label="질문 예시"><li><button type="button">비율은 언어발달이 늦어서가 몇 %예요? <i class="svg-icon ico-angle right" aria-hidden="true"></i></button></li><li><button type="button">조사한 사람은 모두 몇 명이에요? <i class="svg-icon ico-angle right" aria-hidden="true"></i></button></li><li><button type="button">모집단이 뭐예요? <i class="svg-icon ico-angle right" aria-hidden="true"></i></button></li></ul>
+    </div>
+    <div class="cm-ai-chat" role="log" aria-label="대화 내용">
+      <ul class="cm-ai-list"></ul>
+    </div>
+    <form class="cm-ai-input" action="#">
+      <label for="cm_ai_question" class="sr-only">질문 입력</label>
+      <input type="text" id="cm_ai_question" class="krds-input small" placeholder="궁금한 숫자를 물어보세요." autocomplete="off" maxlength="200" value="">
+      <button type="submit" class="krds-btn small primary"><span class="sr-only">질문 보내기</span><i class="svg-icon ico-go-top" aria-hidden="true"></i></button>
+    </form>
+  </section>
+</div>
+
+  
+  <div class="page-btn-wrap both">
+    <div class="btn-wrap">
+      <a class="krds-btn medium tertiary" href="공개-화면-장애-진단-시기-c8e7ad.html"><i class="svg-icon ico-angle left"></i> 이전글</a>
+      <a class="krds-btn medium tertiary" href="공개-화면-장애-진단-기관-7e82ee.html">다음글 <i class="svg-icon ico-angle right"></i></a>
+    </div>
+    <a class="krds-btn medium tertiary" href="공개-화면-핵심데이터-시각화-96f402.html">목록으로</a>
+  </div>
+</div>
+                
+                
+            </div>
+
+            
+            
+            
+<div class="inner cm-contents cm-research-wrap">
+<section class="cm-research" id="cm-research" aria-labelledby="cm_research_tit" data-cms-feedback="true">
+  <form class="cm-research-form" action="#kit-missing" data-kit-href="/public/feedback" method="post" novalidate=""><input type="hidden" name="_csrf" value="HD6LuPKoaaxwyBaC0ilG-Ous85aWlKXQULsOYF1_AOY">
+    <input type="hidden" name="_csrf" value="HD6LuPKoaaxwyBaC0ilG-Ous85aWlKXQULsOYF1_AOY">
+    <input type="hidden" name="menu" value="MN105de73498254082bebf2e17e9450244">
+    <input type="hidden" name="path" value="/public/keydata/KD2008005">
+    <input type="hidden" name="title" value="장애 진단 의뢰 계기">
+    <div class="cm-research-hp" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden">
+      <label for="research_hp">이 칸은 비워 두세요</label>
+      <input type="text" id="research_hp" name="hp" value="" tabindex="-1" autocomplete="off">
+    </div>
+    <div class="cm-research-top">
+      <h2 id="cm_research_tit" class="tit"><i class="svg-icon cm-ico-inquiry" aria-hidden="true"></i>현재 페이지의 내용이나 사용 편의성에 만족하십니까?</h2>
+      <div class="krds-check-area cm-research-rate" role="radiogroup" aria-labelledby="cm_research_tit">
+        <div class="krds-form-check medium">
+          <input type="radio" name="score" id="research_rate_5" value="5">
+          <label for="research_rate_5">매우만족</label>
+        </div>
+        <div class="krds-form-check medium">
+          <input type="radio" name="score" id="research_rate_4" value="4">
+          <label for="research_rate_4">만족</label>
+        </div>
+        <div class="krds-form-check medium">
+          <input type="radio" name="score" id="research_rate_3" value="3">
+          <label for="research_rate_3">보통</label>
+        </div>
+        <div class="krds-form-check medium">
+          <input type="radio" name="score" id="research_rate_2" value="2">
+          <label for="research_rate_2">불만족</label>
+        </div>
+        <div class="krds-form-check medium">
+          <input type="radio" name="score" id="research_rate_1" value="1">
+          <label for="research_rate_1">매우불만족</label>
+        </div>
+      </div>
+    </div>
+    <div class="cm-research-opinion">
+      <div class="input">
+        <label for="research_opinion" class="sr-only">의견 (200자 이내)</label>
+        <input type="text" id="research_opinion" name="opinion" class="krds-input medium" placeholder="의견을 남겨주세요." maxlength="200" aria-describedby="research_hint research_count" value="">
+        <div class="cm-research-hint">
+          <p class="form-hint" id="research_hint">이 페이지 이용 중 불편한 점이나 개선이 필요한 사항에 대한 의견을 남겨주시면 적극 반영하겠습니다. 이름·연락처 같은 개인정보는 적지 마세요.</p>
+          <p class="textarea-count" id="research_count"><span class="count-now">0</span><span class="count-total">/200자 이내</span></p>
+        </div>
+      </div>
+      <button type="submit" class="krds-btn medium cm-research-submit">평가하기</button>
+    </div>
+    <p class="cm-research-result form-hint" role="status" aria-live="polite"></p>
+  </form>
+</section>
+</div>
+<!-- [키트] 스크립트 뺌: ../../../static/public-ui/page-feedback.js -->
+
+        
+    
+</main>
+
+
+<footer id="krds-footer">
+    <div class="inner">
+        <div class="f-logo">
+            <img class="cm-logo-symbol" src="../../../static/public-ui/themes/krds-sedis/img/logo-symbol.svg" alt="" width="40" height="40">
+            <span class="cm-logo-name">특수교육 실태조사 데이터 활용 시스템</span>
+        </div>
+        <div class="f-cnt">
+            <div class="f-info">
+                <p class="info-addr">(31470) 충청남도 아산시 배방읍 공원로 40</p>
+                <ul class="info-cs">
+                    <li><strong class="key-info">대표전화 <span>041-537-1500</span></strong></li>
+                    <li><strong class="key-info">팩스 <span>041-531-6412</span></strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="cm-wa-mark">
+            <img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/common/web_accessibility_mark.png" alt="과학기술정보통신부 웹 접근성 품질인증 마크">
+        </div>
+        <div class="f-btm">
+            <div class="f-btm-text">
+                <div class="f-menu">
+                    <a href="공개-화면-public-terms-b9efc2.html">이용안내</a>
+                    <a href="https://www.nise.go.kr/sub/info.do?m=0803" target="_blank" rel="noopener noreferrer" title="새 창 열림">저작권정책</a>
+                    <a href="https://www.nise.go.kr/sub/info.do?m=0801" class="point" target="_blank" rel="noopener noreferrer" title="새 창 열림">개인정보처리방침</a>
+                </div>
+                <p class="f-copy">© 2027 NISE ALL RIGHTS RESERVED</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<button type="button" class="page-top-button krds-tooltip" data-tooltip="페이지 상단으로 이동" aria-labelledby="tooltip-popover-0kpd163h"><i class="svg-icon ico-go-top"></i></button><div class="krds-tooltip-popover" id="tooltip-popover-0kpd163h" aria-hidden="true">
+      <span class="sr-only"></span>
+      페이지 상단으로 이동
+    </div>
+
+</div>
+
+
+<div class="modal-wrap">
+    <section id="modal_adjust_display" class="krds-modal fade" aria-labelledby="tit_modal_adjust_display">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="tit_modal_adjust_display" class="modal-title">글자·화면 표시 설정</h2>
+                </div>
+                <div class="modal-conts">
+                    <div class="conts-area">
+                        <div class="adjust_display">
+                            <div class="fieldset adjust_scale">
+                                <div class="form-group scale-options">
+                                    <h3>글자·화면 표시 설정</h3>
+                                    <div class="form-conts">
+                                        <div class="krds-check-area chk-column">
+                                            <div class="krds-form-check">
+                                                <input type="radio" name="scale_level" id="scale_level_small" value="small">
+                                                <label for="scale_level_small">작게</label>
+                                            </div>
+                                            <div class="krds-form-check">
+                                                <input type="radio" name="scale_level" id="scale_level_medium" value="medium" checked="">
+                                                <label for="scale_level_medium">보통</label>
+                                            </div>
+                                            <div class="krds-form-check">
+                                                <input type="radio" name="scale_level" id="scale_level_large" value="large">
+                                                <label for="scale_level_large">조금 크게</label>
+                                            </div>
+                                            <div class="krds-form-check">
+                                                <input type="radio" name="scale_level" id="scale_level_xlarge" value="xlarge">
+                                                <label for="scale_level_xlarge">크게</label>
+                                            </div>
+                                            <div class="krds-form-check">
+                                                <input type="radio" name="scale_level" id="scale_level_xxlarge" value="xxlarge">
+                                                <label for="scale_level_xxlarge">가장 크게</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fieldset">
+                                <div class="form-group view-mode-options">
+                                    <h3>화면 표시 모드</h3>
+                                    <div class="form-conts">
+                                        <div class="krds-check-area chk-column">
+                                            <div class="krds-form-check view-mode-light">
+                                                <input type="radio" name="view_mode" id="view_mode_light" value="light" checked="">
+                                                <label for="view_mode_light">기본 (밝은 배경)</label>
+                                            </div>
+                                            <div class="krds-form-check view-mode-dark">
+                                                <input type="radio" name="view_mode" id="view_mode_dark" value="high-contrast">
+                                                <label for="view_mode_dark">선명하게 (어두운 배경)</label>
+                                            </div>
+                                            <div class="krds-form-check view-mode-default">
+                                                <input type="radio" name="view_mode" id="view_mode_default" value="theme">
+                                                <label for="view_mode_default">시스템 설정</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-btn btn-wrap">
+                    <button type="button" class="krds-btn medium tertiary close-modal" id="reset_display">초기화</button>
+                    <button type="button" class="krds-btn medium primary close-modal">설정</button>
+                </div>
+                <button type="button" class="krds-btn medium icon btn-close close-modal">
+                    <span class="sr-only">닫기</span>
+                    <i class="svg-icon ico-popup-close"></i>
+                </button>
+            </div>
+        </div>
+        <div class="modal-back" style="background-color: transparent;"></div>
+    </section>
+
+    <section id="modal_chart_zoom" class="krds-modal fade cm-chart-modal" aria-labelledby="tit_modal_chart_zoom" data-font-level="1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="tit_modal_chart_zoom" class="modal-title">차트 확대</h2>
+                </div>
+                <div class="modal-conts">
+                    <div class="conts-area">
+                        <div class="cm-chart-zoom-font" role="group" aria-label="그래프 글자 크기">
+                            <button type="button" class="krds-btn small tertiary" data-chart-font="down">글자 작게</button>
+                            <span class="cm-chart-zoom-level" aria-live="polite">100%</span>
+                            <button type="button" class="krds-btn small tertiary" data-chart-font="up">글자 크게</button>
+                        </div>
+                        <div class="cm-chart-zoom-body"></div>
+                    </div>
+                </div>
+                <button type="button" class="krds-btn medium icon btn-close close-modal">
+                    <span class="sr-only">닫기</span>
+                    <i class="svg-icon ico-popup-close"></i>
+                </button>
+            </div>
+        </div>
+        <div class="modal-back"></div>
+    </section>
+
+    <section id="modal_sitemap" class="krds-modal fade cm-sitemap" aria-labelledby="tit_modal_sitemap">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="tit_modal_sitemap" class="modal-title sr-only">전체메뉴</h2>
+                </div>
+                <div class="modal-conts">
+                    <div class="conts-area cm-sitemap-inner">
+                        <p class="cm-sitemap-logo">
+                            <img class="cm-logo-symbol" src="../../../static/public-ui/themes/krds-sedis/img/logo-symbol.svg" alt="" width="56" height="56">
+                            <span class="cm-logo-name">특수교육 실태조사 데이터 활용 시스템</span>
+                        </p>
+                        <nav class="cm-sitemap-menu" aria-label="전체메뉴">
+                            <div class="cm-sitemap-col">
+                                <h3 class="tit">통계정보</h3>
+                                <ul>
+                                    <li>
+                                        <a href="공개-화면-public-history-c176dc.html">조사 변천사</a>
+                                        
+                                    </li>
+                                    <li>
+                                        <a href="공개-화면-public-status-a8717f.html">특수교육 현황</a>
+                                        
+                                    </li>
+                                    <li>
+                                        <a href="공개-화면-public-timeseries-c00488.html">시계열 시각화</a>
+                                        
+                                    </li>
+                                    <li>
+                                        <a href="공개-화면-public-keydata-709d8c.html" aria-current="page">핵심데이터 시각화</a>
+                                        
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            <div class="cm-sitemap-col">
+                                <h3 class="tit">알림마당</h3>
+                                <ul>
+                                    <li>
+                                        <a href="공개-화면-public-survey-overview-2e9178.html">조사개요</a>
+                                        
+                                    </li>
+                                    <li>
+                                        <a href="공개-화면-public-board-BD39855ec310ca4598a50f183983c518e1-6d674d.html">공지사항</a>
+                                        
+                                    </li>
+                                    <li>
+                                        <a href="공개-화면-public-board-BD754da5fdb65e4af4a1cde426bb693dca-fcd911.html">자료실</a>
+                                        <ul class="cm-sitemap-third">
+                                            <li>
+                                                <a href="공개-화면-public-board-BD754da5fdb65e4af4a1cde426bb693dca-fcd911.html">실태조사</a>
+                                            </li>
+                                            <li>
+                                                <a href="공개-화면-public-board-BDa3c3621e1837444da7b6139189889643-9394de.html">종단연구</a>
+                                            </li>
+                                            <li>
+                                                <a href="공개-화면-public-board-BDf336c1a95c3a4f52997ce9efa429d692-534c6d.html">특수교육통계</a>
+                                            </li>
+                                            <li>
+                                                <a href="공개-화면-public-board-BDa81fb37c708a44e194f00539da2607b1-56f18a.html">기타</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="공개-화면-public-promo-video-379154.html">홍보영상</a>
+                                        
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </nav>
+                        <div class="cm-sitemap-foot">
+                            <div class="info">
+                                <ul class="links">
+                                    <li><a href="공개-화면-public-terms-b9efc2.html" class="krds-btn medium text">이용안내 <i class="svg-icon ico-angle right"></i></a></li>
+                                    <li><a href="https://www.nise.go.kr/sub/info.do?m=0801" class="krds-btn medium text" target="_blank" rel="noopener noreferrer" title="새 창 열림">개인정보처리방침 <i class="svg-icon ico-go"></i></a></li>
+                                    <li><a href="https://www.mois.go.kr/frt/sub/popup/p_taegugki_banner/screen.do" class="krds-btn medium text" target="_blank" rel="noopener noreferrer" title="새 창 열림">국가상징 알아보기 <i class="svg-icon ico-go"></i></a></li>
+                                </ul>
+                                <ul class="addr">
+                                    <li>(31470) 충청남도 아산시 배방읍 공원로 40</li>
+                                    <li><strong>대표전화</strong> 041-537-1500</li>
+                                    <li><strong>팩스</strong> 041-531-6412</li>
+                                </ul>
+                            </div>
+                            <ul class="cm-sitemap-sns">
+                                <li><a href="https://www.youtube.com/channel/UCiYy7XRdi7tc36_iEyTC6cA" target="_blank" rel="noopener noreferrer" title="새 창 열림"><img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/sns/cm_sns_youtube.svg" alt="국립특수교육원 유튜브"></a></li>
+                                <li><a href="https://www.band.us/band/75866230/post" target="_blank" rel="noopener noreferrer" title="새 창 열림"><img src="../../../static/public-ui/themes/krds-sedis/pub/_common/resources/img/sns/cm_share_band.svg" alt="국립특수교육원 네이버 밴드"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="krds-btn large icon btn-close close-modal">
+                    <span class="sr-only">전체메뉴 닫기</span>
+                    <i class="svg-icon ico-popup-close"></i>
+                </button>
+            </div>
+        </div>
+        <div class="modal-back"></div>
+    </section>
+</div>
+
+<!-- 알림판 전체보기 (메인, main.js cmMainBannerAll 이 알림판 슬라이드에서 목록을 채움) -->
+
+
+<!-- [키트] 스크립트 뺌: ../../../static/vendor/krds/js/plugin/swiper-bundle.min.js -->
+<!-- [키트] 스크립트 뺌: ../../../static/vendor/krds/js/component/ui-script.js -->
+<!-- [키트] 스크립트 뺌: ../../../static/public-ui/themes/krds-sedis/pub/_common/resources/js/krds-custom.js -->
+<!-- [키트] 스크립트 뺌: ../../../static/public-ui/themes/krds-sedis/pub/_common/resources/js/krds-base.js -->
+<!-- [키트] 스크립트 뺌: ../../../static/public-ui/themes/krds-sedis/theme.js -->
+<!-- [키트] 스크립트 뺌: ../../../static/public-ui/menu-popup.js -->
+<!-- 홈 숫자 카드 그래프: 콘텐츠 /home-stats 글자 → 퍼블리싱 SVG(main.js cmMainStat 보다 먼저 — home-stats.js 머리 주석) -->
+
+
+
+<!-- 연결 서비스 화면 스크립트: 본문 뒤, 응답 순서대로(defer) -->
+
+    <!-- [키트] 스크립트 뺌: ../../../static/sedis/assets/common/loading.js --><!-- [키트] 스크립트 뺌: ../../../static/sedis/assets/vendor/echarts/echarts.min.js --><!-- [키트] 스크립트 뺌: ../../../static/sedis/assets/chart/cm-chart.js --><!-- [키트] 스크립트 뺌: ../../../static/sedis/assets/kd/kd-detail.js --><!-- [키트] 스크립트 뺌: ../../../static/sedis/assets/ai/ai-helper.js -->
+
+
+
+<div class="gnb-backdrop"></div><script src="../../../static/_kit/kit.js"></script></body></html>

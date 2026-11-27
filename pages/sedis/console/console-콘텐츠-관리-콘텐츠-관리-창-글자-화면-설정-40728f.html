@@ -27,6 +27,7 @@
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/admin-inline-detail.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-v2.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-parts.js -->
+<link rel="stylesheet" href="../../../static/admin-ui/v2/cms-button.css">
 <link rel="stylesheet" href="../../../static/admin-ui/v2/sedis-sg.css">
 </head>
 <body class="nv-lock">
@@ -534,7 +535,7 @@
                     </div>
                 </div>
                 <div class="nv-page-header__actions">
-                    <button type="button" class="nv-btn nv-btn--primary-outline" data-panel-open="#content-import-panel" aria-controls="content-import-panel" aria-expanded="false" data-content-import-open="">
+                    <button type="button" class="nv-btn nv-btn--primary nv-btn--outline" data-panel-open="#content-import-panel" aria-controls="content-import-panel" aria-expanded="false" data-content-import-open="">
                         <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file-zip"></use></svg>ZIP 반입
                     </button>
                     <button type="button" class="nv-btn nv-btn--primary" data-reveal="#content-create-panel" aria-controls="content-create-panel" aria-expanded="false">
@@ -554,9 +555,9 @@
                     <h2 class="nv-editor-header__title" id="content-create-title">콘텐츠 등록</h2>
                     <!-- 시안: 미리보기(새 창, 저장 전 내용 — data-post-preview) · 임시저장(언제나 초안 v1) · 취소 · 게시하기(게시 여부 라디오대로) -->
                     <div class="nv-editor-header__actions">
-                        <button type="button" class="nv-btn nv-btn--primary-outline" data-post-preview="" data-preview-fields="title summary bodyFormat body" title="쓰던 내용을 저장하지 않고 새 창에서 공개 화면 모양으로 봅니다" data-preview-action="/public/preview/content?previewSite=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기</button>
-                        <button type="submit" class="nv-btn nv-btn--primary-outline" name="saveDraft" value="true">임시저장</button>
-                        <button type="button" class="nv-btn nv-btn--primary-outline" data-reveal-cancel="">취소</button>
+                        <button type="button" class="nv-btn nv-btn--primary nv-btn--outline" data-post-preview="" data-preview-fields="title summary bodyFormat body" title="쓰던 내용을 저장하지 않고 새 창에서 공개 화면 모양으로 봅니다" data-preview-action="/public/preview/content?previewSite=ST54cf79b1bff2434a896cd1bcf54bb4c3">미리보기</button>
+                        <button type="submit" class="nv-btn nv-btn--primary nv-btn--outline" name="saveDraft" value="true">임시저장</button>
+                        <button type="button" class="nv-btn nv-btn--primary nv-btn--outline" data-reveal-cancel="">취소</button>
                         <button type="submit" class="nv-btn nv-btn--primary">게시하기</button>
                     </div>
                 </div>
@@ -569,7 +570,7 @@
                         <div class="nv-editor__toolbar cms-admin-editor__toolbar" role="toolbar" aria-label="본문 도구">
                             <!-- 본문 형식은 고르지 않는다 — 새 콘텐츠는 HTML -->
                             <input type="hidden" id="cFormat" class="cms-admin-editor__format" name="bodyFormat" value="HTML">
-                            <button type="button" class="nv-btn nv-btn--sm nv-btn--ghost cms-admin-mediapicker-trigger" data-image-picker="" data-target="cBody" data-format-target="cFormat" aria-haspopup="dialog" aria-label="이미지 삽입" title="이미지 삽입" data-picker-title="이미지 삽입">
+                            <button type="button" class="nv-btn nv-btn--sm nv-btn--outline cms-admin-mediapicker-trigger" data-image-picker="" data-target="cBody" data-format-target="cFormat" aria-haspopup="dialog" aria-label="이미지 삽입" title="이미지 삽입" data-picker-title="이미지 삽입">
                                 <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>
                             </button>
                             <span class="cms-admin-editor__live nv-text-sm nv-text-subtle nv-sr-only" aria-live="polite"></span>
@@ -614,7 +615,7 @@
                             <div class="nv-file" hidden="">
                                 <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>
                                 <span class="nv-grow" data-file-name="">파일명</span><span class="nv-file__size" data-file-size=""></span>
-                                <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-file-clear="" aria-label="썸네일 선택 해제"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                <button type="button" class="nv-btn nv-btn--outline nv-btn--sm" data-file-clear="" aria-label="썸네일 선택 해제"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
                             </div>
                         </div>
                         <div class="nv-form-group nv-attach">
@@ -625,7 +626,7 @@
                             <div class="nv-file" hidden="">
                                 <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
                                 <span class="nv-grow" data-file-name="">파일명</span><span class="nv-file__size" data-file-size=""></span>
-                                <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-file-clear="" aria-label="첨부 선택 해제"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                <button type="button" class="nv-btn nv-btn--outline nv-btn--sm" data-file-clear="" aria-label="첨부 선택 해제"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
                             </div>
                         </div>
                         <!-- 요약 — 지금 쓰지 않아 숨긴다 -->
@@ -669,7 +670,7 @@
                         <!-- 일괄 작업은 등급 역할의 일이다: 서브관리자에게는 보이지 않고 서버도 막는다(StaffScopeInterceptor) -->
                         
                         <span class="nv-filter__divider" aria-hidden="true"></span>
-                        <span class="nv-filter__selected">선택 <span data-selected-count="">0</span>개</span><button type="submit" class="nv-btn nv-btn--sm nv-btn--danger" form="bulk-content-form" data-needs-selection="" disabled=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>선택 삭제</button>
+                        <span class="nv-filter__selected">선택 <span data-selected-count="">0</span>개</span><button type="submit" class="nv-btn nv-btn--sm nv-btn--danger nv-btn--outline-fill" form="bulk-content-form" data-needs-selection="" disabled=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>선택 삭제</button>
                         <span class="nv-filter__divider" aria-hidden="true"></span>
                         <span class="nv-btn-group"><span class="nv-dropmenu" data-bulk-status-menu="">
                             <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-dropmenu="" data-needs-selection="" disabled="" aria-expanded="false" aria-haspopup="menu"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-swap"></use></svg>상태변경</button>
@@ -765,7 +766,7 @@
                         <span class="nv-filter__total">총 <b>1</b>개</span>
                         <span class="nv-filter__divider" aria-hidden="true"></span>
                         <span class="nv-filter__selected">선택 <span data-selected-count="">0</span>개</span>
-                        <button type="submit" class="nv-btn nv-btn--sm nv-btn--danger" form="site-file-delete-form" data-needs-selection="" disabled="" data-site-file-bulk-delete="">
+                        <button type="submit" class="nv-btn nv-btn--sm nv-btn--danger nv-btn--outline-fill" form="site-file-delete-form" data-needs-selection="" disabled="" data-site-file-bulk-delete="">
                             <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>선택 삭제</button>
                     </div>
                 </div>
@@ -798,10 +799,10 @@
                                 <td class="nv-text-sm"><a class="nv-link" target="_blank" rel="noopener" href="../public/공개-화면-SEDIS-실사용-시나리오-종단-점검표-bea09e.html">/public/qa/sedis-e2e-scenario.html</a></td>
                                 <td class="col-actions">
                                     <div class="nv-version-actions">
-                                        <a class="nv-btn nv-btn--icon nv-btn--sm" download="" title="내려받기" href="#kit-file" data-kit-href="/console-9f3a/content/ST54cf79b1bff2434a896cd1bcf54bb4c3/site-files/download?path=qa/sedis-e2e-scenario.html" aria-label="qa/sedis-e2e-scenario.html 내려받기"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-download"></use></svg></a>
+                                        <a class="nv-btn nv-btn--icon nv-btn--xs" download="" title="내려받기" href="#kit-file" data-kit-href="/console-9f3a/content/ST54cf79b1bff2434a896cd1bcf54bb4c3/site-files/download?path=qa/sedis-e2e-scenario.html" aria-label="qa/sedis-e2e-scenario.html 내려받기"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-download"></use></svg></a>
                                         <form method="post" action="#kit-file" data-kit-href="/console-9f3a/content/ST54cf79b1bff2434a896cd1bcf54bb4c3/site-files/delete" data-confirm="부가 파일 qa/sedis-e2e-scenario.html 을(를) 삭제할까요? 공개 주소에서 바로 사라집니다(이전 파일 하나는 서버에 보관)."><input type="hidden" name="_csrf" value="L288jMOfkEsvB_RL5vzCTWQNMeKXDZdf0lzTIh7InO4">
                                             <input type="hidden" name="paths" value="qa/sedis-e2e-scenario.html">
-                                            <button type="submit" class="nv-btn nv-btn--icon nv-btn--sm nv-text-err" title="삭제" aria-label="qa/sedis-e2e-scenario.html 삭제"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-trash"></use></svg></button>
+                                            <button type="submit" class="nv-btn nv-btn--icon nv-btn--xs nv-text-err" title="삭제" aria-label="qa/sedis-e2e-scenario.html 삭제"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-trash"></use></svg></button>
                                         </form>
                                     </div>
                                 </td>
@@ -861,7 +862,7 @@
             <div class="nv-row nv-row--wrap">
                 <button type="button" class="nv-btn nv-btn--outline" data-import-preview="">미리보기</button>
                 <button type="button" class="nv-btn nv-btn--primary" data-import-run="" disabled="" title="먼저 미리보기로 결과를 확인하세요">반입</button>
-                <a class="nv-btn nv-btn--primary-outline" data-import-reload="" hidden="" href="console-콘텐츠-관리-콘텐츠-관리-71a0e0.html">「미게시 초안 있음」 목록 보기</a>
+                <a class="nv-btn nv-btn--primary nv-btn--outline" data-import-reload="" hidden="" href="console-콘텐츠-관리-콘텐츠-관리-71a0e0.html">「미게시 초안 있음」 목록 보기</a>
             </div>
             <label class="nv-check ct-import__confirm" data-import-files-confirm-wrap="" hidden="">
                 <input type="checkbox" data-import-files-confirm="">

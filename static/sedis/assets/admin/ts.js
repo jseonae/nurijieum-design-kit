@@ -558,7 +558,7 @@
         var act = document.createElement('td');
         var x = document.createElement('button');
         x.type = 'button';
-        x.className = 'nv-btn nv-btn--icon nv-btn--sm';
+        x.className = 'nv-btn nv-btn--icon nv-btn--xs';
         x.setAttribute('aria-label', c.fileName + ' 목록에서 제외');
         x.innerHTML = '<svg class="nv-icon" aria-hidden="true"><use href="#nv-i-close"/></svg>';
         x.addEventListener('click', function (event) {
@@ -942,7 +942,7 @@
     ta.value = text;
     var rm = document.createElement('button');
     rm.type = 'button';
-    rm.className = 'nv-btn nv-btn--icon nv-btn--sm nv-btn--danger';
+    rm.className = 'nv-btn nv-btn--icon nv-btn--xs nv-btn--danger nv-btn--outline';
     rm.setAttribute('data-ts-phrase-remove', '');
     rm.setAttribute('aria-label', '삭제');
     rm.innerHTML = '<svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"/></svg>';   // 고정 문자열(화면 렌더 줄과 같은 아이콘)

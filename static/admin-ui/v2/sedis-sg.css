@@ -1,14 +1,15 @@
 /* =====================================================================
-   SEDIS 관리자 화면 — 스타일가이드(누리지음 cms/*) 공통 컴포넌트 적용
-   2026-11-23
+   관리자 화면 — 스타일가이드(누리지음 cms/*) 공통 컴포넌트 적용
+   2026-11-23 SEDIS 판 · 2026-11-25 누리지음 기본 판
 
-   - SEDIS 콘솔 화면(pages/sedis/console)에만 연결한다. 누리지음 기본 판은 그대로.
+   - 두 판의 콘솔 화면(pages/sedis/console · pages/default/console)에 연결한다.
+     (파일 이름은 처음 SEDIS 판에 만들 때 붙인 이름 그대로 둔다.)
    - 키트의 nv-* 마크업은 그대로 두고, 값만 스타일가이드 컴포넌트(nuri-components.css)와 같게 맞춘다.
    - 색 · 크기 · 글자는 모두 --nuri-* 토큰. 새 값이 필요하면 static/shared/nuri-tokens.css 에 더한다.
    - 이 파일은 각 화면 CSS 뒤에 불러온다(같은 우선순위면 이 파일이 이긴다).
 
    대응
-   nv-btn ............ cms/button        nv-input · nv-select · nv-textarea .. cms/input · select · textarea
+   nv-btn ............ → cms-button.css      nv-input · nv-select · nv-textarea .. cms/input · select · textarea
    nv-check · radio .. cms/checkbox · radio   nv-switch ... cms/toggle
    nv-badge .......... cms/badge         nv-tag ...... cms/tag (fill · S)
    nv-card ........... cms/card          nv-summary .. cms/summary-card
@@ -22,70 +23,7 @@
    nv-dl ............. cms/key-value(표 형태)   nv-tree ..... cms/tree
    ===================================================================== */
 
-/* ---------- 1. 버튼 (cms/button) ----------
-   계층: 주요 동작 .nv-btn--primary(파랑 채움) · 채움과 함께 쓰는 보조 동작 .nv-btn--primary-outline(파랑 테두리)
-         · 그 밖의 보조 동작 .nv-btn--outline(회색 테두리, tertiary) · 삭제 .nv-btn--danger(빨강 테두리) */
-.nv-btn {
-  --b-bg: var(--nuri-color-button-outline-surface); --b-fg: var(--nuri-color-button-tertiary-text);
-  --b-line: var(--nuri-color-button-tertiary-border);
-  --b-bg-hover: var(--nuri-color-button-tertiary-light); --b-bg-pressed: var(--nuri-color-button-tertiary-light-hover);
-  height: var(--nuri-size-height-7); padding: 0 var(--nuri-padding-7); gap: var(--nuri-gap-3);
-  border: 0; border-radius: var(--nuri-radius-small);
-  background: var(--b-bg); color: var(--b-fg); box-shadow: inset 0 0 0 1px var(--b-line);
-  font-family: var(--nuri-font-family); font-size: var(--nuri-font-size-label-small);
-  font-weight: var(--nuri-font-weight-semibold); line-height: var(--nuri-line-height);
-}
-.nv-btn .nv-icon { width: 1.6rem; height: 1.6rem; }
-.nv-btn:hover:not(:disabled), a.nv-btn:hover { background: var(--b-bg-hover); color: var(--b-fg); }
-.nv-btn:active:not(:disabled) { background: var(--b-bg-pressed); }
-a.nv-btn:is(:link, :visited, :focus, :focus-visible, :active) { color: var(--b-fg); }
-.nv-btn--primary {
-  --b-bg: var(--nuri-color-button-primary-solid); --b-fg: var(--nuri-color-button-text-on-solid); --b-line: transparent;
-  --b-bg-hover: var(--nuri-color-button-primary-solid-hover); --b-bg-pressed: var(--nuri-color-button-primary-solid-pressed);
-}
-.nv-btn--primary-outline, .nv-btn--soft {
-  --b-bg: var(--nuri-color-button-outline-surface); --b-fg: var(--nuri-color-button-primary-text);
-  --b-line: var(--nuri-color-button-primary-border);
-  --b-bg-hover: var(--nuri-color-button-primary-light); --b-bg-pressed: var(--nuri-color-button-primary-light-hover);
-}
-.nv-btn--outline, .nv-btn--outline-strong, .nv-btn--muted, .nv-btn--excel { /* tertiary outline — 기본값과 같음 */ }
-.nv-btn--ghost {
-  --b-bg: var(--nuri-color-button-ghost-surface); --b-fg: var(--nuri-color-button-tertiary-text); --b-line: transparent;
-  --b-bg-hover: var(--nuri-color-button-tertiary-light); --b-bg-pressed: var(--nuri-color-button-tertiary-light-hover);
-}
-.nv-btn--danger {
-  --b-bg: var(--nuri-color-button-outline-surface); --b-fg: var(--nuri-color-button-danger-text);
-  --b-line: var(--nuri-color-button-danger-border);
-  --b-bg-hover: var(--nuri-color-button-danger-light); --b-bg-pressed: var(--nuri-color-button-danger-light-hover);
-}
-.nv-btn--danger:hover:not(:disabled) { background: var(--b-bg-hover); color: var(--b-fg); }
-.nv-btn--danger-solid {
-  --b-bg: var(--nuri-color-button-danger-solid); --b-fg: var(--nuri-color-button-text-on-solid); --b-line: transparent;
-  --b-bg-hover: var(--nuri-color-button-danger-solid-hover); --b-bg-pressed: var(--nuri-color-button-danger-solid-pressed);
-}
-.nv-btn--warn {
-  --b-bg: var(--nuri-color-button-warning-light); --b-fg: var(--nuri-color-button-warning-text);
-  --b-line: var(--nuri-color-button-warning-border-light);
-  --b-bg-hover: var(--nuri-color-button-warning-light-hover); --b-bg-pressed: var(--nuri-color-button-warning-light-pressed);
-}
-.nv-btn--sm { height: var(--nuri-size-height-5); padding: 0 var(--nuri-padding-6); font-size: var(--nuri-font-size-label-xsmall); }
-.nv-btn--sm .nv-icon { width: 1.4rem; height: 1.4rem; }
-.nv-btn--lg { height: var(--nuri-size-height-8); padding: 0 var(--nuri-padding-7); font-size: var(--nuri-font-size-label-medium); font-weight: var(--nuri-font-weight-semibold); }
-/* 아이콘 단추(행 ⋮ 등) — ghost 아이콘 32 */
-.nv-btn--icon {
-  --b-bg: var(--nuri-color-button-ghost-surface); --b-fg: var(--nuri-color-icon-gray); --b-line: transparent;
-  --b-bg-hover: var(--nuri-color-button-tertiary-light); --b-bg-pressed: var(--nuri-color-button-tertiary-light-hover);
-  width: var(--nuri-size-height-5); height: var(--nuri-size-height-5); padding: 0;
-}
-.nv-btn--icon.nv-btn--sm { width: var(--nuri-size-height-4); height: var(--nuri-size-height-4); }
-a.nv-btn--icon:is(:link, :visited, :hover, :focus, :focus-visible, :active) { color: var(--b-fg); }
-.nv-btn--icon:hover:not(:disabled), .nv-btn--icon[aria-expanded="true"] { background: var(--b-bg-hover); color: var(--nuri-color-text-basic); }
-.nv-btn:disabled, .nv-btn[aria-disabled="true"] {
-  opacity: 1; background: var(--nuri-color-button-disabled-fill); color: var(--nuri-color-button-disabled-text);
-  box-shadow: inset 0 0 0 1px var(--nuri-color-button-disabled-border);
-}
-.nv-btn--icon:disabled, .nv-btn--icon[aria-disabled="true"] { background: none; box-shadow: none; }
-.nv-btn-group { gap: var(--nuri-gap-3); }
+/* ---------- 1. 버튼 → static/admin-ui/v2/cms-button.css 로 옮김 (2026-11-25) ---------- */
 /* 머리 제목 줄은 버튼 높이(40)와 같게 */
 .nv-page-header__text, .nv-page-header__stack > .nv-page-header__title { min-height: var(--nuri-size-height-7); }
 
@@ -198,6 +136,34 @@ a.nv-btn--icon:is(:link, :visited, :hover, :focus, :focus-visible, :active) { co
 .nv-filter__selected { font-size: var(--nuri-font-size-label-small); color: var(--nuri-color-text-basic); }
 .nv-filter__divider { background: var(--nuri-color-border-gray); }
 .nv-date-range { gap: var(--nuri-gap-4); color: var(--nuri-color-text-subtle); font-size: var(--nuri-font-size-label-small); }
+/* list-toolbar 세부(2026-11-25) — 스타일가이드 「8. Layout › cms/list-toolbar」 견본과 같게
+   - 높이 72(위아래 20 + 컨트롤 32): 막대 안 단추 · 입력은 모두 S(32). 아래 선은 inset 그림자(높이에 더해지지 않게)
+   - 묶음 사이 16 · 묶음 안 8. 세로 구분선(nv-filter__divider)은 스타일가이드에 없어 숨김
+   - 「목록 표시 개수」 셀렉트 = 글자형 셀렉트(cms/select-text): 테두리 없음 · 14 Regular · 꺾쇠 16 */
+.nv-filter { border-bottom: 0; box-shadow: inset 0 -1px 0 var(--nuri-color-border-gray-light); }
+.nv-filter__divider { display: none; }
+.nv-filter__selected ~ .nv-btn, .nv-filter__selected ~ .nv-btn-group { margin-left: calc(var(--nuri-gap-4) - var(--nuri-gap-7)); }
+.nv-filter .nv-btn-group { gap: var(--nuri-gap-4); }
+.nv-filter__total b { font-weight: inherit; }
+.nv-filter__label { gap: var(--nuri-gap-4); }
+.nv-filter__label .nv-select {
+  height: 2.4rem; padding: 0 calc(1.6rem + var(--nuri-gap-2)) 0 0; border: 0; box-shadow: none; background-color: transparent;
+  background-position: right 0 center; background-size: 1.6rem;
+  font-size: var(--nuri-font-size-label-small); font-weight: var(--nuri-font-weight-regular); color: var(--nuri-color-text-bolder);
+}
+/* 「목록 표시 개수」를 .list-size 로 마크업한 화면(게시판 관리 등) — nv-filter__label 과 같은 모양(마크업은 그대로) */
+.nv-filter .list-size {
+  display: inline-flex; align-items: center; gap: var(--nuri-gap-4);
+  font-size: var(--nuri-font-size-label-small); font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-bolder);
+}
+.nv-filter .list-size .nv-select {
+  width: auto; min-width: 0; height: 2.4rem; padding: 0 calc(1.6rem + var(--nuri-gap-2)) 0 0; border: 0; box-shadow: none; background-color: transparent;
+  background-position: right 0 center; background-size: 1.6rem;
+  font-size: var(--nuri-font-size-label-small); font-weight: var(--nuri-font-weight-regular); color: var(--nuri-color-text-bolder);
+}
+.nv-filter .nv-btn:not(.nv-btn--icon):not(.nv-btn--sm) { height: var(--nuri-size-height-5); padding: 0 var(--nuri-padding-6); font-size: var(--nuri-font-size-label-xsmall); }
+.nv-filter .nv-btn--icon:not(.nv-btn--sm) { width: var(--nuri-size-height-5); height: var(--nuri-size-height-5); }
+/* 입력 · 셀렉트 글자는 키트의 다른 S 입력과 같이 13 그대로 둔다(14 로 키우면 날짜 · 검색 칸이 넓어져 1600 폭에서 막대가 두 줄로 넘어감) */
 
 /* ---------- 8. 표 (cms/table) — 머리 · 줄 높이 48, 칸 여백 8 ---------- */
 .nv-table, .cms-admin-table.nv-table { font-size: var(--nuri-font-size-body-small); }
@@ -230,19 +196,46 @@ a.nv-btn--icon:is(:link, :visited, :hover, :focus, :focus-visible, :active) { co
 .nv-empty__title { font-size: var(--nuri-font-size-body-medium); font-weight: var(--nuri-font-weight-semibold); color: var(--nuri-color-text-bolder); }
 .nv-empty__desc { font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-subtle); }
 
-/* ---------- 10. 쪽 번호 (cms/pagination) — 24 네모, 현재 쪽 진한 채움 ---------- */
-.nv-pagination.krds-pagination { --krds-pagination-gap: var(--nuri-gap-2); padding: var(--nuri-padding-7) 0 var(--nuri-padding-3); font-size: var(--nuri-font-size-label-xsmall); }
+/* ---------- 10. 쪽 번호 (cms/pagination · cms/pagination-item) — 피그마 디자인스타일 14번 (2026-11-25). 마크업은 KRDS 그대로 ----------
+   칸: 높이 24 · 최소 너비 24 · 좌우 4 · 모서리 4 · 글자 13 Regular(text/basic) · 아이콘과 글자 사이 2 · 칸 사이 4 · 가운데 정렬
+   상태: 마우스 올림 action/gray-hover · 누름 action/gray-pressed · 선택 pagination/selected(진한 회색) + 흰 글자 SemiBold · 비활성 text/disabled
+   이전 · 다음 꺾쇠는 Phosphor caret-left · caret-right 16, 생략(…)은 text/subtle */
+.nv-pagination.krds-pagination {
+  --krds-pagination-gap: var(--nuri-gap-2); --krds-pagination--size-height: var(--nuri-size-height-3); --krds-pagination--radius: var(--nuri-radius-small);
+  --krds-pagination--color-action: transparent; --krds-pagination--color-action-hover: var(--nuri-color-action-gray-hover);
+  --krds-pagination--color-action-pressed: var(--nuri-color-action-gray-pressed); --krds-pagination--color-action-active: var(--nuri-color-pagination-selected);
+  --krds-pagination--color-text: var(--nuri-color-text-basic); --krds-pagination--color-text-active: var(--nuri-color-text-inverse-static);
+  --krds-pagination--color-text-disabled: var(--nuri-color-text-disabled);
+  display: flex; align-items: center; justify-content: center; gap: var(--nuri-gap-2); padding: var(--nuri-padding-7) 0 var(--nuri-padding-3);
+  color: var(--nuri-color-text-basic); font-size: var(--nuri-font-size-label-xsmall);
+}
+.nv-pagination.krds-pagination .page-links { display: flex; align-items: center; gap: var(--nuri-gap-2); }
 .nv-pagination.krds-pagination .page-links .page-link,
 .nv-pagination.krds-pagination .page-navi {
-  min-width: var(--nuri-size-height-3); height: var(--nuri-size-height-3); padding: 0 var(--nuri-padding-2);
-  border-radius: var(--nuri-radius-small); color: var(--nuri-color-text-basic); font-size: var(--nuri-font-size-label-xsmall);
+  display: inline-flex; align-items: center; justify-content: center;
+  width: auto; min-width: var(--nuri-size-height-3); height: var(--nuri-size-height-3); padding: 0 var(--nuri-padding-2); gap: var(--nuri-gap-1);
+  border-radius: var(--nuri-radius-small); background-color: transparent; color: var(--nuri-color-text-basic);
+  font-size: var(--nuri-font-size-label-xsmall); font-weight: var(--nuri-font-weight-regular); line-height: var(--nuri-line-height); text-decoration: none;
 }
-.nv-pagination.krds-pagination .page-links .page-link:hover, .nv-pagination.krds-pagination .page-navi:hover { background: var(--nuri-color-action-gray-hover); }
+.nv-pagination.krds-pagination .page-links .page-link:hover, .nv-pagination.krds-pagination .page-navi:hover { background-color: var(--nuri-color-action-gray-hover); }
+.nv-pagination.krds-pagination .page-links .page-link:active, .nv-pagination.krds-pagination .page-navi:active { background-color: var(--nuri-color-action-gray-pressed); }
 .nv-pagination.krds-pagination .page-links .page-link.active,
 .nv-pagination.krds-pagination .page-links .page-link[aria-current="page"] {
-  background: var(--nuri-color-pagination-selected); color: var(--nuri-color-text-inverse-static); font-weight: var(--nuri-font-weight-semibold);
+  background-color: var(--nuri-color-pagination-selected); color: var(--nuri-color-text-inverse-static); font-weight: var(--nuri-font-weight-semibold);
 }
-.nv-pagination.krds-pagination .page-navi[aria-disabled="true"] { opacity: 1; color: var(--nuri-color-text-disabled); }
+.nv-pagination.krds-pagination .page-navi:is([aria-disabled="true"], .disabled) { opacity: 1; background-color: transparent; color: var(--nuri-color-text-disabled); }
+.nv-pagination.krds-pagination .page-navi.prev::before,
+.nv-pagination.krds-pagination .page-navi.next::after {
+  content: ""; display: inline-block; flex: none; width: 1.6rem; height: 1.6rem; transform: none; background-color: currentColor;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-image: var(--nv-pg-caret); mask-image: var(--nv-pg-caret);
+}
+.nv-pagination.krds-pagination .page-navi.prev { --nv-pg-caret: url("../../shared/icons/caret-left.svg"); }
+.nv-pagination.krds-pagination .page-navi.next { --nv-pg-caret: url("../../shared/icons/caret-right.svg"); }
+.nv-pagination.krds-pagination .page-links .page-link.link-dot {
+  width: var(--nuri-size-height-3); height: var(--nuri-size-height-3); padding: 0; background-color: var(--nuri-color-text-subtle);
+  -webkit-mask-size: 1.6rem; mask-size: 1.6rem;
+}
 
 /* ---------- 11. 더보기 메뉴 (cms/menu) ---------- */
 .nv-dropmenu__menu {
@@ -263,7 +256,6 @@ a.nv-btn--icon:is(:link, :visited, :hover, :focus, :focus-visible, :active) { co
 .nv-dropmenu__empty { font-size: var(--nuri-font-size-label-small); color: var(--nuri-color-text-subtle); }
 
 /* ---------- 12. 탭 (cms/tab — box) · 세그먼트 (cms/segmented) ---------- */
-.nv-tabs { gap: var(--nuri-gap-4); }
 .nv-tabs [role="tab"], .nv-tab {
   height: var(--nuri-size-height-8); padding: 0 var(--nuri-padding-8); border: 0; border-radius: var(--nuri-radius-medium);
   background: var(--nuri-color-tab-box-surface); box-shadow: inset 0 0 0 1px var(--nuri-color-tab-box-border);
@@ -331,20 +323,97 @@ a.nv-btn--icon:is(:link, :visited, :hover, :focus, :focus-visible, :active) { co
 .nv-dl { border-top-color: var(--nuri-color-border-gray-light); font-size: var(--nuri-font-size-body-small); }
 .nv-dl dt { padding: var(--nuri-padding-6) var(--nuri-padding-7); background: var(--nuri-color-table-head-surface); color: var(--nuri-color-text-subtle); font-size: var(--nuri-font-size-body-xsmall); font-weight: var(--nuri-font-weight-semibold); border-bottom-color: var(--nuri-color-border-gray-light); }
 .nv-dl dd { padding: var(--nuri-padding-6) var(--nuri-padding-7); color: var(--nuri-color-text-bolder); border-bottom-color: var(--nuri-color-border-gray-light); }
+/* 트리 (cms/tree · cms/tree-item) — 피그마 디자인스타일 22번 (2026-11-25). 마크업은 개발 그대로
+   1단(.nv-tree__row--root): 48 · 좌우 16 · 사이 8 · tree/root-surface 바탕 · 모서리 4 · 16 Bold · 꺾쇠 16
+   2단(details > summary.nv-tree__row): 44 · 좌우 16 · 사이 8 · 14 SemiBold · 펼침 표시 16(펼침 파랑 · 접힘 회색)
+   3단(그 밖의 .nv-tree__row): 36 · 왼쪽 8 · 오른쪽 2 · 사이 4 · 14 Regular, 마우스 올림 tree/item-hover, 선택 tree/item-selected + 파랑 SemiBold
+   연결선: 안쪽 목록(li 안의 ul)은 왼쪽 32 칸에 세로선(23.5) · 가지(8), 마지막 항목은 아래 선 없음 */
 .nv-tree { font-size: var(--nuri-font-size-label-small); }
-.nv-tree ul { border-left: 1px solid var(--nuri-color-tree-connector); }
-.nv-tree__row { min-height: var(--nuri-size-height-6); padding: 0 var(--nuri-padding-4); border-radius: var(--nuri-radius-small); color: var(--nuri-color-text-basic); }
-.nv-tree__row:hover { background: var(--nuri-color-tree-item-hover); }
-.nv-tree__row[aria-current="true"], .nv-tree__row.is-active { background: var(--nuri-color-tree-item-selected); color: var(--nuri-color-text-primary); font-weight: var(--nuri-font-weight-semibold); }
-.nv-tree__row--root { min-height: var(--nuri-size-height-9); background: var(--nuri-color-tree-root-surface); color: var(--nuri-color-text-bolder); font-weight: var(--nuri-font-weight-bold); }
-.nv-tree__toggle { color: var(--nuri-color-icon-gray-light); }
+.nv-tree, .nv-tree ul { margin: 0; padding: 0; border: 0; list-style: none; }
+.nv-tree__row {
+  display: flex; align-items: center; gap: var(--nuri-gap-2); min-height: var(--nuri-size-height-6);
+  padding: 0 var(--nuri-padding-1) 0 var(--nuri-padding-4); border-radius: var(--nuri-radius-small);
+  color: var(--nuri-color-text-basic); font-weight: var(--nuri-font-weight-regular);
+}
+.nv-tree .nv-tree__row:not(.nv-tree__row--root):not(summary) {
+  gap: var(--nuri-gap-2); padding: 0 var(--nuri-padding-1) 0 var(--nuri-padding-4); background: none;
+  color: var(--nuri-color-text-basic); font-weight: var(--nuri-font-weight-regular);
+}
+.nv-tree .nv-tree__row:not(.nv-tree__row--root):not(summary):hover { background: var(--nuri-color-tree-item-hover); }
+.nv-tree .nv-tree__row:not(.nv-tree__row--root):not(summary):is([aria-current="true"], .is-active) {
+  background: var(--nuri-color-tree-item-selected); color: var(--nuri-color-text-primary); font-weight: var(--nuri-font-weight-semibold);
+}
+.nv-tree .nv-tree__row .nv-icon { width: 1.6rem; height: 1.6rem; }
+/* 1단 */
+.nv-tree .nv-tree__row--root, .nv-tree .nv-tree__row--root:hover {
+  gap: var(--nuri-gap-4); min-height: var(--nuri-size-height-9); padding: 0 var(--nuri-padding-7);
+  background: var(--nuri-color-tree-root-surface); color: var(--nuri-color-text-bolder);
+  font-size: var(--nuri-font-size-heading-xsmall); font-weight: var(--nuri-font-weight-bold);
+}
+.nv-tree__row--root > .nv-icon { color: var(--nuri-color-icon-gray); }
+/* 2단 */
+.nv-tree summary.nv-tree__row {
+  gap: var(--nuri-gap-4); min-height: var(--nuri-size-height-8); padding: 0 var(--nuri-padding-7); background: none;
+  color: var(--nuri-color-text-bolder); font-weight: var(--nuri-font-weight-semibold);
+}
+.nv-tree summary.nv-tree__row:hover { background: var(--nuri-color-tree-item-hover); }
+.nv-tree summary.nv-tree__row b { font-weight: inherit; }
+.nv-tree__toggle { width: 1.6rem; height: 1.6rem; color: var(--nuri-color-icon-gray-light); }
+.nv-tree details[open] > summary .nv-tree__toggle { color: var(--nuri-color-icon-primary); }
+/* 3단 연결선 */
+.nv-tree li ul { padding-left: 3.2rem; }
+.nv-tree li ul > li { position: relative; }
+.nv-tree li ul > li::before { content: ""; position: absolute; left: -.85rem; top: 0; bottom: 0; width: 1px; background: var(--nuri-color-tree-connector); }
+.nv-tree li ul > li:last-child::before { bottom: auto; height: 1.8rem; }
+.nv-tree li ul > li::after { content: ""; position: absolute; left: -.8rem; top: 1.8rem; width: .8rem; height: 1px; background: var(--nuri-color-tree-connector); }
+
+/* 2단 펼침 표시: 피그마 minus-circle(펼침) · plus-circle(접힘). 마크업의 svg(nv-i-minus · chevron-right)는 숨기고 같은 자리에 그린다 */
+.nv-tree__toggle { display: inline-flex; flex: none; background: currentColor;
+  -webkit-mask: url("../../shared/icons/plus-circle.svg") center / contain no-repeat; mask: url("../../shared/icons/plus-circle.svg") center / contain no-repeat; }
+.nv-tree details[open] > summary .nv-tree__toggle { -webkit-mask-image: url("../../shared/icons/minus-circle.svg"); mask-image: url("../../shared/icons/minus-circle.svg"); }
+.nv-tree__toggle > svg { display: none; }
+.nv-tree summary.nv-tree__row { list-style: none; cursor: pointer; }
+.nv-tree summary.nv-tree__row::-webkit-details-marker { display: none; }
+/* 3단 옮기기(⠿) · 더보기(⋮): 기본은 숨기고, 마우스 올림 · 선택 · 키보드 초점일 때 보인다. ⋮ 는 오른쪽 끝 */
+.nv-tree .nv-tree__row:not(.nv-tree__row--root):not(summary) > .nv-icon:has(use[href="#nv-i-drag"]) { color: var(--nuri-color-icon-gray-light); cursor: grab; }
+.nv-tree .nv-tree__row:not(.nv-tree__row--root):not(summary) > .nv-dropmenu { margin-left: auto; }
+.nv-tree .nv-tree__row:not(.nv-tree__row--root):not(summary):not(:hover):not(:focus-within):not(.is-active):not([aria-current="true"]) > .nv-icon:has(use[href="#nv-i-drag"]) { display: none; }
+.nv-tree .nv-tree__row:not(.nv-tree__row--root):not(summary):is(.is-active, [aria-current="true"]) > .nv-dropmenu { opacity: 1; }   /* ⋮ 는 cms-admin-v2 가 마우스 · 초점 때만 보이게 함 — 선택 줄에도 보이게 */
+
+/* 트리 줄의 ⋮ (nv-dropmenu 안 단추) — 피그마 cms/tree-item 「더보기」: 바탕 · 테두리 없음, 28 · 모서리 4, 아이콘 14 icon/gray. 마우스 올림 · 누름 · 열림은 검정 5% */
+.nv-tree .nv-tree__row .nv-dropmenu > :is(button, .nuri-button-icon, .nv-btn) {
+  --b-bg: transparent; --b-bg-hover: var(--nuri-alpha-black5); --b-bg-pressed: var(--nuri-alpha-black5);
+  background: transparent; border: 0; box-shadow: none; border-radius: var(--nuri-radius-small); color: var(--nuri-color-icon-gray);
+}
+.nv-tree .nv-tree__row .nv-dropmenu > :is(button, .nuri-button-icon, .nv-btn):is(:hover, :active, .is-hover, .is-pressed, [aria-expanded="true"]) { background: var(--nuri-alpha-black5); box-shadow: none; }
 
 /* ---------- 17. 말풍선 · 알림 띠 ---------- */
 .nv-tip { border-radius: var(--nuri-radius-small); background: var(--nuri-color-toast-surface); color: var(--nuri-color-toast-text); font-size: var(--nuri-font-size-label-xsmall); font-weight: var(--nuri-font-weight-regular); box-shadow: var(--nuri-shadow-3); }
-.nv-toast { border-radius: var(--nuri-radius-medium); background: var(--nuri-color-toast-surface); color: var(--nuri-color-toast-text); font-size: var(--nuri-font-size-body-small); box-shadow: var(--nuri-shadow-3); }
+/* 17-1. 토스트 (피그마 디자인스타일 cms/toast) — 마크업은 개발 그대로: 견본 .nv-toast · 실제(admin-v2.js nvToast) #nv-toast-stack > .ntoast
+   진한 바탕 · 모서리 8 · 안쪽 12/16 · 아이콘 20 + 10 · 글자 14 보통 · 링크 14 굵게.
+   유형은 --success(기본) · --error · --warning · --info. 아이콘은 ::before 으로 그리고, .ntoast 안 svg 는 숨긴다(유형 아이콘으로 대신). */
+.nv-toast, .ntoast {
+  --nv-toast-icon: url("../../shared/icons/check-circle-fill.svg");
+  --nv-toast-icon-color: var(--nuri-color-toast-icon-success);
+  gap: 0; max-width: min(64rem, calc(100vw - 3.2rem)); padding: 1.2rem 1.6rem;
+  border-radius: var(--nuri-radius-medium); background: var(--nuri-color-toast-surface); color: var(--nuri-color-toast-text);
+  font-size: var(--nuri-font-size-body-small); font-weight: var(--nuri-font-weight-regular); line-height: 1.5; text-align: left;
+  box-shadow: var(--nuri-shadow-3);
+}
+.nv-toast::before, .ntoast::before {
+  content: ""; display: inline-block; flex: none; width: 2rem; height: 2rem; margin-right: 1rem; vertical-align: -.45rem;
+  background: var(--nv-toast-icon-color);
+  -webkit-mask: var(--nv-toast-icon) center / contain no-repeat; mask: var(--nv-toast-icon) center / contain no-repeat;
+}
+.ntoast > .nv-icon { display: none; }
+.nv-toast--error   { --nv-toast-icon: url("../../shared/icons/x-circle-fill.svg");       --nv-toast-icon-color: var(--nuri-color-toast-icon-danger); }
+.nv-toast--warning { --nv-toast-icon: url("../../shared/icons/warning-circle-fill.svg"); --nv-toast-icon-color: var(--nuri-color-toast-icon-warning); }
+.nv-toast--info    { --nv-toast-icon: url("../../shared/icons/info-fill.svg");           --nv-toast-icon-color: var(--nuri-color-toast-icon-info); }
+.nv-toast a, .ntoast a, .ntoast__link { margin-left: 1rem; color: var(--nuri-color-toast-link); font-weight: var(--nuri-font-weight-semibold); text-decoration: none; cursor: pointer; }
+.nv-toast a:hover, .ntoast a:hover { text-decoration: underline; }
+.nv-toast a:focus-visible, .ntoast a:focus-visible { outline: 2px solid var(--nuri-color-toast-link); outline-offset: 2px; border-radius: 2px; }
 
 /* ---------- 12-1. 밑줄 탭 (cms/tab — line) — 화면 안 영역을 나누는 .gtabs ---------- */
-.gtabs { gap: var(--nuri-gap-7); border-bottom: 1px solid var(--nuri-color-border-gray-light); }
 .gtabs [role="tab"], .gtabs .nv-tab, .gtabs .am-tab {
   flex: 0 0 auto; min-width: 0; height: var(--nuri-size-height-9); margin-bottom: -1px; padding: 0 var(--nuri-padding-2);
   border: 0; border-radius: 0; background: none; box-shadow: none;
@@ -356,18 +425,382 @@ a.nv-btn--icon:is(:link, :visited, :hover, :focus, :focus-visible, :active) { co
   box-shadow: inset 0 -2px 0 var(--nuri-color-tab-line-indicator);
 }
 
-/* 아이콘 단추 변형: 빨강 아이콘(삭제) · 회색 테두리 아이콘(뒤로 등) */
-.nv-btn--icon.nv-btn--danger { --b-fg: var(--nuri-color-button-danger-text); --b-bg-hover: var(--nuri-color-button-danger-light); }
-.nv-btn--icon.nv-btn--danger:hover:not(:disabled) { color: var(--nuri-color-button-danger-text); }
-.nv-btn--icon.nv-btn--outline { --b-bg: var(--nuri-color-button-outline-surface); --b-line: var(--nuri-color-button-tertiary-border); --b-fg: var(--nuri-color-button-tertiary-text); }
-/* 행 더보기(⋮) */
-/* 행 더보기(⋮) — Phosphor dots-three-vertical 은 점이 작아 16 에서는 흐리게 보여 스타일가이드 아이콘 크기 20 을 쓴다 */
-.rowmore .nv-icon, .nv-btn--icon[data-dropmenu] .nv-icon { width: 2rem; height: 2rem; }
 
-/* 목록 도구 막대의 「선택 삭제」 — danger outline-fill(연한 빨강 바탕 + 연한 테두리, 스타일가이드 cms/list-toolbar) */
-.nv-filter .nv-btn--danger {
-  --b-bg: var(--nuri-color-button-danger-light); --b-line: var(--nuri-color-button-danger-border-light);
-  --b-bg-hover: var(--nuri-color-button-danger-light-hover); --b-bg-pressed: var(--nuri-color-button-danger-light-pressed);
-}
+/* 목록 도구 막대의 「선택 삭제」는 마크업에서 danger outline-fill (nv-btn--danger nv-btn--outline-fill) */
 /* 측면 패널 바닥 단추 — 스타일가이드 cms/panel 은 큰 단추(48) */
 .nv-panel__foot .nv-btn:not(.nv-btn--sm):not(.nv-btn--icon) { height: var(--nuri-size-height-9); padding: 0 var(--nuri-padding-8); font-size: var(--nuri-font-size-label-medium); }
+
+/* ---------- 18. 편집 도구 막대 (nv-editor__toolbar) — 피그마 디자인모음 「04-B 메뉴 수정 - 소스 수정 탭 (카드형)」 editor-toolbar (2026-11-25) ----------
+   마크업은 개발 그대로(.nv-editor__toolbar › button[aria-pressed] · .sep · 오른쪽 .nv-segment). 바꾸는 건 도구 막대 모양뿐이고 nv-editor 의 다른 부분은 그대로
+   - 막대: 높이 48 · 좌우 여백 12 · 칸 사이 4 · 바탕 background/gray-subtler · 테두리 border/gray-light · 모서리 8
+   - 단추: 32 × 32 · 모서리 4 · 아이콘 16 · 구분선 1 × 20(surface/secondary-subtler)
+   - 오른쪽 보기 전환(편집 · 분할 · 미리보기): 바탕 background/gray-subtle · 안 여백 3 · 칸 사이 2 · 칸 높이 24 · 글자 13, 고른 칸 button/primary-light + 파랑 글자
+   - SunEditor 가 그리는 도구 단추(.se-*)는 SunEditor 설정 · editor.css 를 따른다(바로 아래 단추 · 구분선만 이 규칙) */
+.nv-editor__toolbar {
+  flex-wrap: wrap; align-items: center; gap: var(--nuri-gap-2); min-height: var(--nuri-size-height-9); padding: 0 var(--nuri-padding-6);
+  background: var(--nuri-color-background-gray-subtler); border: 1px solid var(--nuri-color-border-gray-light); border-radius: var(--nuri-radius-medium);
+}
+.nv-editor__toolbar > button {
+  width: var(--nuri-size-height-5); height: var(--nuri-size-height-5); padding: 0; border: 0; border-radius: var(--nuri-radius-small);
+  background: none; color: var(--nuri-color-icon-gray);
+}
+.nv-editor__toolbar > button .nv-icon { width: 1.6rem; height: 1.6rem; }
+.nv-editor__toolbar > button:hover { background: var(--nuri-color-background-gray-subtle); color: var(--nuri-color-text-basic); }
+.nv-editor__toolbar > button[aria-pressed="true"] { background: var(--nuri-color-button-primary-light); color: var(--nuri-color-button-primary-text); }
+.nv-editor__toolbar > .sep { width: 1px; height: 2rem; margin: 0; background: var(--nuri-color-surface-secondary-subtler); }
+.nv-editor__toolbar .nv-segment {
+  margin-left: auto; gap: .2rem; padding: .3rem; border-radius: var(--nuri-radius-small); background: var(--nuri-color-background-gray-subtle); box-shadow: none;
+}
+.nv-editor__toolbar .nv-segment button {
+  min-width: 0; height: var(--nuri-size-height-3); padding: 0 var(--nuri-padding-4); border-radius: var(--nuri-radius-small);
+  background: none; box-shadow: none; color: var(--nuri-color-text-basic);
+  font-size: var(--nuri-font-size-label-xsmall); font-weight: var(--nuri-font-weight-regular);
+}
+.nv-editor__toolbar .nv-segment button:hover { background: var(--nuri-color-segmented-item-hover); }
+.nv-editor__toolbar .nv-segment button[aria-pressed="true"] { background: var(--nuri-color-button-primary-light); color: var(--nuri-color-button-primary-text); box-shadow: none; font-weight: var(--nuri-font-weight-regular); }
+
+/* ---------- 19. 아코디언 (nv-details) — 피그마 디자인스타일 「cms/accordion」 Size=M (2026-11-25) ----------
+   마크업은 개발 그대로: <details class="nv-form-group nv-details"><summary class="nv-form-group__title nv-details__summary">제목</summary> 내용… </details>
+   닫힘: 바탕 없음 · 머리 44 · 좌우 16 · 제목 14 굵게 · 화살표 20 / 마우스: accordion-surface-hover / 펼침: accordion-surface-open 바탕, 제목 primary,
+   내용은 흰 상자(모서리 4, 바깥 16 · 안쪽 16) — 내용을 감싸는 요소가 없어 흰 상자는 ::before 로 깐다.
+   .nv-details--inline · --block(단추형 summary)은 해당 없음. */
+.nv-form-group.nv-details {
+  position: relative; isolation: isolate; gap: var(--nuri-gap-5, 1.6rem); padding: 0;
+  border: 0; border-radius: var(--nuri-radius-medium); background: transparent;
+}
+.nv-form-group.nv-details > .nv-details__summary {
+  display: flex; align-items: center; gap: 1rem; min-height: 4.4rem; padding: 0 1.6rem; border-radius: var(--nuri-radius-medium);
+  list-style: none; cursor: pointer;
+  font-size: var(--nuri-font-size-label-small); font-weight: var(--nuri-font-weight-semibold); line-height: 1.5; color: var(--nuri-color-text-bolder);
+}
+.nv-form-group.nv-details > .nv-details__summary::-webkit-details-marker { display: none; }
+.nv-form-group.nv-details > .nv-details__summary::after {
+  content: ""; flex: none; width: 2rem; height: 2rem; margin-left: auto; border: 0; transform: none; transition: transform .15s;
+  background: currentColor;
+  -webkit-mask: url("../../shared/icons/caret-down.svg") center / contain no-repeat; mask: url("../../shared/icons/caret-down.svg") center / contain no-repeat;
+}
+.nv-form-group.nv-details:not([open]) > .nv-details__summary:hover { background: var(--nuri-color-accordion-surface-hover); }
+.nv-form-group.nv-details > .nv-details__summary:focus-visible { outline: 2px solid var(--nuri-color-border-primary, #256ef4); outline-offset: 2px; }
+.nv-form-group.nv-details[open] { padding: 0 3.2rem 3.2rem; background: var(--nuri-color-accordion-surface-open); }
+.nv-form-group.nv-details[open] > .nv-details__summary { margin: 0 -3.2rem; color: var(--nuri-color-text-primary); }
+.nv-form-group.nv-details[open] > .nv-details__summary::after { transform: rotate(180deg); }
+.nv-form-group.nv-details[open]::before {
+  content: ""; position: absolute; z-index: -1; inset: 4.4rem 1.6rem 1.6rem;
+  border-radius: var(--nuri-radius-small); background: var(--nuri-color-surface-white);
+}
+.nv-form-group.nv-details[open] > .nv-details__summary .nv-badge:not([class*="nv-badge--"]) { background: var(--nuri-color-surface-white); }   /* 펼친 바탕(gray-10)과 기본 배지 바탕이 같아 묻히지 않게 */
+@media (prefers-reduced-motion: reduce) { .nv-form-group.nv-details > .nv-details__summary::after { transition: none; } }
+
+/* ---------- 20. 메뉴 트리 줄 (nv-nav-table · nv-nav-menu · mtree__*) — 피그마 pattern/menu-tree-row 모양 (2026-11-25) ----------
+   마크업은 개발(콘솔 메뉴관리) 그대로: <table class="nv-table cms-admin-table nv-nav-table"> · <span class="nv-nav-menu nv-nav-menu--dN">
+   grip · __depth · __name · mtree__lock · mtree__tag--own(개별) · mtree__tag--dirty(변경)</span>
+   피그마: 단계 번호 20 원(1 secondary/80 · 2 /60 · 3 /50 · 4 gray/50) · 단계마다 24 들여쓰기 · 메뉴명 굵게 text/bolder ·
+   표기 아이콘 16 icon/gray(자물쇠 = 접근 통제 · 끊어진 사슬 = 개별) · 저장 안 함 = 줄 배경 table/row-changed + 글자 warning ·
+   미노출 = 글자 disabled + 단계 번호 흐리게. navigation.css · admin-parts.css 가 뒤에 오므로 선택자를 한 단계 더 구체적으로 쓴다 */
+.nv-table.nv-nav-table .nv-nav-menu { display: inline-flex; align-items: center; flex-wrap: nowrap; gap: var(--nuri-gap-4); white-space: nowrap; }
+.nv-table.nv-nav-table .nv-nav-menu--d2 { padding-left: 2.4rem; }
+.nv-table.nv-nav-table .nv-nav-menu--d3 { padding-left: 4.8rem; }
+.nv-table.nv-nav-table .nv-nav-menu--d4 { padding-left: 7.2rem; }
+.nv-table.nv-nav-table .nv-nav-menu .nv-nav-menu__depth {
+  display: inline-flex; align-items: center; justify-content: center; flex: none; width: 2rem; height: 2rem; padding: 0;
+  border-radius: var(--nuri-radius-max); background: var(--nuri-color-depth-1-surface); color: var(--nuri-color-depth-1-text);
+  font-size: var(--nuri-font-size-label-xsmall); font-weight: var(--nuri-font-weight-semibold); line-height: 1;
+}
+.nv-table.nv-nav-table .nv-nav-menu--d2 .nv-nav-menu__depth { background: var(--nuri-color-depth-2-surface); color: var(--nuri-color-depth-2-text); }
+.nv-table.nv-nav-table .nv-nav-menu--d3 .nv-nav-menu__depth { background: var(--nuri-color-depth-3-surface); color: var(--nuri-color-depth-3-text); }
+.nv-table.nv-nav-table .nv-nav-menu--d4 .nv-nav-menu__depth { background: var(--nuri-color-depth-4-surface); color: var(--nuri-color-depth-4-text); }
+.nv-table.nv-nav-table .nv-nav-menu .nv-nav-menu__name { padding: 0; border: 0; background: none; color: var(--nuri-color-text-bolder); font-size: var(--nuri-font-size-body-small); font-weight: var(--nuri-font-weight-semibold); text-decoration: none; cursor: pointer; }
+.nv-table.nv-nav-table .nv-nav-menu .nv-nav-menu__name:hover { color: var(--nuri-color-text-primary); text-decoration: underline; text-underline-offset: .3rem; }
+.nv-table.nv-nav-table tr[aria-selected="true"] .nv-nav-menu__name { color: var(--nuri-color-text-primary); }
+/* 위치 옮기기 손잡이: 시안에 없는 요소 — 줄에 마우스를 올리거나 초점이 오면 보인다(자리는 유지) */
+.nv-table.nv-nav-table .nv-nav-menu .nv-nav-menu__grip { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 1.6rem; height: 2.4rem; margin-right: calc(var(--nuri-gap-4) * -1 + .4rem); color: var(--nuri-color-icon-gray-light); opacity: 0; cursor: grab; }
+.nv-table.nv-nav-table tr:is(:hover, :focus-within, .sg-is-hover) .nv-nav-menu__grip:not([aria-disabled="true"]) { opacity: 1; }
+.nv-table.nv-nav-table .nv-nav-menu__grip .nv-icon { width: 1.6rem; height: 1.6rem; }
+/* 표기 아이콘 */
+:is(.nv-nav-table, .list-legend) .mtree__lock { display: inline-flex; flex: none; color: var(--nuri-color-icon-gray); }
+:is(.nv-nav-table, .list-legend) .mtree__lock .nv-icon { width: 1.6rem; height: 1.6rem; }
+:is(.nv-nav-table, .list-legend) .mtree__tag.mtree__tag--own {
+  display: inline-block; flex: none; width: 1.6rem; height: 1.6rem; padding: 0; border-radius: 0; overflow: hidden; font-size: 0; line-height: 0; color: transparent;
+  background: var(--nuri-color-icon-gray);
+  -webkit-mask: url("../../shared/icons/link-simple-break.svg") center / contain no-repeat; mask: url("../../shared/icons/link-simple-break.svg") center / contain no-repeat;
+}
+:is(.nv-nav-table, .list-legend) .mtree__tag[hidden] { display: none; }
+/* 저장 안 함: 「변경」 글자 대신 줄 배경 · 글자색으로 보인다(글자는 화면 읽기 프로그램용으로 남김) */
+.nv-table.nv-nav-table .mtree__tag.mtree__tag--dirty:not([hidden]) { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.nv-table.nv-nav-table tbody tr:has(.mtree__tag--dirty:not([hidden])) td { background: var(--nuri-color-table-row-changed); color: var(--nuri-color-text-warning); }
+.nv-table.nv-nav-table tbody tr:has(.mtree__tag--dirty:not([hidden])) .nv-nav-menu__name { color: var(--nuri-color-text-warning); }
+.nv-table.nv-nav-table tbody tr:has(.mtree__tag--dirty:not([hidden])) :is(.mtree__lock, .mtree__tag--own) { color: var(--nuri-color-icon-warning); background-color: var(--nuri-color-icon-warning); }
+.nv-table.nv-nav-table tbody tr:has(.mtree__tag--dirty:not([hidden])) .mtree__lock { background: none; }
+/* 미노출: 노출여부 배지가 「노출」(--primary)이 아닐 때 */
+.nv-table.nv-nav-table tbody tr:has([data-menu-state]:not(.nv-badge--primary)) td { color: var(--nuri-color-text-disabled); }
+.nv-table.nv-nav-table tbody tr:has([data-menu-state]:not(.nv-badge--primary)) .nv-nav-menu__name { color: var(--nuri-color-text-disabled); }
+.nv-table.nv-nav-table tbody tr:has([data-menu-state]:not(.nv-badge--primary)) .nv-nav-menu__depth { opacity: .4; }
+/* 표 아래 범례(.legend.list-legend) — 피그마 menu-tree-legend */
+.list-legend { display: flex; flex-wrap: wrap; align-items: center; gap: var(--nuri-gap-4) var(--nuri-gap-9); margin: 0; font-size: var(--nuri-font-size-body-xsmall); color: var(--nuri-color-text-subtle); }
+.list-legend > span { display: inline-flex; align-items: center; gap: var(--nuri-gap-3); }
+.list-legend .mtree__tag.mtree__tag--dirty { display: inline-block; width: 1.6rem; height: 1.6rem; padding: 0; overflow: hidden; font-size: 0; border-radius: var(--nuri-radius-small); background: var(--nuri-color-table-row-changed); box-shadow: inset 0 0 0 1px var(--nuri-color-border-warning-light); }
+
+/* ---------- 21. 접근 권한 표 (ptable.acc-table) — 피그마 pattern/access-row 모양 (2026-11-25) ----------
+   마크업은 개발 그대로: .ptable-wrap > table.ptable.acc-table(--ro 읽기 전용) · td.ptable__who > .who > .who__name(<small>코드) + .who__meta ·
+   td > label.cellcheck(.is-implied 자동 허용 · .is-changed 바꾼 칸) > input · td.acc-x > button.xbtn · tr.is-unsaved(저장 전 줄)
+   피그마: 머리 44 surface/gray-subtle · 13 SemiBold · 줄 60 흰 바탕 + 아래 선 table/head-surface · 열 112 · 작업 40 ·
+   이름 14 SemiBold text/bolder · 코드 13 text/disabled · 설명 13 text/subtle · 체크 16(cms/checkbox S) · 빼기 Tertiary Ghost XS(x) ·
+   바꾼 줄 surface/warning-subtler. navigation.css 가 뒤에 오고 !important 를 쓰므로 선택자를 더 구체적으로 · 필요한 곳만 !important */
+.ptable-wrap:has(> .ptable.acc-table) { border: 0; border-radius: 0; }
+.ptable.acc-table { width: 100%; border-collapse: collapse; font-size: var(--nuri-font-size-body-xsmall); }
+.ptable.acc-table thead th {
+  height: 4.4rem; padding: 0 var(--nuri-padding-2); border: 0; box-shadow: none; background: var(--nuri-color-surface-gray-subtle);
+  color: var(--nuri-color-text-basic); font-size: var(--nuri-font-size-body-xsmall); font-weight: var(--nuri-font-weight-semibold); text-align: center;
+}
+.ptable.acc-table tbody td {
+  height: 6rem; padding: 0 var(--nuri-padding-2); background: var(--nuri-color-surface-white);
+  border-bottom: 1px solid var(--nuri-color-table-head-surface); text-align: center; white-space: nowrap;
+}
+.ptable.acc-table tbody tr:last-child td { border-bottom: 1px solid var(--nuri-color-table-head-surface); }
+.ptable.acc-table { table-layout: fixed; }
+.ptable.acc-table :is(th, td):not(.ptable__who):not(:last-child) { width: 11.2rem; }   /* 피그마 112 */
+.ptable-wrap:has(> .ptable.acc-table) { container-type: inline-size; }
+@container (max-width: 880px) { .ptable.acc-table :is(th, td):not(.ptable__who):not(:last-child) { width: 7.2rem; } }   /* 좁은 칸(패널 · 반쪽 카드)에서는 칸을 줄여 권한그룹 이름 자리를 남긴다 */
+.ptable.acc-table :is(th, td).ptable__who { width: auto; min-width: 0; padding-left: var(--nuri-padding-6); text-align: left; white-space: normal; }
+.ptable.acc-table :is(th, td):last-child:not(.ptable__who) { width: 4rem; padding-right: var(--nuri-padding-2); }
+.ptable.acc-table tbody tr:hover td { background: var(--nuri-color-table-row-hover); }
+.ptable.acc-table tbody tr.is-base td { background: var(--nuri-color-surface-white); }
+.ptable.acc-table tbody tr.is-unsaved td, .ptable.acc-table tbody tr.is-unsaved:hover td { background: var(--nuri-color-surface-warning-subtler); }
+/* 권한그룹 칸 */
+.ptable.acc-table .who { display: flex; align-items: center; gap: var(--nuri-gap-3); min-width: 0; }
+.ptable.acc-table .who__name { display: inline-flex; align-items: center; gap: var(--nuri-gap-3); color: var(--nuri-color-text-bolder); font-size: var(--nuri-font-size-body-small); font-weight: var(--nuri-font-weight-semibold); }
+.ptable.acc-table .who__name small { margin-left: 0; color: var(--nuri-color-text-disabled); font-size: var(--nuri-font-size-body-xsmall); font-weight: var(--nuri-font-weight-regular); }
+.ptable.acc-table .who__name .tag-new { margin-left: 0; color: var(--nuri-color-text-danger); font-size: var(--nuri-font-size-body-xsmall); font-weight: var(--nuri-font-weight-semibold); background: none; padding: 0; }
+.ptable.acc-table .who__meta { margin-top: var(--nuri-gap-1); color: var(--nuri-color-text-subtle); font-size: var(--nuri-font-size-body-xsmall); }
+.ptable.acc-table tr.is-unsaved .who__meta b { color: var(--nuri-color-text-warning); }
+/* 체크 칸 — cms/checkbox Size=S(16) */
+.ptable.acc-table .cellcheck { width: 3.2rem; height: 3.2rem; border-radius: var(--nuri-radius-small); }
+.ptable.acc-table .cellcheck:hover { background: var(--nuri-alpha-black5); }
+.ptable.acc-table.ptable--ro .cellcheck:hover, .ptable.acc-table .cellcheck:has(input:disabled):hover { background: none; }
+.ptable.acc-table .cellcheck { display: inline-flex; align-items: center; justify-content: center; position: relative; vertical-align: middle; cursor: pointer; }
+.ptable.acc-table .cellcheck input[type="checkbox"] {
+  appearance: none; -webkit-appearance: none; display: inline-block; flex: none; position: relative !important; clip: auto !important; clip-path: none !important; overflow: visible !important; opacity: 1 !important; margin: 0 !important; padding: 0 !important; cursor: inherit;
+  width: 1.6rem !important; height: 1.6rem !important; border: 0 !important; border-radius: var(--nuri-radius-small);
+  background: var(--nuri-color-input-surface); box-shadow: inset 0 0 0 1px var(--nuri-color-input-border);
+}
+.ptable.acc-table .cellcheck input[type="checkbox"]::after {
+  content: ""; position: absolute; inset: 0; margin: auto; width: 1.2rem; height: 1.2rem; border: 0; transform: none;
+  background: var(--nuri-color-button-text-on-solid); -webkit-mask: url("../../shared/icons/check.svg") center / contain no-repeat; mask: url("../../shared/icons/check.svg") center / contain no-repeat; opacity: 0;
+}
+.ptable.acc-table .cellcheck input[type="checkbox"]:checked { background: var(--nuri-color-input-control-on); box-shadow: none; }
+.ptable.acc-table .cellcheck input[type="checkbox"]:checked::after { opacity: 1; }
+.ptable.acc-table .cellcheck input[type="checkbox"]:disabled { cursor: not-allowed; background: var(--nuri-color-input-surface-disabled); box-shadow: inset 0 0 0 1px var(--nuri-color-input-border-disabled); }
+.ptable.acc-table .cellcheck input[type="checkbox"]:disabled:checked,
+.ptable.acc-table .cellcheck.is-implied input[type="checkbox"] { background: var(--nuri-color-input-control-on-disabled); box-shadow: none; }
+.ptable.acc-table .cellcheck.is-implied input[type="checkbox"]::after { opacity: 1; }
+.ptable.acc-table .cellcheck input[type="checkbox"]:focus-visible { outline: 2px solid var(--nuri-color-border-primary); outline-offset: 2px; }
+.ptable.acc-table .cellcheck.is-changed::before { top: .2rem; right: .2rem; width: .6rem; height: .6rem; background: var(--nuri-color-icon-warning); }
+/* 줄 빼기 — Tertiary Ghost XS (28 · 아이콘 16) */
+.ptable.acc-table .xbtn {
+  display: inline-flex; align-items: center; justify-content: center; width: 2.8rem; height: 2.8rem; padding: 0;
+  border: 0; border-radius: var(--nuri-radius-small); background: transparent; color: var(--nuri-color-icon-gray); cursor: pointer;
+}
+.ptable.acc-table .xbtn .nv-icon { width: 1.6rem; height: 1.6rem; }
+.ptable.acc-table .xbtn:hover { background: var(--nuri-alpha-black5); }
+.ptable.acc-table .xbtn:disabled { color: var(--nuri-color-icon-disabled, var(--nuri-color-text-disabled)); background: transparent; cursor: not-allowed; }
+.ptable.acc-table .xbtn:focus-visible { outline: 2px solid var(--nuri-color-border-primary); outline-offset: 2px; }
+
+/* ---------- 22. 담당자 칸 (.edx-sec:has(.owner-name) — 개발은 section[data-owner]) — 피그마 디자인모음 「02-B6a 담당자 찾기 · 검색창」 담당자 섹션 모양 (2026-11-25) ----------
+   마크업은 개발 그대로: .edx-sec:has(.owner-name) > .edx-sec__title · .field-2 > .nv-field × 4(담당자명 .owner-name > .ro-val + 찾기/변경 nv-btn + .owner-x ·
+   담당 부서 · 연락처 · 이메일 .ro-val) · .owner-search > .pick(.nv-input-wrap + .pick__list > .pick__row … .pick__sep · .pick__foot) + 닫기 · .owner-note · .edx-hint
+   피그마: 제목 16 Bold · 라벨 14 SemiBold · 칸 높이 44 · 담당자명 회색 칸(background/gray-subtle + border/gray-light) · 나머지 3칸은 비활성 입력칸 ·
+   단추 Tertiary Outline L(44 · 16 SemiBold) · X 44 흰 칸 · 검색창 테두리 2 input/border-active · 목록 흰 상자(테두리 border/disabled · 모서리 8 · 안쪽 6) */
+.edx-sec:has(.owner-name) { display: flex; flex-direction: column; gap: 1.4rem; }
+.edx-sec:has(.owner-name) .edx-sec__title { color: var(--nuri-color-text-bolder); font-size: var(--nuri-font-size-heading-xsmall); font-weight: var(--nuri-font-weight-bold); }
+.edx-sec:has(.owner-name) .field-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem; }
+.edx-sec:has(.owner-name) .nv-field { gap: .6rem; }
+.edx-sec:has(.owner-name) .nv-field__label { color: var(--nuri-color-text-bolder); font-size: var(--nuri-font-size-label-small); font-weight: var(--nuri-font-weight-semibold); }
+/* 담당 부서 · 연락처 · 이메일 — 비활성 입력칸 모양 */
+.edx-sec:has(.owner-name) .ro-val:not(input) {
+  display: flex; align-items: center; gap: .8rem; min-height: 4.4rem; padding: 0 1.6rem; border-radius: var(--nuri-radius-small);
+  background: var(--nuri-color-input-surface-disabled); box-shadow: inset 0 0 0 1px var(--nuri-color-input-border-disabled);
+  color: var(--nuri-color-text-disabled); font-family: inherit; font-size: var(--nuri-font-size-body-medium); font-weight: var(--nuri-font-weight-regular); overflow-wrap: anywhere;
+}
+/* 담당자명 — 회색 칸 + 단추 2개 */
+.edx-sec:has(.owner-name) .owner-name { display: flex; align-items: center; gap: .8rem; }
+.edx-sec:has(.owner-name) .owner-name > .ro-val:not(input) { flex: 1; min-width: 0; padding: 0 1.4rem; background: var(--nuri-color-background-gray-subtle); box-shadow: inset 0 0 0 1px var(--nuri-color-border-gray-light); }
+.edx-sec:has(.owner-name) .owner-name > .ro-val:not(input) b { color: var(--nuri-color-text-bolder); font-size: var(--nuri-font-size-body-small); font-weight: var(--nuri-font-weight-semibold); }
+.edx-sec:has(.owner-name) .owner-name > .ro-val:not(input) small { color: var(--nuri-color-text-subtle); font-family: inherit; font-size: var(--nuri-font-size-body-xsmall); font-weight: var(--nuri-font-weight-regular); }
+.edx-sec:has(.owner-name) .owner-name > .ro-val--empty:not(input) b { color: var(--nuri-color-text-disabled); font-weight: var(--nuri-font-weight-regular); }
+.edx-sec:has(.owner-name) :is(.owner-name, .owner-search) > .nv-btn { flex: none; height: 4.4rem; padding: 0 1.6rem; gap: .6rem; font-size: var(--nuri-font-size-label-medium); font-weight: var(--nuri-font-weight-semibold); }
+.edx-sec:has(.owner-name) :is(.owner-name, .owner-search) > .nv-btn .nv-icon { width: 2rem; height: 2rem; }
+.edx-sec:has(.owner-name) .owner-name > .owner-x { width: 4.4rem; padding: 0; justify-content: center; --b-bg: var(--nuri-color-background-white); background: var(--nuri-color-background-white); box-shadow: inset 0 0 0 1px var(--nuri-color-border-gray); color: var(--nuri-color-icon-disabled-on); }
+.edx-sec:has(.owner-name) .owner-name > .owner-x .nv-icon { width: 1.6rem; height: 1.6rem; }
+.edx-sec:has(.owner-name) .owner-name > .owner-x[hidden] { display: none; }
+/* 검색창 + 목록 */
+.edx-sec:has(.owner-name) .owner-search { display: flex; align-items: flex-start; gap: 1rem; }
+.edx-sec:has(.owner-name) .owner-search[hidden] { display: none; }
+.edx-sec:has(.owner-name) .owner-search .pick { flex: 1; min-width: 0; position: relative; }
+.edx-sec:has(.owner-name) .owner-search .nv-input-wrap { width: 100%; }
+.edx-sec:has(.owner-name) .owner-search .nv-input {
+  height: 4.4rem; padding: 0 1.6rem 0 4.4rem; border: 0; border-radius: var(--nuri-radius-small);
+  background: var(--nuri-color-input-surface); box-shadow: inset 0 0 0 2px var(--nuri-color-input-border-active);
+  color: var(--nuri-color-text-bolder); font-size: var(--nuri-font-size-body-medium);
+}
+.edx-sec:has(.owner-name) .owner-search .nv-input-wrap__btn { left: 1.2rem; right: auto; padding: 0; color: var(--nuri-color-icon-gray); }
+.edx-sec:has(.owner-name) .owner-search .nv-input-wrap__btn .nv-icon { width: 2rem; height: 2rem; }
+.edx-sec:has(.owner-name) .owner-search .pick__list {
+  position: static; display: flex; flex-direction: column; gap: .2rem; margin-top: .8rem; padding: .6rem; max-height: 36rem; overflow: auto;
+  background: var(--nuri-color-background-white); border: 1px solid var(--nuri-color-border-disabled); border-radius: var(--nuri-radius-medium); box-shadow: none;
+}
+.edx-sec:has(.owner-name) .owner-search .pick__list[hidden] { display: none; }
+.edx-sec:has(.owner-name) .pick__row {
+  display: flex; align-items: center; gap: 1rem; width: 100%; min-height: 4.8rem; padding: 0 1.2rem; border: 0; border-radius: var(--nuri-radius-small);
+  background: none; color: var(--nuri-color-text-bolder); font-size: var(--nuri-font-size-body-small); font-weight: var(--nuri-font-weight-regular); text-align: left; cursor: pointer;
+}
+.edx-sec:has(.owner-name) .pick__row > .nv-icon:first-child { width: 1.6rem; height: 1.6rem; flex: none; color: var(--nuri-light-neutral-95, var(--nuri-color-icon-gray)); }
+.edx-sec:has(.owner-name) .pick__row:is(:hover, :focus-visible, [aria-selected="true"]):not([aria-disabled="true"]) { background: var(--nuri-color-table-head-surface); color: var(--nuri-color-text-basic); font-weight: var(--nuri-font-weight-semibold); outline: 0; }
+.edx-sec:has(.owner-name) .pick__id { color: var(--nuri-color-text-subtle); font-size: var(--nuri-font-size-body-xsmall); font-weight: var(--nuri-font-weight-regular); }
+.edx-sec:has(.owner-name) .pick__row:is(:hover, [aria-selected="true"]) .pick__id { color: inherit; font-size: var(--nuri-font-size-body-small); }
+.edx-sec:has(.owner-name) .pick__meta { margin-left: auto; color: var(--nuri-color-text-basic); font-size: var(--nuri-font-size-body-xsmall); font-weight: inherit; }
+.edx-sec:has(.owner-name) .pick__row[aria-disabled="true"] { color: var(--nuri-color-text-disabled); cursor: default; background: none; }
+.edx-sec:has(.owner-name) .pick__row[aria-disabled="true"] :is(.pick__id, .pick__meta) { color: var(--nuri-color-text-disabled); }
+.edx-sec:has(.owner-name) .pick__meta:has(> .nv-badge) { margin-left: 0; }
+.edx-sec:has(.owner-name) .pick__meta .nv-badge { background: var(--nuri-color-button-tertiary-fill-light, var(--nuri-color-surface-gray-subtle)); color: var(--nuri-color-text-basic); font-size: var(--nuri-font-size-body-xsmall); }
+.edx-sec:has(.owner-name) .pick__sep { height: 1px; margin: 0; background: var(--nuri-color-surface-secondary-subtler); }
+.edx-sec:has(.owner-name) .pick__foot { color: var(--nuri-color-link-default); font-weight: var(--nuri-font-weight-regular); }
+.edx-sec:has(.owner-name) .pick__foot > .nv-icon:first-child { color: var(--nuri-color-link-default); }
+.edx-sec:has(.owner-name) .pick__foot .pick__meta { color: var(--nuri-color-text-subtle); font-size: var(--nuri-font-size-body-small); font-weight: var(--nuri-font-weight-regular); }
+.edx-sec:has(.owner-name) .pick__foot > .nv-icon:last-child {
+  box-sizing: border-box; width: 3.2rem; height: 3.2rem; padding: .8rem; flex: none; border-radius: var(--nuri-radius-small);
+  background: var(--nuri-color-button-outline-surface); box-shadow: inset 0 0 0 1px var(--nuri-color-button-tertiary-border); color: var(--nuri-color-text-basic);
+}
+.edx-sec:has(.owner-name) .edx-hint { display: flex; align-items: flex-start; gap: .6rem; margin: 0; color: var(--nuri-color-text-subtle); font-size: var(--nuri-font-size-body-xsmall); }
+.edx-sec:has(.owner-name) .edx-hint .nv-icon { flex: none; width: 1.4rem; height: 1.4rem; margin-top: .3rem; color: var(--nuri-color-icon-disabled-on); }
+@media (max-width: 768px) { .edx-sec:has(.owner-name) .field-2 { grid-template-columns: minmax(0, 1fr); } }
+
+/* 스타일가이드 견본: 값 칸을 input 으로 — 모양은 .nv-input(피그마 cms/input L) 그대로. 담당자명 readonly = State=View, 나머지 disabled = State=Disabled */
+.edx-sec:has(.owner-name) input.ro-val { width: 100%; min-width: 0; height: 4.4rem; padding: 0 1.6rem; font-family: inherit; font-size: var(--nuri-font-size-body-medium); }
+.edx-sec:has(.owner-name) .owner-name > input.ro-val { flex: 1; color: var(--nuri-color-text-bolder); }
+.edx-sec:has(.owner-name) input.ro-val:disabled { color: var(--nuri-color-text-disabled); -webkit-text-fill-color: var(--nuri-color-text-disabled); opacity: 1; }
+
+/* ---------- 23. 요약 영역 (nv-summary) — 피그마 디자인모음 「누리지음/summary」(2484:30659) · summary-card 모양 (2026-11-25) ----------
+   마크업은 개발 그대로: .nv-summary(+ bd-summary · st-summary · ops-summary) > .nv-summary__item > div(.nv-summary__label + .nv-summary__value) + .nv-summary__icon--img
+   피그마: 카드 사이 24 · 카드 높이 120 · 안쪽 24 32 · 모서리 12 · 흰 바탕 · 테두리 border/gray-light · shadow1 · 이름 16 Regular text/basic · 숫자 24 Bold text/bolder · 둘 사이 4 · 그림 60
+   board.css · site.css 가 뒤에 읽혀 카드 높이 · 안쪽 여백을 줄이므로 .nv-summary.nv-summary 로 이깁니다. 칸 수(4 · 3)는 화면 CSS 그대로 */
+.nv-summary.nv-summary { gap: 2.4rem; }
+.nv-summary.nv-summary > .nv-summary__item {
+  gap: 1.6rem; min-height: 12rem; padding: 2.4rem 3.2rem;
+  background: var(--nuri-color-surface-white); border: 1px solid var(--nuri-color-border-gray-light); border-radius: var(--nuri-radius-large); box-shadow: var(--nuri-shadow-1);
+}
+.nv-summary.nv-summary > .nv-summary__item > div { display: flex; flex-direction: column; gap: .4rem; min-width: 0; }
+.nv-summary.nv-summary .nv-summary__label { margin: 0; color: var(--nuri-color-text-basic); font-size: var(--nuri-font-size-body-medium); font-weight: var(--nuri-font-weight-regular); line-height: 1.5; }
+.nv-summary.nv-summary .nv-summary__value { margin: 0; color: var(--nuri-color-text-bolder); font-size: var(--nuri-font-size-heading-large); font-weight: var(--nuri-font-weight-bold); line-height: 1.5; }
+.nv-summary.nv-summary .nv-summary__icon--img { width: 6rem; height: 6rem; flex: none; }
+
+/* ---------- 24. 메뉴 편집 머리 (edx-card__head) — 피그마 디자인모음 「누리지음/menu-edit-header」(2552:40143) 제목 줄 (2026-11-25) ----------
+   마크업은 개발 그대로: .edx-card__head > .edx-card__id > .edx-card__title(.lvl · h1.edx-card__name · .nv-badge 유형 · .nv-badge--primary 노출)
+                         + .edx-card__tools(a.edx-site · .edx-steps > a[data-menu-near] × 2)
+   피그마: 안쪽 24 28 8 · 양끝 정렬 · 제목 묶음 사이 10 · 단계 20 원(13 SemiBold) · 메뉴명 24 Bold text/bolder · 유형 배지 Tertiary Outline · 노출 Primary Solid-light ·
+           오른쪽 사이 16 · 누리집에서 보기 13 text/basic + 아이콘 14 · 이전/다음 34 상자(테두리 border/gray-light · 모서리 4) 칸 안쪽 6 12 6 8 · 가운데 구분선 1×16
+   admin-parts.css · navigation.css 가 뒤에 읽혀 .edx-card__head 로 범위를 좁혀 이깁니다. 탭 줄(gtabs)은 손대지 않습니다 */
+.edx-card__head.edx-card__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.2rem 1.6rem; padding: 2.4rem 2.8rem .8rem; }
+.edx-card__head .edx-card__id { display: flex; flex-direction: column; gap: .8rem; min-width: 0; }
+.edx-card__head .edx-card__title { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.edx-card__head .edx-card__name { margin: 0; color: var(--nuri-color-text-bolder); font-size: var(--nuri-font-size-heading-large); font-weight: var(--nuri-font-weight-bold); line-height: 1.5; letter-spacing: 0; }
+.edx-card__head .lvl {
+  display: inline-flex; align-items: center; justify-content: center; flex: none; width: 2rem; height: 2rem;
+  border-radius: var(--nuri-radius-max); background: var(--nuri-color-depth-1-surface); color: var(--nuri-color-depth-1-text);
+  font-size: var(--nuri-font-size-label-xsmall); font-weight: var(--nuri-font-weight-semibold); line-height: 1;
+}
+.edx-card__head .lvl--2 { background: var(--nuri-color-depth-2-surface); color: var(--nuri-color-depth-2-text); }
+.edx-card__head .lvl--3 { background: var(--nuri-color-depth-3-surface); color: var(--nuri-color-depth-3-text); }
+.edx-card__head .lvl--4 { background: var(--nuri-color-depth-4-surface); color: var(--nuri-color-depth-4-text); }
+/* 유형 배지(수식어 없는 nv-badge) = Tertiary Outline, 노출 = Primary Solid-light(10 nv-badge--primary 그대로) */
+.edx-card__head .edx-card__title .nv-badge:not([class*="nv-badge--"]) { background: var(--nuri-color-button-outline-surface); box-shadow: inset 0 0 0 1px var(--nuri-color-button-tertiary-border); color: var(--nuri-color-button-tertiary-text); }
+.edx-card__head .edx-card__tools { display: flex; flex-wrap: wrap; align-items: center; gap: 1.6rem; margin-left: auto; }
+.edx-card__head .edx-site { display: inline-flex; align-items: center; gap: .4rem; color: var(--nuri-color-text-basic); font-size: var(--nuri-font-size-body-xsmall); text-decoration: none; }
+.edx-card__head .edx-site:hover { color: var(--nuri-color-link-default); text-decoration: underline; }
+.edx-card__head .edx-site .nv-icon { width: 1.4rem; height: 1.4rem; color: var(--nuri-color-icon-gray); }
+.edx-card__head .edx-site:hover .nv-icon { color: inherit; }
+.edx-card__head .edx-steps { display: inline-flex; align-items: center; height: 3.4rem; border: 1px solid var(--nuri-color-border-gray-light); border-radius: var(--nuri-radius-small); background: var(--nuri-color-surface-white); overflow: hidden; }
+.edx-card__head .edx-steps > :is(a, button) {
+  position: relative; display: inline-flex; align-items: center; gap: .4rem; height: 3.2rem; padding: .6rem 1.2rem .6rem .8rem; border: 0;
+  background: none; color: var(--nuri-color-text-basic); font: inherit; font-size: var(--nuri-font-size-body-xsmall); text-decoration: none; white-space: nowrap; cursor: pointer;
+}
+.edx-card__head .edx-steps > :is(a, button) + :is(a, button) { border-left: 0; padding: .6rem .8rem .6rem 1.2rem; }
+.edx-card__head .edx-steps > :is(a, button) + :is(a, button)::before { content: ""; position: absolute; left: 0; top: 50%; width: 1px; height: 1.6rem; margin-top: -.8rem; background: var(--nuri-color-border-gray-light); }
+.edx-card__head .edx-steps > :is(a, button):hover { background: var(--nuri-alpha-black5, var(--nuri-color-surface-gray-subtle)); color: var(--nuri-color-text-bolder); }
+.edx-card__head .edx-steps > :is(a, button):focus-visible { outline: 0; box-shadow: inset 0 0 0 2px var(--nuri-color-border-focus, var(--nuri-color-input-border-active)); }
+.edx-card__head .edx-steps > :is(a, button):disabled, .edx-card__head .edx-steps > [aria-disabled="true"] { color: var(--nuri-color-text-disabled); background: none; cursor: not-allowed; }
+.edx-card__head .edx-steps .nv-icon { width: 1.4rem; height: 1.4rem; color: var(--nuri-color-icon-gray); }
+.edx-card__head .edx-steps .flip { transform: scaleX(-1); }
+.edx-card__head .edx-steps span { max-width: 18rem; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 768px) { .edx-card__head.edx-card__head { padding-left: 1.6rem; padding-right: 1.6rem; } .edx-card__head .edx-card__tools { margin-left: 0; } }
+
+/* ---------- 25. 상위 설정 따르기 (acc-same) — 피그마 디자인모음 「누리지음/inherit-bar」(2549:38413) (2026-11-25) ----------
+   마크업은 개발 그대로: .acc-same > label.nv-check(input#inherit + 「상위 메뉴 「…」과 같게」) + span#inherit-hint(설명)
+   피그마: 안쪽 12 16 · 사이 10 · 모서리 8 · 바탕 surface/gray-subtler · 체크 16(cms/checkbox S) · 제목 14 SemiBold text/bolder · 설명 13 Regular text/subtle
+   admin-parts.css 가 뒤에 읽혀 .acc-same.acc-same 로 이깁니다 */
+.acc-same.acc-same { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1rem; padding: 1.2rem 1.6rem; border-radius: var(--nuri-radius-medium); background: var(--nuri-color-surface-gray-subtler); }
+.acc-same.acc-same > .nv-check { display: inline-flex; align-items: center; gap: 1rem; margin: 0; color: var(--nuri-color-text-bolder); font-size: var(--nuri-font-size-label-small); font-weight: var(--nuri-font-weight-semibold); line-height: 1.5; cursor: pointer; }
+.acc-same.acc-same > .nv-check input { width: 1.6rem !important; height: 1.6rem !important; flex: none; }
+.acc-same.acc-same > span { color: var(--nuri-color-text-subtle); font-size: var(--nuri-font-size-body-xsmall); font-weight: var(--nuri-font-weight-regular); line-height: 1.5; }
+.acc-same.acc-same > .nv-check:has(input:disabled) { color: var(--nuri-color-text-disabled); cursor: not-allowed; }
+
+/* ---------- 26. 고르기 목록 항목 (pick__list · pick__row) — 피그마 디자인모음 「누리지음/picker-item」(2550:38541) (2026-11-25) ----------
+   마크업은 개발 그대로(접근권한 「권한그룹 추가」 목록): .pick__list > .pick__search(input) · .pick__hint · [role=listbox] > button.pick__row(아이콘 · 이름 · .pick__id · .pick__meta) … .pick__sep · .pick__row.pick__foot
+   피그마: 줄 높이 40 · 안쪽 0 14 · 사이 8 · 모서리 4 · 이름 14 text/bolder · 코드 · 정보 13 text/disabled · 아이콘 16 icon/gray
+           Hover = surface/gray-subtle + 이름 SemiBold · Disabled = 글자 모두 text/subtle-inverse · Action(foot) = 글자 14 text/basic + 앞뒤 아이콘 16
+   담당자 칸(22, .owner-search) 목록은 02-B6a 모양을 따로 쓰므로 뺍니다. admin-parts.css · identity.css 가 뒤에 읽혀 :not() 로 범위를 올려 이깁니다 */
+.pick__list:not(.owner-search .pick__list) {
+  display: flex; flex-direction: column; gap: .2rem; padding: .6rem;
+  background: var(--nuri-color-surface-white); border: 1px solid var(--nuri-color-border-gray-light); border-radius: var(--nuri-radius-medium); box-shadow: var(--nuri-shadow-2);
+}
+.pick__list:not(.owner-search .pick__list) [role="listbox"] { display: flex; flex-direction: column; gap: .2rem; }
+.pick__list:not(.owner-search .pick__list) .pick__search { padding: .2rem .2rem .6rem; }
+.pick__list:not(.owner-search .pick__list) .pick__search .nv-input { width: 100%; height: 4rem; padding: 0 1.4rem; font-size: var(--nuri-font-size-body-small); }
+.pick__list:not(.owner-search .pick__list) .pick__hint { margin: 0; padding: .2rem 1.4rem .4rem; color: var(--nuri-color-text-subtle); font-size: var(--nuri-font-size-body-xsmall); }
+.pick__list:not(.owner-search .pick__list) .pick__hint[hidden] { display: none; }
+.pick__list:not(.owner-search .pick__list) .pick__row {
+  display: flex; align-items: center; gap: .8rem; width: 100%; min-height: 4rem; padding: 0 1.4rem; border: 0; border-radius: var(--nuri-radius-small);
+  background: none; color: var(--nuri-color-text-bolder); font-family: inherit; font-size: var(--nuri-font-size-body-small); font-weight: var(--nuri-font-weight-regular); line-height: 1.5; text-align: left; cursor: pointer;
+}
+.pick__list:not(.owner-search .pick__list) .pick__row .nv-icon { flex: none; width: 1.6rem; height: 1.6rem; color: var(--nuri-color-icon-gray); }
+.pick__list:not(.owner-search .pick__list) .pick__id { color: var(--nuri-color-text-disabled); font-size: var(--nuri-font-size-body-xsmall); font-weight: var(--nuri-font-weight-regular); }
+.pick__list:not(.owner-search .pick__list) .pick__meta { margin-left: auto; color: var(--nuri-color-text-disabled); font-size: var(--nuri-font-size-body-xsmall); font-weight: var(--nuri-font-weight-regular); white-space: nowrap; }
+.pick__list:not(.owner-search .pick__list) .pick__row:is(:hover, :focus-visible, [aria-selected="true"]):not([aria-disabled="true"]) { background: var(--nuri-color-surface-gray-subtle); font-weight: var(--nuri-font-weight-semibold); outline: 0; }
+.pick__list:not(.owner-search .pick__list) .pick__row:focus-visible { box-shadow: inset 0 0 0 2px var(--nuri-color-input-border-active); }
+.pick__list:not(.owner-search .pick__list) .pick__row[aria-disabled="true"],
+.pick__list:not(.owner-search .pick__list) .pick__row[aria-disabled="true"] :is(.pick__id, .pick__meta) { color: var(--nuri-color-text-subtle-inverse); cursor: not-allowed; background: none; }
+.pick__list:not(.owner-search .pick__list) .pick__sep { height: 1px; margin: .4rem 0; background: var(--nuri-color-border-gray-light); }
+/* Action(맨 아래 고정 줄) */
+.pick__list:not(.owner-search .pick__list) .pick__foot { color: var(--nuri-color-text-basic); }
+.pick__list:not(.owner-search .pick__list) .pick__foot .pick__meta:empty { display: none; }
+.pick__list:not(.owner-search .pick__list) .pick__foot .pick__meta:empty + .nv-icon, .pick__list:not(.owner-search .pick__list) .pick__foot > .pick__meta + .nv-icon { margin-left: 0; }
+.pick__list:not(.owner-search .pick__list) .pick__foot > .nv-icon:last-child:not(:first-child) { margin-left: auto; }
+.pick__list:not(.owner-search .pick__list) .pick__foot > .pick__meta:not(:empty) + .nv-icon:last-child { margin-left: 0; }
+
+/* ---------- 27. 권한 항목 (mgrcards · mgr) — 피그마 디자인모음 「누리지음/permission-item」(2549:38396) (2026-11-25) ----------
+   마크업은 개발 그대로(접근권한 탭 「관리자 권한」): ul.mgrcards > li.mgr(.is-fixed) > span.mgr__icon + div.mgr__who(b 이름 <small>코드</small> + span 설명) + .nv-badge + button.xbtn
+   피그마: 줄 사이 8 · 안쪽 12 8 12 16 · 사이 12 · 모서리 8 · 흰 바탕 · 테두리 border/gray-light · 아이콘 칸 36 원(surface/gray-subtle) + 아이콘 16 icon/gray ·
+           이름 14 SemiBold text/bolder · 코드 13 text/disabled(사이 6) · 설명 13 text/subtle(위아래 사이 2) · 배지 Tertiary Solid-light · 빼기 28 Tertiary Ghost XS(x 14)
+   admin-parts.css · navigation.css 가 뒤에 읽혀 .mgrcards.mgrcards 로 이깁니다 */
+.mgrcards.mgrcards { display: flex; flex-direction: column; gap: .8rem; margin: 0; padding: 0; list-style: none; }
+.mgrcards.mgrcards .mgr {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; gap: 1.2rem; padding: 1.2rem .8rem 1.2rem 1.6rem;
+  background: var(--nuri-color-surface-white); border: 1px solid var(--nuri-color-border-gray-light); border-radius: var(--nuri-radius-medium);
+}
+.mgrcards.mgrcards .mgr.is-fixed { background: var(--nuri-color-surface-white); }
+.mgrcards.mgrcards .mgr__icon { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 3.6rem; height: 3.6rem; border-radius: var(--nuri-radius-max); background: var(--nuri-color-surface-gray-subtle); color: var(--nuri-color-icon-gray); }
+.mgrcards.mgrcards .mgr__icon .nv-icon { width: 1.6rem; height: 1.6rem; }
+.mgrcards.mgrcards .mgr__who { display: flex; flex-direction: column; gap: .2rem; min-width: 0; }
+.mgrcards.mgrcards .mgr__who b { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: .6rem; color: var(--nuri-color-text-bolder); font-size: var(--nuri-font-size-body-small); font-weight: var(--nuri-font-weight-semibold); line-height: 1.5; }
+.mgrcards.mgrcards .mgr__who b small { margin: 0; color: var(--nuri-color-text-disabled); font-size: var(--nuri-font-size-body-xsmall); font-weight: var(--nuri-font-weight-regular); }
+.mgrcards.mgrcards .mgr__who b .fixlink { display: inline-flex; align-items: baseline; gap: .6rem; padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
+.mgrcards.mgrcards .mgr__who b .fixlink:hover { text-decoration: underline; }
+.mgrcards.mgrcards .mgr__who > span { color: var(--nuri-color-text-subtle); font-size: var(--nuri-font-size-body-xsmall); line-height: 1.5; overflow-wrap: anywhere; }
+.mgrcards.mgrcards .xbtn {
+  display: inline-flex; align-items: center; justify-content: center; width: 2.8rem; height: 2.8rem; padding: 0; border: 0; border-radius: var(--nuri-radius-small);
+  background: transparent; color: var(--nuri-color-button-tertiary-text); cursor: pointer;
+}
+.mgrcards.mgrcards .xbtn .nv-icon { width: 1.4rem; height: 1.4rem; }
+.mgrcards.mgrcards .xbtn:hover:not(:disabled) { background: var(--nuri-alpha-black5); }
+.mgrcards.mgrcards .xbtn:disabled { color: var(--nuri-color-icon-disabled, var(--nuri-color-text-disabled)); cursor: not-allowed; }
+.mgrcards.mgrcards .xbtn:focus-visible { outline: 2px solid var(--nuri-color-border-primary); outline-offset: 2px; }
+@media (max-width: 768px) { .mgrcards.mgrcards .mgr { grid-template-columns: auto minmax(0, 1fr) auto; } .mgrcards.mgrcards .mgr > .nv-badge { grid-column: 2; justify-self: start; } }

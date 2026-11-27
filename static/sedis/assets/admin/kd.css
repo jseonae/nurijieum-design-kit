@@ -9,7 +9,6 @@
 .sd-kd-table .sd-kd-col-state { width: 10rem; }
 .sd-kd-table .sd-kd-col-actions { width: 8rem; }
 .sd-kd-table .col-actions { white-space: nowrap; }
-.sd-kd .nv-filter__left .nv-btn { margin-left: var(--cms-sp-2, .8rem); }
 /* 통계표 목록(adm_0901) */
 .sd-kd-table .sd-kd-col-check { width: 4.4rem; text-align: center; }
 .sd-kd-table .sd-kd-col-group { width: 13rem; }

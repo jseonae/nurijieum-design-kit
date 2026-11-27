@@ -27,6 +27,8 @@
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/admin-inline-detail.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-v2.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-parts.js -->
+    <link rel="stylesheet" href="../../../static/admin-ui/v2/cms-button.css">
+    <link rel="stylesheet" href="../../../static/admin-ui/v2/sedis-sg.css">
 </head>
 <body>
 <link rel="stylesheet" href="../../../static/admin-ui/v2/pages/site.css">
@@ -386,7 +388,7 @@
                 </div>
             </div>
             <div class="nv-modal__foot">
-                <button type="button" class="nv-btn nv-btn--lg nv-btn--outline-strong" onclick="cmsA11y.reset()">초기화</button>
+                <button type="button" class="nv-btn nv-btn--lg nv-btn--outline" onclick="cmsA11y.reset()">초기화</button>
                 <button type="button" class="nv-btn nv-btn--lg nv-btn--primary" data-modal-close="" data-modal-initial="">확인</button>
             </div>
         </div>
@@ -433,14 +435,14 @@
                 </h2>
             </div>
             <div class="nv-page-header__actions">
-                <a class="nv-btn nv-btn--primary-outline cms-admin-view-site" href="../public/공개-화면-public-preview-74f074.html" target="_blank" rel="noopener" title="개발용 사이트 방문자 화면 새 창">
+                <a class="nv-btn nv-btn--primary nv-btn--outline cms-admin-view-site" href="../public/공개-화면-public-preview-74f074.html" target="_blank" rel="noopener" title="개발용 사이트 방문자 화면 새 창">
                     <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-external"></use></svg>사이트 보기
                 </a>
-                <button type="button" class="nv-btn nv-btn--primary-outline" data-panel-open="#site-edit-panel-SITE-DEV">
+                <button type="button" class="nv-btn nv-btn--primary nv-btn--outline" data-panel-open="#site-edit-panel-SITE-DEV">
                     <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-edit"></use></svg>사이트 수정
                 </button>
                 <form method="post" action="#kit-file" data-kit-href="/console-9f3a/sites/SITE-DEV/delete" data-confirm="이 사이트를 삭제하시겠습니까? 연결된 도메인과 이 사이트의 메뉴 · 주소 · 콘텐츠 · 팝업 · 게시판도 함께 지우고, 이미지 · 부가 파일 폴더는 보관 폴더로 옮깁니다." data-confirm-one=""><input type="hidden" name="_csrf" value="wZV4anzMqD-Ep2TQBuLMLy7vO7FcTAAtOKh4vYvBrjE">
-                    <button type="submit" class="nv-btn nv-btn--danger"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>사이트 삭제</button>
+                    <button type="submit" class="nv-btn nv-btn--danger nv-btn--outline"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>사이트 삭제</button>
                 </form>
             </div>
         </header>

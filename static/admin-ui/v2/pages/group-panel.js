@@ -279,7 +279,7 @@
     return '<div class="gbulk">'
       + '<div class="gbulk__head"><a class="nv-btn nv-btn--sm nv-btn--outline" href="' + esc(BASE) + '/bulk/template?kind=' + (staffKind ? 'staff' : 'member') + '" download'
       + ' title="' + (staffKind ? '머리글: 사번 · 부서코드 · 기간. 행마다 사번이나 부서코드 하나' : '머리글: 회원ID · 기간') + '">' + icon('download') + '서식 내려받기</a>'
-      + '<label class="nv-btn nv-btn--sm nv-btn--soft">' + icon('upload') + '파일 올리기<input class="nv-sr-only" id="gbulk-file" type="file" accept=".xlsx" data-gbulk-file></label>'
+      + '<label class="nv-btn nv-btn--sm nv-btn--primary nv-btn--outline">' + icon('upload') + '파일 올리기<input class="nv-sr-only" id="gbulk-file" type="file" accept=".xlsx" data-gbulk-file></label>'
       + (S.bulk.busy ? '<span class="nv-text-sm nv-text-subtle" role="status">읽는 중입니다.</span>' : '')
       + (S.bulk.name ? '<span class="nv-text-sm nv-text-subtle">' + esc(S.bulk.name) + '</span>' : '') + '</div>'
       + table

@@ -27,6 +27,8 @@
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/admin-inline-detail.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-v2.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-parts.js -->
+    <link rel="stylesheet" href="../../../static/admin-ui/v2/cms-button.css">
+    <link rel="stylesheet" href="../../../static/admin-ui/v2/sedis-sg.css">
 </head>
 <body class="nv-lock">
 <link rel="stylesheet" href="../../../static/admin-ui/v2/pages/board.css">
@@ -389,7 +391,7 @@
                 </div>
             </div>
             <div class="nv-modal__foot">
-                <button type="button" class="nv-btn nv-btn--lg nv-btn--outline-strong" onclick="cmsA11y.reset()">초기화</button>
+                <button type="button" class="nv-btn nv-btn--lg nv-btn--outline" onclick="cmsA11y.reset()">초기화</button>
                 <button type="button" class="nv-btn nv-btn--lg nv-btn--primary" data-modal-close="" data-modal-initial="">확인</button>
             </div>
         </div>
@@ -411,7 +413,7 @@
                 </div>
                 <div class="nv-page-header__actions">
                     
-    <button type="button" class="nv-btn nv-btn--primary-outline" data-group-panel-open="" aria-controls="group-panel" aria-haspopup="dialog" title="권한그룹을 만들고 명단을 넣습니다"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-users"></use></svg>권한그룹</button>
+    <button type="button" class="nv-btn nv-btn--primary nv-btn--outline" data-group-panel-open="" aria-controls="group-panel" aria-haspopup="dialog" title="권한그룹을 만들고 명단을 넣습니다"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-users"></use></svg>권한그룹</button>
 
                     <button type="button" class="nv-btn nv-btn--primary" data-panel-open="#board-create-panel" aria-controls="board-create-panel" aria-haspopup="dialog">
                         <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-plus"></use></svg>게시판 등록
@@ -445,10 +447,10 @@
                         <!-- 일괄 작업은 서브관리자의 일이 아니다(StaffScopeInterceptor 가 막는다) -->
                         
                         <span class="nv-filter__divider" aria-hidden="true"></span>
-                        <span class="nv-filter__selected">선택 <span data-selected-count="">0</span>개</span><button type="submit" class="nv-btn nv-btn--sm nv-btn--danger" form="bulk-board-form" data-needs-selection="" disabled=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>선택 삭제</button>
+                        <span class="nv-filter__selected">선택 <span data-selected-count="">0</span>개</span><button type="submit" class="nv-btn nv-btn--sm nv-btn--danger nv-btn--outline-fill" form="bulk-board-form" data-needs-selection="" disabled=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>선택 삭제</button>
                         <span class="nv-btn-group">
                         <!-- 엑셀 내려받기(게시판목록-2): 고른 게시판만, 고르지 않으면 지금 검색 결과 전부 — 바로 받는다(감사 기록은 서버가 남긴다) -->
-                        <button type="submit" class="nv-btn nv-btn--sm nv-btn--excel" form="bulk-board-form" data-confirm="" data-selection-optional="" data-confirm-title="대량 내려받기" data-confirm-verb="내려받기" formaction="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/boards/export.xlsx?keyword=&amp;boardType=&amp;status=&amp;from=&amp;to=" data-export-total="5" data-export-threshold="1000"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>엑셀 내려받기</button></span>
+                        <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" form="bulk-board-form" data-confirm="" data-selection-optional="" data-confirm-title="대량 내려받기" data-confirm-verb="내려받기" formaction="/console-9f3a/board/ST54cf79b1bff2434a896cd1bcf54bb4c3/boards/export.xlsx?keyword=&amp;boardType=&amp;status=&amp;from=&amp;to=" data-export-total="5" data-export-threshold="1000"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-download"></use></svg>엑셀 내려받기</button></span>
                         
                     </div>
                     <div class="nv-filter__right">

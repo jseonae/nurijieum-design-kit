@@ -27,6 +27,7 @@
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/admin-inline-detail.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-v2.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-parts.js -->
+<link rel="stylesheet" href="../../../static/admin-ui/v2/cms-button.css">
 <link rel="stylesheet" href="../../../static/admin-ui/v2/sedis-sg.css">
 </head>
 <body>
@@ -557,7 +558,7 @@
             <div class="nv-field">
                 <div class="nv-row nv-row--between">
                     <label class="nv-field__label" for="create-body">내용</label>
-                    <button type="button" class="nv-btn nv-btn--sm nv-btn--ghost" data-image-picker="" aria-haspopup="dialog" data-target="create-body" data-image-folder="dev/popup" title="">
+                    <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-image-picker="" aria-haspopup="dialog" data-target="create-body" data-image-folder="dev/popup" title="">
                         <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>이미지 삽입
                     </button>
                 </div>
@@ -576,7 +577,7 @@
             <div class="nv-field">
                 <div class="nv-row nv-row--between">
                     <span class="nv-field__label" id="create-images-label">이미지</span>
-                    <button type="button" class="nv-btn nv-btn--sm nv-btn--primary-outline" data-popup-media-picker="" aria-haspopup="dialog" aria-label="이미지 폴더에서 팝업 이미지 추가" data-target-form="popup-create-form"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>이미지에서 추가</button>
+                    <button type="button" class="nv-btn nv-btn--sm nv-btn--primary nv-btn--outline" data-popup-media-picker="" aria-haspopup="dialog" aria-label="이미지 폴더에서 팝업 이미지 추가" data-target-form="popup-create-form"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>이미지에서 추가</button>
                 </div>
                 <ul class="cms-admin-popup-image-strip" id="create-image-strip" aria-labelledby="create-images-label" aria-live="polite">
                     <li class="cms-admin-popup-image-strip__add">
@@ -666,7 +667,7 @@
                             </select>
                         </label>
                         <span class="nv-filter__divider" aria-hidden="true"></span>
-                        <span class="nv-filter__selected">선택 <span data-selected-count="">0</span>개</span><button type="submit" class="nv-btn nv-btn--sm nv-btn--danger" form="bulk-popup-form" data-needs-selection="" disabled=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>선택 삭제</button>
+                        <span class="nv-filter__selected">선택 <span data-selected-count="">0</span>개</span><button type="submit" class="nv-btn nv-btn--sm nv-btn--danger nv-btn--outline-fill" form="bulk-popup-form" data-needs-selection="" disabled=""><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-trash"></use></svg>선택 삭제</button>
                         <span class="nv-filter__divider" aria-hidden="true"></span>
                         <!-- 상태변경(Figma 팝업존목록-1): 같은 숨은 폼을 formaction 으로 나눠 쓴다 — 노출 여부만 바꾸고 나머지는 그대로(bulk-enabled).
                              관리자메뉴관리에서 「보기」만 받은 서브관리자(menuEditable=false)에게는 쓰기 단추를 그리지 않는다(엑셀다운로드는 보기로 된다) -->
@@ -767,7 +768,7 @@
     <div class="cms-admin-mediapicker__dialog nv-modal cms-imgpick__dialog">
         <div class="cms-admin-mediapicker__header nv-modal__head nv-row nv-row--between">
             <h2 id="cms-popup-mediapicker-title" class="cms-admin-mediapicker__title nv-modal__title">팝업 이미지 선택</h2>
-            <button type="button" class="cms-admin-mediapicker__close nv-btn nv-btn--icon" aria-label="닫기"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+            <button type="button" class="cms-admin-mediapicker__close nv-btn nv-btn--icon nv-btn--sm" aria-label="닫기"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
         </div>
         <div class="nv-modal__body cms-imgpick__body">
             <p class="nv-text-sm nv-text-muted">그림을 누르면 팝업 이미지로 추가됩니다. 이 창에서 바로 올린 그림은 올리자마자 추가됩니다.</p>

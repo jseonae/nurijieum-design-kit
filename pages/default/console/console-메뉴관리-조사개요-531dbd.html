@@ -27,6 +27,8 @@
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/admin-inline-detail.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-v2.js -->
     <!-- [키트] 스크립트 뺌: ../../../static/admin-ui/v2/admin-parts.js -->
+    <link rel="stylesheet" href="../../../static/admin-ui/v2/cms-button.css">
+    <link rel="stylesheet" href="../../../static/admin-ui/v2/sedis-sg.css">
 </head>
 <body>
 <link rel="stylesheet" href="../../../static/admin-ui/v2/pages/navigation.css">
@@ -390,7 +392,7 @@
                 </div>
             </div>
             <div class="nv-modal__foot">
-                <button type="button" class="nv-btn nv-btn--lg nv-btn--outline-strong" onclick="cmsA11y.reset()">초기화</button>
+                <button type="button" class="nv-btn nv-btn--lg nv-btn--outline" onclick="cmsA11y.reset()">초기화</button>
                 <button type="button" class="nv-btn nv-btn--lg nv-btn--primary" data-modal-close="" data-modal-initial="">확인</button>
             </div>
         </div>
@@ -767,7 +769,7 @@
                                     <option value="TEXT">TEXT</option>
                                 </select>
                             </span>
-                            <button type="button" class="nv-btn nv-btn--sm nv-btn--ghost cms-admin-mediapicker-trigger" data-image-picker="" data-target="ctBody" data-format-target="ctFormat" aria-haspopup="dialog" aria-label="이미지 삽입" title="이미지 삽입" data-content-id="CTd2b9946e99b04dadaa3d6baa46cf8271" data-picker-title="이미지 삽입">
+                            <button type="button" class="nv-btn nv-btn--sm nv-btn--outline cms-admin-mediapicker-trigger" data-image-picker="" data-target="ctBody" data-format-target="ctFormat" aria-haspopup="dialog" aria-label="이미지 삽입" title="이미지 삽입" data-content-id="CTd2b9946e99b04dadaa3d6baa46cf8271" data-picker-title="이미지 삽입">
                                 <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-image"></use></svg>
                             </button>
                             <span class="cms-admin-editor__live nv-text-sm nv-text-subtle nv-sr-only" aria-live="polite"></span>
@@ -895,7 +897,7 @@
     </span>
     <!-- 카드 작업(키트 menu-edit-source): 미리보기 · 되돌리기는 카드의 아이콘 단추, 나머지(내려받기 · 발행 · 검토 · 예약 취소 · 삭제)는 ⋮ -->
     <span class="ver__acts">
-        <a class="nv-btn nv-btn--sm nv-btn--icon nv-btn--outline" target="_blank" rel="noopener" data-modal-open="#ct-version-preview" data-version-preview="" title="미리보기" href="console-콘텐츠-관리-조사개요-9ef297.html" data-version-label="v2" aria-label="v2 미리보기"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg></a>
+        <a class="nv-btn nv-btn--xs nv-btn--icon nv-btn--outline" target="_blank" rel="noopener" data-modal-open="#ct-version-preview" data-version-preview="" title="미리보기" href="console-콘텐츠-관리-조사개요-9ef297.html" data-version-label="v2" aria-label="v2 미리보기"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg></a>
         <!-- 게시 중인 버전은 고치던 임시저장본이 있을 때만 되돌릴 것이 있다 -->
         
         <span class="nv-dropmenu">
@@ -923,10 +925,10 @@
     </span>
     <!-- 카드 작업(키트 menu-edit-source): 미리보기 · 되돌리기는 카드의 아이콘 단추, 나머지(내려받기 · 발행 · 검토 · 예약 취소 · 삭제)는 ⋮ -->
     <span class="ver__acts">
-        <a class="nv-btn nv-btn--sm nv-btn--icon nv-btn--outline" target="_blank" rel="noopener" data-modal-open="#ct-version-preview" data-version-preview="" title="미리보기" href="console-콘텐츠-관리-조사개요-9ef297.html" data-version-label="v1" aria-label="v1 미리보기"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg></a>
+        <a class="nv-btn nv-btn--xs nv-btn--icon nv-btn--outline" target="_blank" rel="noopener" data-modal-open="#ct-version-preview" data-version-preview="" title="미리보기" href="console-콘텐츠-관리-조사개요-9ef297.html" data-version-label="v1" aria-label="v1 미리보기"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-eye"></use></svg></a>
         <!-- 게시 중인 버전은 고치던 임시저장본이 있을 때만 되돌릴 것이 있다 -->
         <form method="post" class="ver__form" action="#kit-file" data-kit-href="/console-9f3a/content/ST54cf79b1bff2434a896cd1bcf54bb4c3/CTd2b9946e99b04dadaa3d6baa46cf8271/versions/CV3a200787b8d4492f92122f83675d7132/restore" data-confirm-verb="되돌리기" data-confirm="이 버전 본문을 임시저장본으로 불러옵니다. 고치던 임시저장본이 있으면 그 본문을 바꿉니다. 누리집에는 「수정하기」 해야 나갑니다." data-confirm-one="" data-confirm-title="v1 으로 되돌릴까요?"><input type="hidden" name="_csrf" value="wZV4anzMqD-Ep2TQBuLMLy7vO7FcTAAtOKh4vYvBrjE">
-            <button type="submit" class="nv-btn nv-btn--sm nv-btn--icon nv-btn--outline" title="이 버전으로 되돌리기 — 이 본문을 임시저장본으로 불러옵니다" aria-label="v1 으로 되돌리기"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-refresh"></use></svg></button>
+            <button type="submit" class="nv-btn nv-btn--xs nv-btn--icon nv-btn--outline" title="이 버전으로 되돌리기 — 이 본문을 임시저장본으로 불러옵니다" aria-label="v1 으로 되돌리기"><svg class="nv-icon" aria-hidden="true"><use href="#nv-i-refresh"></use></svg></button>
         <input type="hidden" name="returnMenu" value="MN4ab0f11d0b304e8cad7af8b09d142df6"></form>
         <span class="nv-dropmenu">
         <button type="button" class="nuri-button-icon nuri-button--tertiary nuri-button--outline nuri-button--xs" data-dropmenu="" aria-expanded="false" aria-haspopup="menu" title="작업" aria-label="v1 작업"><span class="nuri-icon i-dots-three-vertical" aria-hidden="true"></span></button>
@@ -973,7 +975,7 @@
                                 <span>첨부할 파일을 끌어놓거나, 직접 선택하여 업로드</span><small>PNG, JPG (최대 5MB, 16:9 권장)</small>
                                 <input type="file" class="nv-sr-only" form="none" accept="image/png,image/jpeg" data-upload-file="" aria-label="대표 썸네일 이미지 선택 (5MB까지)"></label>
                             <input type="hidden" form="none" data-upload-usage="" value="COVER" data-max-bytes="5242880">
-                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--ghost" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
+                            <button type="submit" class="nv-btn nv-btn--sm nv-btn--outline" data-media-remove="" data-usage="COVER" hidden="hidden">썸네일 지우기</button>
                             <p class="nv-field__hint" role="status" aria-live="polite" data-upload-status=""></p>
                         </div>
                         <div class="nv-form-group nv-attach" data-media-upload="" data-upload-auto="" data-owner-type="CONTENT" data-upload-url="/api/console-9f3a/v1/media-uploads" data-media-url="/api/console-9f3a/v1/media/" data-release-url="/console-9f3a/content/ST54cf79b1bff2434a896cd1bcf54bb4c3/CTd2b9946e99b04dadaa3d6baa46cf8271/media/" data-site-id="ST54cf79b1bff2434a896cd1bcf54bb4c3" data-owner-id="CTd2b9946e99b04dadaa3d6baa46cf8271">
@@ -992,7 +994,7 @@
                                     <svg class="nv-icon" aria-hidden="true"><use href="#nv-i-file"></use></svg>
                                     <a class="nv-grow" data-media-name="" href="#"></a>
                                     <span class="nv-file__size" data-media-size=""></span>
-                                    <button type="button" class="nv-btn nv-btn--ghost nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 콘텐츠에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
+                                    <button type="button" class="nv-btn nv-btn--outline nv-btn--sm" data-media-remove="" data-usage="ATTACHMENT" data-confirm="이 파일을 콘텐츠에서 뺍니까? (파일은 미디어 관리에 남습니다)"><svg class="nv-icon nv-icon--sm" aria-hidden="true"><use href="#nv-i-close"></use></svg></button>
                                 </div>
                             </template>
                         </div>
@@ -1015,7 +1017,7 @@
                                 <div class="nv-field"><label class="nv-field__label" for="seo-canonical">Canonical URL</label>
                                     <div class="nv-row"><input id="seo-canonical" type="url" class="nv-input" name="canonicalUrl" maxlength="1000" value="" placeholder="https://대표도메인/경로">
                                         <button type="button" class="nv-btn nv-btn--sm nv-btn--outline" data-url-open="#seo-canonical">열기</button></div></div>
-                                <div class="nv-row nv-row--end"><button type="submit" class="nv-btn nv-btn--soft">SEO 저장</button></div>
+                                <div class="nv-row nv-row--end"><button type="submit" class="nv-btn nv-btn--primary nv-btn--outline">SEO 저장</button></div>
                             <input type="hidden" name="returnMenu" value="MN4ab0f11d0b304e8cad7af8b09d142df6"></form>
                         </details>
                     </aside>

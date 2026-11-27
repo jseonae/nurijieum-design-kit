@@ -7,7 +7,6 @@
 .sd-term-table .sd-term-col-state { width: 14rem; }
 .sd-term-table .sd-term-col-actions { width: 8rem; }
 .sd-term-table .col-actions { white-space: nowrap; }
-.sd-term .nv-filter__left .nv-btn { margin-left: var(--cms-sp-2, .8rem); }
 /* 용어 구분 탭 — 콘솔 메뉴 관리 1단계 탭(cms-admin-v2.css .nv-menu-top-tabs · navigation.css)과 같은 여백 */
 .sd-term .nv-list > .nv-tabs { flex-wrap: wrap; margin: 1.2rem 1.6rem var(--cms-sp-3, 1.2rem); }
 /* 정의 첫 줄 말줄임(design_CMN §3-2 adm_0701-03) */
